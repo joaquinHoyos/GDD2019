@@ -12,6 +12,6 @@ CREATE TABLE Funcion (func_id int IDENTITY(1,1) NOT NULL, func_nombre varchar(20
 CREATE TABLE FuncionesxRol (id_rol int, id_funcion int);
 CREATE TABLE Credito (cred_id int IDENTITY(1,1) NOT NULL, cred_cliente int, cred_tipoPago nvarchar(100), cred_fecha smalldatetime,  cred_tarjeta Numeric(10));
 CREATE TABLE Cupon (cupo_id int IDENTITY(1,1) NOT NULL, cupo_fecha smalldatetime, cupo_oferta nvarchar(50), cupo_cliente int, cupo_compra int);
-CREATE TABLE Compra(comp_oferta int NOT NULL, comp_cliente int NOT NULL, comp_cantidad int,comp_factura Numeric(18,0), comp_importe int);
+CREATE TABLE Compra(comp_id int IDENTITY(1,1) NOT NULL,comp_oferta int NOT NULL, comp_cliente int NOT NULL, comp_cantidad int,comp_factura Numeric(18,0), comp_importe int);
 CREATE TABLE Factura(fact_id Numeric(18,0) NOT NULL, fact_desde smalldatetime, fact_hasta smalldatetime, fact_importe int, fact_proveedor int);
 CREATE TABLE Oferta(ofer_id nvarchar(50) NOT NULL, ofer_descripcion varchar(255), ofer_fechaDesde smalldatetime, ofer_fechaHasta smalldatetime, ofer_precioOferta Numeric(18,2), ofer_precioLista  Numeric(18,2), ofer_proveedor int, ofer_disponible Numeric(18,0), ofer_maxDisponible int);
