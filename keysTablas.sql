@@ -1,4 +1,4 @@
-CREATE PROCEDURE keysTablas
+CREATE PROCEDURE keys
 as
 
 
