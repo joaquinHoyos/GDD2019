@@ -1,0 +1,10 @@
+C:\Users\Matias\Desktop\Groupon2019\src\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertas.exe.config
+Z:\Aplicacion\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertas.exe.config
+Z:\Aplicacion\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertas.exe
+Z:\Aplicacion\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertas.pdb
+Z:\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.csprojResolveAssemblyReference.cache
+Z:\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Properties.Resources.resources
+Z:\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.csproj.GenerateResource.Cache
+Z:\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.exe
+Z:\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.pdb
+Z:\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.AbmProveedor.Form1.resources
