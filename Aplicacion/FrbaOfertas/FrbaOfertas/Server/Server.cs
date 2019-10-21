@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -19,10 +13,13 @@ namespace FrbaOfertas.Server
 {
     public class ServerSQL
     {
+        public static ServerSQL server;
         public ServerSQL() { 
-        
         }
 
+        public static ServerSQL instance(){
+            return server==null?new ServerSQL():server;
+        }
         public SqlConnection levantarConexion()
         {
 
@@ -31,15 +28,17 @@ namespace FrbaOfertas.Server
             try
             {
                 myConnection.Open();
-                MessageBox.Show("Well done!");
+               // MessageBox.Show("Well done!");
                 return myConnection;
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("You failed!" + ex.Message);
+                //MessageBox.Show("You failed!" + ex.Message);
                 return null;
             }
 
         }
+
+        
     }
 }

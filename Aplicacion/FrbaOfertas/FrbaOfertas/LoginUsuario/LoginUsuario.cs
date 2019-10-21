@@ -36,9 +36,21 @@ namespace FrbaOfertas.LoginUsuario
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            
-            List<User> lista = new User().listaUsuarios();
+            string usuario=txtUsername.Text;
+            string clave=txtPassword.Text;
+            User user = RepoUsuario.instance().buscarUsuarioPorClave(usuario,clave);
+            if (user!=  null) { 
+                MessageBox.Show("todo ok, habria que redireccionar");
+                    return;
+            }
+            MessageBox.Show("Error: contraseña o usuario incorrecto");
            
+        }
+
+        private void linkLabel3_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+        {
+            SignUpUsuario signup =new SignUpUsuario();
+            signup.Show();
         }
     }
 }

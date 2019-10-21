@@ -58,29 +58,13 @@ namespace FrbaOfertas.Usuario
 
          }
 
-       
-        public List<User> listaUsuarios() {
-
-            ServerSQL serv = new ServerSQL();
-            SqlConnection connection = serv.levantarConexion();
-
-            SqlCommand command = new SqlCommand("Select * from PASO_A_PASO.Usuario", connection);
-            List<User> listaUsuarios = new List<User>();
-            using (SqlDataReader reader = command.ExecuteReader())
-            {
-                while(reader.Read())
-                {
-
-                    listaUsuarios.Add(new User( Convert.ToInt32(reader["user_id"]), reader["user_username"].ToString(), reader["user_password"].ToString(), Convert.ToInt32(reader["user_intentosLogin"]),Convert.ToChar(reader["user_status"]),Convert.ToDateTime(reader["user_fechaBaja"])));
-                    
-                }
-            }
-            connection.Close();
-            MessageBox.Show("Cantidad de usuarios listados: "+listaUsuarios.Count().ToString());
-            return listaUsuarios;
+        public User LogIn(string usuario, string clave)
+        {
+            return RepoUsuario.instance().buscarUsuarioPorClave(usuario, clave);
             
-
         }
+
+      
 
 
 
