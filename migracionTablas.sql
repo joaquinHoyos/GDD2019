@@ -1,7 +1,7 @@
 USE GD2C2019
 GO
-CREATE SCHEMA PASO_A_PASO AUTHORIZATION gdCupon2019
-GO
+--CREATE SCHEMA PASO_A_PASO AUTHORIZATION gdCupon2019
+--GO
 
 CREATE PROCEDURE PASO_A_PASO.migracionTablas
 as
@@ -25,3 +25,4 @@ sum(t.Oferta_Precio) as precioCompra from gd_esquema.Maestra t
 join PASO_A_PASO.Cliente c on t.Cli_Dni=c.clie_dni
 where t.Factura_Fecha is null and t.Factura_Nro is null and t.Oferta_Entregado_Fecha is null and t.Oferta_Codigo is not null
 group by t.Oferta_Codigo,c.clie_id,t.Factura_Nro,t.Cli_Dni,t.Provee_CUIT,Oferta_Fecha_Compra
+
