@@ -1,0 +1,5 @@
+CREATE PROCEDURE PASO_A_PASO.crearCliente (@datos PASO_A_PASO.tablaCliente READONLY)
+AS
+	INSERT INTO PASO_A_PASO.Cliente SELECT * FROM @datos
+	
+

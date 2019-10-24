@@ -1,0 +1,3 @@
+CREATE PROCEDURE PASO_A_PASO.crearProveedor (@datos PASO_A_PASO.tablaProveedor READONLY)
+AS
+	INSERT INTO PASO_A_PASO.Cliente SELECT * FROM @datos

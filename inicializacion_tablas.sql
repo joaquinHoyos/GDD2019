@@ -1,8 +1,6 @@
 CREATE PROCEDURE PASO_A_PASO.inicializacion_tablas
 AS
-	
-	INSERT INTO PASO_A_PASO.Usuario VALUES ('admin',HASHBYTES('SHA2_256','w23e'),0,'E','1/1/1900');
-	EXEC PASO_A_PASO.crearUsuario('admin','w23e',1)
+	--CREA FUNCIONES
 	INSERT INTO PASO_A_PASO.Funcion VALUES ('CARGA_CREDITO','C')
 	INSERT INTO PASO_A_PASO.Funcion VALUES ('COMPRAR','C')
 	INSERT INTO PASO_A_PASO.Funcion VALUES ('VER_CUPON','C')
@@ -13,15 +11,33 @@ AS
 	INSERT INTO PASO_A_PASO.Funcion VALUES ('ABM_USUARIO','A')
 	INSERT INTO PASO_A_PASO.Funcion VALUES ('ABM_ROL','A')
 	
+	-- CREAR ROLES
+	--CREA ROL ADMINISTRADOR
 	DECLARE @funcAdmin AS tablaFuncion
-	INSERT INTO @funcAdmin
-	SELECT func_nombre 
-	FROM PASO_A_PASO.Funcion 
-	WHERE func_grupo='A'
 	
-	--select * from PASO_A_PASO.Funcion
-	--where func_nombre in (select * from @funcAdmin)
-	--select * from PASO_A_PASO.Rol
+	INSERT INTO @funcAdmin SELECT func_nombre 
+	FROM PASO_A_PASO.Funcion WHERE func_grupo='A'
+	
 	EXEC PASO_A_PASO.crearRol @nombre='ADMINISTRADOR',@funciones=@funcAdmin
 	
+	--CREAR ROL CLIENTE
+	DECLARE @funcCli AS tablaFuncion
+	
+	INSERT INTO @funcCli SELECT func_nombre 
+	FROM PASO_A_PASO.Funcion WHERE func_grupo='C'
+	
+	EXEC PASO_A_PASO.crearRol @nombre='CLIENTE',@funciones=@funcCli
+	
+	--CREAR ROL PROVEEDOR
+	DECLARE @funcProv AS tablaFuncion
+	
+	INSERT INTO @funcProv SELECT func_nombre 
+	FROM PASO_A_PASO.Funcion WHERE func_grupo='A'
+	
+	EXEC PASO_A_PASO.crearRol @nombre='PROVEEDOR',@funciones=@funcProv
+	
+	--CREAR USUARIO	
+	EXEC PASO_A_PASO.crearUsuario @username='admin',@pass='w23e',@rol=1
+	
+
 	

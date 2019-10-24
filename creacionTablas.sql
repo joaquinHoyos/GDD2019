@@ -1,7 +1,7 @@
 CREATE PROCEDURE PASO_A_PASO.creacionTablas
 as
 
-CREATE TABLE PASO_A_PASO.Usuario (user_id int IDENTITY(1,1) NOT NULL,user_username varchar(32), user_password varchar(32), user_intentosLogin int, user_status char, user_fechaBaja smalldatetime);
+CREATE TABLE PASO_A_PASO.Usuario (user_id int IDENTITY(1,1) NOT NULL,user_username varchar(32) UNIQUE, user_password varchar(32), user_intentosLogin int, user_status char, user_fechaBaja smalldatetime);
 CREATE TABLE PASO_A_PASO.Cliente (clie_id int IDENTITY(1,1) NOT NULL, clie_dni Numeric(18,0), clie_nombre nvarchar(255),clie_apellido nvarchar(255), clie_userId int, clie_mail nvarchar(255), clie_telefono Numeric(18,0),clie_direccion nvarchar(255), clie_saldo int, clie_codigoPostal int, clie_ciudad nvarchar(255),clie_fechaNacimiento smalldatetime);
 CREATE TABLE PASO_A_PASO.Proveedor (prov_id int IDENTITY(1,1) NOT NULL, prov_cuit nvarchar(20), prov_razon nvarchar(100),prov_userId int, prov_mail nvarchar(255), prov_telefono Numeric(18,0),prov_direccion nvarchar(255), prov_codigoPostal int, prov_ciudad nvarchar(255),prov_rubro int, prov_nombre nvarchar(255), prov_habilitado char);
 CREATE TABLE PASO_A_PASO.Rubro (rubr_id int IDENTITY(1,1) NOT NULL, rubr_nombre nvarchar(100));

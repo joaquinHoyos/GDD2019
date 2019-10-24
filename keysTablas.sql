@@ -1,4 +1,3 @@
-
 CREATE PROCEDURE PASO_A_PASO.keys
 as
 

@@ -1,4 +1,3 @@
-
 CREATE PROCEDURE PASO_A_PASO.crearRol (@nombre varchar(20),@funciones tablaFuncion READONLY)
 AS
 
