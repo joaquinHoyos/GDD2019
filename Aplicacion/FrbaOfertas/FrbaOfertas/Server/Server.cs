@@ -13,8 +13,8 @@ namespace FrbaOfertas.Server
 {
     public class ServerSQL
     {
-        public static ServerSQL server;
-        public ServerSQL() { 
+        private static ServerSQL server;
+        private ServerSQL() { 
         }
 
         public static ServerSQL instance(){
