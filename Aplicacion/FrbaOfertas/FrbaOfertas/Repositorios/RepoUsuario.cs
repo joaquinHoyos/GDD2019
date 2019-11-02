@@ -96,25 +96,16 @@ namespace FrbaOfertas.Repositorios
            listaGrupo.Add(grupo);
            return listaGrupo;
         }
-        public void crearUsuario(string usuario, string clave)
+        public void crearUsuario(string usuario, string clave,int rol)
         {
             SqlConnection conexion = ServerSQL.instance().levantarConexion();
+
+            SqlCommand command = QueryFactory.instance().signUpUsuario(usuario,clave,rol,conexion);
             
-            string query = "insert into PASO_A_PASO.Usuario values(@usuario,@clave,0,'1','1/1/1900')";
             
-            MessageBox.Show(query);
             try
             {
-                SqlCommand command = new SqlCommand(query, conexion);
-                SqlParameter usuarioParam = new SqlParameter();
-                usuarioParam.ParameterName = "@usuario";
-                usuarioParam.Value = usuario;
-                SqlParameter claveParam = new SqlParameter();
-                claveParam.ParameterName = "@clave";
-                claveParam.Value = clave;
-                command.Parameters.Add(claveParam);
-                command.Parameters.Add(usuarioParam);
-                MessageBox.Show(command.CommandText);
+                
                 command.ExecuteNonQuery();
             }
             catch (SqlException e)

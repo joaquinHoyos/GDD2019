@@ -44,7 +44,7 @@ namespace FrbaOfertas.Forms
             {
                 try
                 {
-                    RepoUsuario.instance().crearUsuario(usuario, clave);
+                    RepoUsuario.instance().crearUsuario(usuario, clave,comboTipoUsuario.SelectedIndex+2);
                     MessageBox.Show("sign up bien");
                     this.Close();
                 }

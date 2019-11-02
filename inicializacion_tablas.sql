@@ -12,40 +12,36 @@ AS
 	INSERT INTO PASO_A_PASO.Funcion VALUES ('ABM_ROL','A')
 
 	
+	
+
 	-- CREAR ROLES
 	--CREA ROL ADMINISTRADOR
-	DECLARE @funcAdmin AS tablaFuncion
-	
+	DECLARE @funcAdmin AS PASO_A_PASO.tablaFuncion
+
 	INSERT INTO @funcAdmin SELECT func_nombre 
 	FROM PASO_A_PASO.Funcion WHERE func_grupo='A'
 	
 	EXEC PASO_A_PASO.crearRol @nombre='ADMINISTRADOR',@funciones=@funcAdmin
 	
-	INSERT INTO PASO_A_PASO.FuncionesxRol SELECT 1,func_id FROM PASO_A_PASO.Funcion WHERE func_grupo='A'
 	--CREAR ROL CLIENTE
-	DECLARE @funcCli AS tablaFuncion
+	DECLARE @funcCli AS PASO_A_PASO.tablaFuncion
 	
 	INSERT INTO @funcCli SELECT func_nombre 
 	FROM PASO_A_PASO.Funcion WHERE func_grupo='C'
 	
 	EXEC PASO_A_PASO.crearRol @nombre='CLIENTE',@funciones=@funcCli
 	
-	INSERT INTO PASO_A_PASO.FuncionesxRol SELECT 2,func_id FROM PASO_A_PASO.Funcion WHERE func_grupo='C'
 	--CREAR ROL PROVEEDOR
-	DECLARE @funcProv AS tablaFuncion
+	DECLARE @funcProv AS PASO_A_PASO.tablaFuncion
 	
 	INSERT INTO @funcProv SELECT func_nombre 
 	FROM PASO_A_PASO.Funcion WHERE func_grupo='A'
 	
 	EXEC PASO_A_PASO.crearRol @nombre='PROVEEDOR',@funciones=@funcProv
 	
-	INSERT INTO PASO_A_PASO.FuncionesxRol  SELECT 3,func_id FROM PASO_A_PASO.Funcion WHERE func_grupo='P'
-	Select * from PASO_A_PASO.Funcion
+	
 
-	DELETE FROM PASO_A_PASO.Funcion WHERE func_id>9
+
 	
 	--CREAR USUARIO	
 	EXEC PASO_A_PASO.crearUsuario @username='admin',@pass='w23e',@rol=1
-	
-
-	

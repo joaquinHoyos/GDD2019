@@ -15,6 +15,7 @@ namespace FrbaOfertas.Presenters
         private Admin_Form admin_form;
         private LoginUsuario login_form;
         private AbmRol_Form abmRol_form;
+        private FormCliente cliente_form;
 
         public static Presenter instance()
         {
@@ -45,6 +46,7 @@ namespace FrbaOfertas.Presenters
                 if (resultado == DialogResult.Yes)
                 {
                     //ir a form cliente
+                    cliente_form.Show();
                 }
                 else
                 {
@@ -65,7 +67,8 @@ namespace FrbaOfertas.Presenters
             }
             else 
             { 
-              //mostrar cliente  
+              //mostrar cliente 
+                cliente_form.Show();
             }
         }
 
@@ -88,6 +91,7 @@ namespace FrbaOfertas.Presenters
             if (resultado == DialogResult.Yes)
             {
                 //mostrar cliente
+                cliente_form.Show();
             }
             else 
             { 
@@ -119,6 +123,8 @@ namespace FrbaOfertas.Presenters
             else if (usuario.esCliente())
             {
                 //mostrar cliente
+                this.getClienteForm().currentUserID = usuario.user_id;
+                this.getClienteForm().Show();
             }
             else // esProveedor
             {
@@ -152,6 +158,12 @@ namespace FrbaOfertas.Presenters
         {
             return this.abmRol_form == null ? this.abmRol_form=new AbmRol_Form() : this.abmRol_form;
         }
+
+        private FormCliente getClienteForm()
+        {
+            return this.cliente_form == null ? this.cliente_form = new FormCliente() : this.cliente_form;
+        }
+
 
         
             
