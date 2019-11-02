@@ -15,6 +15,13 @@ namespace FrbaOfertas.Forms
         public CargaCredito()
         {
             InitializeComponent();
+            TopLevel = false;
+            FormBorderStyle = FormBorderStyle.None;
+        }
+
+        private void CargaCredito_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

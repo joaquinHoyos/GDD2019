@@ -23,5 +23,10 @@ namespace FrbaOfertas.Forms
         {
             Presenter.instance().cargarTodasFunciones(this);
         }
+
+        private void AbmRol_Form_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

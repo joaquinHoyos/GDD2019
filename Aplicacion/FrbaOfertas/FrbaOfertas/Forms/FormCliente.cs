@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms;
+using FrbaOfertas.Presenters;
 
 namespace FrbaOfertas.Forms
 {
@@ -30,6 +32,11 @@ namespace FrbaOfertas.Forms
 
             
 
+        }
+
+        private void btn_cargaCredito_Click_1(object sender, EventArgs e)
+        {
+            PresenterCliente.instance().cargarAltaCarga(this);
         }
     }
 }
