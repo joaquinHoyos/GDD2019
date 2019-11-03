@@ -14,7 +14,11 @@ Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.pdb
 Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertas.exe
 Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertas.pdb
 Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.csprojResolveAssemblyReference.cache
-Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.AbmProveedor.Form1.resources
-Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.LoginUsuario.LoginUsuario.resources
 Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Properties.Resources.resources
 Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.csproj.GenerateResource.Cache
+Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.AbmRol_Form.resources
+Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.Admin_Form.resources
+Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.FormCliente.resources
+Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.LoginUsuario.resources
+Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.SignUpUsuario.resources
+Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.CargaCredito.resources

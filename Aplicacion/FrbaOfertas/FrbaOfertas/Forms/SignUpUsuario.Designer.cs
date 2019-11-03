@@ -104,8 +104,8 @@
             // 
             this.comboTipoUsuario.FormattingEnabled = true;
             this.comboTipoUsuario.Items.AddRange(new object[] {
-            "Proveedor",
-            "Cliente"});
+            "Cliente",
+            "Proveedor"});
             this.comboTipoUsuario.Location = new System.Drawing.Point(212, 207);
             this.comboTipoUsuario.Name = "comboTipoUsuario";
             this.comboTipoUsuario.Size = new System.Drawing.Size(143, 21);

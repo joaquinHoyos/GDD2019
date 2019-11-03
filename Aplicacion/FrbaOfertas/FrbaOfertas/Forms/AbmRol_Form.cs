@@ -71,6 +71,11 @@ namespace FrbaOfertas.Forms
             }
             return funciones;
         }
+
+        private void AbmRol_Form_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

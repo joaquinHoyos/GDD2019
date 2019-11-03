@@ -74,6 +74,21 @@ namespace FrbaOfertas.Repositorios
             command.Parameters.Add(paramFunciones);
             return command;
 
+<<<<<<< HEAD
         }
+=======
+        public SqlCommand signUpUsuario(string username, string clave, int rol, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.crearUsuario @username=@usuario,@pass=@clave,@rol=@_rol", conexion);
+            SqlParameter paramUsername = this.nuevoParametroString("@usuario", username);
+            SqlParameter paramClave = this.nuevoParametroString("@clave", clave);
+            SqlParameter paramRol = this.nuevoParametroInt("@_rol", rol);
+            command.Parameters.Add(paramUsername);
+            command.Parameters.Add(paramClave);
+            command.Parameters.Add(paramRol);
+            return command;
+        }
+
+>>>>>>> master
     }
 }

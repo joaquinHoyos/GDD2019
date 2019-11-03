@@ -224,6 +224,7 @@
             this.Controls.Add(this.btn_Nuevo);
             this.Name = "AbmRol_Form";
             this.Text = "AbmRol_Form";
+            this.Load += new System.EventHandler(this.AbmRol_Form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
