@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using FrbaOfertas.Modelo;
 using System.Data.SqlClient;
 using FrbaOfertas.Server;
-
+using System.Data;
 namespace FrbaOfertas.Repositorios
 {
     class RepoRol
@@ -18,7 +18,14 @@ namespace FrbaOfertas.Repositorios
 
         public static RepoRol instance()
         {
-            return repo == null ? new RepoRol() : repo;
+            return repo == null ? repo=new RepoRol() : repo;
+        }
+
+        public void crearRol(string nombre, DataTable funciones)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().crearRol(nombre, funciones, conexion);
+            command.ExecuteNonQuery();
         }
 
         public List<int> getFuncionesAdmin()

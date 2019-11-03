@@ -18,7 +18,7 @@ namespace FrbaOfertas.Presenters
 
         public static Presenter instance()
         {
-            return presenter == null ? new Presenter() : presenter;
+            return presenter == null ? presenter=new Presenter() : presenter;
         }
 
 
@@ -132,13 +132,7 @@ namespace FrbaOfertas.Presenters
             this.getAbmRolForm().Show();
         }
 
-        public void cargarTodasFunciones(AbmRol_Form form)
-        {
-            foreach (int func in RepoRol.instance().getFuncionesAdmin()) { form.list_Admin.Items.Add(Enum.GetName(typeof(Funciones),func)); }
-            foreach (int func in RepoRol.instance().getFuncionesCliente()) { form.list_Cliente.Items.Add(Enum.GetName(typeof(Funciones), func)); } 
-            foreach (int func in RepoRol.instance().getFuncionesProveedor()) { form.list_Proveedor.Items.Add(Enum.GetName(typeof(Funciones),func)); }
-                
-        }
+        
         private Admin_Form getAdminForm(){
             return this.admin_form==null?this.admin_form=new Admin_Form():this.admin_form;
         }

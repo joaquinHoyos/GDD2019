@@ -33,7 +33,7 @@ namespace FrbaOfertas.Repositorios
 
         public static RepoUsuario instance()
         {
-            return repo==null?new RepoUsuario():repo;
+            return repo==null?repo=new RepoUsuario():repo;
         }
 
         

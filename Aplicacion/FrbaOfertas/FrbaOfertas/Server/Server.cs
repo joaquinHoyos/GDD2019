@@ -18,7 +18,7 @@ namespace FrbaOfertas.Server
         }
 
         public static ServerSQL instance(){
-            return server==null?new ServerSQL():server;
+            return server==null?server=new ServerSQL():server;
         }
         public SqlConnection levantarConexion()
         {

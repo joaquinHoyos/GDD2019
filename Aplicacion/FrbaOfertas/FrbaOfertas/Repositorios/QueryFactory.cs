@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-
+using System.Data;
 namespace FrbaOfertas.Repositorios
 {
     class QueryFactory
@@ -13,7 +13,7 @@ namespace FrbaOfertas.Repositorios
 
         public static QueryFactory instance()
         {
-            return fact==null?new QueryFactory():fact;
+            return fact==null?fact=new QueryFactory():fact;
         }
 
         private QueryFactory() { }
@@ -30,6 +30,15 @@ namespace FrbaOfertas.Repositorios
             SqlParameter parametro= this.nuevoParametroString(nombre, "");
             parametro.Value = value;
             return parametro;
+        }
+
+        private SqlParameter nuevoParametroTabla(string nombre, DataTable tabla,string tipo)
+        {
+            SqlParameter parametro = this.nuevoParametroString(nombre, "");
+            parametro.TypeName = tipo;
+            parametro.Value = tabla;
+            return parametro;
+
         }
         public SqlCommand logInUsuario(string usuario, string clave, SqlConnection conexion)
         {
@@ -56,6 +65,15 @@ namespace FrbaOfertas.Repositorios
             command.Parameters.Add(param);
             return command;
         }
+        public SqlCommand crearRol(string nombre, DataTable funciones, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.crearRol @nombre=@_nombre ,@funciones=@tabla", conexion);
+            SqlParameter paramNombre=this.nuevoParametroString("@_nombre",nombre);
+            SqlParameter paramFunciones = this.nuevoParametroTabla("@tabla",funciones,"PASO_A_PASO.tablaFuncion");
+            command.Parameters.Add(paramNombre);
+            command.Parameters.Add(paramFunciones);
+            return command;
 
+        }
     }
 }
