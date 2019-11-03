@@ -38,5 +38,10 @@ namespace FrbaOfertas.Forms
         {
             PresenterCliente.instance().cargarAltaCarga(this,currentUserID);
         }
+
+        private void btn_comprar_Click(object sender, EventArgs e)
+        {
+            PresenterCliente.instance().cargarComprar(this, currentUserID);
+        }
     }
 }

@@ -128,5 +128,12 @@ namespace FrbaOfertas.Repositorios
 
         }
 
+
+        public SqlCommand traerOfertasDisponibles(SqlConnection conexion){
+            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.traerOfertasDisponibles()", conexion);
+            return command;   
+        
+        }
+
     }
 }
