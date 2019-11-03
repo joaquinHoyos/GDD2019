@@ -20,8 +20,9 @@ namespace FrbaOfertas.Presenters
             return presenter == null ? new PresenterCliente() : presenter;
         }
 
-          public void cargarAltaCarga(FormCliente form)
+          public void cargarAltaCarga(FormCliente form, int userID)
           {
+              this.getAltaCarga().currentUserID = userID;
               form.splitContainer1.Panel2.Controls.Add(this.getAltaCarga());
               this.getAltaCarga().Show();
           }

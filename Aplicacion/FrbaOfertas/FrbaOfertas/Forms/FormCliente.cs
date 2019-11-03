@@ -36,7 +36,7 @@ namespace FrbaOfertas.Forms
 
         private void btn_cargaCredito_Click_1(object sender, EventArgs e)
         {
-            PresenterCliente.instance().cargarAltaCarga(this);
+            PresenterCliente.instance().cargarAltaCarga(this,currentUserID);
         }
     }
 }

@@ -33,6 +33,13 @@ namespace FrbaOfertas.Repositorios
             return parametro;
         }
 
+        private SqlParameter nuevoParametroLong(string nombre, long value)
+        {
+            SqlParameter parametro = this.nuevoParametroString(nombre, "");
+            parametro.Value = value;
+            return parametro;
+        }
+
         private SqlParameter nuevoParametroTabla(string nombre, DataTable tabla, string tipo)
         {
             SqlParameter parametro = this.nuevoParametroString(nombre, "");
@@ -88,6 +95,37 @@ namespace FrbaOfertas.Repositorios
             command.Parameters.Add(paramClave);
             command.Parameters.Add(paramRol);
             return command;
+        }
+
+
+
+
+        public SqlCommand cargarCredito(string tipoDePago, long tarjeta, long monto, int idUsuario, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.cargarCredito @tipoPago=@_tipoPago ,@monto=@_monto, @tarjeta=@_tarjeta, @userID=@_userID", conexion);
+            SqlParameter paramTipo = this.nuevoParametroString("@_tipoPago", tipoDePago);
+            SqlParameter paramTarjeta= new SqlParameter();
+            if (tipoDePago == "E")
+            {
+
+                paramTarjeta.ParameterName = "@_tarjeta";
+                paramTarjeta.Value = DBNull.Value;
+
+            }
+            else
+            {
+                paramTarjeta = this.nuevoParametroLong("@_tarjeta", tarjeta);
+
+            }
+            SqlParameter paramMonto = this.nuevoParametroLong("@_monto", monto);
+            SqlParameter paramUsuario = this.nuevoParametroInt("@_userID", idUsuario);
+            command.Parameters.Add(paramTipo);
+            command.Parameters.Add(paramTarjeta);
+            command.Parameters.Add(paramMonto);
+            command.Parameters.Add(paramUsuario);
+            return command;
+
+
         }
 
     }
