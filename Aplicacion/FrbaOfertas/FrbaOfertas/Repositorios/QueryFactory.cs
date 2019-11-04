@@ -135,5 +135,18 @@ namespace FrbaOfertas.Repositorios
         
         }
 
+        public SqlCommand generarCompra(int idUsuario, String oferCodigo, int cantidad,SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.generarCompra @userID=@_userID,@oferCodigo=@_oferCodigo,@cantidad=@_cantidad ", conexion);
+            SqlParameter paramUsuario = this.nuevoParametroInt("@_userID", idUsuario);
+            SqlParameter paramOferta = this.nuevoParametroString("@_oferCodigo", oferCodigo);
+            SqlParameter paramCantidad = this.nuevoParametroInt("@_cantidad", cantidad);
+            command.Parameters.Add(paramUsuario);
+            command.Parameters.Add(paramOferta);
+            command.Parameters.Add(paramCantidad);
+            return command;
+
+        }
+
     }
 }

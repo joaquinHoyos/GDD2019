@@ -8,7 +8,7 @@ namespace FrbaOfertas.Modelo
 {
     class Oferta
     {
-        public int ofer_id { get; set; }
+        public String ofer_id { get; set; }
         public string ofer_descripcion { get; set; }
         public DateTime ofer_fechaDesde { get; set; }
         public DateTime ofer_fechaHasta  { get; set; }
@@ -18,7 +18,7 @@ namespace FrbaOfertas.Modelo
         public int ofer_disponible { get; set; }
         public int ofer_maxDisponible { get; set; }
 
-        public Oferta(int _id,string _descripcion,DateTime _desde,DateTime _hasta,double _precioOferta,double _precioLista,int _proveedor, int _disponible, int _maxDisponible) {
+        public Oferta(String _id,string _descripcion,DateTime _desde,DateTime _hasta,double _precioOferta,double _precioLista,int _proveedor, int _disponible, int _maxDisponible) {
 
             this.ofer_id=_id;
             this.ofer_descripcion= _descripcion;

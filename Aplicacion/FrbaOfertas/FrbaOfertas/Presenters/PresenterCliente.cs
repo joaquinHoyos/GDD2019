@@ -23,6 +23,7 @@ namespace FrbaOfertas.Presenters
 
           public void cargarAltaCarga(FormCliente form, int userID)
           {
+               
               this.getAltaCarga().currentUserID = userID;
               form.splitContainer1.Panel2.Controls.Add(this.getAltaCarga());
               this.getAltaCarga().Show();

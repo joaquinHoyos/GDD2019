@@ -29,8 +29,32 @@ namespace FrbaOfertas.Forms
 
             var bindingList = new BindingList<Oferta>(RepoOferta.instance().traerOfertasDisponibles());
             var source = new BindingSource(bindingList, null);
-            dataGridView1.DataSource= source;
+            listBox1.DataSource = source;
+            listBox1.DisplayMember = "ofer_descripcion";
+            listBox1.ValueMember = "ofer_id";
 
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btn_comprar.Enabled = true;
+            txt_cantidad.Enabled = true;
+        }
+
+        private void btn_comprar_Click(object sender, EventArgs e)
+        {
+            if (txt_cantidad.Value > 0)
+            {
+                String aa = listBox1.SelectedValue.ToString();
+
+                RepoCliente.instance().generarCompra(currentUserID, listBox1.SelectedValue.ToString(), Convert.ToInt32(txt_cantidad.Value));
+
+            }
+            else {
+                MessageBox.Show("La cantidad debe ser mayor a 0");
+            
+            }
         }
     }
 }

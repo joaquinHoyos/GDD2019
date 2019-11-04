@@ -34,7 +34,7 @@ namespace FrbaOfertas.Repositorios
                     while (reader.Read())
                     {
 
-                        listaOfertas.Add(new Oferta(Convert.ToInt32(reader["ofer_id"]), reader["ofer_descripcion"].ToString(), DateTime.Parse(reader["ofer_fechaDesde"].ToString()), DateTime.Parse(reader["ofer_fechaHasta"].ToString()), Convert.ToDouble(reader["ofer_precioOferta"]), Convert.ToDouble(reader["ofer_precioLista"]), Convert.ToInt32(reader["ofer_proveedor"]), Convert.ToInt32(reader["ofer_disponible"]),Convert.ToInt32(reader["ofer_maxDisponible"])));
+                        listaOfertas.Add(new Oferta((reader["ofer_id"]).ToString(), reader["ofer_descripcion"].ToString(), DateTime.Parse(reader["ofer_fechaDesde"].ToString()), DateTime.Parse(reader["ofer_fechaHasta"].ToString()), Convert.ToDouble(reader["ofer_precioOferta"]), Convert.ToDouble(reader["ofer_precioLista"]), Convert.ToInt32(reader["ofer_proveedor"]), Convert.ToInt32(reader["ofer_disponible"]),Convert.ToInt32(reader["ofer_maxDisponible"])));
 
                     }
                 }

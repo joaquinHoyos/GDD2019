@@ -40,6 +40,26 @@ namespace FrbaOfertas.Repositorios
             
         }
 
+        public void generarCompra(int idUsuario, String oferCodigo, int cantidad)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+
+            SqlCommand command = QueryFactory.instance().generarCompra(idUsuario,oferCodigo,cantidad,conexion);
+
+
+            try
+            {
+
+                command.ExecuteNonQuery();
+                MessageBox.Show("Compra exitosa");
+            }
+            catch (SqlException e)
+            {
+                throw e;
+            }
+            
+        }
+
 
 
 
