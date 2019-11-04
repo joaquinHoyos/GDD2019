@@ -26,10 +26,16 @@ namespace FrbaOfertas.Forms
             PresenterAdmin.instance().cargarNuevoRol(this);
         }
 
+        private void btn_Busqueda_Click(object sender, EventArgs e)
+        {
+            PresenterAdmin.instance().cargarNuevaBusqueda(this);
+        }
 
-
-
-
+        private void btn_Buscar_Click(object sender, EventArgs e)
+        {
+            DataTable seleccionados = this.obtenerSeleccionados();
+            PresenterAdmin.instance().hacerBusqueda(Decimal.Parse(this.txt_id.Text), txt_Nombre.Text, seleccionados,this);
+        }
 
         public void habilitarNuevo()
         {
@@ -40,6 +46,44 @@ namespace FrbaOfertas.Forms
             this.list_Proveedor.Enabled = true;
         }
 
+        public void deshabilitarTodo()
+        {
+            this.txt_Nombre.Enabled = false;
+            this.btn_Guardar.Enabled = false;
+            this.list_Admin.Enabled = false;
+            this.list_Cliente.Enabled = false;
+            this.list_Proveedor.Enabled = false;
+            this.dataGridView1.Enabled=false;
+            this.btn_Buscar.Enabled = false;
+            this.btn_Editar.Enabled = false;
+            this.btn_Eliminar.Enabled = false;
+            this.btn_Guardar.Enabled = false;
+        }
+
+        public void habilitarBusqueda()
+        {
+            this.txt_id.Enabled=true;
+            this.txt_Nombre.Enabled=true;
+            this.btn_Buscar.Enabled = true;
+            this.list_Proveedor.Enabled=true;
+            this.list_Cliente.Enabled=true;
+            this.list_Admin.Enabled=true;
+            this.dataGridView1.Enabled=true;
+                    }
+
+        public void borrarTodo()
+        {
+            this.txt_id.Text = "";
+            this.txt_Nombre.Text = "";
+            vaciarListBox(this.list_Admin);
+            vaciarListBox(this.list_Cliente);
+            vaciarListBox(this.list_Proveedor);
+            this.dataGridView1.DataSource = null;
+         }
+        public void vaciarListBox(CheckedListBox list)
+        {
+            for (int i = list.Items.Count - 1; i > -1; i--){list.Items.RemoveAt(i);}
+        }
         private void btn_Guardar_Click(object sender, EventArgs e)
         {
 
@@ -78,6 +122,14 @@ namespace FrbaOfertas.Forms
         {
 
         }
+
+        public void cargarResultadoBusqueda(DataTable tabla)
+        {
+            this.dataGridView1.DataSource = tabla;
+            MessageBox.Show(tabla.Rows.Count.ToString());
+            
+        }
+        
     }
 
 }

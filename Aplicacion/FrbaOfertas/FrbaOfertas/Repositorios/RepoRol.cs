@@ -71,7 +71,28 @@ namespace FrbaOfertas.Repositorios
 
         }
 
-
+        public DataTable buscarPorId(decimal id)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().busquedaId(id, conexion);
+            SqlDataReader reader = command.ExecuteReader();
+            DataTable tabla;
+            if (reader.HasRows)
+            {
+                tabla = new DataTable();
+                tabla.Columns.Add(new DataColumn("ID"));
+                tabla.Columns.Add(new DataColumn("Nombre"));
+                while (reader.Read())
+                {
+                    DataRow row = tabla.NewRow();
+                    row["ID"] = reader.GetSqlInt32(0);
+                    row["Nombre"] = reader.GetSqlString(1).ToString();
+                    tabla.Rows.Add(row);
+                }
+                return tabla;
+            }
+            else { return null; }
+        }
         public List<int> getFuncionesProveedor()
         {
             if (this.funcionesProveedor == null)

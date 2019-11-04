@@ -90,5 +90,13 @@ namespace FrbaOfertas.Repositorios
             return command;
         }
 
+        public SqlCommand busquedaId(decimal id, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.busquedaId(@id)", conexion);
+            SqlParameter parametro = this.nuevoParametroInt("@id",Int32.Parse(id.ToString()));
+            command.Parameters.Add(parametro);
+            return command;
+        }
+
     }
 }

@@ -88,6 +88,7 @@
     </Compile>
     <Compile Include="Modelo\EnumFunciones.cs" />
     <Compile Include="Modelo\StructGrupo.cs" />
+    <Compile Include="Presenters\EnumTipoBusqueda.cs" />
     <Compile Include="Presenters\Presenter.cs" />
     <Compile Include="Presenters\PresenterAdmin.cs" />
     <Compile Include="Presenters\PresenterCliente.cs" />

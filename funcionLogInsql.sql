@@ -21,3 +21,11 @@ AS
 	JOIN PASO_A_PASO.Funcion ON (func_id=rf.id_funcion)
 	WHERE user_id=@usuario
 	
+
+	CREATE FUNCTION PASO_A_PASO.busquedaId (@id int)
+	RETURNS TABLE
+	AS
+			RETURN
+			SELECT rol_id,rol_nombre
+			FROM PASO_A_PASO.Rol
+			WHERE rol_id=@id

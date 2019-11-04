@@ -44,13 +44,15 @@
             this.btn_Nuevo = new System.Windows.Forms.Button();
             this.btn_Buscar = new System.Windows.Forms.Button();
             this.btn_Eliminar = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Enabled = false;
-            this.label5.Location = new System.Drawing.Point(431, 125);
+            this.label5.Location = new System.Drawing.Point(434, 110);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(123, 13);
             this.label5.TabIndex = 27;
@@ -60,7 +62,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Enabled = false;
-            this.label4.Location = new System.Drawing.Point(219, 125);
+            this.label4.Location = new System.Drawing.Point(203, 110);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(106, 13);
             this.label4.TabIndex = 26;
@@ -70,7 +72,7 @@
             // 
             this.label.AutoSize = true;
             this.label.Enabled = false;
-            this.label.Location = new System.Drawing.Point(4, 125);
+            this.label.Location = new System.Drawing.Point(7, 110);
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(137, 13);
             this.label.TabIndex = 25;
@@ -99,27 +101,27 @@
             // 
             this.list_Proveedor.Enabled = false;
             this.list_Proveedor.FormattingEnabled = true;
-            this.list_Proveedor.Location = new System.Drawing.Point(434, 141);
+            this.list_Proveedor.Location = new System.Drawing.Point(426, 126);
             this.list_Proveedor.Name = "list_Proveedor";
-            this.list_Proveedor.Size = new System.Drawing.Size(180, 154);
+            this.list_Proveedor.Size = new System.Drawing.Size(180, 64);
             this.list_Proveedor.TabIndex = 22;
             // 
             // list_Cliente
             // 
             this.list_Cliente.Enabled = false;
             this.list_Cliente.FormattingEnabled = true;
-            this.list_Cliente.Location = new System.Drawing.Point(222, 141);
+            this.list_Cliente.Location = new System.Drawing.Point(206, 126);
             this.list_Cliente.Name = "list_Cliente";
-            this.list_Cliente.Size = new System.Drawing.Size(180, 154);
+            this.list_Cliente.Size = new System.Drawing.Size(198, 64);
             this.list_Cliente.TabIndex = 21;
             // 
             // list_Admin
             // 
             this.list_Admin.Enabled = false;
             this.list_Admin.FormattingEnabled = true;
-            this.list_Admin.Location = new System.Drawing.Point(4, 141);
+            this.list_Admin.Location = new System.Drawing.Point(7, 126);
             this.list_Admin.Name = "list_Admin";
-            this.list_Admin.Size = new System.Drawing.Size(180, 154);
+            this.list_Admin.Size = new System.Drawing.Size(180, 64);
             this.list_Admin.TabIndex = 20;
             // 
             // txt_Nombre
@@ -170,6 +172,7 @@
             this.btn_Busqueda.TabIndex = 15;
             this.btn_Busqueda.Text = "Busqueda";
             this.btn_Busqueda.UseVisualStyleBackColor = true;
+            this.btn_Busqueda.Click += new System.EventHandler(this.btn_Busqueda_Click);
             // 
             // btn_Nuevo
             // 
@@ -190,6 +193,7 @@
             this.btn_Buscar.TabIndex = 28;
             this.btn_Buscar.Text = "Buscar";
             this.btn_Buscar.UseVisualStyleBackColor = true;
+            this.btn_Buscar.Click += new System.EventHandler(this.btn_Buscar_Click);
             // 
             // btn_Eliminar
             // 
@@ -201,11 +205,20 @@
             this.btn_Eliminar.Text = "Eliminar";
             this.btn_Eliminar.UseVisualStyleBackColor = true;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(7, 196);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(599, 108);
+            this.dataGridView1.TabIndex = 30;
+            // 
             // AbmRol_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(618, 307);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btn_Eliminar);
             this.Controls.Add(this.btn_Buscar);
             this.Controls.Add(this.label5);
@@ -225,6 +238,7 @@
             this.Name = "AbmRol_Form";
             this.Text = "AbmRol_Form";
             this.Load += new System.EventHandler(this.AbmRol_Form_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,5 +262,6 @@
         private System.Windows.Forms.Button btn_Nuevo;
         private System.Windows.Forms.Button btn_Buscar;
         private System.Windows.Forms.Button btn_Eliminar;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
