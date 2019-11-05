@@ -74,6 +74,12 @@
     <Compile Include="Forms\Comprar.Designer.cs">
       <DependentUpon>Comprar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Cupones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Cupones.Designer.cs">
+      <DependentUpon>Cupones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Comprar.resx">
       <DependentUpon>Comprar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Cupones.resx">
+      <DependentUpon>Cupones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormCliente.resx">
       <DependentUpon>FormCliente.cs</DependentUpon>

@@ -43,5 +43,10 @@ namespace FrbaOfertas.Forms
         {
             PresenterCliente.instance().cargarComprar(this, currentUserID);
         }
+
+        private void btn_verCupones_Click(object sender, EventArgs e)
+        {
+            PresenterCliente.instance().cargarFormCupones(this, currentUserID);
+        }
     }
 }

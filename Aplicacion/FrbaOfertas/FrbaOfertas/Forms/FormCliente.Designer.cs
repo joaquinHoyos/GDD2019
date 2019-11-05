@@ -80,6 +80,7 @@
             this.btn_verCupones.TabIndex = 4;
             this.btn_verCupones.Text = "Ver Cupones";
             this.btn_verCupones.UseVisualStyleBackColor = false;
+            this.btn_verCupones.Click += new System.EventHandler(this.btn_verCupones_Click);
             // 
             // btn_comprar
             // 

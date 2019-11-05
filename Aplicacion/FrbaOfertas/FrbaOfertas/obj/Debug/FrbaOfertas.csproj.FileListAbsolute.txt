@@ -23,3 +23,4 @@ Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.LoginU
 Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.SignUpUsuario.resources
 Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.CargaCredito.resources
 Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.Comprar.resources
+Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.Cupones.resources

@@ -15,6 +15,7 @@ namespace FrbaOfertas.Presenters
         public static PresenterCliente presenter;
         private CargaCredito cargaCredito_form;
         private Comprar comprar_form;
+        private Cupones cupones_form;
         
         public static PresenterCliente instance()
         {
@@ -25,6 +26,7 @@ namespace FrbaOfertas.Presenters
           {
                
               this.getAltaCarga().currentUserID = userID;
+              form.splitContainer1.Panel2.Controls.Clear();
               form.splitContainer1.Panel2.Controls.Add(this.getAltaCarga());
               this.getAltaCarga().Show();
           }
@@ -32,9 +34,19 @@ namespace FrbaOfertas.Presenters
           public void cargarComprar(FormCliente form, int userID)
           {
               this.getComprar().currentUserID = userID;
+              form.splitContainer1.Panel2.Controls.Clear();
               form.splitContainer1.Panel2.Controls.Add(this.getComprar());
               this.getComprar().Show();
           }
+
+        public void cargarFormCupones(FormCliente form, int userID){
+        
+              this.getCupones().currentUserID = userID;
+              form.splitContainer1.Panel2.Controls.Clear();
+              form.splitContainer1.Panel2.Controls.Add(this.getCupones());
+              this.getCupones().Show();
+        
+        }
 
           private CargaCredito getAltaCarga()
           {
@@ -44,6 +56,13 @@ namespace FrbaOfertas.Presenters
           private Comprar getComprar()
           {
               return this.comprar_form == null ? this.comprar_form = new Comprar() : this.comprar_form;
+          }
+
+          private Cupones getCupones()
+          {
+          
+              return this.cupones_form==null ? this.cupones_form = new Cupones():this.cupones_form;
+          
           }
 
 
