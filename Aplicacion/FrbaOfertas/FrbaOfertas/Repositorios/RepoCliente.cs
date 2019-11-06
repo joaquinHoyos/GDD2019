@@ -59,6 +59,41 @@ namespace FrbaOfertas.Repositorios
             }
             
         }
+        
+        public List<Cupon> traerCuponesPropios(int userID)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+
+            SqlCommand command = QueryFactory.instance().traerCuponesPropios(userID,conexion);
+
+
+            try
+            {
+                
+                List<Cupon> listaCupones = new List<Cupon>();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                      
+                        listaCupones.Add(new Cupon(Convert.ToInt32(reader["cupo_id"].ToString()),DateTime.Parse(reader["cupo_fecha"].ToString()),reader["cupo_oferta"].ToString(),Convert.ToInt32(reader["cupo_cliente"]),Convert.ToInt32(reader["cupo_compra"].ToString())));
+
+                    }
+                }
+                conexion.Close();
+                return listaCupones;
+                
+            }
+            catch (SqlException e)
+            {
+                throw e;
+
+            }
+
+
+        }
+        
+
 
 
 

@@ -148,5 +148,14 @@ namespace FrbaOfertas.Repositorios
 
         }
 
+        public SqlCommand traerCuponesPropios(int userID,SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.traerCuponesPropios(@userID)", conexion);
+            SqlParameter paramUserID = this.nuevoParametroInt("@userID", userID);
+            command.Parameters.Add(paramUserID);
+            return command;
+
+        }
+
     }
 }
