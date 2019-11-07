@@ -126,6 +126,14 @@ namespace FrbaOfertas.Repositorios
             command.Parameters.Add(this.nuevoParametroString("@nombre",nombre));
             return command;
         }
+        public SqlCommand busquedaRol_IdYFuncion(decimal id, DataTable funciones, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.busquedaRol_IdYFuncion(@id,@funcion)", conexion);
+            command.Parameters.Add(this.nuevoParametroInt("@id", Convert.ToInt32(id)));
+            command.Parameters.Add(this.nuevoParametroTabla("@funcion", funciones, "PASO_A_PASO.tablaFuncion"));
+            return command;
+        }
+
         public SqlCommand busquedaRol_NombreYFuncion(string nombre,DataTable funciones, SqlConnection conexion)
         {
             SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.busquedaRol_IdYNombre(@nombre,@funcion)", conexion);
@@ -136,7 +144,7 @@ namespace FrbaOfertas.Repositorios
 
         public SqlCommand busquedaRol_Todo(SqlConnection conexion)
         {
-            return new SqlCommand("SELECT * FROM busquedaRol_Todo()", conexion);
+            return new SqlCommand("SELECT * FROM PASO_A_PASO.busquedaRol_Todo()", conexion);
         }
 
         public SqlCommand cargarCredito(string tipoDePago, long tarjeta, long monto, int idUsuario, SqlConnection conexion)

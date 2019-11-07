@@ -15,7 +15,7 @@ namespace FrbaOfertas.Repositorios
         public List<int> funcionesAdmin;
         public List<int> funcionesCliente;
         public List<int> funcionesProveedor;
-
+        public List<Rol> rolesBuscados;
         public static RepoRol instance()
         {
             return repo == null ? repo=new RepoRol() : repo;
@@ -120,7 +120,7 @@ namespace FrbaOfertas.Repositorios
             return (reader.HasRows) ? this.cargarRolesBusqueda(reader) : null;
         }
 
-        public DataTable buscarPorNombreYFuncion(string nombre, DataTable funcion)
+        public DataTable buscarPorTodo()
         {
             SqlConnection conexion = ServerSQL.instance().levantarConexion();
             SqlCommand command = QueryFactory.instance().busquedaRol_Todo(conexion);
@@ -130,16 +130,44 @@ namespace FrbaOfertas.Repositorios
 
         private DataTable cargarRolesBusqueda(SqlDataReader reader)
         {
+            List<Rol> listaRoles = new List<Rol>();
+            Rol rol = new Rol(-1, "", new List<int>());
             DataTable tabla = new DataTable();
             tabla.Columns.Add(new DataColumn("ID"));
             tabla.Columns.Add(new DataColumn("Nombre"));
             while (reader.Read())
             {
-                DataRow row = tabla.NewRow();
-                row["ID"] = reader.GetSqlInt32(0);
-                row["Nombre"] = reader.GetSqlString(1).ToString();
-                tabla.Rows.Add(row);
+                if (rol.id == -1)
+                {
+                    rol.id = Convert.ToInt32(reader.GetSqlInt32(0).ToString());
+                    rol.nombre = reader.GetSqlString(1).ToString();
+                    rol.funciones.Add(Convert.ToInt32(reader.GetSqlInt32(2).ToString()));
+                    DataRow row = tabla.NewRow();
+                    row["ID"] = rol.id;
+                    row["Nombre"] = rol.nombre;
+                    tabla.Rows.Add(row);
+                }
+                else if (rol.id == Convert.ToInt32(reader.GetSqlInt32(0).ToString()))
+                {
+                    rol.funciones.Add(Convert.ToInt32(reader.GetSqlInt32(2).ToString()));
+                 
+                }
+                else
+                {
+                    listaRoles.Add(rol);
+                    rol = new Rol(-1,"",new List<int>());
+                    rol.id = Convert.ToInt32(reader.GetSqlInt32(0).ToString());
+                    rol.nombre = reader.GetSqlString(1).ToString();
+                    rol.funciones.Add(Convert.ToInt32(reader.GetSqlInt32(2).ToString()));
+                    DataRow row = tabla.NewRow();
+                    row["ID"] = rol.id;
+                    row["Nombre"] = rol.nombre;
+                    tabla.Rows.Add(row);
+
+                }
+                
             }
+            this.rolesBuscados=listaRoles;
             return tabla;
         }
 

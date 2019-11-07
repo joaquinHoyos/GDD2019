@@ -19,6 +19,7 @@ namespace FrbaOfertas.Forms
             InitializeComponent();
             TopLevel = false;
             FormBorderStyle = FormBorderStyle.None;
+            nud_id.Controls[0].Visible = false;
         }
 
         private void btn_Nuevo_Click(object sender, EventArgs e)
@@ -34,7 +35,7 @@ namespace FrbaOfertas.Forms
         private void btn_Buscar_Click(object sender, EventArgs e)
         {
             DataTable seleccionados = this.obtenerSeleccionados();
-            PresenterAdmin.instance().hacerBusqueda(Decimal.Parse(this.txt_id.Text), txt_Nombre.Text, seleccionados,this);
+            PresenterAdmin.instance().hacerBusqueda(nud_id.Value, txt_Nombre.Text, seleccionados,this);
         }
 
         public void habilitarNuevo()
@@ -62,7 +63,7 @@ namespace FrbaOfertas.Forms
 
         public void habilitarBusqueda()
         {
-            this.txt_id.Enabled=true;
+            this.nud_id.Enabled=true;
             this.txt_Nombre.Enabled=true;
             this.btn_Buscar.Enabled = true;
             this.list_Proveedor.Enabled=true;
@@ -73,7 +74,7 @@ namespace FrbaOfertas.Forms
 
         public void borrarTodo()
         {
-            this.txt_id.Text = "";
+            this.nud_id.Value = 0;
             this.txt_Nombre.Text = "";
             vaciarListBox(this.list_Admin);
             vaciarListBox(this.list_Cliente);
@@ -126,8 +127,6 @@ namespace FrbaOfertas.Forms
         public void cargarResultadoBusqueda(DataTable tabla)
         {
             this.dataGridView1.DataSource = tabla;
-            MessageBox.Show(tabla.Rows.Count.ToString());
-            
         }
         
     }

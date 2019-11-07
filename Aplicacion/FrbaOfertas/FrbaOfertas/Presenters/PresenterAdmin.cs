@@ -69,19 +69,19 @@ namespace FrbaOfertas.Presenters
                     roles = RepoRol.instance().buscarPorNombre(nombre);
                     break;
                 case (int)EnumTipoBusqueda.Funciones:
-                    roles = RepoRol.instance().funciones(funciones);
+                    roles = RepoRol.instance().buscarPorFunciones(funciones);
                     break;
                 case (int)EnumTipoBusqueda.ID_Nombre:
-                    roles = RepoRol.instance().buscarPorId&Nombre(id,nombre);
+                    roles = RepoRol.instance().buscarPorIdYNombre(id,nombre);
                     break;
                 case (int)EnumTipoBusqueda.ID_Funciones:
-                    roles = RepoRol.instance().buscarPorId&Funciones(id,funciones);
+                    roles = RepoRol.instance().buscarPorIdYFuncion(id,funciones);
                     break;
                 case (int)EnumTipoBusqueda.Nombre_Funciones:
-                    roles = RepoRol.instance().buscarPorNombre&Funciones(nombre,funciones);
+                    roles = RepoRol.instance().buscarPorNombreYFuncion(nombre,funciones);
                     break;
                 case (int)EnumTipoBusqueda.Todo:
-                    roles = RepoRol.instance().buscarTodo();
+                    roles = RepoRol.instance().buscarPorTodo();
                     break;
                 default:
                     roles = new DataTable();
@@ -92,7 +92,7 @@ namespace FrbaOfertas.Presenters
 
         private int tipoBusqueda(decimal id, string nombre, DataTable funciones)
         {
-            if (id>0 && nombre != "" && funciones.Rows.Count > 0){ return (int) EnumTipoBusqueda.Todo; }
+            if (id==0 && nombre == "" && funciones.Rows.Count == 0){ return (int) EnumTipoBusqueda.Todo; }
             else if (id==0 && nombre != "" && funciones.Rows.Count == 0) { return (int)EnumTipoBusqueda.Nombre; }
             else if (id==0 && nombre == "" && funciones.Rows.Count > 0) { return (int)EnumTipoBusqueda.Funciones; }
             else if (id > 0 && nombre == "" && funciones.Rows.Count == 0) { return (int)EnumTipoBusqueda.ID; }

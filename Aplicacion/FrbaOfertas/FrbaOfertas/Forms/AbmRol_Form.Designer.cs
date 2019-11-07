@@ -37,7 +37,6 @@
             this.list_Cliente = new System.Windows.Forms.CheckedListBox();
             this.list_Admin = new System.Windows.Forms.CheckedListBox();
             this.txt_Nombre = new System.Windows.Forms.TextBox();
-            this.txt_id = new System.Windows.Forms.TextBox();
             this.btn_Editar = new System.Windows.Forms.Button();
             this.btn_Guardar = new System.Windows.Forms.Button();
             this.btn_Busqueda = new System.Windows.Forms.Button();
@@ -45,7 +44,9 @@
             this.btn_Buscar = new System.Windows.Forms.Button();
             this.btn_Eliminar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.nud_id = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_id)).BeginInit();
             this.SuspendLayout();
             // 
             // label5
@@ -133,15 +134,6 @@
             this.txt_Nombre.Size = new System.Drawing.Size(100, 23);
             this.txt_Nombre.TabIndex = 19;
             // 
-            // txt_id
-            // 
-            this.txt_id.Enabled = false;
-            this.txt_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_id.Location = new System.Drawing.Point(14, 63);
-            this.txt_id.Name = "txt_id";
-            this.txt_id.Size = new System.Drawing.Size(100, 23);
-            this.txt_id.TabIndex = 18;
-            // 
             // btn_Editar
             // 
             this.btn_Editar.Enabled = false;
@@ -213,11 +205,20 @@
             this.dataGridView1.Size = new System.Drawing.Size(599, 108);
             this.dataGridView1.TabIndex = 30;
             // 
+            // nud_id
+            // 
+            this.nud_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nud_id.Location = new System.Drawing.Point(12, 63);
+            this.nud_id.Name = "nud_id";
+            this.nud_id.Size = new System.Drawing.Size(100, 23);
+            this.nud_id.TabIndex = 31;
+            // 
             // AbmRol_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(618, 307);
+            this.Controls.Add(this.nud_id);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btn_Eliminar);
             this.Controls.Add(this.btn_Buscar);
@@ -230,7 +231,6 @@
             this.Controls.Add(this.list_Cliente);
             this.Controls.Add(this.list_Admin);
             this.Controls.Add(this.txt_Nombre);
-            this.Controls.Add(this.txt_id);
             this.Controls.Add(this.btn_Editar);
             this.Controls.Add(this.btn_Guardar);
             this.Controls.Add(this.btn_Busqueda);
@@ -239,6 +239,7 @@
             this.Text = "AbmRol_Form";
             this.Load += new System.EventHandler(this.AbmRol_Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_id)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -255,7 +256,6 @@
         public System.Windows.Forms.CheckedListBox list_Cliente;
         public System.Windows.Forms.CheckedListBox list_Admin;
         public System.Windows.Forms.TextBox txt_Nombre;
-        public System.Windows.Forms.TextBox txt_id;
         private System.Windows.Forms.Button btn_Editar;
         private System.Windows.Forms.Button btn_Guardar;
         private System.Windows.Forms.Button btn_Busqueda;
@@ -263,5 +263,6 @@
         private System.Windows.Forms.Button btn_Buscar;
         private System.Windows.Forms.Button btn_Eliminar;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.NumericUpDown nud_id;
     }
 }
