@@ -74,25 +74,76 @@ namespace FrbaOfertas.Repositorios
         public DataTable buscarPorId(decimal id)
         {
             SqlConnection conexion = ServerSQL.instance().levantarConexion();
-            SqlCommand command = QueryFactory.instance().busquedaId(id, conexion);
+            SqlCommand command = QueryFactory.instance().busquedaRol_Id(id, conexion);
             SqlDataReader reader = command.ExecuteReader();
-            DataTable tabla;
-            if (reader.HasRows)
-            {
-                tabla = new DataTable();
-                tabla.Columns.Add(new DataColumn("ID"));
-                tabla.Columns.Add(new DataColumn("Nombre"));
-                while (reader.Read())
-                {
-                    DataRow row = tabla.NewRow();
-                    row["ID"] = reader.GetSqlInt32(0);
-                    row["Nombre"] = reader.GetSqlString(1).ToString();
-                    tabla.Rows.Add(row);
-                }
-                return tabla;
-            }
-            else { return null; }
+
+            return (reader.HasRows) ? this.cargarRolesBusqueda(reader) : null;
         }
+
+        public DataTable buscarPorNombre(string nombre)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().busquedaRol_Nombre(nombre,conexion);
+            SqlDataReader reader = command.ExecuteReader();
+            return (reader.HasRows) ? this.cargarRolesBusqueda(reader) : null;
+        }
+
+        public DataTable buscarPorFunciones(DataTable funcion)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().busquedaRol_Funcion(funcion, conexion);
+            SqlDataReader reader = command.ExecuteReader();
+            return (reader.HasRows) ? this.cargarRolesBusqueda(reader) : null;
+        }
+
+        public DataTable buscarPorIdYNombre(decimal id,string nombre)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().busquedaRol_IdYNombre(id,nombre,conexion);
+            SqlDataReader reader = command.ExecuteReader();
+            return (reader.HasRows) ? this.cargarRolesBusqueda(reader) : null;
+        }
+
+        public DataTable buscarPorIdYFuncion(decimal id, DataTable funcion)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().busquedaRol_IdYFuncion(id,funcion, conexion);
+            SqlDataReader reader = command.ExecuteReader();
+            return (reader.HasRows) ? this.cargarRolesBusqueda(reader) : null;
+        }
+
+        public DataTable buscarPorNombreYFuncion(string nombre,DataTable funcion)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().busquedaRol_NombreYFuncion(nombre, funcion,conexion);
+            SqlDataReader reader = command.ExecuteReader();
+            return (reader.HasRows) ? this.cargarRolesBusqueda(reader) : null;
+        }
+
+        public DataTable buscarPorNombreYFuncion(string nombre, DataTable funcion)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().busquedaRol_Todo(conexion);
+            SqlDataReader reader = command.ExecuteReader();
+            return (reader.HasRows) ? this.cargarRolesBusqueda(reader) : null;
+        }
+
+        private DataTable cargarRolesBusqueda(SqlDataReader reader)
+        {
+            DataTable tabla = new DataTable();
+            tabla.Columns.Add(new DataColumn("ID"));
+            tabla.Columns.Add(new DataColumn("Nombre"));
+            while (reader.Read())
+            {
+                DataRow row = tabla.NewRow();
+                row["ID"] = reader.GetSqlInt32(0);
+                row["Nombre"] = reader.GetSqlString(1).ToString();
+                tabla.Rows.Add(row);
+            }
+            return tabla;
+        }
+
+
         public List<int> getFuncionesProveedor()
         {
             if (this.funcionesProveedor == null)

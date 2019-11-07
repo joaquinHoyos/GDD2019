@@ -62,26 +62,26 @@ namespace FrbaOfertas.Presenters
             switch (this.tipoBusqueda(id, nombre, funciones))
             {
                 case (int) EnumTipoBusqueda.ID:
-                    MessageBox.Show("id");
+                    
                     roles = RepoRol.instance().buscarPorId(id);
                     break;
                 case (int)EnumTipoBusqueda.Nombre:
-                    roles = RepoRol.instance().buscarPorId(id);
+                    roles = RepoRol.instance().buscarPorNombre(nombre);
                     break;
                 case (int)EnumTipoBusqueda.Funciones:
-                    roles = RepoRol.instance().buscarPorId(id);
+                    roles = RepoRol.instance().funciones(funciones);
                     break;
                 case (int)EnumTipoBusqueda.ID_Nombre:
-                    roles = RepoRol.instance().buscarPorId(id);
+                    roles = RepoRol.instance().buscarPorId&Nombre(id,nombre);
                     break;
                 case (int)EnumTipoBusqueda.ID_Funciones:
-                    roles = RepoRol.instance().buscarPorId(id);
+                    roles = RepoRol.instance().buscarPorId&Funciones(id,funciones);
                     break;
                 case (int)EnumTipoBusqueda.Nombre_Funciones:
-                    roles = RepoRol.instance().buscarPorId(id);
+                    roles = RepoRol.instance().buscarPorNombre&Funciones(nombre,funciones);
                     break;
                 case (int)EnumTipoBusqueda.Todo:
-                    roles = RepoRol.instance().buscarPorId(id);
+                    roles = RepoRol.instance().buscarTodo();
                     break;
                 default:
                     roles = new DataTable();
