@@ -33,6 +33,13 @@ namespace FrbaOfertas.Repositorios
             return parametro;
         }
 
+        private SqlParameter nuevoParametroLong(string nombre, long value)
+        {
+            SqlParameter parametro = this.nuevoParametroString(nombre, "");
+            parametro.Value = value;
+            return parametro;
+        }
+
         private SqlParameter nuevoParametroTabla(string nombre, DataTable tabla, string tipo)
         {
             SqlParameter parametro = this.nuevoParametroString(nombre, "");
@@ -96,6 +103,66 @@ namespace FrbaOfertas.Repositorios
             SqlParameter parametro = this.nuevoParametroInt("@id",Int32.Parse(id.ToString()));
             command.Parameters.Add(parametro);
             return command;
+        }
+
+
+
+
+        public SqlCommand cargarCredito(string tipoDePago, long tarjeta, long monto, int idUsuario, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.cargarCredito @tipoPago=@_tipoPago ,@monto=@_monto, @tarjeta=@_tarjeta, @userID=@_userID", conexion);
+            SqlParameter paramTipo = this.nuevoParametroString("@_tipoPago", tipoDePago);
+            SqlParameter paramTarjeta= new SqlParameter();
+            if (tipoDePago == "E")
+            {
+
+                paramTarjeta.ParameterName = "@_tarjeta";
+                paramTarjeta.Value = DBNull.Value;
+
+            }
+            else
+            {
+                paramTarjeta = this.nuevoParametroLong("@_tarjeta", tarjeta);
+
+            }
+            SqlParameter paramMonto = this.nuevoParametroLong("@_monto", monto);
+            SqlParameter paramUsuario = this.nuevoParametroInt("@_userID", idUsuario);
+            command.Parameters.Add(paramTipo);
+            command.Parameters.Add(paramTarjeta);
+            command.Parameters.Add(paramMonto);
+            command.Parameters.Add(paramUsuario);
+            return command;
+
+
+        }
+
+
+        public SqlCommand traerOfertasDisponibles(SqlConnection conexion){
+            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.traerOfertasDisponibles()", conexion);
+            return command;   
+        
+        }
+
+        public SqlCommand generarCompra(int idUsuario, String oferCodigo, int cantidad,SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.generarCompra @userID=@_userID,@oferCodigo=@_oferCodigo,@cantidad=@_cantidad ", conexion);
+            SqlParameter paramUsuario = this.nuevoParametroInt("@_userID", idUsuario);
+            SqlParameter paramOferta = this.nuevoParametroString("@_oferCodigo", oferCodigo);
+            SqlParameter paramCantidad = this.nuevoParametroInt("@_cantidad", cantidad);
+            command.Parameters.Add(paramUsuario);
+            command.Parameters.Add(paramOferta);
+            command.Parameters.Add(paramCantidad);
+            return command;
+
+        }
+
+        public SqlCommand traerCuponesPropios(int userID,SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.traerCuponesPropios(@userID)", conexion);
+            SqlParameter paramUserID = this.nuevoParametroInt("@userID", userID);
+            command.Parameters.Add(paramUserID);
+            return command;
+
         }
 
     }

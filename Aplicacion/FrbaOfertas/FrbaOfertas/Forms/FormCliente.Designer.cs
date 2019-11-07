@@ -30,9 +30,9 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_cargaCredito = new System.Windows.Forms.Button();
-            this.btn_comprar = new System.Windows.Forms.Button();
             this.btn_verCupones = new System.Windows.Forms.Button();
+            this.btn_comprar = new System.Windows.Forms.Button();
+            this.btn_cargaCredito = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -69,18 +69,18 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(628, 39);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // btn_cargaCredito
+            // btn_verCupones
             // 
-            this.btn_cargaCredito.BackColor = System.Drawing.Color.Silver;
-            this.btn_cargaCredito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cargaCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cargaCredito.Location = new System.Drawing.Point(3, 3);
-            this.btn_cargaCredito.Name = "btn_cargaCredito";
-            this.btn_cargaCredito.Size = new System.Drawing.Size(203, 33);
-            this.btn_cargaCredito.TabIndex = 2;
-            this.btn_cargaCredito.Text = "Cargar Credito";
-            this.btn_cargaCredito.UseVisualStyleBackColor = false;
-            this.btn_cargaCredito.Click += new System.EventHandler(this.btn_cargaCredito_Click_1);
+            this.btn_verCupones.BackColor = System.Drawing.Color.Silver;
+            this.btn_verCupones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_verCupones.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_verCupones.Location = new System.Drawing.Point(421, 3);
+            this.btn_verCupones.Name = "btn_verCupones";
+            this.btn_verCupones.Size = new System.Drawing.Size(203, 33);
+            this.btn_verCupones.TabIndex = 4;
+            this.btn_verCupones.Text = "Ver Cupones";
+            this.btn_verCupones.UseVisualStyleBackColor = false;
+            this.btn_verCupones.Click += new System.EventHandler(this.btn_verCupones_Click);
             // 
             // btn_comprar
             // 
@@ -93,18 +93,20 @@
             this.btn_comprar.TabIndex = 3;
             this.btn_comprar.Text = "Comprar";
             this.btn_comprar.UseVisualStyleBackColor = false;
+            this.btn_comprar.Click += new System.EventHandler(this.btn_comprar_Click);
             // 
-            // btn_verCupones
+            // btn_cargaCredito
             // 
-            this.btn_verCupones.BackColor = System.Drawing.Color.Silver;
-            this.btn_verCupones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_verCupones.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_verCupones.Location = new System.Drawing.Point(421, 3);
-            this.btn_verCupones.Name = "btn_verCupones";
-            this.btn_verCupones.Size = new System.Drawing.Size(203, 33);
-            this.btn_verCupones.TabIndex = 4;
-            this.btn_verCupones.Text = "Ver Cupones";
-            this.btn_verCupones.UseVisualStyleBackColor = false;
+            this.btn_cargaCredito.BackColor = System.Drawing.Color.Silver;
+            this.btn_cargaCredito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cargaCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cargaCredito.Location = new System.Drawing.Point(3, 3);
+            this.btn_cargaCredito.Name = "btn_cargaCredito";
+            this.btn_cargaCredito.Size = new System.Drawing.Size(203, 33);
+            this.btn_cargaCredito.TabIndex = 2;
+            this.btn_cargaCredito.Text = "Cargar Credito";
+            this.btn_cargaCredito.UseVisualStyleBackColor = false;
+            this.btn_cargaCredito.Click += new System.EventHandler(this.btn_cargaCredito_Click_1);
             // 
             // FormCliente
             // 

@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.txt_tipoPago = new System.Windows.Forms.TextBox();
             this.txt_tarjeta = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_monto = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btn_altaCredito = new System.Windows.Forms.Button();
+            this.cmb_TipoPago = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -45,13 +45,6 @@
             this.label1.Size = new System.Drawing.Size(104, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Ingrese tipo de pago";
-            // 
-            // txt_tipoPago
-            // 
-            this.txt_tipoPago.Location = new System.Drawing.Point(242, 78);
-            this.txt_tipoPago.Name = "txt_tipoPago";
-            this.txt_tipoPago.Size = new System.Drawing.Size(100, 20);
-            this.txt_tipoPago.TabIndex = 1;
             // 
             // txt_tarjeta
             // 
@@ -93,18 +86,32 @@
             this.btn_altaCredito.TabIndex = 6;
             this.btn_altaCredito.Text = "Cargar Credito";
             this.btn_altaCredito.UseVisualStyleBackColor = true;
+            this.btn_altaCredito.Click += new System.EventHandler(this.btn_altaCredito_Click);
+            // 
+            // cmb_TipoPago
+            // 
+            this.cmb_TipoPago.FormattingEnabled = true;
+            this.cmb_TipoPago.Items.AddRange(new object[] {
+            "Efectivo",
+            "Credito",
+            "Debito"});
+            this.cmb_TipoPago.Location = new System.Drawing.Point(242, 78);
+            this.cmb_TipoPago.Name = "cmb_TipoPago";
+            this.cmb_TipoPago.Size = new System.Drawing.Size(100, 21);
+            this.cmb_TipoPago.TabIndex = 7;
+            this.cmb_TipoPago.SelectedIndexChanged += new System.EventHandler(this.cmb_TipoPago_SelectedIndexChanged);
             // 
             // CargaCredito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(618, 307);
+            this.Controls.Add(this.cmb_TipoPago);
             this.Controls.Add(this.btn_altaCredito);
             this.Controls.Add(this.txt_monto);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txt_tarjeta);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txt_tipoPago);
             this.Controls.Add(this.label1);
             this.Name = "CargaCredito";
             this.Text = "CargaCredito";
@@ -117,11 +124,11 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txt_tipoPago;
         private System.Windows.Forms.TextBox txt_tarjeta;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txt_monto;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btn_altaCredito;
+        private System.Windows.Forms.ComboBox cmb_TipoPago;
     }
 }

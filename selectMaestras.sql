@@ -13,7 +13,12 @@ AS
 	DROP TABLE PASO_A_PASO.Credito
 	DROP TABLE PASO_A_PASO.Cliente
 	DROP TABLE PASO_A_PASO.Usuario
+	DROP TABLE PASO_A_PASO.TipoPago
 
+	DROP PROC PASO_A_PASO.inicializacion_tablas
+	DROP PROC PASO_A_PASO.creacionTablas
+	DROP PROC PASO_A_PASO.keys
+	DROP PROC PASO_A_PASO.migracionTablas
 
 
 
