@@ -7,3 +7,9 @@ SET @precioOferta = (SELECT ofer_precioOferta FROM PASO_A_PASO.Oferta o WHERE o.
 INSERT INTO PASO_A_PASO.Compra (comp_oferta,comp_cliente,comp_cantidad,comp_factura,comp_importe) VALUES (@oferCodigo,@clieID,@cantidad,null,@cantidad * @precioOferta)
 UPDATE PASO_A_PASO.Cliente SET clie_saldo-=@cantidad * @precioOferta WHERE clie_id=@clieID;
 UPDATE PASO_A_PASO.Oferta SET ofer_disponible-=@cantidad WHERE ofer_id=@oferCodigo;
+DECLARE @index int = 0
+WHILE @index < @cantidad
+BEGIN
+INSERT INTO PASO_A_PASO.Cupon (cupo_oferta, cupo_cliente,cupo_fecha) VALUES (  @oferCodigo, @clieID, '1/1/1900')
+SET @index = @index + 1
+END  

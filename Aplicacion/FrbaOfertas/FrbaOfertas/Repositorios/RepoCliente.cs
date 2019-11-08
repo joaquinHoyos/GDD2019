@@ -75,8 +75,8 @@ namespace FrbaOfertas.Repositorios
                 {
                     while (reader.Read())
                     {
-                      
-                        listaCupones.Add(new Cupon(Convert.ToInt32(reader["cupo_id"].ToString()),DateTime.Parse(reader["cupo_fecha"].ToString()),reader["cupo_oferta"].ToString(),Convert.ToInt32(reader["cupo_cliente"]),Convert.ToInt32(reader["cupo_compra"].ToString())));
+
+                        listaCupones.Add(new Cupon(Convert.ToInt32(reader["cupo_id"].ToString()), DateTime.Parse(reader["cupo_fecha"].ToString()), reader["cupo_oferta"].ToString(), Convert.ToInt32(reader["cupo_cliente"])));//,Convert.ToInt32(reader["cupo_compra"].ToString())));
 
                     }
                 }
