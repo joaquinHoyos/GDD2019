@@ -34,13 +34,10 @@ AS
 	DECLARE @funcProv AS PASO_A_PASO.tablaFuncion
 	
 	INSERT INTO @funcProv SELECT func_nombre 
-	FROM PASO_A_PASO.Funcion WHERE func_grupo='A'
+	FROM PASO_A_PASO.Funcion WHERE func_grupo='P'
 	
 	EXEC PASO_A_PASO.crearRol @nombre='PROVEEDOR',@funciones=@funcProv
 	
 	
-
-
-	
-	--CREAR USUARIO	
+	--CREAR USUARIO
 	EXEC PASO_A_PASO.crearUsuario @username='admin',@pass='w23e',@rol=1

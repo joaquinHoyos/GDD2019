@@ -15,7 +15,9 @@ namespace FrbaOfertas.Presenters
         private Admin_Form admin_form;
         private LoginUsuario login_form;
         private AbmRol_Form abmRol_form;
+        private AbmOfertas abmOferta;
         private FormCliente cliente_form;
+        private Prov_Form prov_form;
 
         public static Presenter instance()
         {
@@ -80,8 +82,8 @@ namespace FrbaOfertas.Presenters
                 getAdminForm().Show();
             }
             else 
-            { 
-              //mostrar proveedor 
+            {
+                prov_form.Show();
             }
         }
 
@@ -94,8 +96,8 @@ namespace FrbaOfertas.Presenters
                 cliente_form.Show();
             }
             else 
-            { 
-              //mostrar proveedor  
+            {
+                prov_form.Show();
             }        
         }
       
@@ -128,7 +130,7 @@ namespace FrbaOfertas.Presenters
             }
             else // esProveedor
             {
-                // mostrar proveedor
+                this.getProvForm().Show();
             }
         }
 
@@ -138,10 +140,22 @@ namespace FrbaOfertas.Presenters
             this.getAbmRolForm().Show();
         }
 
+        public void cargarAbmOfertas(Prov_Form form)
+        {
+            //form.splitContainer1.Panel2.Controls.Add(this.getAbmOfertaForm());
+            this.getAbmOfertaForm().Show();
+        }
+
         
         private Admin_Form getAdminForm(){
             return this.admin_form==null?this.admin_form=new Admin_Form():this.admin_form;
         }
+
+        private Prov_Form getProvForm()
+        {
+            return this.prov_form == null ? this.prov_form = new Prov_Form() : this.prov_form;
+        }
+      
       
         private LoginUsuario nuevoLoginForm()
         {
@@ -151,6 +165,11 @@ namespace FrbaOfertas.Presenters
         private AbmRol_Form getAbmRolForm()
         {
             return this.abmRol_form == null ? this.abmRol_form=new AbmRol_Form() : this.abmRol_form;
+        }
+
+        private AbmOfertas getAbmOfertaForm()
+        {
+            return this.abmOferta == null ? this.abmOferta = new AbmOfertas() : this.abmOferta;
         }
 
         private FormCliente getClienteForm()

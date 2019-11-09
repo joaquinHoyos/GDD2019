@@ -23,6 +23,8 @@ namespace FrbaOfertas.Forms
         private void btn_Buscar_Click(object sender, EventArgs e)
         {
             DataTable ofertasFiltradas = PresenterProveedor.instance().filtrarOfertas(txtFiltrarDescripcion.Text);
+            dataGridView1.DataSource= ofertasFiltradas;
+
             
         }
     }

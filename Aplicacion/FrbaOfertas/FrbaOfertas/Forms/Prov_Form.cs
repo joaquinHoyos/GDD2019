@@ -18,14 +18,14 @@ namespace FrbaOfertas.Forms
             InitializeComponent();
         }
 
-        private void btn_Roles_Click(object sender, EventArgs e)
+        private void btn_Ofertas_Click(object sender, EventArgs e)
         {
-            Presenter.instance().cargarAbmRol(this);
+            Presenter.instance().cargarAbmOfertas(this);
         }
 
-        private void Prov_Form_Load(object sender, EventArgs e)
-        {
+    
 
-        }
+     
+
     }
 }
