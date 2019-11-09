@@ -17,6 +17,7 @@ namespace FrbaOfertas.Modelo
         public int ofer_proveedor { get; set; }
         public int ofer_disponible { get; set; }
         public int ofer_maxDisponible { get; set; }
+     
 
         public Oferta(String _id,string _descripcion,DateTime _desde,DateTime _hasta,double _precioOferta,double _precioLista,int _proveedor, int _disponible, int _maxDisponible) {
 
@@ -29,6 +30,7 @@ namespace FrbaOfertas.Modelo
             this.ofer_proveedor=_proveedor;
             this.ofer_disponible=_disponible;
             this.ofer_maxDisponible=_maxDisponible;
+            
         }
 
         public Oferta()

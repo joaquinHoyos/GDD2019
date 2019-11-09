@@ -92,8 +92,41 @@ namespace FrbaOfertas.Repositorios
 
 
         }
-        
 
+
+        public List<Cliente> traerClientes()
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+
+            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.Cliente",conexion);
+
+
+            try
+            {
+
+                List<Cliente> listaClientes = new List<Cliente>();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+
+                        listaClientes.Add(new Cliente(Convert.ToInt32(reader["clie_id"].ToString()), Convert.ToInt64(reader["clie_dni"].ToString()), reader["clie_nombre"].ToString(), reader["clie_apellido"].ToString()));//,Convert.ToInt32(reader["cupo_compra"].ToString())));
+
+                    }
+                }
+                conexion.Close();
+                return listaClientes;
+
+            }
+            catch (SqlException e)
+            {
+                throw e;
+
+            }
+
+
+        }
+        
 
 
 
