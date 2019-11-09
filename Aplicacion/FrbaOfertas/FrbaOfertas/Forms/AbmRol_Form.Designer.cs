@@ -42,9 +42,10 @@
             this.btn_Busqueda = new System.Windows.Forms.Button();
             this.btn_Nuevo = new System.Windows.Forms.Button();
             this.btn_Buscar = new System.Windows.Forms.Button();
-            this.btn_Eliminar = new System.Windows.Forms.Button();
+            this.btn_Seleccionar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.nud_id = new System.Windows.Forms.NumericUpDown();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_id)).BeginInit();
             this.SuspendLayout();
@@ -82,7 +83,6 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Enabled = false;
             this.label2.Location = new System.Drawing.Point(150, 47);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
@@ -143,6 +143,7 @@
             this.btn_Editar.TabIndex = 17;
             this.btn_Editar.Text = "Editar";
             this.btn_Editar.UseVisualStyleBackColor = true;
+            this.btn_Editar.Click += new System.EventHandler(this.btn_Editar_Click);
             // 
             // btn_Guardar
             // 
@@ -179,7 +180,7 @@
             // btn_Buscar
             // 
             this.btn_Buscar.Enabled = false;
-            this.btn_Buscar.Location = new System.Drawing.Point(410, 12);
+            this.btn_Buscar.Location = new System.Drawing.Point(309, 63);
             this.btn_Buscar.Name = "btn_Buscar";
             this.btn_Buscar.Size = new System.Drawing.Size(95, 23);
             this.btn_Buscar.TabIndex = 28;
@@ -187,21 +188,22 @@
             this.btn_Buscar.UseVisualStyleBackColor = true;
             this.btn_Buscar.Click += new System.EventHandler(this.btn_Buscar_Click);
             // 
-            // btn_Eliminar
+            // btn_Seleccionar
             // 
-            this.btn_Eliminar.Enabled = false;
-            this.btn_Eliminar.Location = new System.Drawing.Point(511, 11);
-            this.btn_Eliminar.Name = "btn_Eliminar";
-            this.btn_Eliminar.Size = new System.Drawing.Size(95, 23);
-            this.btn_Eliminar.TabIndex = 29;
-            this.btn_Eliminar.Text = "Eliminar";
-            this.btn_Eliminar.UseVisualStyleBackColor = true;
+            this.btn_Seleccionar.Enabled = false;
+            this.btn_Seleccionar.Location = new System.Drawing.Point(410, 11);
+            this.btn_Seleccionar.Name = "btn_Seleccionar";
+            this.btn_Seleccionar.Size = new System.Drawing.Size(95, 23);
+            this.btn_Seleccionar.TabIndex = 29;
+            this.btn_Seleccionar.Text = "Seleccionar";
+            this.btn_Seleccionar.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(7, 196);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridView1.Size = new System.Drawing.Size(599, 108);
             this.dataGridView1.TabIndex = 30;
             // 
@@ -213,14 +215,25 @@
             this.nud_id.Size = new System.Drawing.Size(100, 23);
             this.nud_id.TabIndex = 31;
             // 
+            // button1
+            // 
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(410, 62);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(95, 23);
+            this.button1.TabIndex = 32;
+            this.button1.Text = "Eliminar";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // AbmRol_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(618, 307);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.nud_id);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.btn_Eliminar);
+            this.Controls.Add(this.btn_Seleccionar);
             this.Controls.Add(this.btn_Buscar);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -261,8 +274,9 @@
         private System.Windows.Forms.Button btn_Busqueda;
         private System.Windows.Forms.Button btn_Nuevo;
         private System.Windows.Forms.Button btn_Buscar;
-        private System.Windows.Forms.Button btn_Eliminar;
+        private System.Windows.Forms.Button btn_Seleccionar;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.NumericUpDown nud_id;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrbaOfertas.Presenters;
-
+using FrbaOfertas.Modelo;
 
 namespace FrbaOfertas.Forms
 {
@@ -36,6 +36,14 @@ namespace FrbaOfertas.Forms
         {
             DataTable seleccionados = this.obtenerSeleccionados();
             PresenterAdmin.instance().hacerBusqueda(nud_id.Value, txt_Nombre.Text, seleccionados,this);
+            PresenterAdmin.instance().formRol_buscar(this);
+        }
+
+        public void habilitarLists(bool estado)
+        {
+            this.list_Admin.Enabled=estado;
+            this.list_Proveedor.Enabled=estado;
+            this.list_Cliente.Enabled = estado;
         }
 
         public void habilitarNuevo()
@@ -57,7 +65,7 @@ namespace FrbaOfertas.Forms
             this.dataGridView1.Enabled=false;
             this.btn_Buscar.Enabled = false;
             this.btn_Editar.Enabled = false;
-            this.btn_Eliminar.Enabled = false;
+            this.btn_Seleccionar.Enabled = false;
             this.btn_Guardar.Enabled = false;
         }
 
@@ -98,22 +106,22 @@ namespace FrbaOfertas.Forms
             DataColumn columna = new DataColumn();
             columna.ColumnName = "funciones";
             funciones.Columns.Add(columna);
-            foreach (string funcion in this.list_Admin.SelectedItems)
+            foreach (string funcion in this.list_Admin.CheckedItems)
             {
                 DataRow row = funciones.NewRow();
-                row["funciones"] = funcion;
+                row["funciones"] = (int) Enum.Parse(typeof(EnumFunciones), funcion);
                 funciones.Rows.Add(row);
             }
-            foreach (string funcion in this.list_Cliente.SelectedItems)
+            foreach (string funcion in this.list_Cliente.CheckedItems)
             {
                 DataRow row = funciones.NewRow();
-                row["funciones"] = funcion;
+                row["funciones"] = (int) Enum.Parse(typeof(EnumFunciones), funcion);
                 funciones.Rows.Add(row);
             }
-            foreach (string funcion in this.list_Proveedor.SelectedItems)
+            foreach (string funcion in this.list_Proveedor.CheckedItems)
             {
                 DataRow row = funciones.NewRow();
-                row["funciones"] = funcion;
+                row["funciones"] = (int) Enum.Parse(typeof(EnumFunciones), funcion);
                 funciones.Rows.Add(row);
             }
             return funciones;
@@ -128,7 +136,33 @@ namespace FrbaOfertas.Forms
         {
             this.dataGridView1.DataSource = tabla;
         }
+
+        public void habilitarSeleccionar(bool estado){this.btn_Seleccionar.Enabled = estado;}
+       
+        public void habilitarEditar(bool estado){this.btn_Editar.Enabled=estado;}
         
+        public void habilitarGuardar(bool estado){this.btn_Guardar.Enabled=estado;;}
+        
+        public void habilitarBuscar(bool estado){this.btn_Buscar.Enabled=estado;}
+ 
+        public void habilitarEliminar(bool estado){}
+ 
+        public void habilitarNombre(bool estado){ this.txt_Nombre.Enabled=false;}
+
+        public void habilitarId(bool estado){this.nud_id.Enabled=estado;}
+
+        public void vaciarTextsBox()
+        {
+            this.txt_Nombre.Text="";
+            this.nud_id.Value=0;
+        }
+
+        private void btn_Editar_Click(object sender, EventArgs e)
+        {
+            PresenterAdmin.instance().formRol_editar(this);
+
+        }
+
     }
 
 }

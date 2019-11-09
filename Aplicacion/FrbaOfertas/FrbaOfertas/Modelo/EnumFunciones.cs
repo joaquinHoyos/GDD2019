@@ -1,12 +1,14 @@
-﻿enum Funciones
-{
-    CARGA_CREDITO = 1,
-    COMPRAR,
-    VER_CUPON,
-    COMPARTIR_CUPON,
-    FACTURAR,
-    ABM_OFERTA,
-    VER_OFERTA,
-    ABM_USUARIO,
-    ABM_ROL
+﻿namespace FrbaOfertas.Modelo{
+    enum EnumFunciones
+    {
+        CARGA_CREDITO = 1,
+        COMPRAR,
+        VER_CUPON,
+        COMPARTIR_CUPON,
+        FACTURAR,
+        ABM_OFERTA,
+        VER_OFERTA,
+        ABM_USUARIO,
+        ABM_ROL
+    }
 }

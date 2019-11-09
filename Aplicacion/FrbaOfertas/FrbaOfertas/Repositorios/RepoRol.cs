@@ -38,7 +38,7 @@ namespace FrbaOfertas.Repositorios
                 this.funcionesAdmin = new List<int>();
                 while (reader.Read())
                 {
-                    this.funcionesAdmin.Add((int)Enum.Parse(typeof(Funciones), reader.GetSqlString(0).ToString()));
+                    this.funcionesAdmin.Add((int)Enum.Parse(typeof(EnumFunciones), reader.GetSqlString(0).ToString()));
                 }
                 return this.funcionesAdmin;
             }
@@ -60,7 +60,7 @@ namespace FrbaOfertas.Repositorios
                 this.funcionesCliente = new List<int>();
                 while (reader.Read())
                 {
-                    this.funcionesCliente.Add((int)Enum.Parse(typeof(Funciones), reader.GetSqlString(0).ToString()));
+                    this.funcionesCliente.Add((int)Enum.Parse(typeof(EnumFunciones), reader.GetSqlString(0).ToString()));
                 }
                 return this.funcionesCliente;
             }
@@ -77,7 +77,7 @@ namespace FrbaOfertas.Repositorios
             SqlCommand command = QueryFactory.instance().busquedaRol_Id(id, conexion);
             SqlDataReader reader = command.ExecuteReader();
 
-            return (reader.HasRows) ? this.cargarRolesBusqueda(reader) : null;
+            return (reader.HasRows) ? this.cargarRolesBusqueda(reader) : new DataTable();
         }
 
         public DataTable buscarPorNombre(string nombre)
@@ -85,7 +85,7 @@ namespace FrbaOfertas.Repositorios
             SqlConnection conexion = ServerSQL.instance().levantarConexion();
             SqlCommand command = QueryFactory.instance().busquedaRol_Nombre(nombre,conexion);
             SqlDataReader reader = command.ExecuteReader();
-            return (reader.HasRows) ? this.cargarRolesBusqueda(reader) : null;
+            return (reader.HasRows) ? this.cargarRolesBusqueda(reader) : new DataTable();
         }
 
         public DataTable buscarPorFunciones(DataTable funcion)
@@ -93,7 +93,7 @@ namespace FrbaOfertas.Repositorios
             SqlConnection conexion = ServerSQL.instance().levantarConexion();
             SqlCommand command = QueryFactory.instance().busquedaRol_Funcion(funcion, conexion);
             SqlDataReader reader = command.ExecuteReader();
-            return (reader.HasRows) ? this.cargarRolesBusqueda(reader) : null;
+            return (reader.HasRows) ? this.cargarRolesBusqueda(reader) : new DataTable();
         }
 
         public DataTable buscarPorIdYNombre(decimal id,string nombre)
@@ -101,7 +101,7 @@ namespace FrbaOfertas.Repositorios
             SqlConnection conexion = ServerSQL.instance().levantarConexion();
             SqlCommand command = QueryFactory.instance().busquedaRol_IdYNombre(id,nombre,conexion);
             SqlDataReader reader = command.ExecuteReader();
-            return (reader.HasRows) ? this.cargarRolesBusqueda(reader) : null;
+            return (reader.HasRows) ? this.cargarRolesBusqueda(reader) : new DataTable();
         }
 
         public DataTable buscarPorIdYFuncion(decimal id, DataTable funcion)
@@ -109,7 +109,7 @@ namespace FrbaOfertas.Repositorios
             SqlConnection conexion = ServerSQL.instance().levantarConexion();
             SqlCommand command = QueryFactory.instance().busquedaRol_IdYFuncion(id,funcion, conexion);
             SqlDataReader reader = command.ExecuteReader();
-            return (reader.HasRows) ? this.cargarRolesBusqueda(reader) : null;
+            return (reader.HasRows) ? this.cargarRolesBusqueda(reader) : new DataTable();
         }
 
         public DataTable buscarPorNombreYFuncion(string nombre,DataTable funcion)
@@ -117,7 +117,7 @@ namespace FrbaOfertas.Repositorios
             SqlConnection conexion = ServerSQL.instance().levantarConexion();
             SqlCommand command = QueryFactory.instance().busquedaRol_NombreYFuncion(nombre, funcion,conexion);
             SqlDataReader reader = command.ExecuteReader();
-            return (reader.HasRows) ? this.cargarRolesBusqueda(reader) : null;
+            return (reader.HasRows) ? this.cargarRolesBusqueda(reader) : new DataTable();
         }
 
         public DataTable buscarPorTodo()
@@ -125,7 +125,7 @@ namespace FrbaOfertas.Repositorios
             SqlConnection conexion = ServerSQL.instance().levantarConexion();
             SqlCommand command = QueryFactory.instance().busquedaRol_Todo(conexion);
             SqlDataReader reader = command.ExecuteReader();
-            return (reader.HasRows) ? this.cargarRolesBusqueda(reader) : null;
+            return (reader.HasRows) ? this.cargarRolesBusqueda(reader) : new DataTable();
         }
 
         private DataTable cargarRolesBusqueda(SqlDataReader reader)
@@ -182,7 +182,7 @@ namespace FrbaOfertas.Repositorios
                 this.funcionesProveedor = new List<int>();
                 while (reader.Read())
                 {
-                    this.funcionesProveedor.Add((int)Enum.Parse(typeof(Funciones), reader.GetSqlString(0).ToString()));
+                    this.funcionesProveedor.Add((int)Enum.Parse(typeof(EnumFunciones), reader.GetSqlString(0).ToString()));
                 }
                 return this.funcionesProveedor;
             }

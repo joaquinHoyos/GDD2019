@@ -36,9 +36,9 @@ namespace FrbaOfertas.Presenters
         }
         private void cargarTodasFunciones(AbmRol_Form form)
         {
-            foreach (int func in RepoRol.instance().getFuncionesAdmin()) { form.list_Admin.Items.Add(Enum.GetName(typeof(Funciones),func)); }
-            foreach (int func in RepoRol.instance().getFuncionesCliente()) { form.list_Cliente.Items.Add(Enum.GetName(typeof(Funciones), func)); } 
-            foreach (int func in RepoRol.instance().getFuncionesProveedor()) { form.list_Proveedor.Items.Add(Enum.GetName(typeof(Funciones),func)); }
+            foreach (int func in RepoRol.instance().getFuncionesAdmin()) { form.list_Admin.Items.Add(Enum.GetName(typeof(EnumFunciones),func)); }
+            foreach (int func in RepoRol.instance().getFuncionesCliente()) { form.list_Cliente.Items.Add(Enum.GetName(typeof(EnumFunciones), func)); }
+            foreach (int func in RepoRol.instance().getFuncionesProveedor()) { form.list_Proveedor.Items.Add(Enum.GetName(typeof(EnumFunciones), func)); }
                 
         }
 
@@ -87,7 +87,9 @@ namespace FrbaOfertas.Presenters
                     roles = new DataTable();
                     break;
             }
-            form.cargarResultadoBusqueda(roles);
+            if (roles.Rows.Count > 0) { form.cargarResultadoBusqueda(roles); }
+            else { MessageBox.Show("No se encontro ningun resultado"); }
+            
         }
 
         private int tipoBusqueda(decimal id, string nombre, DataTable funciones)
@@ -100,6 +102,43 @@ namespace FrbaOfertas.Presenters
             else if (id==0 && nombre != "" && funciones.Rows.Count>0) { return (int)EnumTipoBusqueda.Nombre_Funciones; }
             else if (id > 0 && nombre == "" && funciones.Rows.Count > 0) { return (int)EnumTipoBusqueda.ID_Funciones; }
             return -1;
+        }
+
+        public void formRol_busqueda(AbmRol_Form form)
+        {
+        }
+        public void formRol_nuevo(AbmRol_Form form)
+        {
+        }
+        public void formRol_editar(AbmRol_Form form)
+        {
+            form.deshabilitarTodo();
+            form.habilitarGuardar(true);
+            form.habilitarEliminar(true);
+            form.habilitarNombre(true);
+            form.habilitarLists(true);
+        }
+        public void formRol_seleccionar(AbmRol_Form form)
+        {
+            form.deshabilitarTodo();
+            form.habilitarEditar(true);
+            form.borrarTodo();
+            
+        }
+        public void formRol_guardar(AbmRol_Form form)
+        {
+            form.borrarTodo();
+            form.deshabilitarTodo();
+
+        }
+        public void formRol_buscar(AbmRol_Form form)
+        {
+            form.deshabilitarTodo();
+            form.habilitarLists(true);
+            form.habilitarSeleccionar(true);
+            form.habilitarNombre(false);
+            form.habilitarId(false);
+            form.habilitarBuscar(true);
         }
     }
 }
