@@ -27,10 +27,16 @@ namespace FrbaOfertas.Forms
         {
             var bindingList = new BindingList<Cupon>(RepoCliente.instance().traerCuponesPropios(currentUserID));
             var source = new BindingSource(bindingList, null);
+            listBox1.ValueMember = "cupo_id";
+            listBox1.DisplayMember = "descripcion";
             listBox1.DataSource = source;
-       //     listBox1.ValueMember = "cupo_id";
-            listBox1.DisplayMember = "cupo_oferta";
             
+            var bindingListA = new BindingList<Cupon>(RepoCliente.instance().traerCuponesPropios(currentUserID));
+            var sourceA = new BindingSource(bindingList, null);
+            dataGridView1.DataSource = source;
+            
+           
+   
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)

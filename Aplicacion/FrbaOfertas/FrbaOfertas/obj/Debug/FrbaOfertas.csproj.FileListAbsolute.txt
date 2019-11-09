@@ -42,3 +42,5 @@ E:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Properties.R
 E:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.csproj.GenerateResource.Cache
 E:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertas.exe
 E:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertas.pdb
+Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.AbmOfertas.resources
+Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.Prov_Form.resources

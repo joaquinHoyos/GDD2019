@@ -9,14 +9,15 @@ namespace FrbaOfertas.Modelo
     class Cupon
     {
 
-        int cupo_id { get; set; }
-        DateTime cupo_fecha { get; set; }
-        String cupo_oferta { get; set; }
-        int cupo_cliente { get; set; }
-        int cupo_compra { get; set; }
+        public int cupo_id { get; set; }
+        public DateTime cupo_fecha { get; set; }
+        public String cupo_oferta { get; set; }
+        public int cupo_cliente { get; set; }
+        public int cupo_compra { get; set; }
+        public String descripcion { get; set; }
+        
 
-
-        public Cupon(int id, DateTime fecha, String oferta, int cliente, int compra)
+        public Cupon(int id, DateTime fecha, String oferta, int cliente, int compra,String _descripcion)
         {
 
             this.cupo_id = id;
@@ -24,19 +25,21 @@ namespace FrbaOfertas.Modelo
             this.cupo_oferta = oferta;
             this.cupo_cliente = cliente;
             this.cupo_compra = compra;
+            this.descripcion = _descripcion;
+
 
         
      
         }
 
-        public Cupon(int id, DateTime fecha, String oferta, int cliente)
+        public Cupon(int id, DateTime fecha, String oferta, int cliente,String _descripcion)
         {
 
             this.cupo_id = id;
             this.cupo_fecha = fecha;
             this.cupo_oferta = oferta;
             this.cupo_cliente = cliente;
-
+            this.descripcion = _descripcion;
 
 
         }
