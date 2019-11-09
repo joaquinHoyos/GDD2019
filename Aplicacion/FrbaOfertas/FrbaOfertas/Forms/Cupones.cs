@@ -48,6 +48,17 @@ namespace FrbaOfertas.Forms
             cmb_Clientes.Enabled = true;
         }
 
+        private void btn_Regalar_Click(object sender, EventArgs e)
+        {
+            int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
+            string idCupon = Convert.ToString(selectedRow.Cells["cupo_id"].Value);
+          /*  cmb_Clientes.SelectedValue
+
+            RepoCliente.instance().regalarCupon(idCupon, Convert.ToInt32(txt_cantidad.Value));
+        */
+        }
+
        
     }
 }

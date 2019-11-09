@@ -72,6 +72,7 @@
             this.btn_Regalar.TabIndex = 9;
             this.btn_Regalar.Text = "Regalar";
             this.btn_Regalar.UseVisualStyleBackColor = true;
+            this.btn_Regalar.Click += new System.EventHandler(this.btn_Regalar_Click);
             // 
             // Cupones
             // 
