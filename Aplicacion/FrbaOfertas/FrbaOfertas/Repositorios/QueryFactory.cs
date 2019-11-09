@@ -105,6 +105,14 @@ namespace FrbaOfertas.Repositorios
             return command;
         }
 
+        public SqlCommand busquedaOferta(string descripcion,SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.busquedaOferta(@descripcion)", conexion);
+            SqlParameter parametro1 = this.nuevoParametroString("@descripcion", descripcion);
+            command.Parameters.Add(parametro1);
+            return command;
+        }
+
         public SqlCommand busquedaRol_Nombre(string nombre, SqlConnection conexion)
         {
             SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.busquedaRol_Nombre(@nombre)",conexion);

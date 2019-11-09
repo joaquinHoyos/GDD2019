@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FrbaOfertas.Presenters;
 
 namespace FrbaOfertas.Forms
 {
@@ -15,6 +16,16 @@ namespace FrbaOfertas.Forms
         public Prov_Form()
         {
             InitializeComponent();
+        }
+
+        private void btn_Roles_Click(object sender, EventArgs e)
+        {
+            Presenter.instance().cargarAbmRol(this);
+        }
+
+        private void Prov_Form_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
