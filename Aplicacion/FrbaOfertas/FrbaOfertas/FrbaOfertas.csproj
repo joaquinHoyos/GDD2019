@@ -110,6 +110,7 @@
     <Compile Include="Forms\SignUpUsuario.Designer.cs">
       <DependentUpon>SignUpUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\Cliente.cs" />
     <Compile Include="Modelo\StructRol.cs" />
     <Compile Include="Modelo\Cupon.cs" />
     <Compile Include="Modelo\EnumFunciones.cs" />

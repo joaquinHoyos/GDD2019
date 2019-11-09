@@ -10,7 +10,7 @@ namespace FrbaOfertas.Modelo
     {
 
         public int cupo_id { get; set; }
-        public DateTime cupo_fecha { get; set; }
+        DateTime cupo_fecha { get; set; } //sin public para no mostrar en dataGridView
         public String cupo_oferta { get; set; }
         public int cupo_cliente { get; set; }
         public int cupo_compra { get; set; }
