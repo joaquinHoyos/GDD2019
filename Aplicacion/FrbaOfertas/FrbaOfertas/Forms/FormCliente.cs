@@ -24,7 +24,7 @@ namespace FrbaOfertas.Forms
         
         private void FormCliente_Load(object sender, EventArgs e)
         {
-
+            // habilitacion y deshabilitacion de botones
         }
 
         private void btn_cargaCredito_Click(object sender, EventArgs e)

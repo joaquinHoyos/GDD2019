@@ -66,6 +66,13 @@ namespace FrbaOfertas.Forms
 
 
                     RepoCliente.instance().generarCompra(currentUserID, a, Convert.ToInt32(txt_cantidad.Value));
+
+                    this.dataGridView1.SelectionMode =
+    DataGridViewSelectionMode.FullRowSelect;
+                    this.dataGridView1.MultiSelect = false;
+                    var bindingList = new BindingList<Oferta>(RepoOferta.instance().traerOfertasDisponibles());
+                    var source = new BindingSource(bindingList, null);
+                    dataGridView1.DataSource = source;
                 }
                 else {
 
