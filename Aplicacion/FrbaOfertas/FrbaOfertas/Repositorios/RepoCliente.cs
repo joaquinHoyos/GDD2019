@@ -126,6 +126,27 @@ namespace FrbaOfertas.Repositorios
 
 
         }
+
+        public void regalarCupon(int idCupon, int idCliente){
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+
+            SqlCommand command = QueryFactory.instance().regalarCupon(idCupon,idCliente,conexion);
+
+
+            try
+            {
+
+                command.ExecuteNonQuery();
+                MessageBox.Show("Regalo exitoso");
+            }
+            catch (SqlException e)
+            {
+                throw e;
+            }
+            
+        
+        
+        }
         
 
 

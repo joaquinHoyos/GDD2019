@@ -212,5 +212,16 @@ namespace FrbaOfertas.Repositorios
 
         }
 
+        public SqlCommand regalarCupon(int idCupon, int idCliente, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.regalarCupon @cuponID = @_cuponID, @clienteID = @_clienteID ", conexion);
+            SqlParameter paramCupon = this.nuevoParametroInt("@_cuponID", idCupon);
+            SqlParameter paramCliente = this.nuevoParametroInt("@_clienteID", idCliente);
+            command.Parameters.Add(paramCupon);
+            command.Parameters.Add(paramCliente);
+            return command;
+
+        }
+
     }
 }

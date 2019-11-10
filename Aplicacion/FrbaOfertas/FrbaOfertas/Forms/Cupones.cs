@@ -52,11 +52,15 @@ namespace FrbaOfertas.Forms
         {
             int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
             DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
-            string idCupon = Convert.ToString(selectedRow.Cells["cupo_id"].Value);
-          /*  cmb_Clientes.SelectedValue
+            int idCupon = Convert.ToInt32(selectedRow.Cells["cupo_id"].Value);
 
-            RepoCliente.instance().regalarCupon(idCupon, Convert.ToInt32(txt_cantidad.Value));
-        */
+
+            RepoCliente.instance().regalarCupon(idCupon, Convert.ToInt32(cmb_Clientes.SelectedValue));
+            var bindingList = new BindingList<Cupon>(RepoCliente.instance().traerCuponesPropios(currentUserID));
+            var source = new BindingSource(bindingList, null);
+            dataGridView1.DataSource = source;
+
+
         }
 
        
