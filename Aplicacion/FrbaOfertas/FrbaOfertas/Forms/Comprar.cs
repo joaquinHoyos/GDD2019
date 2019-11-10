@@ -48,15 +48,30 @@ namespace FrbaOfertas.Forms
 
         private void btn_comprar_Click(object sender, EventArgs e)
         {
+
+
+            int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
+            int stock = Convert.ToInt32(selectedRow.Cells["ofer_disponible"].Value);
+            int maximoPorCliente = Convert.ToInt32(selectedRow.Cells["ofer_maxDisponible"].Value);
             if (txt_cantidad.Value > 0)
             {
-                int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
-                DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
-                string a = Convert.ToString(selectedRow.Cells["ofer_id"].Value); 
+                if (txt_cantidad.Value <= maximoPorCliente &&  stock - txt_cantidad.Value >=0)
+                {
+                    /*
+                    int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
+                    DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
+                    */
+                    string a = Convert.ToString(selectedRow.Cells["ofer_id"].Value);
+
+
+                    RepoCliente.instance().generarCompra(currentUserID, a, Convert.ToInt32(txt_cantidad.Value));
+                }
+                else {
+
+                    MessageBox.Show("El stock no es suficiente o la cantidad supera al maximo por cliente");
                 
-
-                RepoCliente.instance().generarCompra(currentUserID, a, Convert.ToInt32(txt_cantidad.Value));
-
+                }
             }
             else {
                 MessageBox.Show("La cantidad debe ser mayor a 0");
