@@ -42,7 +42,7 @@ namespace FrbaOfertas.Forms
                 btn_verCupones.Enabled = true;
             }
 
-
+            currentUserID = RepoUsuario.instance().idActual;
             
         }
 
