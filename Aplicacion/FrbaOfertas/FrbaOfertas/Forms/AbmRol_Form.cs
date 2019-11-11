@@ -163,6 +163,61 @@ namespace FrbaOfertas.Forms
 
         }
 
+        private void btn_Seleccionar_Click(object sender, EventArgs e)
+        {
+            PresenterAdmin.instance().seleccionarRol(this);
+            PresenterAdmin.instance().formRol_seleccionar(this);
+        }
+
+        public void cargarFunciones(List<structFuncion> funciones)
+        {
+            foreach (structFuncion func in funciones)
+            {
+                if (func.grupo == 'A')
+                {
+                    int index;
+                    for (int i = 0; i < list_Admin.Items.Count; i++)
+                    {
+                        if(list_Admin.Items[i]==Enum.GetName(typeof(EnumFunciones),func.funcion){index = i;}
+                    }
+
+                    this.list_Admin.SetItemChecked(index, true);
+
+                }
+                else if (func.grupo == 'C')
+                {
+                    int index;
+                    for (int i = 0; i < list_Cliente.Items.Count; i++)
+                    {
+                        if(list_Cliente.Items[i]==Enum.GetName(typeof(EnumFunciones),func.funcion){index = i;}
+                    }
+
+                    this.list_Cliente.SetItemChecked(index, true);
+
+                }
+                else
+                {
+                    int index;
+                    for (int i = 0; i < list_Proveedor.Items.Count; i++)
+                    {
+                        if(list_Proveedor.Items[i]==Enum.GetName(typeof(EnumFunciones),func.funcion){index = i;}
+                    }
+
+                    this.list_Proveedor.SetItemChecked(index, true);
+
+                }
+            }
+        }
+
+        public void cargarNombre(string nombre)
+        {
+            this.txt_Nombre.Text = nombre;
+        }
+
+        public void cargarId(int id)
+        {
+            this.nud_id.Value = id;
+        }
     }
 
 }

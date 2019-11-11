@@ -36,6 +36,7 @@ namespace FrbaOfertas.Presenters
         }
         private void cargarTodasFunciones(AbmRol_Form form)
         {
+            
             foreach (int func in RepoRol.instance().getFuncionesAdmin()) { form.list_Admin.Items.Add(Enum.GetName(typeof(EnumFunciones),func)); }
             foreach (int func in RepoRol.instance().getFuncionesCliente()) { form.list_Cliente.Items.Add(Enum.GetName(typeof(EnumFunciones), func)); }
             foreach (int func in RepoRol.instance().getFuncionesProveedor()) { form.list_Proveedor.Items.Add(Enum.GetName(typeof(EnumFunciones), func)); }
@@ -139,6 +140,14 @@ namespace FrbaOfertas.Presenters
             form.habilitarNombre(false);
             form.habilitarId(false);
             form.habilitarBuscar(true);
+        }
+
+        public void seleccionarRol(string seleccionado,AbmRol_Form form)
+        {
+            Rol rol = RepoRol.instance().obtenerSeleccionado(seleccionado);
+            form.cargarNombre(rol.nombre);
+            form.cargarId(rol.id);
+            form.cargarFunciones(rol.funciones);
         }
     }
 }

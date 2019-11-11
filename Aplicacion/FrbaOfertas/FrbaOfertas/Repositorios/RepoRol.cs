@@ -131,7 +131,7 @@ namespace FrbaOfertas.Repositorios
         private DataTable cargarRolesBusqueda(SqlDataReader reader)
         {
             List<Rol> listaRoles = new List<Rol>();
-            Rol rol = new Rol(-1, "", new List<int>());
+            Rol rol = new Rol(-1, "", new List<structFuncion>());
             DataTable tabla = new DataTable();
             tabla.Columns.Add(new DataColumn("ID"));
             tabla.Columns.Add(new DataColumn("Nombre"));
@@ -141,7 +141,10 @@ namespace FrbaOfertas.Repositorios
                 {
                     rol.id = Convert.ToInt32(reader.GetSqlInt32(0).ToString());
                     rol.nombre = reader.GetSqlString(1).ToString();
-                    rol.funciones.Add(Convert.ToInt32(reader.GetSqlInt32(2).ToString()));
+                    structFuncion structFunc= new structFuncion();
+                    structFunc.funcion = Convert.ToInt32(reader.GetSqlInt32(2).ToString());
+                    structFunc.grupo = reader.GetSqlString(3).ToString().ToCharArray()[0];
+                    rol.funciones.Add(structFunc);
                     DataRow row = tabla.NewRow();
                     row["ID"] = rol.id;
                     row["Nombre"] = rol.nombre;
@@ -149,16 +152,22 @@ namespace FrbaOfertas.Repositorios
                 }
                 else if (rol.id == Convert.ToInt32(reader.GetSqlInt32(0).ToString()))
                 {
-                    rol.funciones.Add(Convert.ToInt32(reader.GetSqlInt32(2).ToString()));
+                    structFuncion structFunc = new structFuncion();
+                    structFunc.funcion = Convert.ToInt32(reader.GetSqlInt32(2).ToString());
+                    structFunc.grupo = reader.GetSqlString(3).ToString().ToCharArray()[0];
+                    rol.funciones.Add(structFunc);
                  
                 }
                 else
                 {
                     listaRoles.Add(rol);
-                    rol = new Rol(-1,"",new List<int>());
+                    rol = new Rol(-1,"",new List<structFuncion>());
                     rol.id = Convert.ToInt32(reader.GetSqlInt32(0).ToString());
                     rol.nombre = reader.GetSqlString(1).ToString();
-                    rol.funciones.Add(Convert.ToInt32(reader.GetSqlInt32(2).ToString()));
+                    structFuncion structFunc = new structFuncion();
+                    structFunc.funcion = Convert.ToInt32(reader.GetSqlInt32(2).ToString());
+                    structFunc.grupo = reader.GetSqlString(3).ToString().ToCharArray()[0];
+                    rol.funciones.Add(structFunc); 
                     DataRow row = tabla.NewRow();
                     row["ID"] = rol.id;
                     row["Nombre"] = rol.nombre;
@@ -191,6 +200,16 @@ namespace FrbaOfertas.Repositorios
                 return this.funcionesProveedor;
             }
 
+        }
+
+        public Rol obtenerSeleccionado(string seleccionado)
+        {
+            for (int i = 0; i < this.rolesBuscados.Count; i++)
+            {
+                Rol rol = rolesBuscados[i];
+                if (rol.nombre == seleccionado) { return rol; }
+            }
+            return new Rol(-1,"",new List<int>());
         }
 
     }
