@@ -28,6 +28,8 @@ namespace FrbaOfertas.Forms
         private void FormCliente_Load(object sender, EventArgs e)
         {
             // habilitacion y deshabilitacion de botones
+
+            currentUserID = RepoUsuario.instance().idActual;
             List<Grupo> grupos = RepoUsuario.instance().traerFunciones(currentUserID);
             List<int> funciones = grupos.Find(x => x.grupo == 'C').funciones;
             if (funciones.Contains(1)) {
@@ -42,7 +44,6 @@ namespace FrbaOfertas.Forms
                 btn_verCupones.Enabled = true;
             }
 
-            currentUserID = RepoUsuario.instance().idActual;
             
         }
 
