@@ -147,7 +147,32 @@ namespace FrbaOfertas.Repositorios
         
         
         }
-        
+
+        public int traerSaldo(int userId) {
+
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+
+            SqlCommand command = QueryFactory.instance().saldoUsuario(userId, conexion);
+
+
+            try
+            {
+               SqlDataReader reader = command.ExecuteReader();
+                {
+                    if (reader.Read())
+                    {
+                        return Convert.ToInt32(reader["clie_saldo"]);
+                    }
+               }
+            }
+            catch (SqlException e)
+            {
+                throw e;
+            }
+
+            return 0;
+        }
+
 
 
 

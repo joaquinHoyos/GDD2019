@@ -223,5 +223,14 @@ namespace FrbaOfertas.Repositorios
 
         }
 
+        public SqlCommand saldoUsuario(int userID, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("(SELECT clie_saldo FROM PASO_A_PASO.Cliente WHERE clie_userId = @_idUsuario)", conexion);
+            SqlParameter paramUserID = this.nuevoParametroInt("@_idUsuario", userID);
+            command.Parameters.Add(paramUserID);
+            return command;
+
+        }
+
     }
 }

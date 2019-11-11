@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms;
 using FrbaOfertas.Presenters;
+using FrbaOfertas.Repositorios;
+using FrbaOfertas.Modelo;
 
 namespace FrbaOfertas.Forms
 {
@@ -16,6 +18,7 @@ namespace FrbaOfertas.Forms
     {
 
         public int currentUserID;
+        
         public FormCliente()
         {
             InitializeComponent();
@@ -25,6 +28,22 @@ namespace FrbaOfertas.Forms
         private void FormCliente_Load(object sender, EventArgs e)
         {
             // habilitacion y deshabilitacion de botones
+            List<Grupo> grupos = RepoUsuario.instance().traerFunciones(currentUserID);
+            List<int> funciones = grupos.Find(x => x.grupo == 'C').funciones;
+            if (funciones.Contains(1)) {
+                btn_cargaCredito.Enabled = true;
+            }
+            if (funciones.Contains(2))
+            {
+                btn_comprar.Enabled = true;
+            }
+            if (funciones.Contains(3) && funciones.Contains(4))
+            {
+                btn_verCupones.Enabled = true;
+            }
+
+
+            
         }
 
         private void btn_cargaCredito_Click(object sender, EventArgs e)
