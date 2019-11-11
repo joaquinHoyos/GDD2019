@@ -1,10 +1,7 @@
-CREATE FUNCTION PASO_A_PASO.busquedaOferta(@descripcion nvarchar(100), @descuento int)
+CREATE FUNCTION PASO_A_PASO.busquedaOferta(@descripcion nvarchar(100), @fecha smalldatetime)
 RETURNS TABLE
 AS
 
- RETURN SELECT * FROM PASO_A_PASO.Oferta WHERE 
- (CASE   WHEN @descripcion IS NULL THEN  (ofer_precioOferta * 100) / ofer_PrecioLista > @descuento
-		WHEN @descuento IS NULL THEN ofer_descripcion LIKE '%'+@descripcion+'%'
-		ELSE ofer_precioOferta * 100 / ofer_PrecioLista > @descuento AND  ofer_descripcion LIKE '%'+@descripcion+'%'
-
-		END
+ RETURN SELECT * FROM PASO_A_PASO.Oferta WHERE @fecha between ofer_fechaDesde and ofer_fechaHasta AND  ofer_descripcion LIKE '%'+@descripcion+'%'
+		
+		

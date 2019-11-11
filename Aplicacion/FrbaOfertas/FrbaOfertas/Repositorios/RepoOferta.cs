@@ -15,6 +15,7 @@ namespace FrbaOfertas.Repositorios
     {
         public static RepoOferta repo;
         public List<Oferta> ofertasBuscadas;
+
         public static RepoOferta instance()
         {
             return repo == null ? repo = new RepoOferta() : repo;
@@ -51,15 +52,18 @@ namespace FrbaOfertas.Repositorios
         
         }
 
-        public DataTable traerOfertasFiltradas(string descripcion)
+        public DataTable traerOfertasFiltradas(string descripcion,DateTime fecha)
+        
         {
-            SqlConnection conexion = ServerSQL.instance().levantarConexion();
-            SqlCommand command = QueryFactory.instance().busquedaOferta(descripcion,conexion);
-            SqlDataReader reader = command.ExecuteReader();
+            
+                SqlConnection conexion = ServerSQL.instance().levantarConexion();
+                SqlCommand command = QueryFactory.instance().busquedaOferta(descripcion, fecha, conexion);
+                SqlDataReader reader = command.ExecuteReader();
 
-            return (reader.HasRows) ? this.cargarOfertaBusqueda(reader) : null;
+                return (reader.HasRows) ? this.cargarOfertaBusqueda(reader) : null;
+          
         }
-
+        
 
 
         private DataTable cargarOfertaBusqueda(SqlDataReader reader)
@@ -71,16 +75,23 @@ namespace FrbaOfertas.Repositorios
             tabla.Columns.Add(new DataColumn("Descripcion"));
             tabla.Columns.Add(new DataColumn("FechaDesde"));
             tabla.Columns.Add(new DataColumn("FechaHasta"));
-            tabla.Columns.Add(new DataColumn("precioOferta"));
-            tabla.Columns.Add(new DataColumn("precioLista"));
-            tabla.Columns.Add(new DataColumn("disponible"));
-            tabla.Columns.Add(new DataColumn("maxDisponible"));
+            tabla.Columns.Add(new DataColumn("PrecioOferta"));
+            tabla.Columns.Add(new DataColumn("PrecioLista"));
+            tabla.Columns.Add(new DataColumn("Disponible"));
+            tabla.Columns.Add(new DataColumn("MaxDisponible"));
             while (reader.Read())
             {
                 DataRow row = tabla.NewRow();
 
                 row["ID"] = reader["ofer_id"];
                 row["Descripcion"] = reader["ofer_descripcion"];
+                row["FechaDesde"] = reader["ofer_fechaDesde"];
+                row["FechaHasta"] = reader["ofer_fechaHasta"];
+                row["PrecioOferta"] = reader["ofer_precioOferta"];
+                row["PrecioLista"] = reader["ofer_precioLista"];
+                row["Disponible"] = reader["ofer_disponible"];
+                row["MaxDisponible"] = reader["ofer_maxDisponible"];
+                
 
                 tabla.Rows.Add(row);
              
@@ -90,6 +101,24 @@ namespace FrbaOfertas.Repositorios
             return tabla;
         }
 
+        public void agregarOferta(Oferta oferta)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            QueryFactory.instance().agregarOferta(oferta.ofer_id,oferta.ofer_descripcion,oferta.ofer_fechaDesde,oferta.ofer_fechaHasta,oferta.ofer_precioOferta,oferta.ofer_precioLista,oferta.ofer_proveedor,oferta.ofer_disponible,oferta.ofer_maxDisponible,conexion);
+            
+        }
+        public void editarOferta(Oferta oferta)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            QueryFactory.instance().editarOferta(oferta.ofer_id, oferta.ofer_descripcion, oferta.ofer_fechaDesde, oferta.ofer_fechaHasta, oferta.ofer_precioOferta, oferta.ofer_precioLista, oferta.ofer_proveedor, oferta.ofer_disponible, oferta.ofer_maxDisponible, conexion);
+
+        }
+        public void eliminarOferta(string idOferta)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            QueryFactory.instance().eliminarOferta(idOferta,conexion);
+
+        }
 
     }
 }

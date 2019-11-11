@@ -30,12 +30,17 @@ namespace FrbaOfertas.Repositorios
     class RepoUsuario
     {
         public static RepoUsuario repo;
+        public int idActual;
 
         public static RepoUsuario instance()
         {
             return repo==null?repo=new RepoUsuario():repo;
         }
 
+        public void setUsuarioActual(int id)
+        {
+            idActual = id;
+        }
         
         public List<User> listaUsuarios()
         {

@@ -25,6 +25,23 @@ namespace FrbaOfertas.Repositorios
 
             return parametro;
         }
+        private SqlParameter nuevoParametroDateTime(string nombre, DateTime value)
+        {
+            SqlParameter parametro = new SqlParameter();
+            parametro.ParameterName = nombre;
+            parametro.Value = value;
+
+            return parametro;
+        }
+
+        private SqlParameter nuevoParametroDouble(string nombre, Double value)
+        {
+            SqlParameter parametro = new SqlParameter();
+            parametro.ParameterName = nombre;
+            parametro.Value = value;
+
+            return parametro;
+        }
 
         private SqlParameter nuevoParametroInt(string nombre, int value)
         {
@@ -39,6 +56,64 @@ namespace FrbaOfertas.Repositorios
             parametro.Value = value;
             return parametro;
         }
+
+       public void agregarOferta(string id,string descripcion,DateTime fechaDesde,DateTime fechaHasta,double precioOferta,double precioLista,int proveedor,int disponible,int maxDisponible,SqlConnection conexion)
+    {
+        SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.crearOferta @ofer_id=@_id,@ofer_descripcion=@_descripcion,@ofer_fechaDesde=@_fechaDesde,@ofer_fechaHasta=@_fechaHasta,@ofer_precioOferta=@_precioOferta,@ofer_precioLista=@_precioLista,@ofer_proveedor=@_proveedor,@ofer_disponible=@_disponible,@ofer_maxDisponible=@_maxDisponible", conexion);
+            SqlParameter param = this.nuevoParametroString("@_id", id);
+            SqlParameter param1 = this.nuevoParametroString("@_descripcion", descripcion);
+            SqlParameter param2 = this.nuevoParametroDateTime("@_fechaDesde", fechaDesde);
+            SqlParameter param3 = this.nuevoParametroDateTime("@_fechaHasta", fechaHasta);
+            SqlParameter param4 = this.nuevoParametroDouble("@_precioOferta", precioOferta);
+            SqlParameter param5 = this.nuevoParametroDouble("@_precioLista", precioLista);
+            SqlParameter param6 = this.nuevoParametroInt("@_proveedor", proveedor);
+            SqlParameter param7 = this.nuevoParametroInt("@_disponible", disponible);
+            SqlParameter param8 = this.nuevoParametroInt("@_maxDisponible", maxDisponible);
+
+            command.Parameters.Add(param);
+            command.Parameters.Add(param1);
+            command.Parameters.Add(param2);
+            command.Parameters.Add(param3);
+            command.Parameters.Add(param4);
+            command.Parameters.Add(param5);
+            command.Parameters.Add(param6);
+            command.Parameters.Add(param7);
+            command.Parameters.Add(param8);
+
+    }
+
+       public void editarOferta(string id, string descripcion, DateTime fechaDesde, DateTime fechaHasta, double precioOferta, double precioLista, int proveedor, int disponible, int maxDisponible, SqlConnection conexion)
+       {
+           SqlCommand command = new SqlCommand("UPDATE PASO_A_PASO.Oferta SET ofer_descripcion=@_descripcion,ofer_fechaDesde=@_fechaDesde,ofer_fechaHasta=@_fechaHasta,ofer_precioOferta=@_precioOferta,ofer_precioLista=@_precioLista,ofer_proveedor=@_proveedor,ofer_disponible=@_disponible,ofer_maxDisponible=@_maxDisponible WHERE ofer_id=@_id", conexion);
+           SqlParameter param = this.nuevoParametroString("@_id", id);
+           SqlParameter param1 = this.nuevoParametroString("@_descripcion", descripcion);
+           SqlParameter param2 = this.nuevoParametroDateTime("@_fechaDesde", fechaDesde);
+           SqlParameter param3 = this.nuevoParametroDateTime("@_fechaHasta", fechaHasta);
+           SqlParameter param4 = this.nuevoParametroDouble("@_precioOferta", precioOferta);
+           SqlParameter param5 = this.nuevoParametroDouble("@_precioLista", precioLista);
+           SqlParameter param6 = this.nuevoParametroInt("@_proveedor", proveedor);
+           SqlParameter param7 = this.nuevoParametroInt("@_disponible", disponible);
+           SqlParameter param8 = this.nuevoParametroInt("@_maxDisponible", maxDisponible);
+
+           command.Parameters.Add(param);
+           command.Parameters.Add(param1);
+           command.Parameters.Add(param2);
+           command.Parameters.Add(param3);
+           command.Parameters.Add(param4);
+           command.Parameters.Add(param5);
+           command.Parameters.Add(param6);
+           command.Parameters.Add(param7);
+           command.Parameters.Add(param8);
+
+       }
+
+       public void eliminarOferta(string id, SqlConnection conexion)
+       {
+           SqlCommand command = new SqlCommand("DELETE FROM PASO_A_PASO.Oferta WHERE ofer_id=@_id", conexion);
+           SqlParameter param = this.nuevoParametroString("@_id", id);
+           command.Parameters.Add(param);
+
+       }
 
         private SqlParameter nuevoParametroTabla(string nombre, DataTable tabla, string tipo)
         {
@@ -105,11 +180,13 @@ namespace FrbaOfertas.Repositorios
             return command;
         }
 
-        public SqlCommand busquedaOferta(string descripcion,SqlConnection conexion)
+        public SqlCommand busquedaOferta(string descripcion,DateTime fecha,SqlConnection conexion)
         {
-            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.busquedaOferta(@descripcion)", conexion);
+            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.busquedaOferta(@descripcion @fecha)", conexion);
             SqlParameter parametro1 = this.nuevoParametroString("@descripcion", descripcion);
+            SqlParameter parametro2 = this.nuevoParametroDateTime("@fecha", fecha);
             command.Parameters.Add(parametro1);
+            command.Parameters.Add(parametro2);
             return command;
         }
 

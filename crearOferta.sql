@@ -1,0 +1,5 @@
+CREATE PROCEDURE PASO_A_PASO.crearOferta (@datos PASO_A_PASO.tablaOferta READONLY)
+AS
+	INSERT INTO PASO_A_PASO.Oferta SELECT * FROM @datos
+	
+

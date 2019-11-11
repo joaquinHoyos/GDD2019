@@ -31,7 +31,7 @@ namespace FrbaOfertas.Presenters
             User user = RepoUsuario.instance().buscarUsuarioPorClave(usuario, clave);
             if (user != null)
             {
-
+                RepoUsuario.instance().setUsuarioActual(user.user_id);
                 this.redireccionarUsuario(user);
                 this.login_form.Hide();
                 return;
