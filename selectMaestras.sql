@@ -19,6 +19,18 @@ AS
 	DROP PROC PASO_A_PASO.creacionTablas
 	DROP PROC PASO_A_PASO.keys
 	DROP PROC PASO_A_PASO.migracionTablas
+	DROP PROC PASO_A_PASO.cargarCredito
+	DROP PROC PASO_A_PASO.crearUsuario
+	DROP PROC PASO_A_PASO.generarCompra
+	DROP PROC PASO_A_PASO.regalarCupon
+
+	DROP FUNCTION PASO_A_PASO.saldoUsuario
+	DROP FUNCTION PASO_A_PASO.traerClienteSegunUsuario
+	DROP FUNCTION PASO_A_PASO.traerCuponesPropios
+	DROP FUNCTION PASO_A_PASO.traerOfertasDisponibles
+
+	DROP PROC PASO_A_PASO.BorrarBase
+
 
 
 
