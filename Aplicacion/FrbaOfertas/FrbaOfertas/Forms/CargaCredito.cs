@@ -87,5 +87,10 @@ namespace FrbaOfertas.Forms
                 break;
             }
         }
+
+        private void txt_tarjeta_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

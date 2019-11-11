@@ -72,6 +72,7 @@
             // btn_verCupones
             // 
             this.btn_verCupones.BackColor = System.Drawing.Color.Silver;
+            this.btn_verCupones.Enabled = false;
             this.btn_verCupones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_verCupones.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_verCupones.Location = new System.Drawing.Point(421, 3);
@@ -85,6 +86,7 @@
             // btn_comprar
             // 
             this.btn_comprar.BackColor = System.Drawing.Color.Silver;
+            this.btn_comprar.Enabled = false;
             this.btn_comprar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_comprar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_comprar.Location = new System.Drawing.Point(212, 3);
@@ -98,6 +100,7 @@
             // btn_cargaCredito
             // 
             this.btn_cargaCredito.BackColor = System.Drawing.Color.Silver;
+            this.btn_cargaCredito.Enabled = false;
             this.btn_cargaCredito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cargaCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_cargaCredito.Location = new System.Drawing.Point(3, 3);
