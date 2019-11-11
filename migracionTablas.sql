@@ -5,6 +5,7 @@ as
 
 	INSERT INTO PASO_A_PASO.TipoPago VALUES ('E')
 	INSERT INTO PASO_A_PASO.TipoPago VALUES ('C')
+	INSERT INTO PASO_A_PASO.TipoPago VALUES ('D')
 
 
 INSERT INTO PASO_A_PASO.Cliente SELECT distinct Cli_Dni, Cli_Nombre, Cli_Apellido, null, Cli_Mail, Cli_Telefono, Cli_Direccion, 0, null, Cli_Ciudad, Cli_Fecha_Nac FROM gd_esquema.Maestra;

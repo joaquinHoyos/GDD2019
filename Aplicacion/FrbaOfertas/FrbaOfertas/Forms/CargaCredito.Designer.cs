@@ -52,6 +52,7 @@
             this.txt_tarjeta.Name = "txt_tarjeta";
             this.txt_tarjeta.Size = new System.Drawing.Size(100, 20);
             this.txt_tarjeta.TabIndex = 3;
+            this.txt_tarjeta.TextChanged += new System.EventHandler(this.txt_tarjeta_TextChanged);
             // 
             // label2
             // 
