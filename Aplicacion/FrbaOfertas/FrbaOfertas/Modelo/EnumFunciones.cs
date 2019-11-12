@@ -9,7 +9,9 @@
         ABM_OFERTA,
         VER_OFERTA,
         ABM_USUARIO,
-        ABM_ROL
+        ABM_ROL,
+        ABM_CLIENTE,
+        ABM_PROVEEDOR
         
     }
 }

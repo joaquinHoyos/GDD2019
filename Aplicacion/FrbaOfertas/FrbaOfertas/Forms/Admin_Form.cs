@@ -22,5 +22,10 @@ namespace FrbaOfertas.Forms
         {
             Presenter.instance().cargarAbmRol(this);
         }
+
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            Presenter.instance().cargarAbmClientes(this);
+        }
     }
 }
