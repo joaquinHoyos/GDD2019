@@ -73,6 +73,20 @@ namespace FrbaOfertas.Presenters
               return RepoUsuario.instance().buscarCliente(nombre, apellido, mail, dni);
           }
 
+          public void crearNuevoCliente(String nombre, String apellido, String dni, String mail, String telefono, String saldo, String direccion, String ciudad, String codPostal, String fechaNac)
+          {
+              try
+              {
+                  Cliente nuevoCliente = new Cliente(-1, Convert.ToInt32(dni), nombre, apellido);
+                  RepoCliente.instance().crearCliente(nuevoCliente);
+                  MessageBox.Show("Cliente Creado Correctamente");
+              }
+              catch (Exception ex)
+              {
+                  MessageBox.Show("Error al crear el nuevo Cliente \n" + ex.Message);
+              }
+          }
+
 
 
     }

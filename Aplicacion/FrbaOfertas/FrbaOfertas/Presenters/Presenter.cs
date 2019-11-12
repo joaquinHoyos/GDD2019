@@ -143,8 +143,9 @@ namespace FrbaOfertas.Presenters
 
         public void cargarAbmClientes(Admin_Form form)
         {
-            form.splitContainer1.Panel2.Controls.Add(this.getAbmRolForm());
-            this.getAbmCliente().Show();
+            form.splitContainer1.Panel2.Controls.Add(this.getAbmCliente());
+            
+          this.getAbmCliente().Show();
         }
 
 

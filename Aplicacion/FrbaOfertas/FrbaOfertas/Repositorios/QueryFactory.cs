@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using FrbaOfertas.Modelo;
 namespace FrbaOfertas.Repositorios
 {
     class QueryFactory
@@ -155,6 +156,23 @@ namespace FrbaOfertas.Repositorios
             SqlParameter paramFunciones = this.nuevoParametroTabla("@tabla", funciones, "PASO_A_PASO.tablaFuncion");
             command.Parameters.Add(paramNombre);
             command.Parameters.Add(paramFunciones);
+            return command;
+
+
+        }
+
+
+        public SqlCommand crearCliente(Cliente clie, SqlConnection conexion)
+        { //FALTAN AGREGAR COLUMNAS
+
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.insertarCliente @nombre=@_nombre ,@apellido=@_ape,@dni=@_dni", conexion);
+            SqlParameter paramNombre = this.nuevoParametroString("@_nombre", clie.nombreYApellido);
+            SqlParameter paramApellido = this.nuevoParametroString("@_ape", clie.nombreYApellido);
+            SqlParameter paramDni = this.nuevoParametroString("@_dni", clie.clie_dni.ToString());
+            
+            command.Parameters.Add(paramNombre);
+            command.Parameters.Add(paramApellido);
+            command.Parameters.Add(paramDni);
             return command;
 
 

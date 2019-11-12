@@ -1,4 +1,4 @@
-CREATE PROCEDURE PASO_A_PASO.crearRol (@nombre varchar(20),@funciones tablaFuncion READONLY)
+CREATE PROCEDURE PASO_A_PASO.crearRol (@nombre varchar(20),@funciones PASO_A_PASO.tablaFuncion READONLY)
 AS
 
 	INSERT INTO PASO_A_PASO.Rol VALUES (@nombre,'E')

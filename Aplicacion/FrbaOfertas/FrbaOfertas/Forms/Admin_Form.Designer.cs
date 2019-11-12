@@ -51,8 +51,8 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.tableLayoutPanel1);
-            this.splitContainer1.Size = new System.Drawing.Size(634, 391);
-            this.splitContainer1.SplitterDistance = 42;
+            this.splitContainer1.Size = new System.Drawing.Size(1164, 514);
+            this.splitContainer1.SplitterDistance = 55;
             this.splitContainer1.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -118,7 +118,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 391);
+            this.ClientSize = new System.Drawing.Size(1164, 514);
             this.Controls.Add(this.splitContainer1);
             this.Name = "Admin_Form";
             this.Text = "Admin_Form";
