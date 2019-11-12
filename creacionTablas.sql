@@ -6,7 +6,7 @@ CREATE TABLE PASO_A_PASO.Cliente (clie_id int IDENTITY(1,1) NOT NULL, clie_dni N
 CREATE TABLE PASO_A_PASO.Proveedor (prov_id int IDENTITY(1,1) NOT NULL, prov_cuit nvarchar(20), prov_razon nvarchar(100),prov_userId int, prov_mail nvarchar(255), prov_telefono Numeric(18,0),prov_direccion nvarchar(255), prov_codigoPostal int, prov_ciudad nvarchar(255),prov_rubro int, prov_nombre nvarchar(255), prov_habilitado char);
 CREATE TABLE PASO_A_PASO.Rubro (rubr_id int IDENTITY(1,1) NOT NULL, rubr_nombre nvarchar(100));
 CREATE TABLE PASO_A_PASO.RolxUsuario (id_rol int NOT NULL, id_usuario int NOT NULL);
-CREATE TABLE PASO_A_PASO.Rol (rol_id int IDENTITY(1,1) NOT NULL, rol_nombre varchar(20));
+CREATE TABLE PASO_A_PASO.Rol (rol_id int IDENTITY(1,1) NOT NULL, rol_nombre varchar(20) UNIQUE ,rol_estado char(1) NOT NULL);
 CREATE TABLE PASO_A_PASO.Funcion (func_id int IDENTITY(1,1) NOT NULL, func_nombre varchar(20), func_grupo char(1));
 CREATE TABLE PASO_A_PASO.FuncionesxRol (id_rol int NOT NULL, id_funcion int NOT NULL);
 CREATE TABLE PASO_A_PASO.Credito (cred_id int IDENTITY(1,1) NOT NULL, cred_cliente int, cred_tipoPago char(1), cred_fecha smalldatetime,  cred_tarjeta Numeric(10) , cred_monto Numeric(10));

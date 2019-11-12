@@ -221,7 +221,7 @@ namespace FrbaOfertas.Repositorios
 
         public SqlCommand busquedaRol_NombreYFuncion(string nombre,DataTable funciones, SqlConnection conexion)
         {
-            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.busquedaRol_IdYNombre(@nombre,@funcion)", conexion);
+            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.busquedarRol_NombreYFuncion(@nombre,@funcion)", conexion);
             command.Parameters.Add(this.nuevoParametroTabla("@funcion", funciones, "PASO_A_PASO.tablaFuncion"));
             command.Parameters.Add(this.nuevoParametroString("@nombre", nombre));
             return command;
@@ -309,5 +309,27 @@ namespace FrbaOfertas.Repositorios
 
         }
 
+        public SqlCommand habilitarRol(int rol,SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.habilitarRol @rol=@rolID",conexion);
+            command.Parameters.Add(this.nuevoParametroInt("@rolID", rol));
+            return command;
+        }
+
+        public SqlCommand deshabilitarRol(int rol, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.deshabilitarRol @rol=@rolID", conexion);
+            command.Parameters.Add(this.nuevoParametroInt("@rolID", rol));
+            return command;
+        }
+
+        public SqlCommand modificarRol(int id, string nombre, DataTable funciones, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.modificarRol @id=@rolid, @nombre=@rolnombre, @funciones=@rolfunciones",conexion);
+            command.Parameters.Add(this.nuevoParametroInt("@rolid", id));
+            command.Parameters.Add(this.nuevoParametroString("@rolnombre",nombre));
+            command.Parameters.Add(this.nuevoParametroTabla("@rolfunciones",funciones,"PASO_A_PASO.tablaFuncion"));
+            return command;
+        }
     }
 }

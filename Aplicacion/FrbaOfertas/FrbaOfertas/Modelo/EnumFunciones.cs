@@ -10,5 +10,6 @@
         VER_OFERTA,
         ABM_USUARIO,
         ABM_ROL
+        
     }
 }

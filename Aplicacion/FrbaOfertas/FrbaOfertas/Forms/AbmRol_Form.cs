@@ -14,6 +14,7 @@ namespace FrbaOfertas.Forms
 {
     public partial class AbmRol_Form : Form
     {
+        bool nuevo = false;
         public AbmRol_Form()
         {
             InitializeComponent();
@@ -24,6 +25,7 @@ namespace FrbaOfertas.Forms
 
         private void btn_Nuevo_Click(object sender, EventArgs e)
         {
+            this.nuevo = true;
             PresenterAdmin.instance().cargarNuevoRol(this);
         }
 
@@ -62,8 +64,9 @@ namespace FrbaOfertas.Forms
             this.list_Admin.Enabled = false;
             this.list_Cliente.Enabled = false;
             this.list_Proveedor.Enabled = false;
-            this.dataGridView1.Enabled=false;
-            this.btn_Buscar.Enabled = false;
+            this.btn_Buscar.Visible = false;
+            this.btn_Habilitar.Visible = false;
+            this.btn_Deshabilitar.Visible = false;
             this.btn_Editar.Enabled = false;
             this.btn_Seleccionar.Enabled = false;
             this.btn_Guardar.Enabled = false;
@@ -73,7 +76,7 @@ namespace FrbaOfertas.Forms
         {
             this.nud_id.Enabled=true;
             this.txt_Nombre.Enabled=true;
-            this.btn_Buscar.Enabled = true;
+            this.btn_Buscar.Visible = true;
             this.list_Proveedor.Enabled=true;
             this.list_Cliente.Enabled=true;
             this.list_Admin.Enabled=true;
@@ -91,13 +94,14 @@ namespace FrbaOfertas.Forms
          }
         public void vaciarListBox(CheckedListBox list)
         {
-            for (int i = list.Items.Count - 1; i > -1; i--){list.Items.RemoveAt(i);}
+            for (int i = list.CheckedItems.Count - 1; i > -1; i--){list.SetItemChecked(i,false);}
         }
         private void btn_Guardar_Click(object sender, EventArgs e)
         {
-
             DataTable funciones = this.obtenerSeleccionados();
-            PresenterAdmin.instance().crearNuevoRol(txt_Nombre.Text, funciones);
+            int id = Convert.ToInt32(nud_id.Value);
+            if (nuevo) { PresenterAdmin.instance().crearNuevoRol(txt_Nombre.Text, funciones); }
+            else { PresenterAdmin.instance().modificarRol(id,txt_Nombre.Text,funciones,this);}
         }
 
         private DataTable obtenerSeleccionados()
@@ -143,11 +147,13 @@ namespace FrbaOfertas.Forms
         
         public void habilitarGuardar(bool estado){this.btn_Guardar.Enabled=estado;;}
         
-        public void habilitarBuscar(bool estado){this.btn_Buscar.Enabled=estado;}
- 
-        public void habilitarEliminar(bool estado){}
- 
-        public void habilitarNombre(bool estado){ this.txt_Nombre.Enabled=false;}
+        public void habilitarBuscar(bool estado){this.btn_Buscar.Visible=estado;}
+
+        public void habilitarHabilitar(bool estado) { this.btn_Habilitar.Visible = estado; }
+
+        public void habilitarDeshabilitar(bool estado) { this.btn_Deshabilitar.Visible = estado; }
+
+        public void habilitarNombre(bool estado){ this.txt_Nombre.Enabled=estado;}
 
         public void habilitarId(bool estado){this.nud_id.Enabled=estado;}
 
@@ -159,51 +165,63 @@ namespace FrbaOfertas.Forms
 
         private void btn_Editar_Click(object sender, EventArgs e)
         {
+            this.nuevo = false;
             PresenterAdmin.instance().formRol_editar(this);
 
         }
 
         private void btn_Seleccionar_Click(object sender, EventArgs e)
         {
-            PresenterAdmin.instance().seleccionarRol(this);
+            var row = this.dataGridView1.SelectedRows[0];
+            string seleccionado = row.Cells[1].Value.ToString();
             PresenterAdmin.instance().formRol_seleccionar(this);
+            PresenterAdmin.instance().seleccionarRol(seleccionado,this);
         }
 
         public void cargarFunciones(List<structFuncion> funciones)
         {
+            int index;
             foreach (structFuncion func in funciones)
             {
+               
                 if (func.grupo == 'A')
                 {
-                    int index;
+                    
                     for (int i = 0; i < list_Admin.Items.Count; i++)
                     {
-                        if(list_Admin.Items[i]==Enum.GetName(typeof(EnumFunciones),func.funcion){index = i;}
+                        if(list_Admin.Items[i]==Enum.GetName(typeof(EnumFunciones),func.funcion)){
+                            index = i;
+                            this.list_Admin.SetItemChecked(index, true);
+                        }
                     }
 
-                    this.list_Admin.SetItemChecked(index, true);
-
+                    
                 }
                 else if (func.grupo == 'C')
                 {
-                    int index;
+                    
                     for (int i = 0; i < list_Cliente.Items.Count; i++)
                     {
-                        if(list_Cliente.Items[i]==Enum.GetName(typeof(EnumFunciones),func.funcion){index = i;}
+                        if(list_Cliente.Items[i]==Enum.GetName(typeof(EnumFunciones),func.funcion))
+                        {
+                            index = i; 
+                            this.list_Cliente.SetItemChecked(index, true);
+                        }
                     }
-
-                    this.list_Cliente.SetItemChecked(index, true);
 
                 }
                 else
                 {
-                    int index;
+                    
                     for (int i = 0; i < list_Proveedor.Items.Count; i++)
                     {
-                        if(list_Proveedor.Items[i]==Enum.GetName(typeof(EnumFunciones),func.funcion){index = i;}
-                    }
+                        if(list_Proveedor.Items[i]==Enum.GetName(typeof(EnumFunciones),func.funcion))
+                        {
+                            index = i;
+                            this.list_Proveedor.SetItemChecked(index, true);
+                        }
 
-                    this.list_Proveedor.SetItemChecked(index, true);
+                    }
 
                 }
             }
@@ -217,6 +235,17 @@ namespace FrbaOfertas.Forms
         public void cargarId(int id)
         {
             this.nud_id.Value = id;
+        }
+
+        private void btn_Habilitar_Click(object sender, EventArgs e)
+        {
+
+            PresenterAdmin.instance().habilitarRol(Convert.ToInt32(nud_id.Value),this);
+        }
+
+        private void btn_Deshabilitar_Click(object sender, EventArgs e)
+        {
+            PresenterAdmin.instance().deshabilitarRol(Convert.ToInt32(nud_id.Value),this);
         }
     }
 

@@ -131,7 +131,7 @@ namespace FrbaOfertas.Repositorios
         private DataTable cargarRolesBusqueda(SqlDataReader reader)
         {
             List<Rol> listaRoles = new List<Rol>();
-            Rol rol = new Rol(-1, "", new List<structFuncion>());
+            Rol rol = new Rol(-1, "", new List<structFuncion>(), new Char());
             DataTable tabla = new DataTable();
             tabla.Columns.Add(new DataColumn("ID"));
             tabla.Columns.Add(new DataColumn("Nombre"));
@@ -141,6 +141,7 @@ namespace FrbaOfertas.Repositorios
                 {
                     rol.id = Convert.ToInt32(reader.GetSqlInt32(0).ToString());
                     rol.nombre = reader.GetSqlString(1).ToString();
+                    rol.estado = reader.GetSqlString(4).ToString().ToCharArray()[0];
                     structFuncion structFunc= new structFuncion();
                     structFunc.funcion = Convert.ToInt32(reader.GetSqlInt32(2).ToString());
                     structFunc.grupo = reader.GetSqlString(3).ToString().ToCharArray()[0];
@@ -161,9 +162,10 @@ namespace FrbaOfertas.Repositorios
                 else
                 {
                     listaRoles.Add(rol);
-                    rol = new Rol(-1,"",new List<structFuncion>());
+                    rol = new Rol(-1,"",new List<structFuncion>(),new Char());
                     rol.id = Convert.ToInt32(reader.GetSqlInt32(0).ToString());
                     rol.nombre = reader.GetSqlString(1).ToString();
+                    rol.estado = reader.GetSqlString(4).ToString().ToCharArray()[0];
                     structFuncion structFunc = new structFuncion();
                     structFunc.funcion = Convert.ToInt32(reader.GetSqlInt32(2).ToString());
                     structFunc.grupo = reader.GetSqlString(3).ToString().ToCharArray()[0];
@@ -172,10 +174,11 @@ namespace FrbaOfertas.Repositorios
                     row["ID"] = rol.id;
                     row["Nombre"] = rol.nombre;
                     tabla.Rows.Add(row);
-
+                    listaRoles.Add(rol);
                 }
                 
             }
+            
             this.rolesBuscados=listaRoles;
             return tabla;
         }
@@ -209,8 +212,27 @@ namespace FrbaOfertas.Repositorios
                 Rol rol = rolesBuscados[i];
                 if (rol.nombre == seleccionado) { return rol; }
             }
-            return new Rol(-1,"",new List<int>());
+            return new Rol(-1,"",new List<structFuncion>(),new Char());
         }
 
+        public void habilitarRol(int rol)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().habilitarRol(rol, conexion);
+            command.ExecuteNonQuery();
+        }
+        public void deshabilitarRol(int rol)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().deshabilitarRol(rol, conexion);
+            command.ExecuteNonQuery();
+        }
+
+        public void modificarRol(int rol, string nombre, DataTable funciones)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().modificarRol(rol, nombre, funciones, conexion);
+            command.ExecuteNonQuery();
+        }
     }
 }

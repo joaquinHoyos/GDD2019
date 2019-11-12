@@ -17,7 +17,7 @@ AS
 	--CREA ROL ADMINISTRADOR
 	DECLARE @funcAdmin AS PASO_A_PASO.tablaFuncion
 
-	INSERT INTO @funcAdmin SELECT func_nombre 
+	INSERT INTO @funcAdmin SELECT func_id 
 	FROM PASO_A_PASO.Funcion WHERE func_grupo='A'
 	
 	EXEC PASO_A_PASO.crearRol @nombre='ADMINISTRADOR',@funciones=@funcAdmin
@@ -25,7 +25,7 @@ AS
 	--CREAR ROL CLIENTE
 	DECLARE @funcCli AS PASO_A_PASO.tablaFuncion
 	
-	INSERT INTO @funcCli SELECT func_nombre 
+	INSERT INTO @funcCli SELECT func_id
 	FROM PASO_A_PASO.Funcion WHERE func_grupo='C'
 	
 	EXEC PASO_A_PASO.crearRol @nombre='CLIENTE',@funciones=@funcCli
@@ -33,7 +33,7 @@ AS
 	--CREAR ROL PROVEEDOR
 	DECLARE @funcProv AS PASO_A_PASO.tablaFuncion
 	
-	INSERT INTO @funcProv SELECT func_nombre 
+	INSERT INTO @funcProv SELECT func_id
 	FROM PASO_A_PASO.Funcion WHERE func_grupo='P'
 	
 	EXEC PASO_A_PASO.crearRol @nombre='PROVEEDOR',@funciones=@funcProv
