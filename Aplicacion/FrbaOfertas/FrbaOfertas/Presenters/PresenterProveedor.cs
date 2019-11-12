@@ -21,28 +21,60 @@ namespace FrbaOfertas.Presenters
             return presenter == null ? new PresenterProveedor() : presenter;
         }
 
-        public DataTable filtrarOfertas(string descripcion,DateTime fecha)
+        public DataTable filtrarOfertas(string descripcion,DateTime fecha,int proveedor)
         {
-            return RepoOferta.instance().traerOfertasFiltradas(descripcion,fecha);
+            try{
+            return RepoOferta.instance().traerOfertasFiltradas(descripcion,fecha,proveedor);
+            
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return null;
+            }
+        
         }
         public int getProveedorActual()
         {
+
             return RepoUsuario.instance().idActual;
         }
 
         public void nuevaOferta(Oferta oferta)
         {
-            RepoOferta.instance().agregarOferta(oferta);
+            try
+            {
+                RepoOferta.instance().agregarOferta(oferta);
+                MessageBox.Show("Oferta Agregada");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
 
         public void editarOferta(Oferta oferta)
         {
+            try{
             RepoOferta.instance().editarOferta(oferta);
+               MessageBox.Show("Oferta Editada");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
 
         public void eliminarOferta(string idOferta)
         {
+            try{
             RepoOferta.instance().eliminarOferta(idOferta);
+           MessageBox.Show("Oferta Eliminada");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
 
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 using System.Data;
 using FrbaOfertas.Modelo;
 namespace FrbaOfertas.Repositorios
@@ -33,6 +34,7 @@ namespace FrbaOfertas.Repositorios
             parametro.Value = value;
 
             return parametro;
+
         }
 
         private SqlParameter nuevoParametroDouble(string nombre, Double value)
@@ -58,9 +60,9 @@ namespace FrbaOfertas.Repositorios
             return parametro;
         }
 
-       public void agregarOferta(string id,string descripcion,DateTime fechaDesde,DateTime fechaHasta,double precioOferta,double precioLista,int proveedor,int disponible,int maxDisponible,SqlConnection conexion)
+       public SqlCommand agregarOferta(string id,string descripcion,DateTime fechaDesde,DateTime fechaHasta,double precioOferta,double precioLista,int proveedor,int disponible,int maxDisponible,SqlConnection conexion)
     {
-        SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.crearOferta @ofer_id=@_id,@ofer_descripcion=@_descripcion,@ofer_fechaDesde=@_fechaDesde,@ofer_fechaHasta=@_fechaHasta,@ofer_precioOferta=@_precioOferta,@ofer_precioLista=@_precioLista,@ofer_proveedor=@_proveedor,@ofer_disponible=@_disponible,@ofer_maxDisponible=@_maxDisponible", conexion);
+        SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.crearOferta @id=@_id,@descripcion=@_descripcion,@fechaDesde=@_fechaDesde,@fechaHasta=@_fechaHasta,@precioOferta=@_precioOferta,@precioLista=@_precioLista,@proveedor=@_proveedor,@disponible=@_disponible,@maxDisponible=@_maxDisponible", conexion);
             SqlParameter param = this.nuevoParametroString("@_id", id);
             SqlParameter param1 = this.nuevoParametroString("@_descripcion", descripcion);
             SqlParameter param2 = this.nuevoParametroDateTime("@_fechaDesde", fechaDesde);
@@ -81,9 +83,11 @@ namespace FrbaOfertas.Repositorios
             command.Parameters.Add(param7);
             command.Parameters.Add(param8);
 
+            return command;
+
     }
 
-       public void editarOferta(string id, string descripcion, DateTime fechaDesde, DateTime fechaHasta, double precioOferta, double precioLista, int proveedor, int disponible, int maxDisponible, SqlConnection conexion)
+       public SqlCommand editarOferta(string id, string descripcion, DateTime fechaDesde, DateTime fechaHasta, double precioOferta, double precioLista, int proveedor, int disponible, int maxDisponible, SqlConnection conexion)
        {
            SqlCommand command = new SqlCommand("UPDATE PASO_A_PASO.Oferta SET ofer_descripcion=@_descripcion,ofer_fechaDesde=@_fechaDesde,ofer_fechaHasta=@_fechaHasta,ofer_precioOferta=@_precioOferta,ofer_precioLista=@_precioLista,ofer_proveedor=@_proveedor,ofer_disponible=@_disponible,ofer_maxDisponible=@_maxDisponible WHERE ofer_id=@_id", conexion);
            SqlParameter param = this.nuevoParametroString("@_id", id);
@@ -106,13 +110,16 @@ namespace FrbaOfertas.Repositorios
            command.Parameters.Add(param7);
            command.Parameters.Add(param8);
 
+           return command;
+
        }
 
-       public void eliminarOferta(string id, SqlConnection conexion)
+       public SqlCommand eliminarOferta(string id, SqlConnection conexion)
        {
            SqlCommand command = new SqlCommand("DELETE FROM PASO_A_PASO.Oferta WHERE ofer_id=@_id", conexion);
            SqlParameter param = this.nuevoParametroString("@_id", id);
            command.Parameters.Add(param);
+           return command;
 
        }
 
@@ -159,23 +166,23 @@ namespace FrbaOfertas.Repositorios
             return command;
 
 
-        }
-
-
-        public SqlCommand crearCliente(Cliente clie, SqlConnection conexion)
-        { //FALTAN AGREGAR COLUMNAS
-
-            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.insertarCliente @nombre=@_nombre ,@apellido=@_ape,@dni=@_dni", conexion);
-            SqlParameter paramNombre = this.nuevoParametroString("@_nombre", clie.nombreYApellido);
-            SqlParameter paramApellido = this.nuevoParametroString("@_ape", clie.nombreYApellido);
-            SqlParameter paramDni = this.nuevoParametroString("@_dni", clie.clie_dni.ToString());
-            
-            command.Parameters.Add(paramNombre);
-            command.Parameters.Add(paramApellido);
-            command.Parameters.Add(paramDni);
-            return command;
-
-
+        }
+
+
+        public SqlCommand crearCliente(Cliente clie, SqlConnection conexion)
+        { //FALTAN AGREGAR COLUMNAS
+
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.insertarCliente @nombre=@_nombre ,@apellido=@_ape,@dni=@_dni", conexion);
+            SqlParameter paramNombre = this.nuevoParametroString("@_nombre", clie.nombreYApellido);
+            SqlParameter paramApellido = this.nuevoParametroString("@_ape", clie.nombreYApellido);
+            SqlParameter paramDni = this.nuevoParametroString("@_dni", clie.clie_dni.ToString());
+            
+            command.Parameters.Add(paramNombre);
+            command.Parameters.Add(paramApellido);
+            command.Parameters.Add(paramDni);
+            return command;
+
+
         }
 
         public SqlCommand signUpUsuario(string username, string clave, int rol, SqlConnection conexion)
@@ -198,13 +205,15 @@ namespace FrbaOfertas.Repositorios
             return command;
         }
 
-        public SqlCommand busquedaOferta(string descripcion,DateTime fecha,SqlConnection conexion)
+        public SqlCommand busquedaOferta(string descripcion,DateTime fecha,int proveedor,SqlConnection conexion)
         {
-            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.busquedaOferta(@descripcion @fecha)", conexion);
+            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.busquedaOferta(@descripcion,@fecha,@proveedor)", conexion);
             SqlParameter parametro1 = this.nuevoParametroString("@descripcion", descripcion);
             SqlParameter parametro2 = this.nuevoParametroDateTime("@fecha", fecha);
+            SqlParameter parametro3 = this.nuevoParametroInt("@proveedor", proveedor);
             command.Parameters.Add(parametro1);
             command.Parameters.Add(parametro2);
+            command.Parameters.Add(parametro3);
             return command;
         }
 
@@ -348,17 +357,17 @@ namespace FrbaOfertas.Repositorios
             command.Parameters.Add(this.nuevoParametroString("@rolnombre",nombre));
             command.Parameters.Add(this.nuevoParametroTabla("@rolfunciones",funciones,"PASO_A_PASO.tablaFuncion"));
             return command;
-        }
-
-        public SqlCommand buscarClientes(string nombre, string apellido,string mail,string dni,SqlConnection conexion)
-        {
-            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.buscarClie(@nombre, @apellido,@mail,@dni)", conexion);
-            command.Parameters.Add(this.nuevoParametroString("@nombre", nombre));
-            command.Parameters.Add(this.nuevoParametroString("@apellido", apellido));
-            command.Parameters.Add(this.nuevoParametroString("@mail", mail));
-            command.Parameters.Add(this.nuevoParametroString("@dni", dni));
-            
-            return command;
+        }
+
+        public SqlCommand buscarClientes(string nombre, string apellido,string mail,string dni,SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.buscarClie(@nombre, @apellido,@mail,@dni)", conexion);
+            command.Parameters.Add(this.nuevoParametroString("@nombre", nombre));
+            command.Parameters.Add(this.nuevoParametroString("@apellido", apellido));
+            command.Parameters.Add(this.nuevoParametroString("@mail", mail));
+            command.Parameters.Add(this.nuevoParametroString("@dni", dni));
+            
+            return command;
         }
     }
 }

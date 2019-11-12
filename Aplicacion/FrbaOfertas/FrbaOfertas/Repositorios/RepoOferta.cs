@@ -52,12 +52,12 @@ namespace FrbaOfertas.Repositorios
         
         }
 
-        public DataTable traerOfertasFiltradas(string descripcion,DateTime fecha)
+        public DataTable traerOfertasFiltradas(string descripcion,DateTime fecha,int proveedor)
         
         {
-            
+                
                 SqlConnection conexion = ServerSQL.instance().levantarConexion();
-                SqlCommand command = QueryFactory.instance().busquedaOferta(descripcion, fecha, conexion);
+                SqlCommand command = QueryFactory.instance().busquedaOferta(descripcion, fecha,proveedor, conexion);
                 SqlDataReader reader = command.ExecuteReader();
 
                 return (reader.HasRows) ? this.cargarOfertaBusqueda(reader) : null;
@@ -104,20 +104,20 @@ namespace FrbaOfertas.Repositorios
         public void agregarOferta(Oferta oferta)
         {
             SqlConnection conexion = ServerSQL.instance().levantarConexion();
-            QueryFactory.instance().agregarOferta(oferta.ofer_id,oferta.ofer_descripcion,oferta.ofer_fechaDesde,oferta.ofer_fechaHasta,oferta.ofer_precioOferta,oferta.ofer_precioLista,oferta.ofer_proveedor,oferta.ofer_disponible,oferta.ofer_maxDisponible,conexion);
-            
+            SqlCommand command=QueryFactory.instance().agregarOferta(oferta.ofer_id,oferta.ofer_descripcion,oferta.ofer_fechaDesde,oferta.ofer_fechaHasta,oferta.ofer_precioOferta,oferta.ofer_precioLista,oferta.ofer_proveedor,oferta.ofer_disponible,oferta.ofer_maxDisponible,conexion);
+            command.ExecuteNonQuery();
         }
         public void editarOferta(Oferta oferta)
         {
             SqlConnection conexion = ServerSQL.instance().levantarConexion();
-            QueryFactory.instance().editarOferta(oferta.ofer_id, oferta.ofer_descripcion, oferta.ofer_fechaDesde, oferta.ofer_fechaHasta, oferta.ofer_precioOferta, oferta.ofer_precioLista, oferta.ofer_proveedor, oferta.ofer_disponible, oferta.ofer_maxDisponible, conexion);
-
+            SqlCommand command=QueryFactory.instance().editarOferta(oferta.ofer_id, oferta.ofer_descripcion, oferta.ofer_fechaDesde, oferta.ofer_fechaHasta, oferta.ofer_precioOferta, oferta.ofer_precioLista, oferta.ofer_proveedor, oferta.ofer_disponible, oferta.ofer_maxDisponible, conexion);
+            command.ExecuteNonQuery();
         }
         public void eliminarOferta(string idOferta)
         {
             SqlConnection conexion = ServerSQL.instance().levantarConexion();
-            QueryFactory.instance().eliminarOferta(idOferta,conexion);
-
+            SqlCommand command=QueryFactory.instance().eliminarOferta(idOferta,conexion);
+            command.ExecuteNonQuery();
         }
 
     }
