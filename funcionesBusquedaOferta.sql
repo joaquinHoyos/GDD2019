@@ -1,7 +1,7 @@
-CREATE FUNCTION PASO_A_PASO.busquedaOferta(@descripcion nvarchar(100), @fecha smalldatetime)
+CREATE FUNCTION PASO_A_PASO.busquedaOferta(@descripcion nvarchar(100), @fecha smalldatetime @proveedor int)
 RETURNS TABLE
 AS
 
- RETURN SELECT * FROM PASO_A_PASO.Oferta WHERE @fecha between ofer_fechaDesde and ofer_fechaHasta AND  ofer_descripcion LIKE '%'+@descripcion+'%'
+ RETURN SELECT * FROM PASO_A_PASO.Oferta WHERE ofer_proveedor=@proveedor and @fecha between ofer_fechaDesde and ofer_fechaHasta OR  ofer_descripcion LIKE '%'+@descripcion+'%'
 		
 		

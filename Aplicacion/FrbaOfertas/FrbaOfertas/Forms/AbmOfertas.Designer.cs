@@ -55,6 +55,7 @@
             this.txtFechaInicio = new System.Windows.Forms.DateTimePicker();
             this.txtFechaVenc = new System.Windows.Forms.DateTimePicker();
             this.txtFiltroFecha = new System.Windows.Forms.DateTimePicker();
+            this.btnSeleccionar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,6 +93,7 @@
             this.btn_Editar.TabIndex = 33;
             this.btn_Editar.Text = "Editar";
             this.btn_Editar.UseVisualStyleBackColor = true;
+            this.btn_Editar.Click += new System.EventHandler(this.btn_Editar_Click);
             // 
             // btn_Guardar
             // 
@@ -163,7 +165,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(610, 438);
             this.dataGridView1.TabIndex = 41;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // txtDescripcion
             // 
@@ -307,17 +308,31 @@
             // 
             // txtFiltroFecha
             // 
+            this.txtFiltroFecha.CustomFormat = "";
             this.txtFiltroFecha.Enabled = false;
             this.txtFiltroFecha.Location = new System.Drawing.Point(36, 175);
+            this.txtFiltroFecha.MinDate = new System.DateTime(1753, 1, 23, 0, 0, 0, 0);
             this.txtFiltroFecha.Name = "txtFiltroFecha";
             this.txtFiltroFecha.Size = new System.Drawing.Size(176, 26);
             this.txtFiltroFecha.TabIndex = 60;
+            // 
+            // btnSeleccionar
+            // 
+            this.btnSeleccionar.Enabled = false;
+            this.btnSeleccionar.Location = new System.Drawing.Point(662, 662);
+            this.btnSeleccionar.Name = "btnSeleccionar";
+            this.btnSeleccionar.Size = new System.Drawing.Size(128, 41);
+            this.btnSeleccionar.TabIndex = 61;
+            this.btnSeleccionar.Text = "Seleccionar";
+            this.btnSeleccionar.UseVisualStyleBackColor = true;
+            this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
             // 
             // AbmOfertas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1162, 808);
+            this.Controls.Add(this.btnSeleccionar);
             this.Controls.Add(this.txtFiltroFecha);
             this.Controls.Add(this.txtFechaVenc);
             this.Controls.Add(this.txtFechaInicio);
@@ -382,5 +397,6 @@
         private System.Windows.Forms.DateTimePicker txtFechaInicio;
         private System.Windows.Forms.DateTimePicker txtFechaVenc;
         private System.Windows.Forms.DateTimePicker txtFiltroFecha;
+        private System.Windows.Forms.Button btnSeleccionar;
     }
 }
