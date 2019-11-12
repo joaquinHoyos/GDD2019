@@ -48,7 +48,7 @@ namespace FrbaOfertas.Presenters
                 if (resultado == DialogResult.Yes)
                 {
                     //ir a form cliente
-                    cliente_form.Show();
+                    this.getClienteForm().Show();
                 }
                 else
                 {
@@ -70,7 +70,7 @@ namespace FrbaOfertas.Presenters
             else 
             { 
               //mostrar cliente 
-                cliente_form.Show();
+                this.getClienteForm().Show();
             }
         }
 
@@ -93,7 +93,7 @@ namespace FrbaOfertas.Presenters
             if (resultado == DialogResult.Yes)
             {
                 //mostrar cliente
-                cliente_form.Show();
+                this.getClienteForm().Show();
             }
             else 
             {

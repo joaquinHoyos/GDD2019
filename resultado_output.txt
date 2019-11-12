@@ -1,0 +1,80 @@
+Changed database context to 'GD2C2019'.
+
+(1 rows affected)
+
+(1 rows affected)
+
+(1 rows affected)
+
+(218 rows affected)
+
+(4 rows affected)
+
+(37 rows affected)
+
+(84262 rows affected)
+
+(159475 rows affected)
+
+(481 rows affected)
+
+(119678 rows affected)
+
+(1 rows affected)
+
+(1 rows affected)
+
+(1 rows affected)
+
+(1 rows affected)
+
+(1 rows affected)
+
+(1 rows affected)
+
+(1 rows affected)
+
+(1 rows affected)
+
+(1 rows affected)
+
+(3 rows affected)
+
+(1 rows affected)
+
+(1 rows affected)
+
+(1 rows affected)
+
+(1 rows affected)
+
+(4 rows affected)
+
+(1 rows affected)
+
+(1 rows affected)
+
+(1 rows affected)
+
+(1 rows affected)
+
+(1 rows affected)
+
+(2 rows affected)
+
+(1 rows affected)
+
+(1 rows affected)
+
+(1 rows affected)
+
+(1 rows affected)
+
+(1 rows affected)
+user_id     user_username                    user_password                    user_intentosLogin user_status user_fechaBaja     
+----------- -------------------------------- -------------------------------- ------------------ ----------- -------------------
+          1 admin                            æ¸pP¿ËCü¸Ûp¤ÜžÐMÝ>*JÑ±èÜÜ›ç                  0 E           1900-01-01 00:00:00
+
+(1 rows affected)
+Checking identity information: current identity value '3'.
+DBCC execution completed. If DBCC printed error messages, contact your system administrator.
