@@ -44,4 +44,26 @@ E:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertas.exe
 E:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertas.pdb
 Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.AbmOfertas.resources
 Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.Prov_Form.resources
+<<<<<<< Updated upstream
 Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.ABMCliente.resources
+=======
+C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertas.exe.config
+C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.exe
+C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.pdb
+C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertas.exe
+C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\bin\Debug\FrbaOfertas.pdb
+C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.csprojResolveAssemblyReference.cache
+C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.AbmOfertas.resources
+C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.AbmRol_Form.resources
+C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.ABMCliente.resources
+C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.Admin_Form.resources
+C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.CargaCredito.resources
+C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.Comprar.resources
+C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.Prov_Form.resources
+C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.Cupones.resources
+C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.FormCliente.resources
+C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.LoginUsuario.resources
+C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.SignUpUsuario.resources
+C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Properties.Resources.resources
+C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.csproj.GenerateResource.Cache
+>>>>>>> Stashed changes
