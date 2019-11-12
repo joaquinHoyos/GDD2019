@@ -25,8 +25,7 @@ INSERT INTO PASO_A_PASO.Factura SELECT Factura_Nro,DATETIMEFROMPARTS(Year(Factur
 
 INSERT INTO PASO_A_PASO.Compra SELECT t.Oferta_Codigo,c.clie_id,count(*) as cantCupones,
 (SELECT t1.Factura_Nro from gd_esquema.Maestra t1 where t1.Factura_Nro is not null and t1.Cli_Dni=t.Cli_Dni and t1.Oferta_Codigo=t.Oferta_Codigo and t1.Provee_CUIT=t.Provee_CUIT and t.Oferta_Fecha_Compra=t1.Oferta_Fecha_Compra) as Faa,
-sum(t.Oferta_Precio) as precioCompra from gd_esquema.Maestra t
+sum(t.Oferta_Precio) as precioCompra, Oferta_Fecha_Compra from gd_esquema.Maestra t
 join PASO_A_PASO.Cliente c on t.Cli_Dni=c.clie_dni
 where t.Factura_Fecha is null and t.Factura_Nro is null and t.Oferta_Entregado_Fecha is null and t.Oferta_Codigo is not null
 group by t.Oferta_Codigo,c.clie_id,t.Factura_Nro,t.Cli_Dni,t.Provee_CUIT,Oferta_Fecha_Compra
-
