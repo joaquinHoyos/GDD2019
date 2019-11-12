@@ -11,7 +11,7 @@ CREATE TABLE PASO_A_PASO.Funcion (func_id int IDENTITY(1,1) NOT NULL, func_nombr
 CREATE TABLE PASO_A_PASO.FuncionesxRol (id_rol int NOT NULL, id_funcion int NOT NULL);
 CREATE TABLE PASO_A_PASO.Credito (cred_id int IDENTITY(1,1) NOT NULL, cred_cliente int, cred_tipoPago char(1), cred_fecha smalldatetime,  cred_tarjeta Numeric(10) , cred_monto Numeric(10));
 CREATE TABLE PASO_A_PASO.Cupon (cupo_id int IDENTITY(1,1) NOT NULL, cupo_fecha smalldatetime, cupo_oferta nvarchar(50),cupo_cliente int, cupo_compra int);
-CREATE TABLE PASO_A_PASO.Compra(comp_id int IDENTITY(1,1) NOT NULL,comp_oferta nvarchar(50) NOT NULL, comp_cliente int NOT NULL, comp_cantidad int,comp_factura Numeric(18,0), comp_importe int);
+CREATE TABLE PASO_A_PASO.Compra(comp_id int IDENTITY(1,1) NOT NULL,comp_oferta nvarchar(50) NOT NULL, comp_cliente int NOT NULL, comp_cantidad int,comp_factura Numeric(18,0), comp_importe int, comp_fecha smalldatetime);
 CREATE TABLE PASO_A_PASO.Factura(fact_id Numeric(18,0) NOT NULL, fact_desde smalldatetime, fact_hasta smalldatetime, fact_importe int, fact_proveedor int NOT NULL);
 CREATE TABLE PASO_A_PASO.Oferta(ofer_id nvarchar(50) NOT NULL, ofer_descripcion varchar(255), ofer_fechaDesde smalldatetime, ofer_fechaHasta smalldatetime, ofer_precioOferta Numeric(18,2), ofer_precioLista  Numeric(18,2), ofer_proveedor int, ofer_disponible Numeric(18,0), ofer_maxDisponible int)
 CREATE TABLE PASO_A_PASO.TipoPago(tipoPago_id char(1) NOT NULL);

@@ -35,7 +35,8 @@ namespace FrbaOfertas.Repositorios
             }
             catch (SqlException e)
             {
-                throw e;
+                //throw e;
+                MessageBox.Show(e.Message);
             }
             
         }
@@ -55,7 +56,8 @@ namespace FrbaOfertas.Repositorios
             }
             catch (SqlException e)
             {
-                throw e;
+               // throw e;
+                MessageBox.Show(e.Message);
             }
             
         }
@@ -66,11 +68,11 @@ namespace FrbaOfertas.Repositorios
 
             SqlCommand command = QueryFactory.instance().traerCuponesPropios(userID,conexion);
 
-
+            List<Cupon> listaCupones = new List<Cupon>();
             try
             {
                 
-                List<Cupon> listaCupones = new List<Cupon>();
+                
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -86,8 +88,9 @@ namespace FrbaOfertas.Repositorios
             }
             catch (SqlException e)
             {
-                throw e;
-
+               // throw e;
+                MessageBox.Show(e.Message);
+                return listaCupones;
             }
 
 
@@ -100,11 +103,11 @@ namespace FrbaOfertas.Repositorios
 
             SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.Cliente",conexion);
 
-
+            List<Cliente> listaClientes = new List<Cliente>();
             try
             {
 
-                List<Cliente> listaClientes = new List<Cliente>();
+                
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -120,7 +123,9 @@ namespace FrbaOfertas.Repositorios
             }
             catch (SqlException e)
             {
-                throw e;
+               // throw e;
+                MessageBox.Show(e.Message);
+                return listaClientes;
 
             }
 
@@ -141,7 +146,8 @@ namespace FrbaOfertas.Repositorios
             }
             catch (SqlException e)
             {
-                throw e;
+                //throw e;
+                MessageBox.Show(e.Message);
             }
             
         
@@ -167,7 +173,8 @@ namespace FrbaOfertas.Repositorios
             }
             catch (SqlException e)
             {
-                throw e;
+                //throw e;
+                MessageBox.Show(e.Message);
             }
 
             return 0;
