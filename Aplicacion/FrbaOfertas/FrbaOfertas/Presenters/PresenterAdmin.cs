@@ -12,6 +12,7 @@ namespace FrbaOfertas.Presenters
 {
     class PresenterAdmin
     {
+        private Rol rolSeleccionado = new Rol();
         private AbmRol_Form abmrol_form;
         public static PresenterAdmin presenter;
 
@@ -36,10 +37,12 @@ namespace FrbaOfertas.Presenters
         }
         private void cargarTodasFunciones(AbmRol_Form form)
         {
-            foreach (int func in RepoRol.instance().getFuncionesAdmin()) { form.list_Admin.Items.Add(Enum.GetName(typeof(EnumFunciones),func)); }
-            foreach (int func in RepoRol.instance().getFuncionesCliente()) { form.list_Cliente.Items.Add(Enum.GetName(typeof(EnumFunciones), func)); }
-            foreach (int func in RepoRol.instance().getFuncionesProveedor()) { form.list_Proveedor.Items.Add(Enum.GetName(typeof(EnumFunciones), func)); }
-                
+            if(form.list_Admin.Items.Count==0)
+            {        
+                foreach (int func in RepoRol.instance().getFuncionesAdmin()) { form.list_Admin.Items.Add(Enum.GetName(typeof(EnumFunciones),func)); }
+                foreach (int func in RepoRol.instance().getFuncionesCliente()) { form.list_Cliente.Items.Add(Enum.GetName(typeof(EnumFunciones), func)); }
+                foreach (int func in RepoRol.instance().getFuncionesProveedor()) { form.list_Proveedor.Items.Add(Enum.GetName(typeof(EnumFunciones), func)); }
+            }        
         }
 
         public void crearNuevoRol(string nombre,DataTable funciones) 
@@ -114,7 +117,8 @@ namespace FrbaOfertas.Presenters
         {
             form.deshabilitarTodo();
             form.habilitarGuardar(true);
-            form.habilitarEliminar(true);
+            if (rolSeleccionado.estado == 'E') { form.habilitarDeshabilitar(true); }
+            else { form.habilitarHabilitar(true); }
             form.habilitarNombre(true);
             form.habilitarLists(true);
         }
@@ -123,6 +127,7 @@ namespace FrbaOfertas.Presenters
             form.deshabilitarTodo();
             form.habilitarEditar(true);
             form.borrarTodo();
+            
             
         }
         public void formRol_guardar(AbmRol_Form form)
@@ -133,12 +138,69 @@ namespace FrbaOfertas.Presenters
         }
         public void formRol_buscar(AbmRol_Form form)
         {
+
             form.deshabilitarTodo();
             form.habilitarLists(true);
             form.habilitarSeleccionar(true);
             form.habilitarNombre(false);
             form.habilitarId(false);
             form.habilitarBuscar(true);
+        }
+
+        public void seleccionarRol(string seleccionado,AbmRol_Form form)
+        {
+            Rol rol = RepoRol.instance().obtenerSeleccionado(seleccionado);
+            this.rolSeleccionado = rol;
+            form.cargarNombre(rol.nombre);
+            form.cargarId(rol.id);
+            form.cargarFunciones(rol.funciones);
+        }
+
+        public void deshabilitarRol(int rol, AbmRol_Form form)
+        {
+            try
+            {
+                RepoRol.instance().deshabilitarRol(rol);
+                form.habilitarDeshabilitar(true);
+                form.habilitarHabilitar(false);
+                MessageBox.Show("Rol deshabilitado correctamente");
+                
+            }
+            catch
+            {
+                MessageBox.Show("Error al deshabilitar el rol");
+            }
+
+        }
+
+        public void habilitarRol(int rol, AbmRol_Form form)
+        {
+            try
+            {
+                RepoRol.instance().habilitarRol(rol);
+                form.habilitarDeshabilitar(false);
+                form.habilitarHabilitar(true);
+                MessageBox.Show("Rol habilitado correctamente");
+            }
+            catch
+            {
+                MessageBox.Show("Error al habilitar el rol");
+            }
+
+        }
+
+        public void modificarRol(int id, string nombre, DataTable funciones,AbmRol_Form form)
+        {
+            try
+            {
+                RepoRol.instance().modificarRol(id, nombre, funciones);
+                this.cargarNuevoRol(form);
+                MessageBox.Show("rol modificado correctamente");
+            }
+            catch
+            {
+                MessageBox.Show("Error al modificar el rol");
+            }
         }
     }
 }

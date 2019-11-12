@@ -173,8 +173,13 @@ namespace FrbaOfertas.Repositorios
             return 0;
         }
 
-        
 
+        public void crearCliente(Cliente cli)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().crearCliente(cli, conexion);
+            command.ExecuteNonQuery();
+        }
 
 
 

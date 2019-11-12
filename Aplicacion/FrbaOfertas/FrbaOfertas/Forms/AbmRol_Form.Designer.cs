@@ -45,7 +45,8 @@
             this.btn_Seleccionar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.nud_id = new System.Windows.Forms.NumericUpDown();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_Habilitar = new System.Windows.Forms.Button();
+            this.btn_Deshabilitar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_id)).BeginInit();
             this.SuspendLayout();
@@ -83,7 +84,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(150, 47);
+            this.label2.Location = new System.Drawing.Point(85, 46);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 24;
@@ -129,9 +130,9 @@
             // 
             this.txt_Nombre.Enabled = false;
             this.txt_Nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Nombre.Location = new System.Drawing.Point(152, 63);
+            this.txt_Nombre.Location = new System.Drawing.Point(87, 62);
             this.txt_Nombre.Name = "txt_Nombre";
-            this.txt_Nombre.Size = new System.Drawing.Size(100, 23);
+            this.txt_Nombre.Size = new System.Drawing.Size(183, 23);
             this.txt_Nombre.TabIndex = 19;
             // 
             // btn_Editar
@@ -179,24 +180,25 @@
             // 
             // btn_Buscar
             // 
-            this.btn_Buscar.Enabled = false;
             this.btn_Buscar.Location = new System.Drawing.Point(309, 63);
             this.btn_Buscar.Name = "btn_Buscar";
             this.btn_Buscar.Size = new System.Drawing.Size(95, 23);
             this.btn_Buscar.TabIndex = 28;
             this.btn_Buscar.Text = "Buscar";
             this.btn_Buscar.UseVisualStyleBackColor = true;
+            this.btn_Buscar.Visible = false;
             this.btn_Buscar.Click += new System.EventHandler(this.btn_Buscar_Click);
             // 
             // btn_Seleccionar
             // 
             this.btn_Seleccionar.Enabled = false;
-            this.btn_Seleccionar.Location = new System.Drawing.Point(410, 11);
+            this.btn_Seleccionar.Location = new System.Drawing.Point(410, 12);
             this.btn_Seleccionar.Name = "btn_Seleccionar";
             this.btn_Seleccionar.Size = new System.Drawing.Size(95, 23);
             this.btn_Seleccionar.TabIndex = 29;
             this.btn_Seleccionar.Text = "Seleccionar";
             this.btn_Seleccionar.UseVisualStyleBackColor = true;
+            this.btn_Seleccionar.Click += new System.EventHandler(this.btn_Seleccionar_Click);
             // 
             // dataGridView1
             // 
@@ -204,6 +206,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(7, 196);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(599, 108);
             this.dataGridView1.TabIndex = 30;
             // 
@@ -212,25 +215,38 @@
             this.nud_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nud_id.Location = new System.Drawing.Point(12, 63);
             this.nud_id.Name = "nud_id";
-            this.nud_id.Size = new System.Drawing.Size(100, 23);
+            this.nud_id.Size = new System.Drawing.Size(52, 23);
             this.nud_id.TabIndex = 31;
             // 
-            // button1
+            // btn_Habilitar
             // 
-            this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(410, 62);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 23);
-            this.button1.TabIndex = 32;
-            this.button1.Text = "Eliminar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_Habilitar.Location = new System.Drawing.Point(309, 63);
+            this.btn_Habilitar.Name = "btn_Habilitar";
+            this.btn_Habilitar.Size = new System.Drawing.Size(95, 23);
+            this.btn_Habilitar.TabIndex = 32;
+            this.btn_Habilitar.Text = "Habilitar";
+            this.btn_Habilitar.UseVisualStyleBackColor = true;
+            this.btn_Habilitar.Visible = false;
+            this.btn_Habilitar.Click += new System.EventHandler(this.btn_Habilitar_Click);
+            // 
+            // btn_Deshabilitar
+            // 
+            this.btn_Deshabilitar.Location = new System.Drawing.Point(309, 63);
+            this.btn_Deshabilitar.Name = "btn_Deshabilitar";
+            this.btn_Deshabilitar.Size = new System.Drawing.Size(95, 23);
+            this.btn_Deshabilitar.TabIndex = 33;
+            this.btn_Deshabilitar.Text = "Deshabilitar";
+            this.btn_Deshabilitar.UseVisualStyleBackColor = true;
+            this.btn_Deshabilitar.Visible = false;
+            this.btn_Deshabilitar.Click += new System.EventHandler(this.btn_Deshabilitar_Click);
             // 
             // AbmRol_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(618, 307);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_Deshabilitar);
+            this.Controls.Add(this.btn_Habilitar);
             this.Controls.Add(this.nud_id);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btn_Seleccionar);
@@ -277,6 +293,7 @@
         private System.Windows.Forms.Button btn_Seleccionar;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.NumericUpDown nud_id;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_Habilitar;
+        private System.Windows.Forms.Button btn_Deshabilitar;
     }
 }

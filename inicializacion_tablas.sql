@@ -10,14 +10,14 @@ AS
 	INSERT INTO PASO_A_PASO.Funcion VALUES ('VER_OFERTA','P')
 	INSERT INTO PASO_A_PASO.Funcion VALUES ('ABM_USUARIO','A')
 	INSERT INTO PASO_A_PASO.Funcion VALUES ('ABM_ROL','A')
-
-	
+	INSERT INTO PASO_A_PASO.Funcion VALUES ('ABM_CLIENTES','A')
+	INSERT INTO PASO_A_PASO.Funcion VALUES ('ABM_PROVEEDOR','A')
 
 	-- CREAR ROLES
 	--CREA ROL ADMINISTRADOR
 	DECLARE @funcAdmin AS PASO_A_PASO.tablaFuncion
 
-	INSERT INTO @funcAdmin SELECT func_nombre 
+	INSERT INTO @funcAdmin SELECT func_id 
 	FROM PASO_A_PASO.Funcion WHERE func_grupo='A'
 	
 	EXEC PASO_A_PASO.crearRol @nombre='ADMINISTRADOR',@funciones=@funcAdmin
@@ -25,7 +25,7 @@ AS
 	--CREAR ROL CLIENTE
 	DECLARE @funcCli AS PASO_A_PASO.tablaFuncion
 	
-	INSERT INTO @funcCli SELECT func_nombre 
+	INSERT INTO @funcCli SELECT func_id
 	FROM PASO_A_PASO.Funcion WHERE func_grupo='C'
 	
 	EXEC PASO_A_PASO.crearRol @nombre='CLIENTE',@funciones=@funcCli
@@ -33,7 +33,7 @@ AS
 	--CREAR ROL PROVEEDOR
 	DECLARE @funcProv AS PASO_A_PASO.tablaFuncion
 	
-	INSERT INTO @funcProv SELECT func_nombre 
+	INSERT INTO @funcProv SELECT func_id
 	FROM PASO_A_PASO.Funcion WHERE func_grupo='P'
 	
 	EXEC PASO_A_PASO.crearRol @nombre='PROVEEDOR',@funciones=@funcProv
@@ -41,3 +41,5 @@ AS
 	
 	--CREAR USUARIO
 	EXEC PASO_A_PASO.crearUsuario @username='admin',@pass='w23e',@rol=1
+
+	
