@@ -119,7 +119,48 @@ namespace FrbaOfertas.Repositorios
             }
         }
 
+        public DataTable buscarCliente(String nombre, String apellido, String mail, String dni)
+        {
+
+            
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().buscarClientes(nombre, apellido,mail ,dni,conexion);
+            SqlDataReader reader = command.ExecuteReader();
+
+            DataTable tabla = new DataTable();
+            tabla.Columns.Add(new DataColumn("ID"));
+            tabla.Columns.Add(new DataColumn("Dni"));
+            tabla.Columns.Add(new DataColumn("Nombre"));
+            tabla.Columns.Add(new DataColumn("Apellido"));
+            tabla.Columns.Add(new DataColumn("User id"));
+            if (!reader.HasRows)
+            {
+                return null;
+            }
+
+            while (reader.Read())
+            {
+           
+               
+            DataRow row = tabla.NewRow();
+
+            row["ID"] = reader["clie_id"];
+            row["Dni"] = reader["clie_dni"];
+            row["Nombre"] = reader["clie_nombre"];
+            row["Apellido"] = reader["clie_apellido"];
+            row["User id"] = reader["user_id"];
+     
+             tabla.Rows.Add(row);
+
+            }
+
+            return tabla;
+
+        }
+
         
     }
 
+
+  
 }

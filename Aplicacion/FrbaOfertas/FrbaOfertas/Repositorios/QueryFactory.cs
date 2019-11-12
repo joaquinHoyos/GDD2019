@@ -331,5 +331,16 @@ namespace FrbaOfertas.Repositorios
             command.Parameters.Add(this.nuevoParametroTabla("@rolfunciones",funciones,"PASO_A_PASO.tablaFuncion"));
             return command;
         }
+
+        public SqlCommand buscarClientes(string nombre, string apellido,string mail,string dni,SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.buscarClie(@nombre, @apellido,@mail,@dni)", conexion);
+            command.Parameters.Add(this.nuevoParametroString("@nombre", nombre));
+            command.Parameters.Add(this.nuevoParametroString("@apellido", apellido));
+            command.Parameters.Add(this.nuevoParametroString("@mail", mail));
+            command.Parameters.Add(this.nuevoParametroString("@dni", dni));
+            
+            return command;
+        }
     }
 }

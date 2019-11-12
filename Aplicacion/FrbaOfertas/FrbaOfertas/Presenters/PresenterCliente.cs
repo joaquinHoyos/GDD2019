@@ -7,6 +7,7 @@ using FrbaOfertas.Modelo;
 using FrbaOfertas.Forms;
 using FrbaOfertas.Repositorios;
 using System.Windows.Forms;
+using System.Data;
 
 namespace FrbaOfertas.Presenters
 {
@@ -16,7 +17,8 @@ namespace FrbaOfertas.Presenters
         private CargaCredito cargaCredito_form;
         private Comprar comprar_form;
         private Cupones cupones_form;
-        
+        private ABMCliente abmClientes;
+
         public static PresenterCliente instance()
         {
             return presenter == null ? new PresenterCliente() : presenter;
@@ -64,7 +66,12 @@ namespace FrbaOfertas.Presenters
               return this.cupones_form==null ? this.cupones_form = new Cupones():this.cupones_form;
           
           }
+          public DataTable buscarClientes(ABMCliente form, String nombre, String apellido, String mail, String dni)
+          {
 
+              this.abmClientes = form;
+              return RepoUsuario.instance().buscarCliente(nombre, apellido, mail, dni);
+          }
 
 
 
