@@ -41,6 +41,7 @@ namespace FrbaOfertas.Presenters
                     List<int> funciones = grupos.Find(x => x.grupo == 'C').funciones;
                     if (funciones.Count > 0)
                     {
+                        
                         new AltaCliente().Show();
                         this.login_form.Hide();
                     }

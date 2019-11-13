@@ -54,9 +54,9 @@ namespace FrbaOfertas.Forms
         {
             txt_Telefono.Controls[0].Visible = false;
             txt_CP.Controls[0].Visible = false;
-            comboBox1.DataSource = RepoRol.instance().buscarPorTodo();
-            comboBox1.DisplayMember= "nombre";
-            comboBox1.ValueMember = "id";
+            comboBox1.DataSource = RepoUsuario.instance().traerRubros();
+            comboBox1.DisplayMember= "rubr_nombre";
+            comboBox1.ValueMember = "rubr_id";
             
         }
     }

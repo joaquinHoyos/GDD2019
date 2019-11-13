@@ -135,6 +135,7 @@
       <DependentUpon>SignUpUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Cliente.cs" />
+    <Compile Include="Modelo\Rubro.cs" />
     <Compile Include="Modelo\StructFuncion.cs" />
     <Compile Include="Modelo\StructRol.cs" />
     <Compile Include="Modelo\Cupon.cs" />

@@ -190,6 +190,24 @@ namespace FrbaOfertas.Repositorios
             return Convert.ToInt32(reader[0]);
 
         }
+
+
+        public List<Rubro> traerRubros() {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().traerRubros(conexion);
+            List<Rubro> listaRubros = new List<Rubro>();
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+
+                    listaRubros.Add(new Rubro(Convert.ToInt32(reader["rubr_id"]) , reader["rubr_nombre"].ToString()));
+
+                }
+            }
+           conexion.Close();
+           return listaRubros;
+        }
         
     }
 
