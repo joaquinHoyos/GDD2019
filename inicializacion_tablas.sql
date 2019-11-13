@@ -42,4 +42,3 @@ AS
 	--CREAR USUARIO
 	EXEC PASO_A_PASO.crearUsuario @username='admin',@pass='w23e',@rol=1
 
-	

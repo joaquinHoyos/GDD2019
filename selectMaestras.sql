@@ -28,6 +28,7 @@ AS
 	DROP FUNCTION PASO_A_PASO.traerClienteSegunUsuario
 	DROP FUNCTION PASO_A_PASO.traerCuponesPropios
 	DROP FUNCTION PASO_A_PASO.traerOfertasDisponibles
+	DROP PROCEDURE PASO_A_PASO.crearRol
 
 	DROP PROC PASO_A_PASO.BorrarBase
 

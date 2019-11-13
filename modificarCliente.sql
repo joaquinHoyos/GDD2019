@@ -12,8 +12,7 @@ UPDATE PASO_A_PASO.Cliente SET clie_dni = @dni,
 							   clie_codigoPostal=@codPostal,
 							   clie_ciudad=@ciudad,
 							   clie_fechaNacimiento=@fechaNac
+
 							WHERE clie_id = @clie_id
 
 END
-
-DROP PROCEDURE PASO_A_PASO.modificarCliente
