@@ -121,45 +121,7 @@ namespace FrbaOfertas.Repositorios
                 throw e;
             }
         }
-
-        public DataTable buscarCliente(String nombre, String apellido, String mail, String dni)
-        {
-
-            
-            SqlConnection conexion = ServerSQL.instance().levantarConexion();
-            SqlCommand command = QueryFactory.instance().buscarClientes(nombre, apellido,mail ,dni,conexion);
-            SqlDataReader reader = command.ExecuteReader();
-
-            DataTable tabla = new DataTable();
-            tabla.Columns.Add(new DataColumn("ID"));
-            tabla.Columns.Add(new DataColumn("Dni"));
-            tabla.Columns.Add(new DataColumn("Nombre"));
-            tabla.Columns.Add(new DataColumn("Apellido"));
-            tabla.Columns.Add(new DataColumn("User id"));
-            if (!reader.HasRows)
-            {
-                return null;
-            }
-
-            while (reader.Read())
-            {
-           
-               
-            DataRow row = tabla.NewRow();
-
-            row["ID"] = reader["clie_id"];
-            row["Dni"] = reader["clie_dni"];
-            row["Nombre"] = reader["clie_nombre"];
-            row["Apellido"] = reader["clie_apellido"];
-            row["User id"] = reader["user_id"];
-     
-             tabla.Rows.Add(row);
-
-            }
-
-            return tabla;
-
-        }
+
 
         public void altaCliente(String nombre, String apellido, long dni, int cp, String direccion, String ciudad, String mail,long telefono, DateTime fechaNacimiento)
         {
@@ -321,29 +283,7 @@ namespace FrbaOfertas.Repositorios
 
         }
 
-        public void altaCliente(String nombre, String apellido, long dni, int cp, String direccion, String ciudad, String mail,long telefono, DateTime fechaNacimiento)
-        {
-            SqlConnection conexion = ServerSQL.instance().levantarConexion();
-            SqlCommand command = QueryFactory.instance().altaCliente(nombre, apellido, dni, cp, idActual, direccion, ciudad, mail,telefono, fechaNacimiento, conexion);
-            command.ExecuteNonQuery();
-            MessageBox.Show("Cliente registrado");
-            new LoginUsuario().Show();
-            
-        }
-
-        public void altaProveedor(String cuit, String razon, String mail,long telefono,String direccion,int codigoPostal,String ciudad,int rubroID,String nombre)
-        {
-            SqlConnection conexion = ServerSQL.instance().levantarConexion();
-            SqlCommand command = QueryFactory.instance().altaProveedor(cuit,  razon,idActual, mail,telefono,direccion,codigoPostal,ciudad,rubroID, nombre, conexion);
-            command.ExecuteNonQuery();
-            MessageBox.Show("Proveedor registrado");
-            new LoginUsuario().Show();
-            
-        }
-
-
-
-        
+  
     }
 
 
