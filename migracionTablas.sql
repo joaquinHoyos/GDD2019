@@ -1,6 +1,6 @@
 
 
-CREATE PROCEDURE PASO_A_PASO.migracionTablas
+ALTER PROCEDURE PASO_A_PASO.migracionTablas
 as
 
 	INSERT INTO PASO_A_PASO.TipoPago VALUES ('E')
@@ -29,3 +29,25 @@ sum(t.Oferta_Precio) as precioCompra, Oferta_Fecha_Compra from gd_esquema.Maestr
 join PASO_A_PASO.Cliente c on t.Cli_Dni=c.clie_dni
 where t.Factura_Fecha is null and t.Factura_Nro is null and t.Oferta_Entregado_Fecha is null and t.Oferta_Codigo is not null
 group by t.Oferta_Codigo,c.clie_id,t.Factura_Nro,t.Cli_Dni,t.Provee_CUIT,Oferta_Fecha_Compra
+
+-- Migracion Cupon
+
+DECLARE @dni1 NUMERIC(18,0),@oferta1 nvarchar(50), @cantidad NUMERIC(18,0)
+DECLARE c1 CURSOR FOR (SELECT Oferta_Codigo, Cli_Dni, Oferta_Cantidad  FROM gd_esquema.Maestra WHERE Provee_CUIT IS NOT NULL AND Cli_Dest_Dni IS NULL AND Cli_Dni IS NOT NULL AND Factura_Nro IS NULL AND  Oferta_Codigo IS NOT NULL GROUP BY Oferta_Codigo,Cli_Dni,Oferta_Cantidad HAVING COUNT(Oferta_Entregado_Fecha)=0)
+OPEN c1
+FETCH NEXT FROM c1 INTO @oferta1,@dni1,@cantidad
+WHILE(@@FETCH_STATUS = 0) 
+BEGIN
+
+DECLARE @index int = 0
+WHILE(@index<@cantidad)
+BEGIN
+INSERT INTO PASO_A_PASO.Cupon (cupo_oferta, cupo_cliente,cupo_fecha) VALUES (@oferta1,(SELECT clie_id FROM PASO_A_PASO.Cliente WHERE clie_dni =@dni1),'1/1/1900')
+SET @index += 1
+END
+
+FETCH NEXT FROM c1 INTO @oferta1,@dni1,@cantidad
+END  
+CLOSE c1
+DEALLOCATE c1
+
