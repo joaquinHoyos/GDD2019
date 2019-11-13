@@ -188,6 +188,39 @@ namespace FrbaOfertas.Repositorios
             command.ExecuteNonQuery();
         }
 
+        public void modificarCliente(String clie_id, Cliente cli)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().modificarCliente(clie_id,cli, conexion);
+            command.ExecuteNonQuery();
+        }
+
+        public void deshabilitarCliente(String clie_id)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().deshabilitarCliente(clie_id, conexion);
+            command.ExecuteNonQuery();
+        }
+
+        public void asignarUsuario(String clie_id,String usuario, String contrasena)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+
+            try
+            {
+
+
+                SqlCommand command = QueryFactory.instance().asignarUsuarioACliente(clie_id, usuario, contrasena, conexion);
+                command.ExecuteNonQuery();
+                MessageBox.Show("Usuario asginado correctamente");
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show("Error al asginar el usuario al cliente" + e.Message);
+            }
+
+        }
 
 
     }

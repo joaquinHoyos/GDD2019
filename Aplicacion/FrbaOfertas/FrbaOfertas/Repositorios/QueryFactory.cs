@@ -170,19 +170,79 @@ namespace FrbaOfertas.Repositorios
 
 
         public SqlCommand crearCliente(Cliente clie, SqlConnection conexion)
-        { //FALTAN AGREGAR COLUMNAS
-
-            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.insertarCliente @nombre=@_nombre ,@apellido=@_ape,@dni=@_dni", conexion);
-            SqlParameter paramNombre = this.nuevoParametroString("@_nombre", clie.nombreYApellido);
-            SqlParameter paramApellido = this.nuevoParametroString("@_ape", clie.nombreYApellido);
-            SqlParameter paramDni = this.nuevoParametroString("@_dni", clie.clie_dni.ToString());
-            
-            command.Parameters.Add(paramNombre);
-            command.Parameters.Add(paramApellido);
-            command.Parameters.Add(paramDni);
-            return command;
-
-
+        {
+
+
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.insertarCliente @nombre=@_nombre ,@apellido=@_ape,@user_id=@_user_id,@dni=@_dni,@mail=@_mail, @telefono=@_telefono,@direccion=@_direccion,@saldo=@_saldo,@codPostal=@_codPostal,@ciudad=@_ciudad,@fechaNac=@_fechaNac", conexion);
+            SqlParameter paramNombre = this.nuevoParametroString("@_nombre", clie.nombre);
+            SqlParameter paramApellido = this.nuevoParametroString("@_ape", clie.apellido);
+            SqlParameter paramDni = this.nuevoParametroInt("@_dni", Convert.ToInt32(clie.clie_dni));
+
+            SqlParameter paramTel = this.nuevoParametroInt("@_telefono", Convert.ToInt32(clie.telefono));
+            SqlParameter paramMail = this.nuevoParametroString("@_mail", clie.mail);
+            SqlParameter paramUserId = this.nuevoParametroInt("@_user_id", clie.user_id);
+            SqlParameter paramDirec = this.nuevoParametroString("@_direccion", clie.direccion);
+            SqlParameter paramSaldo = this.nuevoParametroDouble("@_saldo", clie.saldo);
+            SqlParameter paramCP = this.nuevoParametroInt("@_codPostal", clie.codigoPostal);
+            SqlParameter paramCiudad = this.nuevoParametroString("@_ciudad", clie.ciudad);
+            SqlParameter paramFechaNac = this.nuevoParametroDateTime("@_fechaNac", clie.fechaNac);
+
+
+           
+            command.Parameters.Add(paramNombre);             command.Parameters.Add(paramApellido);
+             command.Parameters.Add(paramDni);
+             command.Parameters.Add(paramTel);
+             command.Parameters.Add(paramMail);
+             command.Parameters.Add(paramUserId);
+             command.Parameters.Add(paramDirec);
+             command.Parameters.Add(paramSaldo);
+             command.Parameters.Add(paramCP);
+             command.Parameters.Add(paramCiudad);
+           
+            command.Parameters.Add(paramFechaNac);
+            return command;
+        }
+
+
+        public SqlCommand modificarCliente(String clie_id,Cliente clie, SqlConnection conexion)
+        {
+
+
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.modificarCliente @clie_id=@_clie_id,@nombre=@_nombre ,@apellido=@_ape,@user_id=@_user_id,@dni=@_dni,@mail=@_mail, @telefono=@_telefono,@direccion=@_direccion,@saldo=@_saldo,@codPostal=@_codPostal,@ciudad=@_ciudad,@fechaNac=@_fechaNac", conexion);
+
+            SqlParameter paramNombre = this.nuevoParametroString("@_nombre", clie.nombre);
+
+            SqlParameter paramApellido = this.nuevoParametroString("@_ape", clie.apellido);
+
+            SqlParameter paramDni = this.nuevoParametroInt("@_dni", Convert.ToInt32(clie.clie_dni));
+
+            SqlParameter paramTel = this.nuevoParametroInt("@_telefono", Convert.ToInt32(clie.telefono));
+            SqlParameter paramMail = this.nuevoParametroString("@_mail", clie.mail);
+            SqlParameter paramUserId = this.nuevoParametroInt("@_user_id", clie.user_id);
+            SqlParameter paramDirec = this.nuevoParametroString("@_direccion", clie.direccion);
+            SqlParameter paramSaldo = this.nuevoParametroDouble("@_saldo", clie.saldo);
+            SqlParameter paramCP = this.nuevoParametroInt("@_codPostal", clie.codigoPostal);
+            SqlParameter paramCiudad = this.nuevoParametroString("@_ciudad", clie.ciudad);
+            SqlParameter paramFechaNac = this.nuevoParametroDateTime("@_fechaNac", clie.fechaNac);
+            SqlParameter paramClieId = this.nuevoParametroInt("@_clie_id", Convert.ToInt32(clie_id));
+
+
+            command.Parameters.Add(paramNombre);
+            command.Parameters.Add(paramApellido);
+            command.Parameters.Add(paramDni);
+            command.Parameters.Add(paramTel);
+            command.Parameters.Add(paramMail);
+            command.Parameters.Add(paramUserId);
+            command.Parameters.Add(paramDirec);
+            command.Parameters.Add(paramSaldo);
+            command.Parameters.Add(paramCP);
+            command.Parameters.Add(paramCiudad);
+            command.Parameters.Add(paramClieId);
+            command.Parameters.Add(paramFechaNac);
+
+            return command;
+
+
         }
 
         public SqlCommand signUpUsuario(string username, string clave, int rol, SqlConnection conexion)
@@ -370,6 +430,15 @@ namespace FrbaOfertas.Repositorios
             return command;
         }
 
+        public SqlCommand buscarClientesSinUsuario(string nombre, string apellido, string mail, string dni, SqlConnection conexion)
+        {
+
+            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.Cliente WHERE clie_userId IS NULL", conexion);
+
+            return command;
+
+        }
+
         public SqlCommand altaCliente(String nombre, String apellido, long dni, int cp,int userID, String direccion, String ciudad, String mail,long telefono, DateTime fechaNacimiento, SqlConnection conexion)
         {
             SqlCommand command = new SqlCommand("INSERT INTO PASO_A_PASO.Cliente (clie_dni,clie_nombre,clie_apellido,clie_userID,clie_mail,clie_telefono,clie_direccion,clie_saldo,clie_codigoPostal,clie_ciudad,clie_fechaNacimiento) VALUES (@dni,@nombre,@apellido,@userID,@mail,@telefono,@direccion,0,@codpos,@ciudad,@fecha)",conexion);
@@ -422,5 +491,29 @@ namespace FrbaOfertas.Repositorios
         }
 
 
+
+
+        public SqlCommand deshabilitarCliente(string id, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.deshabilitarCliente @clie_id=@_id", conexion);
+            SqlParameter param = this.nuevoParametroString("@_id", id);
+            command.Parameters.Add(param);
+            return command;
+
+        }
+
+        public SqlCommand asignarUsuarioACliente(string clie_id, string usuario,string contrasena,SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.asignarUsuarioACliente @clie_id=@_id, @usuarioNuevo=@_usuario,@contraNuevo=@_contra", conexion);
+            SqlParameter param = this.nuevoParametroInt("@_id", Convert.ToInt32(clie_id));
+            SqlParameter param1 = this.nuevoParametroString("@_usuario", usuario);
+            SqlParameter param2 = this.nuevoParametroString("@_contra", contrasena);
+
+            command.Parameters.Add(param);
+            command.Parameters.Add(param1);
+            command.Parameters.Add(param2);
+
+            return command;
+        }
     }
 }

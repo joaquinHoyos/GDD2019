@@ -53,8 +53,8 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.tableLayoutPanel1);
-            this.splitContainer1.Size = new System.Drawing.Size(1164, 514);
-            this.splitContainer1.SplitterDistance = 55;
+            this.splitContainer1.Size = new System.Drawing.Size(1164, 570);
+            this.splitContainer1.SplitterDistance = 60;
             this.splitContainer1.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -74,6 +74,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1158, 49);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -82,7 +83,7 @@
             this.btnFactura.BackColor = System.Drawing.Color.Silver;
             this.btnFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFactura.Location = new System.Drawing.Point(465, 3);
+            this.btnFactura.Location = new System.Drawing.Point(3, 3);
             this.btnFactura.Name = "btnFactura";
             this.btnFactura.Size = new System.Drawing.Size(225, 43);
             this.btnFactura.TabIndex = 5;
@@ -95,19 +96,21 @@
             this.btnProveedores.BackColor = System.Drawing.Color.Silver;
             this.btnProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProveedores.Location = new System.Drawing.Point(696, 3);
+            this.btnProveedores.Location = new System.Drawing.Point(234, 3);
             this.btnProveedores.Name = "btnProveedores";
             this.btnProveedores.Size = new System.Drawing.Size(225, 43);
             this.btnProveedores.TabIndex = 4;
             this.btnProveedores.Text = "Proveedores";
             this.btnProveedores.UseVisualStyleBackColor = false;
+            this.btnProveedores.Click += new System.EventHandler(this.btnProveedores_Click);
             // 
             // btnClientes
             // 
             this.btnClientes.BackColor = System.Drawing.Color.Silver;
             this.btnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClientes.Location = new System.Drawing.Point(3, 3);
+            this.btnClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnClientes.Location = new System.Drawing.Point(465, 3);
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.Size = new System.Drawing.Size(225, 43);
             this.btnClientes.TabIndex = 3;
@@ -120,7 +123,7 @@
             this.btn_Roles.BackColor = System.Drawing.Color.Silver;
             this.btn_Roles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Roles.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Roles.Location = new System.Drawing.Point(234, 3);
+            this.btn_Roles.Location = new System.Drawing.Point(696, 3);
             this.btn_Roles.Name = "btn_Roles";
             this.btn_Roles.Size = new System.Drawing.Size(225, 43);
             this.btn_Roles.TabIndex = 1;
@@ -150,7 +153,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1164, 514);
+            this.ClientSize = new System.Drawing.Size(1164, 570);
             this.Controls.Add(this.splitContainer1);
             this.Name = "Admin_Form";
             this.Text = "Admin_Form";

@@ -86,6 +86,12 @@
     <Compile Include="Forms\AltaProveedor.Designer.cs">
       <DependentUpon>AltaProveedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AsignarUsuarioACliente_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AsignarUsuarioACliente_Form.Designer.cs">
+      <DependentUpon>AsignarUsuarioACliente_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CargaCredito.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AltaProveedor.resx">
       <DependentUpon>AltaProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AsignarUsuarioACliente_Form.resx">
+      <DependentUpon>AsignarUsuarioACliente_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CargaCredito.resx">
       <DependentUpon>CargaCredito.cs</DependentUpon>

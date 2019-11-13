@@ -120,6 +120,150 @@ namespace FrbaOfertas.Repositorios
             {
                 throw e;
             }
+        }
+
+        public DataTable buscarCliente(String nombre, String apellido, String mail, String dni)
+        {
+
+            
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().buscarClientes(nombre, apellido,mail ,dni,conexion);
+            SqlDataReader reader = command.ExecuteReader();
+
+            DataTable tabla = new DataTable();
+            tabla.Columns.Add(new DataColumn("ID"));
+            tabla.Columns.Add(new DataColumn("Dni"));
+            tabla.Columns.Add(new DataColumn("Nombre"));
+            tabla.Columns.Add(new DataColumn("Apellido"));
+            tabla.Columns.Add(new DataColumn("User id"));
+            if (!reader.HasRows)
+            {
+                return null;
+            }
+
+            while (reader.Read())
+            {
+           
+               
+            DataRow row = tabla.NewRow();
+
+            row["ID"] = reader["clie_id"];
+            row["Dni"] = reader["clie_dni"];
+            row["Nombre"] = reader["clie_nombre"];
+            row["Apellido"] = reader["clie_apellido"];
+            row["User id"] = reader["user_id"];
+     
+             tabla.Rows.Add(row);
+
+            }
+
+            return tabla;
+
+        }
+
+        public void altaCliente(String nombre, String apellido, long dni, int cp, String direccion, String ciudad, String mail,long telefono, DateTime fechaNacimiento)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().altaCliente(nombre, apellido, dni, cp, idActual, direccion, ciudad, mail,telefono, fechaNacimiento, conexion);
+            command.ExecuteNonQuery();
+            MessageBox.Show("Cliente registrado");
+            new LoginUsuario().Show();
+            
+        }
+
+        public void altaProveedor(String cuit, String razon, String mail,long telefono,String direccion,int codigoPostal,String ciudad,int rubroID,String nombre)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().altaProveedor(cuit, razon,idActual, mail,telefono,direccion,codigoPostal,ciudad,rubroID, nombre, conexion);
+            command.ExecuteNonQuery();
+            MessageBox.Show("Proveedor registrado");
+            new LoginUsuario().Show();
+            
+        }
+
+        public int tieneClienteOProveedor() {
+
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().tieneClienteOProveedor(idActual,conexion);
+            SqlDataReader reader = command.ExecuteReader();
+            reader.Read();
+            return Convert.ToInt32(reader[0]);
+
+        }
+
+
+        public List<Rubro> traerRubros() {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().traerRubros(conexion);
+            List<Rubro> listaRubros = new List<Rubro>();
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+
+                    listaRubros.Add(new Rubro(Convert.ToInt32(reader["rubr_id"]) , reader["rubr_nombre"].ToString()));
+
+                }
+            }
+           conexion.Close();
+           return listaRubros;
+        }
+        
+        
+
+        public DataTable buscarClienteSinUsuario(String nombre, String apellido, String mail, String dni)
+        {
+
+
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().buscarClientesSinUsuario(nombre, apellido, mail, dni, conexion);
+            SqlDataReader reader = command.ExecuteReader();
+
+            DataTable tabla = new DataTable();
+            tabla.Columns.Add(new DataColumn("ID"));
+            tabla.Columns.Add(new DataColumn("Dni"));
+            tabla.Columns.Add(new DataColumn("Nombre"));
+            tabla.Columns.Add(new DataColumn("Apellido"));
+            tabla.Columns.Add(new DataColumn("Direccion"));
+            tabla.Columns.Add(new DataColumn("Mail"));
+            tabla.Columns.Add(new DataColumn("Telefono"));
+            tabla.Columns.Add(new DataColumn("Saldo"));
+            tabla.Columns.Add(new DataColumn("Ciudad"));
+            tabla.Columns.Add(new DataColumn("Fecha Nacimiento"));
+            tabla.Columns.Add(new DataColumn("Codigo Postal"));
+
+
+
+            if (!reader.HasRows)
+            {
+                return null;
+            }
+
+            while (reader.Read())
+            {
+
+
+                DataRow row = tabla.NewRow();
+
+                row["ID"] = reader["clie_id"];
+                row["Dni"] = reader["clie_dni"];
+                row["Nombre"] = reader["clie_nombre"];
+                row["Apellido"] = reader["clie_apellido"];
+                row["Direccion"] = reader["clie_direccion"];
+                row["Mail"] = reader["clie_mail"];
+                row["Telefono"] = reader["clie_telefono"];
+                row["Saldo"] = reader["clie_saldo"];
+                row["Ciudad"] = reader["clie_ciudad"];
+                row["Fecha Nacimiento"] = reader["clie_fechaNacimiento"];
+                row["Codigo Postal"] = reader["clie_codigoPostal"];
+
+
+                tabla.Rows.Add(row);
+
+            }
+
+            return tabla;
+
         }
 
         public DataTable buscarCliente(String nombre, String apellido, String mail, String dni)
@@ -135,7 +279,16 @@ namespace FrbaOfertas.Repositorios
             tabla.Columns.Add(new DataColumn("Dni"));
             tabla.Columns.Add(new DataColumn("Nombre"));
             tabla.Columns.Add(new DataColumn("Apellido"));
-            tabla.Columns.Add(new DataColumn("User id"));
+            tabla.Columns.Add(new DataColumn("Direccion"));
+            tabla.Columns.Add(new DataColumn("Mail"));
+            tabla.Columns.Add(new DataColumn("Telefono"));
+            tabla.Columns.Add(new DataColumn("Saldo"));
+            tabla.Columns.Add(new DataColumn("Ciudad"));
+            tabla.Columns.Add(new DataColumn("Fecha Nacimiento"));
+            tabla.Columns.Add(new DataColumn("Codigo Postal"));
+            
+
+
             if (!reader.HasRows)
             {
                 return null;
@@ -151,7 +304,14 @@ namespace FrbaOfertas.Repositorios
             row["Dni"] = reader["clie_dni"];
             row["Nombre"] = reader["clie_nombre"];
             row["Apellido"] = reader["clie_apellido"];
-            row["User id"] = reader["user_id"];
+            row["Direccion"] = reader["clie_direccion"];
+            row["Mail"] = reader["clie_mail"];
+            row["Telefono"] = reader["clie_telefono"];
+            row["Saldo"] = reader["clie_saldo"];
+            row["Ciudad"] = reader["clie_ciudad"];
+            row["Fecha Nacimiento"] = reader["clie_fechaNacimiento"];
+            row["Codigo Postal"] = reader["clie_codigoPostal"];
+            
      
              tabla.Rows.Add(row);
 
@@ -174,40 +334,15 @@ namespace FrbaOfertas.Repositorios
         public void altaProveedor(String cuit, String razon, String mail,long telefono,String direccion,int codigoPostal,String ciudad,int rubroID,String nombre)
         {
             SqlConnection conexion = ServerSQL.instance().levantarConexion();
-            SqlCommand command = QueryFactory.instance().altaProveedor(cuit, razon,idActual, mail,telefono,direccion,codigoPostal,ciudad,rubroID, nombre, conexion);
+            SqlCommand command = QueryFactory.instance().altaProveedor(cuit,  razon,idActual, mail,telefono,direccion,codigoPostal,ciudad,rubroID, nombre, conexion);
             command.ExecuteNonQuery();
             MessageBox.Show("Proveedor registrado");
             new LoginUsuario().Show();
             
         }
 
-        public int tieneClienteOProveedor() {
-
-            SqlConnection conexion = ServerSQL.instance().levantarConexion();
-            SqlCommand command = QueryFactory.instance().tieneClienteOProveedor(idActual,conexion);
-            SqlDataReader reader = command.ExecuteReader();
-            reader.Read();
-            return Convert.ToInt32(reader[0]);
-
-        }
 
 
-        public List<Rubro> traerRubros() {
-            SqlConnection conexion = ServerSQL.instance().levantarConexion();
-            SqlCommand command = QueryFactory.instance().traerRubros(conexion);
-            List<Rubro> listaRubros = new List<Rubro>();
-            using (SqlDataReader reader = command.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-
-                    listaRubros.Add(new Rubro(Convert.ToInt32(reader["rubr_id"]) , reader["rubr_nombre"].ToString()));
-
-                }
-            }
-           conexion.Close();
-           return listaRubros;
-        }
         
     }
 

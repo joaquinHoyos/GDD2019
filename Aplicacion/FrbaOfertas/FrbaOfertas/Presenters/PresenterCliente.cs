@@ -73,17 +73,51 @@ namespace FrbaOfertas.Presenters
               return RepoUsuario.instance().buscarCliente(nombre, apellido, mail, dni);
           }
 
+          public DataTable buscarClientes(String nombre, String apellido, String mail, String dni)
+          {
+
+              return RepoUsuario.instance().buscarClienteSinUsuario(nombre, apellido, mail, dni);
+          }
+
           public void crearNuevoCliente(String nombre, String apellido, String dni, String mail, String telefono, String saldo, String direccion, String ciudad, String codPostal, String fechaNac)
           {
               try
               {
-                  Cliente nuevoCliente = new Cliente(-1, Convert.ToInt32(dni), nombre, apellido);
+                  Cliente nuevoCliente = new Cliente(-1, nombre, apellido, Convert.ToInt64(dni),-1,mail,telefono,direccion,Convert.ToDouble(saldo),Convert.ToInt32(codPostal),ciudad,Convert.ToDateTime(fechaNac));
                   RepoCliente.instance().crearCliente(nuevoCliente);
                   MessageBox.Show("Cliente Creado Correctamente");
               }
               catch (Exception ex)
               {
                   MessageBox.Show("Error al crear el nuevo Cliente \n" + ex.Message);
+              }
+          }
+
+          public void modificarCliente(String clie_id, String nombre, String apellido, String dni, String mail, String telefono, String saldo, String direccion, String ciudad, String codPostal, String fechaNac)
+          {
+              try
+              {
+                  Cliente nuevoCliente = new Cliente(-1, nombre, apellido, Convert.ToInt64(dni), -1, mail, telefono, direccion, Convert.ToDouble(saldo), Convert.ToInt32(codPostal), ciudad, Convert.ToDateTime(fechaNac));
+                  RepoCliente.instance().modificarCliente(clie_id,nuevoCliente);
+                  MessageBox.Show("Cliente Modificado Correctamente");
+              }
+              catch (Exception ex)
+              {
+                  MessageBox.Show("Error al modificar Cliente \n" + ex.Message);
+              }
+          }
+
+          public void deshabilitarCliente(String clie_id)
+          {
+              try
+              {
+                  
+                  RepoCliente.instance().deshabilitarCliente(clie_id);
+                  MessageBox.Show("Cliente Deshabilitado Correctamente");
+              }
+              catch (Exception ex)
+              {
+                  MessageBox.Show("Error al deshabilitar Cliente \n" + ex.Message);
               }
           }
 

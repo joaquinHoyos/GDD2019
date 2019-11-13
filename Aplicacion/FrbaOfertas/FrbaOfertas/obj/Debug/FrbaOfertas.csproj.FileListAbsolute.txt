@@ -72,3 +72,8 @@ Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.AltaCliente.
 Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.ListadoEstadisitico.resources
 >>>>>>> master
 Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.AltaProveedor.resources
+E:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.AltaCliente.resources
+E:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.ABMCliente.resources
+E:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.AltaProveedor.resources
+E:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.ListadoEstadisitico.resources
+E:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.AsignarUsuarioACliente_Form.resources
