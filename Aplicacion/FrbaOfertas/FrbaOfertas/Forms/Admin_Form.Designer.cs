@@ -31,12 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnClientes = new System.Windows.Forms.Button();
-            this.btnEstadistica = new System.Windows.Forms.Button();
-            this.btn_Roles = new System.Windows.Forms.Button();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btnProveedores = new System.Windows.Forms.Button();
             this.btnFactura = new System.Windows.Forms.Button();
+            this.btnProveedores = new System.Windows.Forms.Button();
+            this.btnClientes = new System.Windows.Forms.Button();
+            this.btn_Roles = new System.Windows.Forms.Button();
+            this.btnEstadistica = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -77,6 +77,31 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1158, 49);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
+            // btnFactura
+            // 
+            this.btnFactura.BackColor = System.Drawing.Color.Silver;
+            this.btnFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFactura.Location = new System.Drawing.Point(465, 3);
+            this.btnFactura.Name = "btnFactura";
+            this.btnFactura.Size = new System.Drawing.Size(225, 43);
+            this.btnFactura.TabIndex = 5;
+            this.btnFactura.Text = "Facturas";
+            this.btnFactura.UseVisualStyleBackColor = false;
+            this.btnFactura.Click += new System.EventHandler(this.btnFactura_Click);
+            // 
+            // btnProveedores
+            // 
+            this.btnProveedores.BackColor = System.Drawing.Color.Silver;
+            this.btnProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProveedores.Location = new System.Drawing.Point(696, 3);
+            this.btnProveedores.Name = "btnProveedores";
+            this.btnProveedores.Size = new System.Drawing.Size(225, 43);
+            this.btnProveedores.TabIndex = 4;
+            this.btnProveedores.Text = "Proveedores";
+            this.btnProveedores.UseVisualStyleBackColor = false;
+            // 
             // btnClientes
             // 
             this.btnClientes.BackColor = System.Drawing.Color.Silver;
@@ -89,18 +114,6 @@
             this.btnClientes.Text = "Clientes";
             this.btnClientes.UseVisualStyleBackColor = false;
             this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
-            // 
-            // btnEstadistica
-            // 
-            this.btnEstadistica.BackColor = System.Drawing.Color.Silver;
-            this.btnEstadistica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEstadistica.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEstadistica.Location = new System.Drawing.Point(927, 3);
-            this.btnEstadistica.Name = "btnEstadistica";
-            this.btnEstadistica.Size = new System.Drawing.Size(228, 43);
-            this.btnEstadistica.TabIndex = 2;
-            this.btnEstadistica.Text = "Estadistica";
-            this.btnEstadistica.UseVisualStyleBackColor = false;
             // 
             // btn_Roles
             // 
@@ -115,34 +128,23 @@
             this.btn_Roles.UseVisualStyleBackColor = false;
             this.btn_Roles.Click += new System.EventHandler(this.btn_Roles_Click);
             // 
+            // btnEstadistica
+            // 
+            this.btnEstadistica.BackColor = System.Drawing.Color.Silver;
+            this.btnEstadistica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEstadistica.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEstadistica.Location = new System.Drawing.Point(927, 3);
+            this.btnEstadistica.Name = "btnEstadistica";
+            this.btnEstadistica.Size = new System.Drawing.Size(228, 43);
+            this.btnEstadistica.TabIndex = 2;
+            this.btnEstadistica.Text = "Estadistica";
+            this.btnEstadistica.UseVisualStyleBackColor = false;
+            this.btnEstadistica.Click += new System.EventHandler(this.btnEstadistica_Click);
+            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // btnProveedores
-            // 
-            this.btnProveedores.BackColor = System.Drawing.Color.Silver;
-            this.btnProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProveedores.Location = new System.Drawing.Point(696, 3);
-            this.btnProveedores.Name = "btnProveedores";
-            this.btnProveedores.Size = new System.Drawing.Size(225, 43);
-            this.btnProveedores.TabIndex = 4;
-            this.btnProveedores.Text = "Proveedores";
-            this.btnProveedores.UseVisualStyleBackColor = false;
-            // 
-            // btnFactura
-            // 
-            this.btnFactura.BackColor = System.Drawing.Color.Silver;
-            this.btnFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFactura.Location = new System.Drawing.Point(465, 3);
-            this.btnFactura.Name = "btnFactura";
-            this.btnFactura.Size = new System.Drawing.Size(225, 43);
-            this.btnFactura.TabIndex = 5;
-            this.btnFactura.Text = "Facturas";
-            this.btnFactura.UseVisualStyleBackColor = false;
             // 
             // Admin_Form
             // 

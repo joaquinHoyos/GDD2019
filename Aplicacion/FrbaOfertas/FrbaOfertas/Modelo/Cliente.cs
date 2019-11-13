@@ -26,6 +26,7 @@ namespace FrbaOfertas.Modelo
 
         public void setDatosUsuario(User usuario){
 
+<<<<<<< HEAD
             this.datosUsuario = usuario;
         }
 
@@ -44,3 +45,20 @@ namespace FrbaOfertas.Modelo
 
     }
 }
+=======
+            this.datosUsuario = usuario;
+        }
+
+        public Cliente(int id, long dni, String nombre, String apellido) {
+
+            this.clie_id = id;
+            this.clie_dni = dni;
+            this.nombreYApellido = apellido + ", " + nombre;
+            /*
+            this.clie_nombre = nombre;
+            this.clie_apellido = apellido;
+        */}
+
+    }
+}
+>>>>>>> master

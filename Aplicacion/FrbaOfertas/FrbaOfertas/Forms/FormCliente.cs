@@ -22,6 +22,7 @@ namespace FrbaOfertas.Forms
         public FormCliente()
         {
             InitializeComponent();
+            this.configurar();
         }
 
         
@@ -67,6 +68,15 @@ namespace FrbaOfertas.Forms
         private void btn_verCupones_Click(object sender, EventArgs e)
         {
             PresenterCliente.instance().cargarFormCupones(this, currentUserID);
+        }
+
+        public void configurar()
+        {
+            List<int> funciones = RepoUsuario.instance().userActual.funciones();
+            if(!funciones.Contains((int)Enum.Parse(typeof(EnumFunciones),"COMPRAR"))){this.btn_comprar.Enabled=false;}
+            if(!funciones.Contains((int)Enum.Parse(typeof(EnumFunciones),"VER_CUPON"))){this.btn_verCupones.Enabled=false;}
+            if(!funciones.Contains((int)Enum.Parse(typeof(EnumFunciones),"COMPARTIR_CUPON"))){}
+            if(!funciones.Contains((int)Enum.Parse(typeof(EnumFunciones),"CARGA_CREDITO"))){this.btn_cargaCredito.Enabled=false;}
         }
     }
 }

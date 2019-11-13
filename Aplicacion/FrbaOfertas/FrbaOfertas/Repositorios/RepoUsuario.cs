@@ -31,6 +31,7 @@ namespace FrbaOfertas.Repositorios
     {
         public static RepoUsuario repo;
         public int idActual;
+        public User userActual {get;private set;}
 
         public static RepoUsuario instance()
         {
@@ -72,6 +73,7 @@ namespace FrbaOfertas.Repositorios
             {
                 User user = new User(reader.GetInt32(0), reader.GetSqlString(1).ToString(), reader.GetSqlString(2).ToString(), reader.GetInt32(3), reader.GetSqlString(4).ToString().ToCharArray()[0], reader.GetDateTime(5));
                 user.setRoles(this.traerFunciones(user.user_id));
+                this.userActual = user; 
                 return user;
             }
             return null;

@@ -188,9 +188,16 @@ namespace FrbaOfertas.Repositorios
             command.ExecuteNonQuery();
         }
 
+<<<<<<< HEAD
         
 
 
 
     }
 }
+=======
+
+
+    }
+}
+>>>>>>> master
