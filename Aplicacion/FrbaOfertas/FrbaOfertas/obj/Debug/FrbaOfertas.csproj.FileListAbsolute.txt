@@ -69,6 +69,6 @@ C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\
 >>>>>>> Stashed changes
 <<<<<<< HEAD
 Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.AltaCliente.resources
-=======
 Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.ListadoEstadisitico.resources
 >>>>>>> master
+Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.AltaProveedor.resources

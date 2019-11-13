@@ -80,6 +80,12 @@
     <Compile Include="Forms\Admin_Form.Designer.cs">
       <DependentUpon>Admin_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AltaProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AltaProveedor.Designer.cs">
+      <DependentUpon>AltaProveedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CargaCredito.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Admin_Form.resx">
       <DependentUpon>Admin_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AltaProveedor.resx">
+      <DependentUpon>AltaProveedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CargaCredito.resx">
       <DependentUpon>CargaCredito.cs</DependentUpon>
