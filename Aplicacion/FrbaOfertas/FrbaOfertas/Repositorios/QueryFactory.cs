@@ -388,7 +388,7 @@ namespace FrbaOfertas.Repositorios
 
         public SqlCommand altaProveedor(String cuit, String razon, int userID, String mail, long telefono, String direccion, int cp, String ciudad, int rubroID, String nombre, SqlConnection conexion)
     {
-                    SqlCommand command = new SqlCommand("INSERT INTO PASO_A_PASO.Proveedor VALUES (@cuit,@razon,@userID,@mail,@telefono,@direccion,@codpos,@ciudad,@rubrID,@nombre)",conexion);
+                    SqlCommand command = new SqlCommand("INSERT INTO PASO_A_PASO.Proveedor (prov_cuit,prov_razon,prov_userId,prov_mail,prov_telefono,prov_direccion,prov_codigoPostal,prov_ciudad,prov_rubro,prov_nombre,prov_habilitado) VALUES (@cuit,@razon,@userID,@mail,@telefono,@direccion,@codpos,@ciudad,@rubrID,@nombre,'1')",conexion);
             
             command.Parameters.Add(this.nuevoParametroString("@razon", razon));
             command.Parameters.Add(this.nuevoParametroString("@cuit", cuit));

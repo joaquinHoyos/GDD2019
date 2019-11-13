@@ -174,7 +174,7 @@ namespace FrbaOfertas.Repositorios
         public void altaProveedor(String cuit, String razon, String mail,long telefono,String direccion,int codigoPostal,String ciudad,int rubroID,String nombre)
         {
             SqlConnection conexion = ServerSQL.instance().levantarConexion();
-            SqlCommand command = QueryFactory.instance().altaProveedor(cuit,  razon,idActual, mail,telefono,direccion,codigoPostal,ciudad,rubroID, nombre, conexion);
+            SqlCommand command = QueryFactory.instance().altaProveedor(cuit, razon,idActual, mail,telefono,direccion,codigoPostal,ciudad,rubroID, nombre, conexion);
             command.ExecuteNonQuery();
             MessageBox.Show("Proveedor registrado");
             new LoginUsuario().Show();

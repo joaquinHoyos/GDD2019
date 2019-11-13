@@ -38,15 +38,15 @@ namespace FrbaOfertas.Presenters
                 List<int> funciones = grupos.Find(x => x.grupo == 'C').funciones;
                 if (funciones.Count > 0)
                 {
-
-                    new AltaCliente().Show();
-
+                    new AltaProveedor().Show();
+                    this.login_form.Hide();
                 }
-
+                else
                 {
 
-                    new AltaProveedor().Show();
-
+                    new AltaCliente().Show();
+                    this.login_form.Hide();
+                   
                 }
 
                 this.redireccionarUsuario(user);
