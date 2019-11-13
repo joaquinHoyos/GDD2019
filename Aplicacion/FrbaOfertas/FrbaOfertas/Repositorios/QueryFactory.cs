@@ -408,7 +408,7 @@ namespace FrbaOfertas.Repositorios
 
         public SqlCommand tieneClienteOProveedor(int userID, SqlConnection conexion){
 
-            SqlCommand command = new SqlCommand("SELECT CASE WHEN EXISTS(SELECT * FROM PASO_A_PASO.Cliente WHERE 0= clie_userId) OR EXISTS(SELECT * FROM PASO_A_PASO.Proveedor WHERE 0 = prov_userId) THEN 1 ELSE 0 END ;", conexion);
+            SqlCommand command = new SqlCommand("SELECT CASE WHEN EXISTS(SELECT * FROM PASO_A_PASO.Cliente WHERE @userID= clie_userId) OR EXISTS(SELECT * FROM PASO_A_PASO.Proveedor WHERE @userID = prov_userId) THEN 1 ELSE 0 END ;", conexion);
             command.Parameters.Add(this.nuevoParametroInt("@userID", userID));
             return command;        
 
