@@ -32,6 +32,7 @@ namespace FrbaOfertas.Presenters
             User user = RepoUsuario.instance().buscarUsuarioPorClave(usuario, clave);
             if (user != null)
             {
+                RepoUsuario.instance().registrarInicioValido(usuario);
                 RepoUsuario.instance().setUsuarioActual(user.user_id);
                 //VER SI DIRECCIONAR A altaCliente o a altaProveedor
 
@@ -67,7 +68,9 @@ namespace FrbaOfertas.Presenters
             }
             else
             {
+                RepoUsuario.instance().registrarInicioFallido(usuario);
                 MessageBox.Show("Error: contraseña o usuario incorrecto");
+                
             }
         }
 

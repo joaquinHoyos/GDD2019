@@ -558,5 +558,20 @@ namespace FrbaOfertas.Repositorios
             return command;
         }
 
+        public SqlCommand inicioValido(String username, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.inicioValido @user = @username", conexion);
+            command.Parameters.Add(this.nuevoParametroString("@username", username));
+            return command;
+        }
+
+        public SqlCommand inicioFallido(String username, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.inicioFallido @user = @username", conexion);
+            command.Parameters.Add(this.nuevoParametroString("@username", username));
+            return command;
+        }
+
+
     }
 }

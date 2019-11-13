@@ -283,6 +283,51 @@ namespace FrbaOfertas.Repositorios
 
         }
 
+        public void registrarInicioFallido(String username)
+        {
+
+
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+
+            SqlCommand command = QueryFactory.instance().inicioFallido(username, conexion);
+
+
+            try
+            {
+
+                command.ExecuteNonQuery();
+            }
+            catch (SqlException e)
+            {
+                throw e;
+            }
+
+
+        }
+
+        public void registrarInicioValido(String username)
+        {
+
+            if (idActual != null)
+            {
+                SqlConnection conexion = ServerSQL.instance().levantarConexion();
+
+                SqlCommand command = QueryFactory.instance().inicioValido(username, conexion);
+
+
+                try
+                {
+
+                    command.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    throw e;
+                }
+
+            }
+        }
+
   
     }
 

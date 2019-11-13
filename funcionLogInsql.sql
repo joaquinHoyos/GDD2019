@@ -2,5 +2,5 @@ CREATE FUNCTION PASO_A_PASO.logInUsuario (@username varchar(32),@password varcha
 RETURNS TABLE
 AS
 	RETURN SELECT * FROM PASO_A_PASO.Usuario
-	WHERE user_username = @username AND user_password=HASHBYTES('SHA2_256',@password)
+	WHERE user_username = @username AND user_password=HASHBYTES('SHA2_256',@password) AND user_status = 'E'
 
