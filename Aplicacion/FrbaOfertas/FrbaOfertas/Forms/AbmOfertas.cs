@@ -18,6 +18,9 @@ namespace FrbaOfertas.Forms
         public AbmOfertas()
         {
             InitializeComponent();
+            TopLevel = false;
+            FormBorderStyle = FormBorderStyle.None;
+            
         }
 
         private void btn_Buscar_Click(object sender, EventArgs e)
@@ -195,6 +198,11 @@ namespace FrbaOfertas.Forms
             txtCantDisponible.Enabled = true;
             txtMaxCantUsuario.Enabled = true;
             btn_Guardar.Enabled = true;
+        }
+
+        private void AbmOfertas_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

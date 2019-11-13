@@ -38,18 +38,24 @@ namespace FrbaOfertas.Presenters
                 if (RepoUsuario.instance().tieneClienteOProveedor() == 0)
                 {
                     List<Grupo> grupos = RepoUsuario.instance().traerFunciones(user.user_id);
-                    List<int> funciones = grupos.Find(x => x.grupo == 'C').funciones;
-                    if (funciones.Count > 0)
+                    //List<int> funciones = grupos.Any(x => x.grupo == 'C');
+                    if (grupos.Any(x => x.grupo == 'C'))
                     {
                         
                         new AltaCliente().Show();
                         this.login_form.Hide();
                     }
-                    else
+                    else if (grupos.Any(x => x.grupo == 'P'))
                     {
                         new AltaProveedor().Show();
                         this.login_form.Hide();
 
+                    }
+                    else {
+                        this.redireccionarUsuario(user);
+                        this.login_form.Hide();
+                        return;
+                    
                     }
                 }
                 else
@@ -178,7 +184,7 @@ namespace FrbaOfertas.Presenters
 
         public void cargarAbmOfertas(Prov_Form form)
         {
-            //form.splitContainer1.Panel2.Controls.Add(this.getAbmOfertaForm());
+            form.splitContainer1.Panel2.Controls.Add(this.getAbmOfertaForm());
             this.getAbmOfertaForm().Show();
         }
 
