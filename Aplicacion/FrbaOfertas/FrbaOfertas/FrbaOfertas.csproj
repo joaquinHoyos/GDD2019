@@ -86,6 +86,12 @@
     <Compile Include="Forms\Comprar.Designer.cs">
       <DependentUpon>Comprar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ListadoEstadisitico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ListadoEstadisitico.Designer.cs">
+      <DependentUpon>ListadoEstadisitico.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Prov_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Comprar.resx">
       <DependentUpon>Comprar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ListadoEstadisitico.resx">
+      <DependentUpon>ListadoEstadisitico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Prov_Form.resx">
       <DependentUpon>Prov_Form.cs</DependentUpon>

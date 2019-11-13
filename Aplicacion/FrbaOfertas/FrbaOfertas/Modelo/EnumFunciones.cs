@@ -11,7 +11,7 @@
         ABM_USUARIO,
         ABM_ROL,
         ABM_CLIENTE,
-        ABM_PROVEEDOR
-        
+        ABM_PROVEEDOR,
+        VER_ESTADISTICAS
     }
 }

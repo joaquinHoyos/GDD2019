@@ -71,6 +71,11 @@ namespace FrbaOfertas.Modelo
             this.roles = l;
         }
 
+        public List<int> funciones()
+        {
+            return this.roles.SelectMany(rol => rol.funciones).ToList();
+        }
+
         public bool esAdmin()
         {
             return roles.Any(rol => rol.grupo == 'A');
