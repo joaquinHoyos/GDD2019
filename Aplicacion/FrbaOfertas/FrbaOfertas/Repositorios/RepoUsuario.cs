@@ -24,6 +24,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using FrbaOfertas.Server;
 using FrbaOfertas.Modelo;
+using FrbaOfertas.Forms;
 
 namespace FrbaOfertas.Repositorios
 {
@@ -166,6 +167,8 @@ namespace FrbaOfertas.Repositorios
             SqlCommand command = QueryFactory.instance().altaCliente(nombre, apellido, dni, cp, idActual, direccion, ciudad, mail,telefono, fechaNacimiento, conexion);
             command.ExecuteNonQuery();
             MessageBox.Show("Cliente registrado");
+            new LoginUsuario().Show();
+            
         }
 
         public void altaProveedor(String cuit, String razon, String mail,long telefono,String direccion,int codigoPostal,String ciudad,int rubroID,String nombre)
@@ -174,6 +177,8 @@ namespace FrbaOfertas.Repositorios
             SqlCommand command = QueryFactory.instance().altaProveedor(cuit,  razon,idActual, mail,telefono,direccion,codigoPostal,ciudad,rubroID, nombre, conexion);
             command.ExecuteNonQuery();
             MessageBox.Show("Proveedor registrado");
+            new LoginUsuario().Show();
+            
         }
         
     }
