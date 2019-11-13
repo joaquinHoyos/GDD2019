@@ -234,5 +234,23 @@ namespace FrbaOfertas.Repositorios
             SqlCommand command = QueryFactory.instance().modificarRol(rol, nombre, funciones, conexion);
             command.ExecuteNonQuery();
         }
+
+        public List<Rol> traerTodosLosRoles()
+        {
+             SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            List<Rol> devolver = new List<Rol>();
+            SqlCommand command = QueryFactory.instance().traerTodosLosRoles(conexion);
+            SqlDataReader reader = command.ExecuteReader();
+
+
+            while (reader.Read())
+            {
+                Rol rolAux = new Rol(Convert.ToInt32(reader["rol_id"]), reader["rol_nombre"].ToString(),null,'E');
+                devolver.Add(rolAux);
+
+            }
+
+            return devolver;
+        }
     }
 }

@@ -37,6 +37,7 @@
             this.btnCrearUsuario = new System.Windows.Forms.Button();
             this.btnCargarClientes = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
+            this.list_Roles = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,14 +63,14 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(678, 117);
+            this.textBox1.Location = new System.Drawing.Point(684, 72);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(198, 20);
             this.textBox1.TabIndex = 38;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(678, 189);
+            this.textBox2.Location = new System.Drawing.Point(684, 144);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(198, 20);
             this.textBox2.TabIndex = 39;
@@ -78,7 +79,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(724, 72);
+            this.label2.Location = new System.Drawing.Point(730, 27);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(108, 31);
             this.label2.TabIndex = 40;
@@ -88,7 +89,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(700, 140);
+            this.label3.Location = new System.Drawing.Point(706, 95);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(155, 31);
             this.label3.TabIndex = 41;
@@ -97,7 +98,7 @@
             // btnCrearUsuario
             // 
             this.btnCrearUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCrearUsuario.Location = new System.Drawing.Point(695, 238);
+            this.btnCrearUsuario.Location = new System.Drawing.Point(722, 334);
             this.btnCrearUsuario.Name = "btnCrearUsuario";
             this.btnCrearUsuario.Size = new System.Drawing.Size(160, 72);
             this.btnCrearUsuario.TabIndex = 42;
@@ -127,11 +128,20 @@
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
+            // list_Roles
+            // 
+            this.list_Roles.FormattingEnabled = true;
+            this.list_Roles.Location = new System.Drawing.Point(666, 180);
+            this.list_Roles.Name = "list_Roles";
+            this.list_Roles.Size = new System.Drawing.Size(246, 139);
+            this.list_Roles.TabIndex = 45;
+            // 
             // AsignarUsuarioACliente_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 491);
+            this.Controls.Add(this.list_Roles);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.btnCargarClientes);
             this.Controls.Add(this.btnCrearUsuario);
@@ -143,6 +153,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "AsignarUsuarioACliente_Form";
             this.Text = "AsignarUsuarioACliente_Form";
+            this.Load += new System.EventHandler(this.AsignarUsuarioACliente_Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -160,5 +171,6 @@
         private System.Windows.Forms.Button btnCrearUsuario;
         private System.Windows.Forms.Button btnCargarClientes;
         private System.Windows.Forms.Button btnCerrar;
+        public System.Windows.Forms.CheckedListBox list_Roles;
     }
 }

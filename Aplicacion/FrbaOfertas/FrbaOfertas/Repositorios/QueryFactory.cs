@@ -502,13 +502,29 @@ namespace FrbaOfertas.Repositorios
 
         }
 
-        public SqlCommand asignarUsuarioACliente(string clie_id, string usuario,string contrasena,SqlConnection conexion)
+        public SqlCommand asignarUsuarioACliente(string clie_id, string usuario, string contrasena, List<String> rolesDesc, SqlConnection conexion)
         {
-            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.asignarUsuarioACliente @clie_id=@_id, @usuarioNuevo=@_usuario,@contraNuevo=@_contra", conexion);
+            DataTable roles = new DataTable();
+            DataColumn columna = new DataColumn();
+            columna.ColumnName = "rol";
+            roles.Columns.Add(columna);
+
+            for (int i = 0; i < rolesDesc.Count; i++)
+            {
+
+                DataRow row = roles.NewRow();
+                row["rol"] = rolesDesc[i];
+                roles.Rows.Add(row);
+            }
+
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.asignarUsuarioACliente @clie_id=@_id, @username=@_usuario,@pass=@_contra,@roles=@_roles", conexion);
+
+            SqlParameter paramRoles = this.nuevoParametroTabla("@_roles", roles, "PASO_A_PASO.tablaRoles");
             SqlParameter param = this.nuevoParametroInt("@_id", Convert.ToInt32(clie_id));
             SqlParameter param1 = this.nuevoParametroString("@_usuario", usuario);
             SqlParameter param2 = this.nuevoParametroString("@_contra", contrasena);
 
+            command.Parameters.Add(paramRoles);
             command.Parameters.Add(param);
             command.Parameters.Add(param1);
             command.Parameters.Add(param2);
@@ -533,6 +549,12 @@ namespace FrbaOfertas.Repositorios
             command.Parameters.Add(param1);
             command.Parameters.Add(param2);
 
+            return command;
+        }
+
+        public SqlCommand traerTodosLosRoles(SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.ROl WHERE rol_estado = 'E' ", conexion);
             return command;
         }
 

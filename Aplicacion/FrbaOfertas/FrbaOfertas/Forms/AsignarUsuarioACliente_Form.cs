@@ -36,7 +36,7 @@ namespace FrbaOfertas.Forms
         {
             if (dataGridView1.SelectedRows != null)
             {
-               
+                
                 DataGridViewRow seleccionados = dataGridView1.SelectedRows[0];
                 this.clie_id_seleccionado = seleccionados.Cells[0].Value.ToString();
 
@@ -45,8 +45,8 @@ namespace FrbaOfertas.Forms
 
                 if (result == DialogResult.Yes)
                 {
-
-                    RepoCliente.instance().asignarUsuario(this.clie_id_seleccionado, textBox1.Text, textBox2.Text);
+                    List<String> rolesSeleccionados = this.getRolesSeleccionados();
+                    RepoCliente.instance().asignarUsuario(this.clie_id_seleccionado, textBox1.Text, textBox2.Text, rolesSeleccionados);
 
                 }
                
@@ -57,6 +57,30 @@ namespace FrbaOfertas.Forms
             {
                 MessageBox.Show("Porfavor seleccione algun registro");
             }
+        }
+
+        private List<String> getRolesSeleccionados()
+        {
+
+            List<String> rolesSelec = new List<String>();
+
+            foreach (String rolDesc in list_Roles.CheckedItems)
+            {
+
+                rolesSelec.Add(rolDesc);
+            }
+            return rolesSelec;
+
+        }
+
+        private void AsignarUsuarioACliente_Form_Load(object sender, EventArgs e)
+        {
+           List<Rol> listaRoles = RepoRol.instance().traerTodosLosRoles();
+
+           for (int i = 0; i < listaRoles.Count; i++)
+           {
+               list_Roles.Items.Add(listaRoles[i].nombre);
+           }
         }
 
 

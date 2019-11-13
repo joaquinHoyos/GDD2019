@@ -202,15 +202,14 @@ namespace FrbaOfertas.Repositorios
             command.ExecuteNonQuery();
         }
 
-        public void asignarUsuario(String clie_id,String usuario, String contrasena)
+        public void asignarUsuario(String clie_id, String usuario, String contrasena, List<String> listaRoles)
         {
             SqlConnection conexion = ServerSQL.instance().levantarConexion();
 
             try
             {
 
-
-                SqlCommand command = QueryFactory.instance().asignarUsuarioACliente(clie_id, usuario, contrasena, conexion);
+                SqlCommand command = QueryFactory.instance().asignarUsuarioACliente(clie_id, usuario, contrasena, listaRoles, conexion);
                 command.ExecuteNonQuery();
                 MessageBox.Show("Usuario asginado correctamente");
             }

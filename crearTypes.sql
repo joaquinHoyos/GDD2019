@@ -1,5 +1,9 @@
 CREATE TYPE PASO_A_PASO.tablaFuncion AS TABLE (funciones varchar(20))
 
+CREATE TYPE PASO_A_PASO.tablaRoles AS TABLE (rol varchar(20))
+
+
+
 CREATE TYPE PASO_A_PASO.tablaCliente AS TABLE (clie_dni Numeric(18,0), clie_nombre nvarchar(255),clie_apellido nvarchar(255), clie_userId int, clie_mail nvarchar(255), clie_telefono Numeric(18,0),clie_direccion nvarchar(255), clie_saldo int, clie_codigoPostal int, clie_ciudad nvarchar(255),clie_fechaNacimiento smalldatetime)
 
 CREATE TYPE PASO_A_PASO.tablaOferta AS TABLE (ofer_id nvarchar(50), ofer_descripcion varchar(255),ofer_fechaDesde smalldatetime, ofer_fechaHasta smalldatetime, ofer_precioOferta Numeric(18,2),ofer_precioLista Numeric(18,2), ofer_proveedor int, ofer_disponible Numeric(18,0),ofer_maxDisponible int)
