@@ -380,9 +380,30 @@ namespace FrbaOfertas.Repositorios
             command.Parameters.Add(this.nuevoParametroString("@mail", mail));
             command.Parameters.Add(this.nuevoParametroLong("@telefono", telefono));
             command.Parameters.Add(this.nuevoParametroString("@direccion", direccion));
+            command.Parameters.Add(this.nuevoParametroString("@ciudad", ciudad));
             command.Parameters.Add(this.nuevoParametroInt("@codpos", cp));
             command.Parameters.Add(this.nuevoParametroDateTime("@fecha", fechaNacimiento));
             return command;
         }
+
+        public SqlCommand altaProveedor(String cuit, String razon, int userID, String mail, long telefono, String direccion, int cp, String ciudad, int rubroID, String nombre, SqlConnection conexion)
+    {
+                    SqlCommand command = new SqlCommand("INSERT INTO PASO_A_PASO.Proveedor VALUES (@cuit,@razon,@userID,@mail,@telefono,@direccion,@codpos,@ciudad,@rubrID,@nombre)");
+            
+            command.Parameters.Add(this.nuevoParametroString("@razon", razon));
+            command.Parameters.Add(this.nuevoParametroString("@cuit", cuit));
+            command.Parameters.Add(this.nuevoParametroString("@nombre", nombre));
+            command.Parameters.Add(this.nuevoParametroInt("@userID", userID));
+            command.Parameters.Add(this.nuevoParametroInt("@rubrID", rubroID));
+            command.Parameters.Add(this.nuevoParametroString("@mail", mail));
+            command.Parameters.Add(this.nuevoParametroLong("@telefono", telefono));
+            command.Parameters.Add(this.nuevoParametroString("@direccion", direccion));
+            command.Parameters.Add(this.nuevoParametroInt("@codpos", cp));
+            command.Parameters.Add(this.nuevoParametroString("@ciudad", ciudad));
+            return command;
+    
+    
+    
+    }
     }
 }
