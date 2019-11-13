@@ -64,6 +64,11 @@
             // txt_DNI
             // 
             this.txt_DNI.Location = new System.Drawing.Point(34, 44);
+            this.txt_DNI.Maximum = new decimal(new int[] {
+            60000000,
+            0,
+            0,
+            0});
             this.txt_DNI.Name = "txt_DNI";
             this.txt_DNI.Size = new System.Drawing.Size(120, 20);
             this.txt_DNI.TabIndex = 1;
@@ -119,6 +124,11 @@
             // txt_Telefono
             // 
             this.txt_Telefono.Location = new System.Drawing.Point(262, 44);
+            this.txt_Telefono.Maximum = new decimal(new int[] {
+            99999999,
+            0,
+            0,
+            0});
             this.txt_Telefono.Name = "txt_Telefono";
             this.txt_Telefono.Size = new System.Drawing.Size(120, 20);
             this.txt_Telefono.TabIndex = 9;
@@ -152,6 +162,11 @@
             // txt_CP
             // 
             this.txt_CP.Location = new System.Drawing.Point(262, 153);
+            this.txt_CP.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
             this.txt_CP.Name = "txt_CP";
             this.txt_CP.Size = new System.Drawing.Size(120, 20);
             this.txt_CP.TabIndex = 13;

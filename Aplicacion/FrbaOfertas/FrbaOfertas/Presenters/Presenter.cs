@@ -11,7 +11,7 @@ namespace FrbaOfertas.Presenters
 {
     public class Presenter
     {
-        public static  Presenter presenter;
+        public static Presenter presenter;
         private Admin_Form admin_form;
         private LoginUsuario login_form;
         private AbmRol_Form abmRol_form;
@@ -22,7 +22,7 @@ namespace FrbaOfertas.Presenters
 
         public static Presenter instance()
         {
-            return presenter == null ? presenter=new Presenter() : presenter;
+            return presenter == null ? presenter = new Presenter() : presenter;
         }
 
 
@@ -36,16 +36,16 @@ namespace FrbaOfertas.Presenters
                 //VER SI DIRECCIONAR A altaCliente o a altaProveedor
                 List<Grupo> grupos = RepoUsuario.instance().traerFunciones(user.user_id);
                 List<int> funciones = grupos.Find(x => x.grupo == 'C').funciones;
-                if (funciones.Count > 0) {
-
-                    new AltaCliente().Show();
-                    
-                }
-                funciones = grupos.Find(x => x.grupo == 'P').funciones;
                 if (funciones.Count > 0)
                 {
 
                     new AltaCliente().Show();
+
+                }
+
+                {
+
+                    new AltaProveedor().Show();
 
                 }
 
@@ -54,10 +54,11 @@ namespace FrbaOfertas.Presenters
                 return;
             }
             MessageBox.Show("Error: contraseña o usuario incorrecto");
-         
+
         }
-       
-        private void redireccionarDios(){
+
+        private void redireccionarDios()
+        {
             DialogResult resultado = MessageBox.Show("Desea Ingresar como Administrador?", "", MessageBoxButtons.YesNo);
             if (resultado == DialogResult.No)
             {
@@ -78,27 +79,28 @@ namespace FrbaOfertas.Presenters
             }
         }
 
-        private void redireccionarAdminCliente() {
+        private void redireccionarAdminCliente()
+        {
             DialogResult resultado = MessageBox.Show("Desea ingresar como administrador? De lo contrario ingresara como Cliente", "", MessageBoxButtons.YesNo);
             if (resultado == DialogResult.Yes)
             {
                 getAdminForm().Show();
             }
-            else 
-            { 
-              //mostrar cliente 
+            else
+            {
+                //mostrar cliente 
                 this.getClienteForm().Show();
             }
         }
 
         private void redireccionarAdminProveedor()
-        { 
+        {
             DialogResult resultado = MessageBox.Show("Desea ingresar como administrador? De lo contrario ingresara como Proveedor", "", MessageBoxButtons.YesNo);
             if (resultado == DialogResult.Yes)
             {
                 getAdminForm().Show();
             }
-            else 
+            else
             {
                 prov_form.Show();
             }
@@ -112,14 +114,15 @@ namespace FrbaOfertas.Presenters
                 //mostrar cliente
                 this.getClienteForm().Show();
             }
-            else 
+            else
             {
                 prov_form.Show();
-            }        
+            }
         }
-      
-        public void redireccionarUsuario(User usuario){
-            if (usuario.esAdmin()&&usuario.esCliente()&&usuario.esProveedor())
+
+        public void redireccionarUsuario(User usuario)
+        {
+            if (usuario.esAdmin() && usuario.esCliente() && usuario.esProveedor())
             {
                 this.redireccionarDios();
             }
@@ -160,8 +163,8 @@ namespace FrbaOfertas.Presenters
         public void cargarAbmClientes(Admin_Form form)
         {
             form.splitContainer1.Panel2.Controls.Add(this.getAbmCliente());
-            
-          this.getAbmCliente().Show();
+
+            this.getAbmCliente().Show();
         }
 
 
@@ -171,25 +174,26 @@ namespace FrbaOfertas.Presenters
             this.getAbmOfertaForm().Show();
         }
 
-        
-        private Admin_Form getAdminForm(){
-            return this.admin_form==null?this.admin_form=new Admin_Form():this.admin_form;
+
+        private Admin_Form getAdminForm()
+        {
+            return this.admin_form == null ? this.admin_form = new Admin_Form() : this.admin_form;
         }
 
         private Prov_Form getProvForm()
         {
             return this.prov_form == null ? this.prov_form = new Prov_Form() : this.prov_form;
         }
-      
-      
+
+
         private LoginUsuario nuevoLoginForm()
         {
-            return this.login_form == null ? this.login_form=new LoginUsuario() : this.login_form;
+            return this.login_form == null ? this.login_form = new LoginUsuario() : this.login_form;
         }
 
         private AbmRol_Form getAbmRolForm()
         {
-            return this.abmRol_form == null ? this.abmRol_form=new AbmRol_Form() : this.abmRol_form;
+            return this.abmRol_form == null ? this.abmRol_form = new AbmRol_Form() : this.abmRol_form;
         }
         private ABMCliente getAbmCliente()
         {
@@ -207,7 +211,7 @@ namespace FrbaOfertas.Presenters
         }
 
 
-        
-            
+
+
     }
 }

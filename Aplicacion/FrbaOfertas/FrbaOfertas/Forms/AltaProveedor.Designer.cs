@@ -80,6 +80,11 @@
             // txt_CP
             // 
             this.txt_CP.Location = new System.Drawing.Point(259, 152);
+            this.txt_CP.Maximum = new decimal(new int[] {
+            200000,
+            0,
+            0,
+            0});
             this.txt_CP.Name = "txt_CP";
             this.txt_CP.Size = new System.Drawing.Size(120, 20);
             this.txt_CP.TabIndex = 32;
@@ -112,6 +117,11 @@
             // txt_Telefono
             // 
             this.txt_Telefono.Location = new System.Drawing.Point(31, 152);
+            this.txt_Telefono.Maximum = new decimal(new int[] {
+            99999999,
+            0,
+            0,
+            0});
             this.txt_Telefono.Name = "txt_Telefono";
             this.txt_Telefono.Size = new System.Drawing.Size(120, 20);
             this.txt_Telefono.TabIndex = 28;

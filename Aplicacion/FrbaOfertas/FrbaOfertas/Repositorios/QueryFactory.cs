@@ -372,7 +372,7 @@ namespace FrbaOfertas.Repositorios
 
         public SqlCommand altaCliente(String nombre, String apellido, long dni, int cp,int userID, String direccion, String ciudad, String mail,long telefono, DateTime fechaNacimiento, SqlConnection conexion)
         {
-            SqlCommand command = new SqlCommand("INSERT INTO PASO_A_PASO.Cliente (clie_dni,clie_nombre,clie_apellido,clie_userID,clie_mail,clie_telefono,clie_direccion,clie_saldo,clie_codigoPostal,clie_ciudad,clie_fechaNacimiento) VALUES (@dni,@nombre,@apellido,@userID,@mail,@telefono,@direccion,0,@codpos,@ciudad,@fecha)");
+            SqlCommand command = new SqlCommand("INSERT INTO PASO_A_PASO.Cliente (clie_dni,clie_nombre,clie_apellido,clie_userID,clie_mail,clie_telefono,clie_direccion,clie_saldo,clie_codigoPostal,clie_ciudad,clie_fechaNacimiento) VALUES (@dni,@nombre,@apellido,@userID,@mail,@telefono,@direccion,0,@codpos,@ciudad,@fecha)",conexion);
             command.Parameters.Add(this.nuevoParametroLong("@dni", dni));
             command.Parameters.Add(this.nuevoParametroString("@nombre", nombre));
             command.Parameters.Add(this.nuevoParametroString("@apellido", apellido));
@@ -388,7 +388,7 @@ namespace FrbaOfertas.Repositorios
 
         public SqlCommand altaProveedor(String cuit, String razon, int userID, String mail, long telefono, String direccion, int cp, String ciudad, int rubroID, String nombre, SqlConnection conexion)
     {
-                    SqlCommand command = new SqlCommand("INSERT INTO PASO_A_PASO.Proveedor VALUES (@cuit,@razon,@userID,@mail,@telefono,@direccion,@codpos,@ciudad,@rubrID,@nombre)");
+                    SqlCommand command = new SqlCommand("INSERT INTO PASO_A_PASO.Proveedor VALUES (@cuit,@razon,@userID,@mail,@telefono,@direccion,@codpos,@ciudad,@rubrID,@nombre)",conexion);
             
             command.Parameters.Add(this.nuevoParametroString("@razon", razon));
             command.Parameters.Add(this.nuevoParametroString("@cuit", cuit));
