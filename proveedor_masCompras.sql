@@ -1,4 +1,4 @@
-CREATE FUNCTION proveedor_masFacturas(@año int,@mesInicio int,@mesFin int)
+CREATE FUNCTION PASO_A_PASO.proveedor_masFacturas(@año int,@mesInicio int,@mesFin int)
 RETURNS TABLE
 AS
 	RETURN

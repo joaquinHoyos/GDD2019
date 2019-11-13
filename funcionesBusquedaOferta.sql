@@ -1,4 +1,4 @@
-CREATE FUNCTION PASO_A_PASO.busquedaOferta(@descripcion nvarchar(100), @fecha smalldatetime @proveedor int)
+CREATE FUNCTION PASO_A_PASO.busquedaOferta(@descripcion nvarchar(100), @fecha smalldatetime, @proveedor int)
 RETURNS TABLE
 AS
 

@@ -1,4 +1,4 @@
-alter FUNCTION PASO_A_PASO.proveedor_mayorDescuento(@año int,@mesInicio int,@mesFin int)
+CREATE FUNCTION PASO_A_PASO.proveedor_mayorDescuento(@año int,@mesInicio int,@mesFin int)
 RETURNS TABLE
 AS
 		RETURN 
