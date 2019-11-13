@@ -1,6 +1,6 @@
 
 
-ALTER PROCEDURE PASO_A_PASO.migracionTablas
+CREATE PROCEDURE PASO_A_PASO.migracionTablas
 as
 
 	INSERT INTO PASO_A_PASO.TipoPago VALUES ('E')

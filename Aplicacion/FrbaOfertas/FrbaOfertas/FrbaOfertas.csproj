@@ -104,6 +104,12 @@
     <Compile Include="Forms\Comprar.Designer.cs">
       <DependentUpon>Comprar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Facturacion_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Facturacion_Form.Designer.cs">
+      <DependentUpon>Facturacion_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ListadoEstadisitico.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +146,7 @@
     <Compile Include="Forms\SignUpUsuario.Designer.cs">
       <DependentUpon>SignUpUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\Proveedor.cs" />
     <Compile Include="Modelo\Cliente.cs" />
     <Compile Include="Modelo\Rubro.cs" />
     <Compile Include="Modelo\StructFuncion.cs" />
@@ -158,7 +165,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\QueryFactory.cs" />
     <Compile Include="Repositorios\RepoCliente.cs" />
+    <Compile Include="Repositorios\RepoFactura.cs" />
     <Compile Include="Repositorios\RepoOferta.cs" />
+    <Compile Include="Repositorios\RepoProveedores.cs" />
     <Compile Include="Repositorios\RepoRol.cs" />
     <Compile Include="Server\Server.cs" />
     <Compile Include="Repositorios\RepoUsuario.cs" />
@@ -189,6 +198,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Comprar.resx">
       <DependentUpon>Comprar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Facturacion_Form.resx">
+      <DependentUpon>Facturacion_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ListadoEstadisitico.resx">
       <DependentUpon>ListadoEstadisitico.cs</DependentUpon>

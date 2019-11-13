@@ -202,5 +202,21 @@ namespace FrbaOfertas.Presenters
                 MessageBox.Show("Error al modificar el rol");
             }
         }
+
+        public DataTable getProveedores()
+        {
+
+            try
+            {
+                return RepoProveedores.instance().getProveedores();
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return null;
+            }
+
+        }
     }
 }

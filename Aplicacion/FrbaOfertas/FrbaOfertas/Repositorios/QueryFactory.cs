@@ -515,5 +515,26 @@ namespace FrbaOfertas.Repositorios
 
             return command;
         }
+
+        public SqlCommand traerProveedores(SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.Proveedor", conexion);
+            return command;
+        }
+
+        public SqlCommand crearFactura(DateTime fechaInicio, DateTime fechaFinal, int proveedor, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.facturarProveedor @fechaDesde=@_fechaDesde, @fechaHasta=@_fechaHasta,@prov=@_prov", conexion);
+            SqlParameter param = this.nuevoParametroDateTime("@_fechaDesde", fechaInicio);
+            SqlParameter param1 = this.nuevoParametroDateTime("@_fechaHasta", fechaFinal);
+            SqlParameter param2 = this.nuevoParametroInt("@_prov", proveedor);
+
+            command.Parameters.Add(param);
+            command.Parameters.Add(param1);
+            command.Parameters.Add(param2);
+
+            return command;
+        }
+
     }
 }

@@ -19,7 +19,7 @@ namespace FrbaOfertas.Presenters
         private AbmOfertas abmOferta;
         private FormCliente cliente_form;
         private Prov_Form prov_form;
-
+        private Facturacion_Form fact_form;
         public static Presenter instance()
         {
             return presenter == null ? presenter = new Presenter() : presenter;
@@ -174,6 +174,12 @@ namespace FrbaOfertas.Presenters
             this.getAbmRolForm().Show();
         }
 
+        public void cargarFacturacion(Admin_Form form)
+        {
+            form.splitContainer1.Panel2.Controls.Add(this.getFacturacionForm());
+            this.getFacturacionForm().Show();
+        }
+
         public void cargarAbmClientes(Admin_Form form)
         {
             form.splitContainer1.Panel2.Controls.Add(this.getAbmCliente());
@@ -192,6 +198,11 @@ namespace FrbaOfertas.Presenters
         private Admin_Form getAdminForm()
         {
             return this.admin_form == null ? this.admin_form = new Admin_Form() : this.admin_form;
+        }
+
+        private Facturacion_Form getFacturacionForm()
+        {
+            return this.fact_form == null ? this.fact_form = new Facturacion_Form() : this.fact_form;
         }
 
         private Prov_Form getProvForm()

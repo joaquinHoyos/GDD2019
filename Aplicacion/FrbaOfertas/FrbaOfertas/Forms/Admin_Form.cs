@@ -37,7 +37,7 @@ namespace FrbaOfertas.Forms
 
         private void btnFactura_Click(object sender, EventArgs e)
         {
-
+            Presenter.instance().cargarFacturacion(this);
         }
 
         public void configurar()
