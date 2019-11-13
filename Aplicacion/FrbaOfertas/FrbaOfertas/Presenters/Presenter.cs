@@ -58,8 +58,10 @@ namespace FrbaOfertas.Presenters
                     return;
                 }
             }
-            MessageBox.Show("Error: contraseña o usuario incorrecto");
-
+            else
+            {
+                MessageBox.Show("Error: contraseña o usuario incorrecto");
+            }
         }
 
         private void redireccionarDios()
