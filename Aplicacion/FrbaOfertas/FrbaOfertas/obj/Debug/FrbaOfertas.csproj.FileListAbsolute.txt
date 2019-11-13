@@ -67,3 +67,4 @@ C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\
 C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Properties.Resources.resources
 C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.csproj.GenerateResource.Cache
 >>>>>>> Stashed changes
+Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.AltaCliente.resources

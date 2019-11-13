@@ -39,5 +39,8 @@ namespace FrbaOfertas.Modelo
             this.clie_apellido = apellido;
         */}
 
+        
+
+
     }
 }

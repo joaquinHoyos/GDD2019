@@ -369,5 +369,20 @@ namespace FrbaOfertas.Repositorios
             
             return command;
         }
+
+        public SqlCommand altaCliente(String nombre, String apellido, long dni, int cp,int userID, String direccion, String ciudad, String mail,long telefono, DateTime fechaNacimiento, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("INSERT INTO PASO_A_PASO.Cliente (clie_dni,clie_nombre,clie_apellido,clie_userID,clie_mail,clie_telefono,clie_direccion,clie_saldo,clie_codigoPostal,clie_ciudad,clie_fechaNacimiento) VALUES (@dni,@nombre,@apellido,@userID,@mail,@telefono,@direccion,0,@codpos,@ciudad,@fecha)");
+            command.Parameters.Add(this.nuevoParametroLong("@dni", dni));
+            command.Parameters.Add(this.nuevoParametroString("@nombre", nombre));
+            command.Parameters.Add(this.nuevoParametroString("@apellido", apellido));
+            command.Parameters.Add(this.nuevoParametroInt("@userID", userID));
+            command.Parameters.Add(this.nuevoParametroString("@mail", mail));
+            command.Parameters.Add(this.nuevoParametroLong("@telefono", telefono));
+            command.Parameters.Add(this.nuevoParametroString("@direccion", direccion));
+            command.Parameters.Add(this.nuevoParametroInt("@codpos", cp));
+            command.Parameters.Add(this.nuevoParametroDateTime("@fecha", fechaNacimiento));
+            return command;
+        }
     }
 }

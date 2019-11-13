@@ -44,6 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\AltaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AltaCliente.Designer.cs">
+      <DependentUpon>AltaCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AbmOfertas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +144,9 @@
     <Compile Include="Server\Server.cs" />
     <Compile Include="Repositorios\RepoUsuario.cs" />
     <Compile Include="Modelo\Usuario.cs" />
+    <EmbeddedResource Include="Forms\AltaCliente.resx">
+      <DependentUpon>AltaCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AbmOfertas.resx">
       <DependentUpon>AbmOfertas.cs</DependentUpon>
     </EmbeddedResource>

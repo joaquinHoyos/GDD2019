@@ -158,6 +158,14 @@ namespace FrbaOfertas.Repositorios
 
         }
 
+        public void altaCliente(String nombre, String apellido, long dni, int cp, String direccion, String ciudad, String mail,long telefono, DateTime fechaNacimiento)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().altaCliente(nombre, apellido, dni, cp, idActual, direccion, ciudad, mail,telefono, fechaNacimiento, conexion);
+            command.ExecuteNonQuery();
+            MessageBox.Show("Cliente registrado");
+        }
+
         
     }
 
