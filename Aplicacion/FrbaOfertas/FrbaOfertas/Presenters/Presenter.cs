@@ -34,24 +34,29 @@ namespace FrbaOfertas.Presenters
             {
                 RepoUsuario.instance().setUsuarioActual(user.user_id);
                 //VER SI DIRECCIONAR A altaCliente o a altaProveedor
-                List<Grupo> grupos = RepoUsuario.instance().traerFunciones(user.user_id);
-                List<int> funciones = grupos.Find(x => x.grupo == 'C').funciones;
-                if (funciones.Count > 0)
+
+                if (RepoUsuario.instance().tieneClienteOProveedor() == 0)
                 {
-                    new AltaProveedor().Show();
-                    this.login_form.Hide();
+                    List<Grupo> grupos = RepoUsuario.instance().traerFunciones(user.user_id);
+                    List<int> funciones = grupos.Find(x => x.grupo == 'C').funciones;
+                    if (funciones.Count > 0)
+                    {
+                        new AltaCliente().Show();
+                        this.login_form.Hide();
+                    }
+                    else
+                    {
+                        new AltaProveedor().Show();
+                        this.login_form.Hide();
+
+                    }
                 }
                 else
                 {
-
-                    new AltaCliente().Show();
+                    this.redireccionarUsuario(user);
                     this.login_form.Hide();
-                   
+                    return;
                 }
-
-                this.redireccionarUsuario(user);
-                this.login_form.Hide();
-                return;
             }
             MessageBox.Show("Error: contraseña o usuario incorrecto");
 

@@ -180,6 +180,15 @@ namespace FrbaOfertas.Repositorios
             new LoginUsuario().Show();
             
         }
+
+        public int tieneClienteOProveedor() {
+
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().tieneClienteOProveedor(idActual,conexion);
+            SqlDataReader reader = command.ExecuteReader();
+            return Convert.ToInt32(reader.Read());
+
+        }
         
     }
 
