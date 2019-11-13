@@ -33,6 +33,7 @@ namespace FrbaOfertas.Presenters
             if (user != null)
             {
                 RepoUsuario.instance().setUsuarioActual(user.user_id);
+                //VER SI DIRECCIONAR A altaCliente o a altaProveedor
                 this.redireccionarUsuario(user);
                 this.login_form.Hide();
                 return;
