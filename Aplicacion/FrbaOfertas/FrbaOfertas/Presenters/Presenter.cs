@@ -34,6 +34,21 @@ namespace FrbaOfertas.Presenters
             {
                 RepoUsuario.instance().setUsuarioActual(user.user_id);
                 //VER SI DIRECCIONAR A altaCliente o a altaProveedor
+                List<Grupo> grupos = RepoUsuario.instance().traerFunciones(user.user_id);
+                List<int> funciones = grupos.Find(x => x.grupo == 'C').funciones;
+                if (funciones.Count > 0) {
+
+                    new AltaCliente().Show();
+                    
+                }
+                funciones = grupos.Find(x => x.grupo == 'P').funciones;
+                if (funciones.Count > 0)
+                {
+
+                    new AltaCliente().Show();
+
+                }
+
                 this.redireccionarUsuario(user);
                 this.login_form.Hide();
                 return;
