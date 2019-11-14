@@ -62,7 +62,7 @@ namespace FrbaOfertas.Repositorios
                 }
             }
             connection.Close();
-            MessageBox.Show("Cantidad de usuarios listados: " + listaUsuarios.Count().ToString());
+            //MessageBox.Show("Cantidad de usuarios listados: " + listaUsuarios.Count().ToString());
             return listaUsuarios;
         }
 
@@ -463,6 +463,15 @@ namespace FrbaOfertas.Repositorios
         {
             SqlConnection conexion = ServerSQL.instance().levantarConexion();
             SqlCommand command = QueryFactory.instance().habilitarUsuario(idUsuario, conexion);
+
+            command.ExecuteNonQuery();
+        }
+
+        public void asignarCliente(string idUsuario, string idcliente)
+        {
+
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().asignarUsuarioACliente(idUsuario, idcliente,conexion);
 
             command.ExecuteNonQuery();
         }

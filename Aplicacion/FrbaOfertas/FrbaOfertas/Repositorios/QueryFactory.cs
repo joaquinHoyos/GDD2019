@@ -699,5 +699,15 @@ namespace FrbaOfertas.Repositorios
 
             return command;
         }
+
+        public SqlCommand asignarUsuarioACliente(string idUsuario, string idcliente, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("UPDATE PASO_A_PASO.Cliente SET clie_userId = @_userId WHERE clie_id=@_clieId", conexion);
+
+            command.Parameters.Add(this.nuevoParametroInt("@_userId", Convert.ToInt32(idUsuario)));
+            command.Parameters.Add(this.nuevoParametroInt("@_clieId", Convert.ToInt32(idcliente)));
+
+            return command;
+        }
     }
 }
