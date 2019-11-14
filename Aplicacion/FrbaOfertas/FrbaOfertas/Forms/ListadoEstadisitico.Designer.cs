@@ -29,24 +29,28 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btn_descuentos = new System.Windows.Forms.Button();
+            this.nud_anioDescuentos = new System.Windows.Forms.NumericUpDown();
+            this.combo_descuentos = new System.Windows.Forms.ComboBox();
+            this.grid_descuentos = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_ventas = new System.Windows.Forms.Button();
+            this.nud_anioVentas = new System.Windows.Forms.NumericUpDown();
+            this.grid_ventas = new System.Windows.Forms.DataGridView();
+            this.combo_ventas = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_anioDescuentos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grid_descuentos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_anioVentas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grid_ventas)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -58,22 +62,69 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.button1);
-            this.splitContainer1.Panel1.Controls.Add(this.numericUpDown1);
-            this.splitContainer1.Panel1.Controls.Add(this.comboBox1);
-            this.splitContainer1.Panel1.Controls.Add(this.dataGridView2);
+            this.splitContainer1.Panel1.Controls.Add(this.label5);
+            this.splitContainer1.Panel1.Controls.Add(this.label3);
+            this.splitContainer1.Panel1.Controls.Add(this.btn_descuentos);
+            this.splitContainer1.Panel1.Controls.Add(this.nud_anioDescuentos);
+            this.splitContainer1.Panel1.Controls.Add(this.combo_descuentos);
+            this.splitContainer1.Panel1.Controls.Add(this.grid_descuentos);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.button2);
-            this.splitContainer1.Panel2.Controls.Add(this.numericUpDown2);
-            this.splitContainer1.Panel2.Controls.Add(this.dataGridView3);
-            this.splitContainer1.Panel2.Controls.Add(this.comboBox2);
+            this.splitContainer1.Panel2.Controls.Add(this.label6);
+            this.splitContainer1.Panel2.Controls.Add(this.label4);
+            this.splitContainer1.Panel2.Controls.Add(this.btn_ventas);
+            this.splitContainer1.Panel2.Controls.Add(this.nud_anioVentas);
+            this.splitContainer1.Panel2.Controls.Add(this.grid_ventas);
+            this.splitContainer1.Panel2.Controls.Add(this.combo_ventas);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Size = new System.Drawing.Size(1148, 417);
             this.splitContainer1.SplitterDistance = 577;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // btn_descuentos
+            // 
+            this.btn_descuentos.Location = new System.Drawing.Point(439, 86);
+            this.btn_descuentos.Name = "btn_descuentos";
+            this.btn_descuentos.Size = new System.Drawing.Size(120, 23);
+            this.btn_descuentos.TabIndex = 5;
+            this.btn_descuentos.Text = "Generar";
+            this.btn_descuentos.UseVisualStyleBackColor = true;
+            this.btn_descuentos.Click += new System.EventHandler(this.btn_descuentos_Click);
+            // 
+            // nud_anioDescuentos
+            // 
+            this.nud_anioDescuentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nud_anioDescuentos.Location = new System.Drawing.Point(234, 86);
+            this.nud_anioDescuentos.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.nud_anioDescuentos.Name = "nud_anioDescuentos";
+            this.nud_anioDescuentos.Size = new System.Drawing.Size(120, 23);
+            this.nud_anioDescuentos.TabIndex = 3;
+            // 
+            // combo_descuentos
+            // 
+            this.combo_descuentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combo_descuentos.FormattingEnabled = true;
+            this.combo_descuentos.Items.AddRange(new object[] {
+            "1",
+            "2"});
+            this.combo_descuentos.Location = new System.Drawing.Point(10, 87);
+            this.combo_descuentos.Name = "combo_descuentos";
+            this.combo_descuentos.Size = new System.Drawing.Size(121, 24);
+            this.combo_descuentos.TabIndex = 4;
+            // 
+            // grid_descuentos
+            // 
+            this.grid_descuentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grid_descuentos.Location = new System.Drawing.Point(10, 161);
+            this.grid_descuentos.Name = "grid_descuentos";
+            this.grid_descuentos.Size = new System.Drawing.Size(549, 249);
+            this.grid_descuentos.TabIndex = 1;
             // 
             // label1
             // 
@@ -85,6 +136,49 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Estadistica Descuentos";
             // 
+            // btn_ventas
+            // 
+            this.btn_ventas.Location = new System.Drawing.Point(433, 86);
+            this.btn_ventas.Name = "btn_ventas";
+            this.btn_ventas.Size = new System.Drawing.Size(120, 23);
+            this.btn_ventas.TabIndex = 8;
+            this.btn_ventas.Text = "Generar";
+            this.btn_ventas.UseVisualStyleBackColor = true;
+            this.btn_ventas.Click += new System.EventHandler(this.btn_ventas_Click);
+            // 
+            // nud_anioVentas
+            // 
+            this.nud_anioVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nud_anioVentas.Location = new System.Drawing.Point(237, 87);
+            this.nud_anioVentas.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.nud_anioVentas.Name = "nud_anioVentas";
+            this.nud_anioVentas.Size = new System.Drawing.Size(120, 23);
+            this.nud_anioVentas.TabIndex = 6;
+            // 
+            // grid_ventas
+            // 
+            this.grid_ventas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grid_ventas.Location = new System.Drawing.Point(15, 161);
+            this.grid_ventas.Name = "grid_ventas";
+            this.grid_ventas.Size = new System.Drawing.Size(549, 249);
+            this.grid_ventas.TabIndex = 2;
+            // 
+            // combo_ventas
+            // 
+            this.combo_ventas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combo_ventas.FormattingEnabled = true;
+            this.combo_ventas.Items.AddRange(new object[] {
+            "1",
+            "2"});
+            this.combo_ventas.Location = new System.Drawing.Point(15, 86);
+            this.combo_ventas.Name = "combo_ventas";
+            this.combo_ventas.Size = new System.Drawing.Size(121, 24);
+            this.combo_ventas.TabIndex = 7;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -95,73 +189,41 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Estadistica Ventas";
             // 
-            // dataGridView2
+            // label3
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(10, 161);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(549, 249);
-            this.dataGridView2.TabIndex = 1;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 71);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(51, 13);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Semestre";
             // 
-            // dataGridView3
+            // label4
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(15, 161);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(549, 249);
-            this.dataGridView3.TabIndex = 2;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(430, 71);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(26, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Año";
             // 
-            // numericUpDown1
+            // label5
             // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(234, 86);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 23);
-            this.numericUpDown1.TabIndex = 3;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(231, 71);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(26, 13);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Año";
             // 
-            // comboBox1
+            // label6
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(10, 87);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 4;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(439, 86);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(433, 86);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(120, 23);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown2.Location = new System.Drawing.Point(237, 87);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(120, 23);
-            this.numericUpDown2.TabIndex = 6;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(15, 86);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 24);
-            this.comboBox2.TabIndex = 7;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 70);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(51, 13);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Semestre";
             // 
             // ListadoEstadisitico
             // 
@@ -177,10 +239,10 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_anioDescuentos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grid_descuentos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_anioVentas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grid_ventas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -188,15 +250,19 @@
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button btn_descuentos;
+        private System.Windows.Forms.NumericUpDown nud_anioDescuentos;
+        private System.Windows.Forms.ComboBox combo_descuentos;
+        private System.Windows.Forms.DataGridView grid_descuentos;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Button btn_ventas;
+        private System.Windows.Forms.NumericUpDown nud_anioVentas;
+        private System.Windows.Forms.DataGridView grid_ventas;
+        private System.Windows.Forms.ComboBox combo_ventas;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label4;
     }
 }

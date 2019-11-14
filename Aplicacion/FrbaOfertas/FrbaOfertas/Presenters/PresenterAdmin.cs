@@ -218,5 +218,35 @@ namespace FrbaOfertas.Presenters
             }
 
         }
+
+        public DataTable listadoEstadisticoDescuentos(int semestre, decimal anio, ListadoEstadisitico form)
+        {
+            int anioInt = Convert.ToInt32(anio);
+            try
+            {
+                return RepoProveedores.instance().listadoEstadisticoDescuentos(semestre, anioInt);
+            }
+            catch
+            {
+
+                MessageBox.Show("Error al traer el listado, intente nuevamente");
+                return null;
+            }
+        }
+
+
+        public DataTable listadoEstadisticoVentas(int semestre, decimal anio, ListadoEstadisitico form)
+        {
+            int anioInt = Convert.ToInt32(anio);
+            try
+            {
+                return RepoProveedores.instance().listadoEstadisticoVentas(semestre, anioInt);
+            }
+            catch
+            {
+                MessageBox.Show("Error al traer el listado, intente nuevamente");
+                return null;
+            }
+        }
     }
 }

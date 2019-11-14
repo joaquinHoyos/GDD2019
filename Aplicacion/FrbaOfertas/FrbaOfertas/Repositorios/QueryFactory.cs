@@ -617,7 +617,25 @@ namespace FrbaOfertas.Repositorios
             return command;
         }
 
+        public SqlCommand listadoEstadisticoDescuentos(int mesInicio,int mesFin, int anio, SqlConnection conexion)
+        {
 
+            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.proveedor_mayorDescuento(@año,@mesInicio,@mesFin)", conexion);
+            command.Parameters.Add(this.nuevoParametroInt("@año",anio));
+            command.Parameters.Add(this.nuevoParametroInt("@mesInicio",mesInicio));
+            command.Parameters.Add(this.nuevoParametroInt("@mesFin",mesFin));
+            return command;
+        }
+
+        public SqlCommand listadoEstadisticoVentas(int mesInicio, int mesFin, int anio, SqlConnection conexion)
+        {
+
+            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.proveedor_masFacturas(@año,@mesInicio,@mesFin)", conexion);
+            command.Parameters.Add(this.nuevoParametroInt("@año", anio));
+            command.Parameters.Add(this.nuevoParametroInt("@mesInicio", mesInicio));
+            command.Parameters.Add(this.nuevoParametroInt("@mesFin", mesFin));
+            return command;
+        }
 
         public SqlCommand getUsuario(string username, SqlConnection conexion)
         {
