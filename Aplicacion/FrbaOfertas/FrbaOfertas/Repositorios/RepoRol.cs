@@ -252,5 +252,15 @@ namespace FrbaOfertas.Repositorios
 
             return devolver;
         }
+
+        public int getIdRol(string rolNombre)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().getIdRol(rolNombre,conexion);
+            SqlDataReader reader = command.ExecuteReader();
+            reader.Read();
+            return Convert.ToInt32(reader["rol_id"]);
+
+        }
     }
 }

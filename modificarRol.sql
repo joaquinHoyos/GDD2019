@@ -8,3 +8,6 @@ AS
 
 	INSERT INTO FuncionesxRol
 	SELECT @id,funciones FROM @funciones 
+
+
+	

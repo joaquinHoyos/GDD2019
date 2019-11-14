@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Data;
 using FrbaOfertas.Modelo;
+using FrbaOfertas.Server;
 namespace FrbaOfertas.Repositorios
 {
     class QueryFactory
@@ -532,6 +533,42 @@ namespace FrbaOfertas.Repositorios
             return command;
         }
 
+        public SqlCommand crearUsuario(string username, string pass,SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("INSERT INTO PASO_A_PASO.Usuario VALUES (@_username,HASHBYTES('SHA2_256',@_pass),0,'E','1/1/1900')", conexion);
+            SqlParameter param1 = this.nuevoParametroString("@_username", username);
+            SqlParameter param2 = this.nuevoParametroString("@_pass", pass);
+
+            command.Parameters.Add(param1);
+            command.Parameters.Add(param2);
+            return command;
+        }
+
+
+        public SqlCommand agregarRolAUsuario(int userId, string rolDesc, SqlConnection conexion)
+        {
+            SqlConnection conexion1 = ServerSQL.instance().levantarConexion();
+            SqlCommand command1 = new SqlCommand("SELECT rol_id FROM PASO_A_PASO.Rol WHERE rol_nombre=@_rolDesc", conexion1);
+
+            SqlParameter param2 = this.nuevoParametroString("@_rolDesc", rolDesc);
+            command1.Parameters.Add(param2);
+
+            SqlDataReader reader = command1.ExecuteReader();
+            reader.Read();
+
+            int idRol = Convert.ToInt32(reader[0]);
+
+            SqlCommand command = new SqlCommand("INSERT INTO PASO_A_PASO.RolXUsuario VALUES (@_idRol,@_userId)", conexion);
+            SqlParameter param1 = this.nuevoParametroInt("@_userId", userId);
+            SqlParameter param3 = this.nuevoParametroInt("@_idRol", idRol);
+
+
+            command.Parameters.Add(param1);
+            command.Parameters.Add(param3);
+            return command;
+
+
+        }
         public SqlCommand traerProveedores(SqlConnection conexion)
         {
             SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.Proveedor", conexion);
@@ -573,5 +610,83 @@ namespace FrbaOfertas.Repositorios
         }
 
 
+
+        public SqlCommand getUsuario(string username, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("SELECT user_id FROM PASO_A_PASO.Usuario WHERE user_username = @_user ", conexion);
+            command.Parameters.Add(this.nuevoParametroString("@_user", username));
+            return command;
+        }
+
+        public SqlCommand buscarUsuarios(string p, SqlConnection conexion)
+        {
+            SqlCommand command;
+            if (p != "")
+            {
+                command = new SqlCommand("SELECT * FROM PASO_A_PASO.Usuario WHERE user_username LIKE '%'+@_user+'%'", conexion);
+            }
+            else
+            {
+                command = new SqlCommand("SELECT * FROM PASO_A_PASO.Usuario", conexion);
+            }
+
+            command.Parameters.Add(this.nuevoParametroString("@_user", p));
+            return command;
+        }
+
+        internal SqlCommand traerRoles(string user, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("SELECT id_rol FROM PASO_A_PASO.RolXUsuario WHERE id_usuario=@_user ", conexion);
+            command.Parameters.Add(this.nuevoParametroInt("@_user", Convert.ToInt32(user)));
+            return command;
+        }
+
+        
+
+        public SqlCommand modificarDatosUsuario(string user, string pass, string intentosLogin,string userId, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("UPDATE PASO_A_PASO.Usuario SET user_username=@_user,user_password=@_pass,user_intentosLogin=@_login WHERE user_id=@_userId", conexion);
+            command.Parameters.Add(this.nuevoParametroString("@_user", user));
+            command.Parameters.Add(this.nuevoParametroString("@_pass", pass));
+            command.Parameters.Add(this.nuevoParametroInt("@_login", Convert.ToInt32(intentosLogin)));
+            command.Parameters.Add(this.nuevoParametroInt("@_userId", Convert.ToInt32(userId)));
+
+            return command;
+        }
+
+        public SqlCommand modificarRolesUsuario(string userId,int nuevoRol,SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("INSERT INTO PASO_A_PASO.RolXUsuario VALUES (@_rol,@_userId)", conexion);
+            command.Parameters.Add(this.nuevoParametroInt("@_rol", Convert.ToInt32(nuevoRol)));
+            command.Parameters.Add(this.nuevoParametroInt("@_userId", Convert.ToInt32(userId)));
+
+            return command;
+        }
+        public SqlCommand borrarRolesUsuario(string userId, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("DELETE PASO_A_PASO.RolXUsuario WHERE id_usuario=@_userId", conexion);
+          
+            command.Parameters.Add(this.nuevoParametroInt("@_userId", Convert.ToInt32(userId)));
+
+            return command;
+        }
+
+        public SqlCommand getIdRol(string rolDesc, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("SELECT rol_id FROM PASO_A_PASO.Rol WHERE rol_nombre=@_rolDesc", conexion);
+
+            command.Parameters.Add(this.nuevoParametroString("@_rolDesc", rolDesc));
+
+            return command;
+        }
+
+        public SqlCommand deshabilitarUsuario(string idUsuario, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("UPDATE PASO_A_PASO.Usuario SET user_status='D',user_fechaBaja=@_fechaBaja WHERE user_id=@_userId", conexion);
+
+            command.Parameters.Add(this.nuevoParametroInt("@_userId", Convert.ToInt32(idUsuario)));
+            command.Parameters.Add(this.nuevoParametroDateTime("@_userId", DateTime.Now));
+            return command;
+        }
     }
 }
