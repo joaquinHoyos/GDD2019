@@ -710,9 +710,9 @@ namespace FrbaOfertas.Repositorios
         public SqlCommand deshabilitarUsuario(string idUsuario, SqlConnection conexion)
         {
             SqlCommand command = new SqlCommand("UPDATE PASO_A_PASO.Usuario SET user_status='D',user_fechaBaja=@_fechaBaja WHERE user_id=@_userId", conexion);
-            ArchivoConfig a = new ArchivoConfig();
+            Properties.Settings set = new Properties.Settings();
             command.Parameters.Add(this.nuevoParametroInt("@_userId", Convert.ToInt32(idUsuario)));
-            command.Parameters.Add(this.nuevoParametroDateTime("@_fechaBaja", a.Fecha));
+            command.Parameters.Add(this.nuevoParametroDateTime("@_fechaBaja", set.Fecha));
 
             return command;
         }

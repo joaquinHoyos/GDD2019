@@ -222,7 +222,7 @@ namespace FrbaOfertas.Presenters
             return this.listado_form == null ? this.listado_form = new ListadoEstadisitico() : this.listado_form;
         }
 
-        private AbmUsuario_Form getListadoEstadisticoForm()
+        private AbmUsuario_Form getUsuarioForm()
         {
             return this.usuario_form == null ? this.usuario_form = new AbmUsuario_Form() : this.usuario_form;
         }
