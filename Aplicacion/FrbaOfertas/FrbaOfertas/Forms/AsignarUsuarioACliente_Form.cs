@@ -32,56 +32,54 @@ namespace FrbaOfertas.Forms
             this.Hide();
         }
 
-        private void btnCrearUsuario_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.SelectedRows != null)
-            {
-                
-                DataGridViewRow seleccionados = dataGridView1.SelectedRows[0];
-                this.clie_id_seleccionado = seleccionados.Cells[0].Value.ToString();
-
-
-                DialogResult result = MessageBox.Show("¿Seguro que desea asginar este usuario al cliente: "+this.clie_id_seleccionado.ToString(), "Salir", MessageBoxButtons.YesNo);
-
-                if (result == DialogResult.Yes)
-                {
-                    List<String> rolesSeleccionados = this.getRolesSeleccionados();
-                    RepoCliente.instance().asignarUsuario(this.clie_id_seleccionado, textBox1.Text, textBox2.Text, rolesSeleccionados);
-
-                }
-               
-
-
-            }
-            else
-            {
-                MessageBox.Show("Porfavor seleccione algun registro");
-            }
-        }
-
-        private List<String> getRolesSeleccionados()
-        {
-
-            List<String> rolesSelec = new List<String>();
-
-            foreach (String rolDesc in list_Roles.CheckedItems)
-            {
-
-                rolesSelec.Add(rolDesc);
-            }
-            return rolesSelec;
-
-        }
+     
 
         private void AsignarUsuarioACliente_Form_Load(object sender, EventArgs e)
         {
-           List<Rol> listaRoles = RepoRol.instance().traerTodosLosRoles();
+            DataTable clientesFiltrados = PresenterCliente.instance().buscarClientes("", "", "", ""); //esto es para no filtrar por nada
+            dataGridView1.DataSource = clientesFiltrados;
 
-           for (int i = 0; i < listaRoles.Count; i++)
-           {
-               list_Roles.Items.Add(listaRoles[i].nombre);
-           }
+            DataTable usuariosFiltrados = RepoUsuario.instance().traerUsuariosFiltrados("");
+
+            dataGridView2.DataSource = usuariosFiltrados;
+
         }
+
+        private void btnAsignar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (dataGridView1.SelectedRows != null && dataGridView2.SelectedRows != null)
+                {
+                    DataGridViewRow cliente = this.dataGridView1.SelectedRows[0];
+                    DataGridViewRow usuario = this.dataGridView2.SelectedRows[0];
+
+                    string idUsuario = usuario.Cells[0].Value.ToString();
+                    string idcliente = cliente.Cells[0].Value.ToString();
+
+                    RepoUsuario.instance().asignarCliente(idUsuario, idcliente);
+                }
+
+                MessageBox.Show("Usuario asignado correctamente al cliente");
+                this.RecargarForm();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Error al asignar al cliente: " + err.Message);
+            }
+        }
+
+        private void RecargarForm()
+        {
+            DataTable clientesFiltrados = PresenterCliente.instance().buscarClientes("", "", "", ""); //esto es para no filtrar por nada
+            dataGridView1.DataSource = clientesFiltrados;
+
+            DataTable usuariosFiltrados = RepoUsuario.instance().traerUsuariosFiltrados("");
+
+            dataGridView2.DataSource = usuariosFiltrados;
+        }
+
 
 
     }

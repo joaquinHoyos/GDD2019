@@ -172,6 +172,9 @@
     <Compile Include="Server\Server.cs" />
     <Compile Include="Repositorios\RepoUsuario.cs" />
     <Compile Include="Modelo\Usuario.cs" />
+    <EmbeddedResource Include="Forms\AbmUsuario_Form.resx">
+      <DependentUpon>AbmUsuario_Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AltaCliente.resx">
       <DependentUpon>AltaCliente.cs</DependentUpon>
     </EmbeddedResource>

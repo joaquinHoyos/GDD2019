@@ -33,6 +33,7 @@ namespace FrbaOfertas.Repositorios
         public static RepoUsuario repo;
         public int idActual;
         public User userActual {get;private set;}
+        public List<int> usuariosFiltrados { get; set; }
 
         public static RepoUsuario instance()
         {
@@ -61,7 +62,7 @@ namespace FrbaOfertas.Repositorios
                 }
             }
             connection.Close();
-            MessageBox.Show("Cantidad de usuarios listados: " + listaUsuarios.Count().ToString());
+            //MessageBox.Show("Cantidad de usuarios listados: " + listaUsuarios.Count().ToString());
             return listaUsuarios;
         }
 
@@ -131,7 +132,47 @@ namespace FrbaOfertas.Repositorios
             MessageBox.Show("Cliente registrado");
             new LoginUsuario().Show();
             
-        }
+        }         public void crearUsuario(String usuario, String contrasena, List<String> listaRoles)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+
+            try
+            {
+
+                SqlCommand command = QueryFactory.instance().crearUsuario(usuario, contrasena, conexion);
+                command.ExecuteNonQuery();
+
+                int idUsuarioAgregado = this.getIdUsuario(usuario);
+
+                for (int i = 0; i < listaRoles.Count; i++)
+                {
+                   SqlCommand command1 = QueryFactory.instance().agregarRolAUsuario(idUsuarioAgregado, listaRoles[i], conexion);
+                   command1.ExecuteNonQuery();
+
+                }
+                
+                MessageBox.Show("Usuario creado correctamente");
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show("Error al crear el usuario: " + e.Message);
+            }
+
+        }
+
+
+         private int getIdUsuario(string username)
+         {
+             SqlConnection conexion = ServerSQL.instance().levantarConexion();
+             SqlCommand command = QueryFactory.instance().getUsuario(username,conexion);
+
+             SqlDataReader reader = command.ExecuteReader();
+
+             reader.Read();
+             return Convert.ToInt32(reader[0]);
+
+         }
 
         public void altaProveedor(String cuit, String razon, String mail,long telefono,String direccion,int codigoPostal,String ciudad,int rubroID,String nombre)
         {
@@ -341,7 +382,112 @@ namespace FrbaOfertas.Repositorios
             }
         }
 
-  
+
+
+        public DataTable traerUsuariosFiltrados(string p)
+        {
+
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().buscarUsuarios(p,conexion);
+            SqlDataReader reader = command.ExecuteReader();
+
+
+            List<int> filtrados = new List<int>();
+            DataTable tabla = new DataTable();
+            tabla.Columns.Add(new DataColumn("ID"));
+            tabla.Columns.Add(new DataColumn("Username"));
+            tabla.Columns.Add(new DataColumn("Estado"));
+            tabla.Columns.Add(new DataColumn("Intentos login"));
+            tabla.Columns.Add(new DataColumn("Fecha Baja"));
+
+
+            if (!reader.HasRows)
+            {
+                return null;
+            }
+
+            while (reader.Read())
+            {
+                
+                DataRow row = tabla.NewRow();
+
+                row["ID"] = reader["user_id"];
+                row["Username"] = reader["user_username"];
+                row["Estado"] = reader["user_status"];
+                row["Intentos login"] = reader["user_intentosLogin"];
+                row["Fecha Baja"] = reader["user_fechaBaja"];
+
+
+               
+                tabla.Rows.Add(row);
+                filtrados.Add(Convert.ToInt32(reader["user_id"]));
+
+            }
+            this.usuariosFiltrados = filtrados;
+            return tabla;
+
+        }
+
+        public List<int> traerRoles(string user)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().traerRoles(user,conexion);
+            SqlDataReader reader = command.ExecuteReader();
+
+            List<int> roles = new List<int>();
+
+            while (reader.Read())
+            {
+                roles.Add(Convert.ToInt32(reader["id_rol"]));
+
+            }
+
+
+            return roles;
+
+        }
+
+        public void modificarUsuario(string user, string pass,List<string> rolesSeleccionados, string intentosLogin,string userId)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().modificarDatosUsuario(user, pass,intentosLogin,userId,conexion);
+            command.ExecuteNonQuery();
+
+            SqlCommand command1 = QueryFactory.instance().borrarRolesUsuario(userId, conexion);
+            command1.ExecuteNonQuery();
+
+            for (int i = 0; i < rolesSeleccionados.Count; i++)
+            {
+                int idRol = RepoRol.instance().getIdRol(rolesSeleccionados[i]);
+                SqlCommand command2 = QueryFactory.instance().modificarRolesUsuario(userId, idRol, conexion);
+                command2.ExecuteNonQuery();
+            }
+        }
+
+        public void deshabilitarUsuario(string idUsuario)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().deshabilitarUsuario(idUsuario, conexion);
+
+            command.ExecuteNonQuery();
+        }
+
+        public void habilitarUsuario(string idUsuario)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().habilitarUsuario(idUsuario, conexion);
+
+            command.ExecuteNonQuery();
+        }
+
+        public void asignarCliente(string idUsuario, string idcliente)
+        {
+
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().asignarUsuarioACliente(idUsuario, idcliente,conexion);
+
+            command.ExecuteNonQuery();
+        }
     }
 
 
