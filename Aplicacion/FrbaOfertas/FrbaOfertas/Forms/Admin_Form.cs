@@ -14,6 +14,7 @@ namespace FrbaOfertas.Forms
 {
     public partial class Admin_Form : Form
     {
+        private Form formActual;
         public Admin_Form()
         {
             InitializeComponent();
@@ -32,7 +33,7 @@ namespace FrbaOfertas.Forms
 
         private void btnEstadistica_Click(object sender, EventArgs e)
         {
-
+            Presenter.instance().cargarListadoEstadistico(this);
         }
 
         private void btnFactura_Click(object sender, EventArgs e)
@@ -48,7 +49,7 @@ namespace FrbaOfertas.Forms
             if(!funciones.Contains((int)Enum.Parse(typeof(EnumFunciones),"ABM_OFERTA"))){}
             if(!funciones.Contains((int)Enum.Parse(typeof(EnumFunciones),"ABM_ROL"))){this.btn_Roles.Enabled=false;}
             if(!funciones.Contains((int)Enum.Parse(typeof(EnumFunciones),"VER_ESTADISTICAS"))){this.btnEstadistica.Enabled=false;}
-            if(!funciones.Contains((int)Enum.Parse(typeof(EnumFunciones),"ABM_USUARIO"))){}
+            if (!funciones.Contains((int)Enum.Parse(typeof(EnumFunciones), "ABM_USUARIO"))) { this.btn_Usuarios.Enabled = false; }
             if(!funciones.Contains((int)Enum.Parse(typeof(EnumFunciones),"ABM_CLIENTE"))){this.btnClientes.Enabled=true;}
             if(!funciones.Contains((int)Enum.Parse(typeof(EnumFunciones),"ABM_PROVEEDOR"))){this.btnProveedores.Enabled=false;}
             
@@ -56,6 +57,22 @@ namespace FrbaOfertas.Forms
 
         private void btnProveedores_Click(object sender, EventArgs e)
         {
+            Presenter.instance().cargarAbmProveedor(this);
+        }
+
+        private void btn_Usuarios_Click(object sender, EventArgs e)
+        {
+            Presenter.instance().cargarUsuario(this);
+        }
+
+        public void mostrarForm(Form form)
+        {
+            if (this.formActual != null) 
+            { 
+                this.formActual.Hide(); 
+            }
+            this.formActual = form;
+            this.formActual.Show();
 
         }
     }

@@ -73,7 +73,7 @@ namespace FrbaOfertas.Forms
 
             if (esNumero && esNumero1)
             {
-
+                try{
                 if (txtId.Enabled)
                 {
                     Oferta oferta = new Oferta(txtId.Text, txtDescripcion.Text, Convert.ToDateTime(txtFechaInicio.Text), Convert.ToDateTime(txtFechaVenc.Text), Convert.ToDouble(txtPrecioOferta.Text), Convert.ToDouble(txtPrecioLista.Text), PresenterProveedor.instance().getProveedorActual(), Convert.ToInt32(txtCantDisponible.Text), Convert.ToInt32(txtMaxCantUsuario.Text));
@@ -93,6 +93,12 @@ namespace FrbaOfertas.Forms
 
                 txtFiltroFecha.Enabled = false;
                 txtFiltrarDescripcion.Enabled = false;
+                }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                btn_Guardar.Enabled = true;
+            }
             }
             else
             {

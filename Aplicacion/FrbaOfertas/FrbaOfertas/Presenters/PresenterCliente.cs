@@ -30,7 +30,7 @@ namespace FrbaOfertas.Presenters
               this.getAltaCarga().currentUserID = userID;
               form.splitContainer1.Panel2.Controls.Clear();
               form.splitContainer1.Panel2.Controls.Add(this.getAltaCarga());
-              this.getAltaCarga().Show();
+              form.mostrarForm(this.getAltaCarga());
           }
 
           public void cargarComprar(FormCliente form, int userID)
@@ -38,7 +38,7 @@ namespace FrbaOfertas.Presenters
               this.getComprar().currentUserID = userID;
               form.splitContainer1.Panel2.Controls.Clear();
               form.splitContainer1.Panel2.Controls.Add(this.getComprar());
-              this.getComprar().Show();
+              form.mostrarForm(this.getComprar());
           }
 
         public void cargarFormCupones(FormCliente form, int userID){
@@ -46,7 +46,7 @@ namespace FrbaOfertas.Presenters
               this.getCupones().currentUserID = userID;
               form.splitContainer1.Panel2.Controls.Clear();
               form.splitContainer1.Panel2.Controls.Add(this.getCupones());
-              this.getCupones().Show();
+              form.mostrarForm(this.getCupones());
         
         }
 

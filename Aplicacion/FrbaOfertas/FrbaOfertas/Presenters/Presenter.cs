@@ -20,6 +20,9 @@ namespace FrbaOfertas.Presenters
         private FormCliente cliente_form;
         private Prov_Form prov_form;
         private Facturacion_Form fact_form;
+        private ListadoEstadisitico listado_form;
+        private AbmUsuario_Form usuario_form;
+
         public static Presenter instance()
         {
             return presenter == null ? presenter = new Presenter() : presenter;
@@ -174,20 +177,20 @@ namespace FrbaOfertas.Presenters
         public void cargarAbmRol(Admin_Form form)
         {
             form.splitContainer1.Panel2.Controls.Add(this.getAbmRolForm());
-            this.getAbmRolForm().Show();
+            form.mostrarForm(this.getAbmRolForm());
         }
 
         public void cargarFacturacion(Admin_Form form)
         {
             form.splitContainer1.Panel2.Controls.Add(this.getFacturacionForm());
-            this.getFacturacionForm().Show();
+            form.mostrarForm(this.getFacturacionForm());
         }
 
         public void cargarAbmClientes(Admin_Form form)
         {
             form.splitContainer1.Panel2.Controls.Add(this.getAbmCliente());
 
-            this.getAbmCliente().Show();
+            form.mostrarForm(this.getAbmCliente());
         }
 
 
@@ -197,10 +200,31 @@ namespace FrbaOfertas.Presenters
             this.getAbmOfertaForm().Show();
         }
 
+        public void cargarListadoEstadistico(Admin_Form form)
+        {
+            form.splitContainer1.Panel2.Controls.Add(this.getListadoEstadisticoForm());
+            form.mostrarForm(this.getListadoEstadisticoForm());
+        }
+
+        public void cargarUsuario(Admin_Form form)
+        {
+            form.splitContainer1.Panel2.Controls.Add(this.getUsuarioForm());
+            form.mostrarForm(this.getUsuarioForm()); 
+        }
 
         private Admin_Form getAdminForm()
         {
             return this.admin_form == null ? this.admin_form = new Admin_Form() : this.admin_form;
+        }
+
+        private ListadoEstadisitico getListadoEstadisticoForm()
+        {
+            return this.listado_form == null ? this.listado_form = new ListadoEstadisitico() : this.listado_form;
+        }
+
+        private AbmUsuario_Form getListadoEstadisticoForm()
+        {
+            return this.usuario_form == null ? this.usuario_form = new AbmUsuario_Form() : this.usuario_form;
         }
 
         private Facturacion_Form getFacturacionForm()

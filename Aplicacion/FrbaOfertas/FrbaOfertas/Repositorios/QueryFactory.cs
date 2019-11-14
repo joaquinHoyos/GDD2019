@@ -320,6 +320,14 @@ namespace FrbaOfertas.Repositorios
             return new SqlCommand("SELECT * FROM PASO_A_PASO.busquedaRol_Todo()", conexion);
         }
 
+        public SqlCommand traerProveedorDeUsuario(int user,SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("SELECT prov_id FROM PASO_A_PASO.Proveedor WHERE prov_userId=@_user", conexion);
+            SqlParameter paramUsuario = this.nuevoParametroInt("@_user", user);
+            command.Parameters.Add(paramUsuario);
+            return command;
+        }
+
         public SqlCommand cargarCredito(string tipoDePago, long tarjeta, long monto, int idUsuario, SqlConnection conexion)
         {
             SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.cargarCredito @tipoPago=@_tipoPago ,@monto=@_monto, @tarjeta=@_tarjeta, @userID=@_userID", conexion);
@@ -355,15 +363,16 @@ namespace FrbaOfertas.Repositorios
         
         }
 
-        public SqlCommand generarCompra(int idUsuario, String oferCodigo, int cantidad,SqlConnection conexion)
+        public SqlCommand generarCompra(int idUsuario, String oferCodigo, int cantidad,DateTime fecha,SqlConnection conexion)
         {
-            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.generarCompra @userID=@_userID,@oferCodigo=@_oferCodigo,@cantidad=@_cantidad ", conexion);
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.generarCompra @userID=@_userID,@oferCodigo=@_oferCodigo,@cantidad=@_cantidad,@fecha=@_fecha", conexion);
             SqlParameter paramUsuario = this.nuevoParametroInt("@_userID", idUsuario);
             SqlParameter paramOferta = this.nuevoParametroString("@_oferCodigo", oferCodigo);
             SqlParameter paramCantidad = this.nuevoParametroInt("@_cantidad", cantidad);
+            SqlParameter paramFecha = this.nuevoParametroDateTime("@_fecha", fecha);
             command.Parameters.Add(paramUsuario);
             command.Parameters.Add(paramOferta);
-            command.Parameters.Add(paramCantidad);
+            command.Parameters.Add(paramFecha);
             return command;
 
         }
@@ -609,7 +618,25 @@ namespace FrbaOfertas.Repositorios
             return command;
         }
 
+        public SqlCommand listadoEstadisticoDescuentos(int mesInicio,int mesFin, int anio, SqlConnection conexion)
+        {
 
+            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.proveedor_mayorDescuento(@año,@mesInicio,@mesFin)", conexion);
+            command.Parameters.Add(this.nuevoParametroInt("@año",anio));
+            command.Parameters.Add(this.nuevoParametroInt("@mesInicio",mesInicio));
+            command.Parameters.Add(this.nuevoParametroInt("@mesFin",mesFin));
+            return command;
+        }
+
+        public SqlCommand listadoEstadisticoVentas(int mesInicio, int mesFin, int anio, SqlConnection conexion)
+        {
+
+            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.proveedor_masFacturas(@año,@mesInicio,@mesFin)", conexion);
+            command.Parameters.Add(this.nuevoParametroInt("@año", anio));
+            command.Parameters.Add(this.nuevoParametroInt("@mesInicio", mesInicio));
+            command.Parameters.Add(this.nuevoParametroInt("@mesFin", mesFin));
+            return command;
+        }
 
         public SqlCommand getUsuario(string username, SqlConnection conexion)
         {
@@ -683,9 +710,9 @@ namespace FrbaOfertas.Repositorios
         public SqlCommand deshabilitarUsuario(string idUsuario, SqlConnection conexion)
         {
             SqlCommand command = new SqlCommand("UPDATE PASO_A_PASO.Usuario SET user_status='D',user_fechaBaja=@_fechaBaja WHERE user_id=@_userId", conexion);
-
+            ArchivoConfig a = new ArchivoConfig();
             command.Parameters.Add(this.nuevoParametroInt("@_userId", Convert.ToInt32(idUsuario)));
-            command.Parameters.Add(this.nuevoParametroDateTime("@_fechaBaja", DateTime.Now));
+            command.Parameters.Add(this.nuevoParametroDateTime("@_fechaBaja", a.Fecha));
 
             return command;
         }

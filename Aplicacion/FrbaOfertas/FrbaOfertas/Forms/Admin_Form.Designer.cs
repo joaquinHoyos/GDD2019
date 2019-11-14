@@ -37,6 +37,7 @@
             this.btn_Roles = new System.Windows.Forms.Button();
             this.btnEstadistica = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.btn_Usuarios = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -59,22 +60,23 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 5;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.btnFactura, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnProveedores, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnClientes, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btn_Roles, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnEstadistica, 3, 0);
+            this.tableLayoutPanel1.ColumnCount = 6;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.Controls.Add(this.btn_Usuarios, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnEstadistica, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnFactura, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnProveedores, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnClientes, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btn_Roles, 1, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1158, 49);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -83,9 +85,9 @@
             this.btnFactura.BackColor = System.Drawing.Color.Silver;
             this.btnFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFactura.Location = new System.Drawing.Point(3, 3);
+            this.btnFactura.Location = new System.Drawing.Point(775, 3);
             this.btnFactura.Name = "btnFactura";
-            this.btnFactura.Size = new System.Drawing.Size(225, 43);
+            this.btnFactura.Size = new System.Drawing.Size(187, 43);
             this.btnFactura.TabIndex = 5;
             this.btnFactura.Text = "Facturas";
             this.btnFactura.UseVisualStyleBackColor = false;
@@ -96,9 +98,9 @@
             this.btnProveedores.BackColor = System.Drawing.Color.Silver;
             this.btnProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProveedores.Location = new System.Drawing.Point(234, 3);
+            this.btnProveedores.Location = new System.Drawing.Point(582, 3);
             this.btnProveedores.Name = "btnProveedores";
-            this.btnProveedores.Size = new System.Drawing.Size(225, 43);
+            this.btnProveedores.Size = new System.Drawing.Size(187, 43);
             this.btnProveedores.TabIndex = 4;
             this.btnProveedores.Text = "Proveedores";
             this.btnProveedores.UseVisualStyleBackColor = false;
@@ -110,9 +112,9 @@
             this.btnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnClientes.Location = new System.Drawing.Point(465, 3);
+            this.btnClientes.Location = new System.Drawing.Point(389, 3);
             this.btnClientes.Name = "btnClientes";
-            this.btnClientes.Size = new System.Drawing.Size(225, 43);
+            this.btnClientes.Size = new System.Drawing.Size(187, 43);
             this.btnClientes.TabIndex = 3;
             this.btnClientes.Text = "Clientes";
             this.btnClientes.UseVisualStyleBackColor = false;
@@ -123,9 +125,9 @@
             this.btn_Roles.BackColor = System.Drawing.Color.Silver;
             this.btn_Roles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Roles.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Roles.Location = new System.Drawing.Point(696, 3);
+            this.btn_Roles.Location = new System.Drawing.Point(196, 3);
             this.btn_Roles.Name = "btn_Roles";
-            this.btn_Roles.Size = new System.Drawing.Size(225, 43);
+            this.btn_Roles.Size = new System.Drawing.Size(187, 43);
             this.btn_Roles.TabIndex = 1;
             this.btn_Roles.Text = "Roles";
             this.btn_Roles.UseVisualStyleBackColor = false;
@@ -136,9 +138,9 @@
             this.btnEstadistica.BackColor = System.Drawing.Color.Silver;
             this.btnEstadistica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEstadistica.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEstadistica.Location = new System.Drawing.Point(927, 3);
+            this.btnEstadistica.Location = new System.Drawing.Point(968, 3);
             this.btnEstadistica.Name = "btnEstadistica";
-            this.btnEstadistica.Size = new System.Drawing.Size(228, 43);
+            this.btnEstadistica.Size = new System.Drawing.Size(187, 43);
             this.btnEstadistica.TabIndex = 2;
             this.btnEstadistica.Text = "Estadistica";
             this.btnEstadistica.UseVisualStyleBackColor = false;
@@ -148,6 +150,19 @@
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // btn_Usuarios
+            // 
+            this.btn_Usuarios.BackColor = System.Drawing.Color.Silver;
+            this.btn_Usuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Usuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Usuarios.Location = new System.Drawing.Point(3, 3);
+            this.btn_Usuarios.Name = "btn_Usuarios";
+            this.btn_Usuarios.Size = new System.Drawing.Size(187, 43);
+            this.btn_Usuarios.TabIndex = 6;
+            this.btn_Usuarios.Text = "Usuarios";
+            this.btn_Usuarios.UseVisualStyleBackColor = false;
+            this.btn_Usuarios.Click += new System.EventHandler(this.btn_Usuarios_Click);
             // 
             // Admin_Form
             // 
@@ -175,5 +190,6 @@
         private System.Windows.Forms.Button btnClientes;
         private System.Windows.Forms.Button btnProveedores;
         private System.Windows.Forms.Button btnFactura;
+        private System.Windows.Forms.Button btn_Usuarios;
     }
 }

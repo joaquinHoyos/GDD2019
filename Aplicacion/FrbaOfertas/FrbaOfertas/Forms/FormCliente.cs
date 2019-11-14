@@ -18,7 +18,7 @@ namespace FrbaOfertas.Forms
     {
 
         public int currentUserID;
-        
+        private Form formActual;
         public FormCliente()
         {
             InitializeComponent();
@@ -77,6 +77,17 @@ namespace FrbaOfertas.Forms
             if(!funciones.Contains((int)Enum.Parse(typeof(EnumFunciones),"VER_CUPON"))){this.btn_verCupones.Enabled=false;}
             if(!funciones.Contains((int)Enum.Parse(typeof(EnumFunciones),"COMPARTIR_CUPON"))){}
             if(!funciones.Contains((int)Enum.Parse(typeof(EnumFunciones),"CARGA_CREDITO"))){this.btn_cargaCredito.Enabled=false;}
+        }
+
+        public void mostrarForm(Form form)
+        {
+            if (this.formActual != null) 
+            { 
+                this.formActual.Hide(); 
+            }
+            this.formActual = form;
+            this.formActual.Show();
+
         }
     }
 }

@@ -8,6 +8,8 @@ using FrbaOfertas.Forms;
 using System.Windows.Forms;
 using System.Data;
 using FrbaOfertas.Modelo;
+using FrbaOfertas.Forms;
+using System.Windows.Forms;
 
 namespace FrbaOfertas.Presenters
 {
@@ -38,32 +40,22 @@ namespace FrbaOfertas.Presenters
         public int getProveedorActual()
         {
 
-            return RepoUsuario.instance().idActual;
+            return RepoUsuario.instance().getProveedorActual();
         }
 
         public void nuevaOferta(Oferta oferta)
         {
-            try
-            {
+            
                 RepoOferta.instance().agregarOferta(oferta);
                 MessageBox.Show("Oferta Agregada");
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
         }
 
         public void editarOferta(Oferta oferta)
         {
-            try{
+            
             RepoOferta.instance().editarOferta(oferta);
                MessageBox.Show("Oferta Editada");
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
+            
         }
 
         public void eliminarOferta(string idOferta)
