@@ -13,6 +13,7 @@ namespace FrbaOfertas.Presenters
 {
     class PresenterProveedor
     {
+        private ABMProveedores abmProveedores;
         private AbmOfertas abmrol_form;
         public static PresenterProveedor presenter;
 
@@ -78,5 +79,18 @@ namespace FrbaOfertas.Presenters
         }
 
 
+
+        public DataTable buscarProveedores(ABMProveedores form, string razonSocial, string cuit, string mail)
+        {
+           
+              this.abmProveedores = form;
+              return RepoProveedores.instance().buscarProveedor(razonSocial, cuit, mail);
+          
+        }
+
+        internal DataTable buscarProveedoresSinUsuario()
+        {
+            return RepoProveedores.instance().buscarProveedoresSinUsuario();
+        }
     }
 }

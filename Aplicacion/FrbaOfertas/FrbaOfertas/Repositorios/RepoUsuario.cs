@@ -475,6 +475,14 @@ namespace FrbaOfertas.Repositorios
 
             command.ExecuteNonQuery();
         }
+
+        public void asignarProv(string idUsuario, string idProv)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().asignarUsuarioAProveedor(idUsuario, idProv, conexion);
+
+            command.ExecuteNonQuery();
+        }
     }
 
 

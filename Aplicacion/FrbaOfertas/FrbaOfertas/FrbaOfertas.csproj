@@ -44,6 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\ABMProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ABMProveedores.Designer.cs">
+      <DependentUpon>ABMProveedores.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AltaCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,12 @@
     </Compile>
     <Compile Include="Forms\AltaProveedor.Designer.cs">
       <DependentUpon>AltaProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AsginarUsuarioAProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AsginarUsuarioAProveedor.Designer.cs">
+      <DependentUpon>AsginarUsuarioAProveedor.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\AsignarUsuarioACliente_Form.cs">
       <SubType>Form</SubType>
@@ -172,6 +184,9 @@
     <Compile Include="Server\Server.cs" />
     <Compile Include="Repositorios\RepoUsuario.cs" />
     <Compile Include="Modelo\Usuario.cs" />
+    <EmbeddedResource Include="Forms\ABMProveedores.resx">
+      <DependentUpon>ABMProveedores.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AbmUsuario_Form.resx">
       <DependentUpon>AbmUsuario_Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -192,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AltaProveedor.resx">
       <DependentUpon>AltaProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AsginarUsuarioAProveedor.resx">
+      <DependentUpon>AsginarUsuarioAProveedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AsignarUsuarioACliente_Form.resx">
       <DependentUpon>AsignarUsuarioACliente_Form.cs</DependentUpon>
@@ -243,7 +261,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="Repositorios\App.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Usuario\" />

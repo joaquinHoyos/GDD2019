@@ -366,6 +366,7 @@
             this.Controls.Add(this.txtApellido);
             this.Name = "ABMCliente";
             this.Text = "Abm Clientes";
+            this.Load += new System.EventHandler(this.ABMCliente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

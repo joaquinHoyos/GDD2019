@@ -229,5 +229,10 @@ namespace FrbaOfertas.Forms
             form.Show();
         }
 
+        private void ABMCliente_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

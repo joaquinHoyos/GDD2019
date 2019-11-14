@@ -709,5 +709,127 @@ namespace FrbaOfertas.Repositorios
 
             return command;
         }
+
+        internal SqlCommand buscarProveedor(string razonSocial, string cuit, string mail, SqlConnection conexion)
+        {
+            SqlCommand command;
+            if (cuit == "")
+            {
+                command = new SqlCommand("SELECT * FROM PASO_A_PASO.buscarProvSinCuit(@razon,@mail)", conexion);
+                command.Parameters.Add(this.nuevoParametroString("@razon", cuit));
+                command.Parameters.Add(this.nuevoParametroString("@mail", mail));
+            }
+            else
+            {
+                command = new SqlCommand("SELECT * FROM PASO_A_PASO.buscarProvConCuit(@cuit)", conexion);
+                command.Parameters.Add(this.nuevoParametroString("@cuit", cuit));
+            }
+
+            return command;
+        }
+
+        public SqlCommand getNombreRubro(string rubrId, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("SELECT rubr_nombre FROM PASO_A_PASO.Rubro WHERE rubr_id=@_rubrId", conexion);
+
+            command.Parameters.Add(this.nuevoParametroInt("@_rubrId", Convert.ToInt32(rubrId)));
+
+            return command;
+        }
+
+        public SqlCommand getRubroPorNombre(string rubrNombre, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("SELECT rubr_id FROM PASO_A_PASO.Rubro WHERE rubr_nombre=@_rubrNombre", conexion);
+
+            command.Parameters.Add(this.nuevoParametroString("@_rubrNombre", rubrNombre));
+
+            return command;
+        }
+
+       
+        public SqlCommand altaProveedor(Proveedor prov, SqlConnection conexion)
+        {   
+            
+            SqlCommand command = new SqlCommand("INSERT INTO PASO_A_PASO.Proveedor (prov_cuit,prov_razon,prov_userId,prov_mail,prov_telefono,prov_direccion,prov_codigoPostal,prov_ciudad,prov_rubro,prov_nombre,prov_habilitado) VALUES (@cuit,@razon,null,@mail,@telefono,@direccion,@codpos,@ciudad,@rubrID,@nombre,'1')", conexion);
+
+            command.Parameters.Add(this.nuevoParametroString("@razon", prov.razonSocial));
+            command.Parameters.Add(this.nuevoParametroString("@cuit", prov.cuit));
+            command.Parameters.Add(this.nuevoParametroString("@nombre", prov.nombre));
+            ;
+            command.Parameters.Add(this.nuevoParametroInt("@rubrID", prov.rubro));
+            command.Parameters.Add(this.nuevoParametroString("@mail", prov.mail));
+            command.Parameters.Add(this.nuevoParametroLong("@telefono", prov.telefono));
+            command.Parameters.Add(this.nuevoParametroString("@direccion", prov.direccion));
+            command.Parameters.Add(this.nuevoParametroInt("@codpos", prov.codigoPostal));
+            command.Parameters.Add(this.nuevoParametroString("@ciudad", prov.ciudad));
+            return command;
+        }
+
+        public SqlCommand modificarProveedor(string provId, Proveedor prov, SqlConnection conexion)
+        {
+            SqlCommand command;
+            if(prov.user==-1){
+
+            command = new SqlCommand("UPDATE PASO_A_PASO.Proveedor SET prov_cuit=@cuit,prov_razon=@razon,prov_userId=null,prov_mail=@mail,prov_telefono=@telefono,prov_direccion=@direccion,prov_codigoPostal=@codpos,prov_ciudad=@ciudad,prov_rubro=@rubrID,prov_nombre=@nombre,prov_habilitado=@estado WHERE prov_id=@_provId", conexion);
+
+            command.Parameters.Add(this.nuevoParametroString("@razon", prov.razonSocial));
+            command.Parameters.Add(this.nuevoParametroString("@cuit", prov.cuit));
+            command.Parameters.Add(this.nuevoParametroString("@nombre", prov.nombre));
+            command.Parameters.Add(this.nuevoParametroString("@estado", prov.habilitado.ToString()));
+           
+            command.Parameters.Add(this.nuevoParametroInt("@rubrID", prov.rubro));
+            command.Parameters.Add(this.nuevoParametroString("@mail", prov.mail));
+            command.Parameters.Add(this.nuevoParametroLong("@telefono", prov.telefono));
+            command.Parameters.Add(this.nuevoParametroString("@direccion", prov.direccion));
+            command.Parameters.Add(this.nuevoParametroInt("@codpos", prov.codigoPostal));
+            command.Parameters.Add(this.nuevoParametroString("@ciudad", prov.ciudad));
+            command.Parameters.Add(this.nuevoParametroInt("@_provId", Convert.ToInt32(provId)));
+          }
+            else
+            {
+                command = new SqlCommand("UPDATE PASO_A_PASO.Proveedor SET prov_cuit=@cuit,prov_razon=@razon,prov_userId=@userId,prov_mail=@mail,prov_telefono=@telefono,prov_direccion=@direccion,prov_codigoPostal=@codpos,prov_ciudad=@ciudad,prov_rubro=@rubrID,prov_nombre=@nombre,prov_habilitado=@estado WHERE prov_id=@_provId", conexion);
+
+                command.Parameters.Add(this.nuevoParametroString("@razon", prov.razonSocial));
+                command.Parameters.Add(this.nuevoParametroString("@cuit", prov.cuit));
+                command.Parameters.Add(this.nuevoParametroString("@nombre", prov.nombre));
+                command.Parameters.Add(this.nuevoParametroString("@estado", prov.habilitado.ToString()));
+                command.Parameters.Add(this.nuevoParametroInt("@userId", prov.user));
+                command.Parameters.Add(this.nuevoParametroInt("@rubrID", prov.rubro));
+                command.Parameters.Add(this.nuevoParametroString("@mail", prov.mail));
+                command.Parameters.Add(this.nuevoParametroLong("@telefono", prov.telefono));
+                command.Parameters.Add(this.nuevoParametroString("@direccion", prov.direccion));
+                command.Parameters.Add(this.nuevoParametroInt("@codpos", prov.codigoPostal));
+                command.Parameters.Add(this.nuevoParametroString("@ciudad", prov.ciudad));
+                command.Parameters.Add(this.nuevoParametroInt("@_provId", Convert.ToInt32(provId)));
+            }
+
+
+
+            return command;
+        }
+
+        public SqlCommand deshabilitarProveedor(string p, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.deshabilitarProveedor @prov_id=@_id", conexion);
+            SqlParameter param = this.nuevoParametroString("@_id", p);
+            command.Parameters.Add(param);
+            return command;
+        }
+
+        public SqlCommand buscarProveedoresSinUsuario(SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.Proveedor WHERE prov_userId IS null", conexion);
+            return command;
+        }
+
+        public SqlCommand asignarUsuarioAProveedor(string idUsuario, string idProv, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("UPDATE PASO_A_PASO.Proveedor SET prov_userId = @_userId WHERE prov_id=@_provId", conexion);
+
+            command.Parameters.Add(this.nuevoParametroInt("@_userId", Convert.ToInt32(idUsuario)));
+            command.Parameters.Add(this.nuevoParametroInt("@_provId", Convert.ToInt32(idProv)));
+
+            return command;
+        }
     }
 }

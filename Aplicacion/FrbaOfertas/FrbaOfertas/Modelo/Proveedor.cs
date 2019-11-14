@@ -8,18 +8,18 @@ namespace FrbaOfertas.Modelo
 {
     class Proveedor
     {
-        int id;
-        string cuit;
-        string razonSocial;
-        int user;
-        string mail;
-        long telefono;
-        string direccion;
-        int codigoPostal;
-        string ciudad;
-        int rubro;
-        string nombre;
-        char habilitado;
+        public int id {get;set;}
+        public string cuit { get; set; }
+        public string razonSocial { get; set; }
+        public int user { get; set; }
+        public string mail { get; set; }
+        public long telefono { get; set; }
+        public string direccion { get; set; }
+        public int codigoPostal { get; set; }
+        public string ciudad { get; set; }
+        public int rubro { get; set; }
+        public string nombre { get; set; }
+        public char habilitado { get; set; }
 
         public Proveedor(int _id, string _cuit, string _razonSocial, int _user, string _mail, long _telefono, string _direccion, int _codigoPostal, string _ciudad, int _rubro, string _nombre, char _habilitado)
         {
