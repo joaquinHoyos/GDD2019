@@ -57,12 +57,12 @@ namespace FrbaOfertas.Forms
 
         private void btnProveedores_Click(object sender, EventArgs e)
         {
-
+            Presenter.instance().cargarAbmProveedor(this);
         }
 
         private void btn_Usuarios_Click(object sender, EventArgs e)
         {
-
+            Presenter.instance().cargarUsuario(this);
         }
 
         public void mostrarForm(Form form)
