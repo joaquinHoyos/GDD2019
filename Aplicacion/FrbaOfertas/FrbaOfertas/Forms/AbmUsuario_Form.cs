@@ -181,6 +181,12 @@ namespace FrbaOfertas.Forms
 
         private void volverAlIncio()
         {
+            textBox1.Text = "";
+            txtEstado.Text = "";
+            textBox2.Text = "";
+            txtIntentosLogin.Text = "";
+
+            txtFechaBaja.Text = "";
 
             textBox1.Enabled = false;
             textBox2.Enabled = false;
@@ -189,7 +195,7 @@ namespace FrbaOfertas.Forms
             btnDeshabilitar.Enabled = false;
             btnHabilitar.Enabled = false;
             btnEditar.Enabled = false;
-            txtIntentosLogin = false;
+            txtIntentosLogin.Enabled = false;
             
         }
 
