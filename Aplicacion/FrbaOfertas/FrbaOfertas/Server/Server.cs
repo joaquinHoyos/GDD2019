@@ -22,9 +22,8 @@ namespace FrbaOfertas.Server
         }
         public SqlConnection levantarConexion()
         {
-
-            SqlConnection myConnection = new SqlConnection("server=localhost\\SQLSERVER2012;" +
-                                           "database=GD2C2019; User ID=gdCupon2019; Password=gd2019");
+            Properties.Settings set = new Properties.Settings();
+            SqlConnection myConnection = new SqlConnection(set.Server);
             try
             {
                 myConnection.Open();

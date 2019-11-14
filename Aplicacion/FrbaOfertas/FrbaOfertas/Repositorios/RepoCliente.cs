@@ -44,8 +44,8 @@ namespace FrbaOfertas.Repositorios
         public void generarCompra(int idUsuario, String oferCodigo, int cantidad)
         {
             SqlConnection conexion = ServerSQL.instance().levantarConexion();
-           ArchivoConfig a=new ArchivoConfig();
-           DateTime fecha = a.Fecha;
+            Properties.Settings set = new Properties.Settings();
+           DateTime fecha = set.Fecha;
             SqlCommand command = QueryFactory.instance().generarCompra(idUsuario,oferCodigo,cantidad,fecha,conexion);
 
 
