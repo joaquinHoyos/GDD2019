@@ -151,6 +151,19 @@ namespace FrbaOfertas.Repositorios
             reader.Read();
             return Convert.ToInt32(reader[0]);
 
+        }
+
+        public int getProveedorActual()
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+
+            SqlCommand command = QueryFactory.instance().traerProveedorDeUsuario(idActual, conexion);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            reader.Read();
+
+            return Convert.ToInt32(reader[0]);
         }
 
 

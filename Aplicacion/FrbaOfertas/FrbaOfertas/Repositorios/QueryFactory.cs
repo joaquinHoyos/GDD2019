@@ -319,6 +319,14 @@ namespace FrbaOfertas.Repositorios
             return new SqlCommand("SELECT * FROM PASO_A_PASO.busquedaRol_Todo()", conexion);
         }
 
+        public SqlCommand traerProveedorDeUsuario(int user,SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("SELECT prov_id FROM PASO_A_PASO.Proveedor WHERE prov_userId=@_user", conexion);
+            SqlParameter paramUsuario = this.nuevoParametroInt("@_user", user);
+            command.Parameters.Add(paramUsuario);
+            return command;
+        }
+
         public SqlCommand cargarCredito(string tipoDePago, long tarjeta, long monto, int idUsuario, SqlConnection conexion)
         {
             SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.cargarCredito @tipoPago=@_tipoPago ,@monto=@_monto, @tarjeta=@_tarjeta, @userID=@_userID", conexion);
