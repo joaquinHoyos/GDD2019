@@ -23,13 +23,31 @@ AS
 	DROP PROC PASO_A_PASO.crearUsuario
 	DROP PROC PASO_A_PASO.generarCompra
 	DROP PROC PASO_A_PASO.regalarCupon
+	DROP PROC PASO_A_PASO.crearCliente
+	DROP PROC PASO_A_PASO.crearOferta
+	DROP PROC PASO_A_PASO.crearProveedor
+	DROP PROC PASO_A_PASO.deshabilitarRol
+	DROP PROC PASO_A_PASO.habilitarRol
+	DROP PROC PASO_A_PASO.modificarRol
 
 	DROP FUNCTION PASO_A_PASO.saldoUsuario
 	DROP FUNCTION PASO_A_PASO.traerClienteSegunUsuario
 	DROP FUNCTION PASO_A_PASO.traerCuponesPropios
 	DROP FUNCTION PASO_A_PASO.traerOfertasDisponibles
+	
+	DROP FUNCTION PASO_A_PASO.busquedaRol_Id
+	DROP FUNCTION PASO_A_PASO.busquedaRol_IdYFuncion
+	DROP FUNCTION PASO_A_PASO.busquedaRol_IdYNombre
+	DROP FUNCTION PASO_A_PASO.busquedaRol_Nombre
+	DROP FUNCTION PASO_A_PASO.busquedaRol_Todo
+	DROP FUNCTION PASO_A_PASO.busquedarRol_NombreYFuncion
+	DROP FUNCTION PASO_A_PASO.logInUsuario
+	DROP FUNCTION PASO_A_PASO.proveedor_mayorDescuento
+	DROP FUNCTION PASO_A_PASO.prueba
+	DROP FUNCTION PASO_A_PASO.traerFunciones
+	DROP FUNCTION PASO_A_PASO.traerRoles
 	DROP PROCEDURE PASO_A_PASO.crearRol
-
+	
 	DROP PROC PASO_A_PASO.BorrarBase
 
 

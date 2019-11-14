@@ -33,6 +33,100 @@ namespace FrbaOfertas.Repositorios
 
         }
 
+        public DataTable listadoEstadisticoDescuentos(int semestre, int anio)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            int mesInicio, mesFin;
+            if (semestre == 1)
+            {
+                mesInicio = 1;
+                mesFin = 6;
+            }
+            else
+            {
+                mesInicio = 7;
+                mesFin = 12;
+            }
+            
+            SqlCommand command = QueryFactory.instance().listadoEstadisticoDescuentos(mesInicio,mesFin,anio,conexion);
+            SqlDataReader reader = command.ExecuteReader();
+            return this.tablaListadoDescuentos(reader);
+        }
+
+        public DataTable listadoEstadisticoVentas(int semestre, int anio)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            int mesInicio, mesFin;
+            if (semestre == 1)
+            {
+                mesInicio = 1;
+                mesFin = 6;
+            }
+            else
+            {
+                mesInicio = 7;
+                mesFin = 12;
+            }
+            SqlCommand command = QueryFactory.instance().listadoEstadisticoVentas(mesInicio,mesFin, anio, conexion);
+            SqlDataReader reader = command.ExecuteReader();
+            return this.tablaListadoVentas(reader);
+        }
+
+        private DataTable tablaListadoDescuentos(SqlDataReader reader)
+        {
+            DataTable tabla = new DataTable();
+            tabla.Columns.Add(new DataColumn("ID"));
+            tabla.Columns.Add(new DataColumn("Razon Social"));
+            tabla.Columns.Add(new DataColumn("CUIT"));
+            tabla.Columns.Add(new DataColumn("Rubro"));
+            tabla.Columns.Add(new DataColumn("Descuento Promedio"));
+            tabla.Columns.Add(new DataColumn("Año"));
+            tabla.Columns.Add(new DataColumn("Semestre"));
+
+            while (reader.Read())
+            {
+                DataRow row = tabla.NewRow();
+                row["ID"] = Convert.ToInt32(reader.GetSqlInt32(0).ToString());
+                row["Razon Social"] = reader.GetSqlString(1).ToString();
+                row["CUIT"] = reader.GetSqlString(2).ToString();
+                row["Rubro"] = reader.GetSqlString(3).ToString();
+                row["Descuento Promedio"] = Convert.ToDecimal(reader.GetSqlDecimal(4).ToString());
+                row["Año"] = Convert.ToInt32(reader.GetSqlInt32(5).ToString());
+                row["Semestre"] = Convert.ToInt32(reader.GetSqlInt32(6).ToString());
+                tabla.Rows.Add(row);
+            }
+            return tabla;
+        }
+
+        private DataTable tablaListadoVentas(SqlDataReader reader)
+        {   
+            DataTable tabla = new DataTable();
+            tabla.Columns.Add(new DataColumn("ID"));
+            tabla.Columns.Add(new DataColumn("Razon Social"));
+            tabla.Columns.Add(new DataColumn("CUIT"));
+            tabla.Columns.Add(new DataColumn("Rubro"));
+            tabla.Columns.Add(new DataColumn("Cantidad de Compras"));
+            tabla.Columns.Add(new DataColumn("Año"));
+            tabla.Columns.Add(new DataColumn("Semestre"));
+
+            while (reader.Read())
+            {
+                DataRow row = tabla.NewRow();
+                row["ID"] = Convert.ToInt32(reader.GetSqlInt32(0).ToString());
+                row["Razon Social"] = reader.GetSqlString(1).ToString();
+                row["CUIT"] = reader.GetSqlString(2).ToString();
+                row["Rubro"] = reader.GetSqlString(3).ToString();
+                row["Cantidad de Compras"] = Convert.ToInt32(reader.GetSqlInt32(4).ToString());
+                row["Año"] = Convert.ToInt32(reader.GetSqlInt32(5).ToString());
+                row["Semestre"] = Convert.ToInt32(reader.GetSqlInt32(6).ToString());
+                tabla.Rows.Add(row);
+            }
+            return tabla;
+        }
+
+
+
+
         private DataTable cargarProveedores(SqlDataReader reader)
         {
             List<Proveedor> listaProveedores = new List<Proveedor>();
