@@ -719,7 +719,7 @@ namespace FrbaOfertas.Repositorios
 
         public SqlCommand habilitarUsuario(string idUsuario, SqlConnection conexion)
         {
-            SqlCommand command = new SqlCommand("UPDATE PASO_A_PASO.Usuario SET user_status='E',user_fechaBaja=@'1/1/1900' WHERE user_id=@_userId", conexion);
+            SqlCommand command = new SqlCommand("UPDATE PASO_A_PASO.Usuario SET user_status='E',user_fechaBaja='1/1/1900' WHERE user_id=@_userId", conexion);
 
             command.Parameters.Add(this.nuevoParametroInt("@_userId", Convert.ToInt32(idUsuario)));
           

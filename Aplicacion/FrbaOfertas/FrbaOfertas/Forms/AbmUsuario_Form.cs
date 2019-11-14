@@ -19,34 +19,55 @@ namespace FrbaOfertas.Forms
         public AbmUsuario_Form()
         {
             InitializeComponent();
+            TopLevel = false;
+            FormBorderStyle = FormBorderStyle.None;
         }
 
         private void btnCrearUsuario_Click(object sender, EventArgs e)
         {
-            try
+            if (this.validarTxt())
             {
-                if (this.agregando == 1)
+                try
                 {
-                    List<String> rolesSeleccionados = this.getRolesSeleccionados();
-                    RepoUsuario.instance().crearUsuario(textBox1.Text, textBox2.Text, rolesSeleccionados);
-                    MessageBox.Show("Usuario dado de alta con exito");
+                    if (this.agregando == 1)
+                    {
+                        List<String> rolesSeleccionados = this.getRolesSeleccionados();
+                        RepoUsuario.instance().crearUsuario(textBox1.Text, textBox2.Text, rolesSeleccionados);
+                        MessageBox.Show("Usuario dado de alta con exito");
+                    }
+                    else
+                    {
+                        List<String> rolesSeleccionados = this.getRolesSeleccionados();
+                        RepoUsuario.instance().modificarUsuario(textBox1.Text, textBox2.Text, rolesSeleccionados, txtIntentosLogin.Text, this.userIdSeleccionado);
+                        MessageBox.Show("Usuario modificado con exito");
+                    }
+
+
                 }
-                else
+                catch (Exception err)
                 {
-                    List<String> rolesSeleccionados = this.getRolesSeleccionados();
-                    RepoUsuario.instance().modificarUsuario(textBox1.Text, textBox2.Text, rolesSeleccionados, txtIntentosLogin.Text, this.userIdSeleccionado);
-                    MessageBox.Show("Usuario modificado con exito");
+                    MessageBox.Show("Error al guardar el usuario: " + err.Message);
                 }
 
-                
+                this.volverAlIncio();
             }
-            catch (Exception err)
+            else
             {
-                MessageBox.Show("Error al guardar el usuario: " + err.Message);
+                MessageBox.Show("Porfavor complete todos los campos con valores logicos");
             }
-
-            this.volverAlIncio();
          }
+        private bool validarTxt()
+        {
+            if (txtEstado.Text != "" && txtFechaBaja.Text != "" && txtIntentosLogin.Text != "" && textBox1.Text != "" && textBox2.Text != "")
+            {
+                if (this.IsNumeric(txtIntentosLogin.Text))
+                {
+
+                    return true;
+                }
+            }
+            return false;
+        }
 
         private List<String> getRolesSeleccionados()
         {
@@ -60,6 +81,12 @@ namespace FrbaOfertas.Forms
             }
             return rolesSelec;
 
+        }
+
+        public bool IsNumeric(string valor)
+        {
+            int result;
+            return int.TryParse(valor, out result);
         }
 
         private void AbmUsuario_Form_Load(object sender, EventArgs e)
@@ -118,7 +145,7 @@ namespace FrbaOfertas.Forms
             textBox1.Enabled = true;
             txtIntentosLogin.Enabled = true;
             list_Roles.Enabled = true;
-
+            textBox2.Enabled = true;
             this.agregando = 0;
         }
 

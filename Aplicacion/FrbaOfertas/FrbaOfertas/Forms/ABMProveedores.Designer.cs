@@ -109,6 +109,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.Enabled = false;
             this.label6.Location = new System.Drawing.Point(285, 232);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(71, 13);
@@ -125,6 +126,7 @@
             // 
             // txtCodigoPostal
             // 
+            this.txtCodigoPostal.Enabled = false;
             this.txtCodigoPostal.Location = new System.Drawing.Point(227, 261);
             this.txtCodigoPostal.Name = "txtCodigoPostal";
             this.txtCodigoPostal.Size = new System.Drawing.Size(169, 20);
@@ -150,6 +152,7 @@
             // 
             // txtTelefono
             // 
+            this.txtTelefono.Enabled = false;
             this.txtTelefono.Location = new System.Drawing.Point(52, 209);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(169, 20);

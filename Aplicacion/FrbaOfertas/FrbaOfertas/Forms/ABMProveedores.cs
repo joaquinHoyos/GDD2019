@@ -18,6 +18,8 @@ namespace FrbaOfertas.Forms
         public ABMProveedores()
         {
             InitializeComponent();
+            TopLevel = false;
+            FormBorderStyle = FormBorderStyle.None;
         }
         private bool agregando;
         private string idUsuarioDelSeleccionado;
@@ -36,11 +38,12 @@ namespace FrbaOfertas.Forms
             btnSeleccionar.Enabled = false;
             btnDeshabilitar.Enabled = false;
             cboRubro.Enabled = false;
-
+            txtNombre.Enabled = false;
             txtDireccion.Enabled = false;
             txtTelefono.Enabled = false;
             txtCiudad.Enabled = false;
             txtCodigoPostal.Enabled = false;
+            txtCuit.Enabled = true;
         }
 
         private void limpiarTodosLosTXT()
@@ -129,7 +132,30 @@ namespace FrbaOfertas.Forms
                 cboRubro.Items.Add(rubros[i]);
             }
         }
+        private void reiniciarTodo()
+        {
 
+            this.limpiarTodosLosTXT();
+            this.deshabilitarTodosLosBotones();
+            this.setearTXT(false);
+
+            txtCuit.Text = "";
+            btn_Busqueda.Enabled = true;
+            btn_Nuevo.Enabled = true;
+
+        }
+
+        private void deshabilitarTodosLosBotones()
+        {
+            btnGuardar.Enabled = false;
+            btn_Editar.Enabled = false;
+            btnSeleccionar.Enabled = false;
+            btn_Nuevo.Enabled = false;
+            btn_Busqueda.Enabled = false;
+            btnBuscar.Enabled = false;
+            btnDeshabilitar.Enabled = false;
+
+        }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (this.validarTxt())
@@ -193,21 +219,36 @@ namespace FrbaOfertas.Forms
             {
                 MessageBox.Show("Porfavor, complete todos los campos");
             }
+
+            this.reiniciarTodo();
+
+
         }
         private bool validarTxt()
         {
             if (txtRazonSocial.Text != "" && txtNombre.Text != "" && txtCuit.Text != "" && txtMail.Text != "" && txtDireccion.Text != "" && txtTelefono.Text != "" && txtCiudad.Text != "" && txtCodigoPostal.Text != "" && cboRubro.Text != "" && txtEstado.Text != "")
             {
+                if(IsNumeric(txtCodigoPostal.Text) && IsNumeric(txtTelefono.Text))
+                {
+
                 return true;
+                }
+
             }
 
             return false;
         }
 
+        public bool IsNumeric(string valor)
+        {
+            int result;
+            return int.TryParse(valor, out result);
+        }
         
         private void btn_Nuevo_Click(object sender, EventArgs e)
         {
             this.agregando = true;
+            this.setearTXT(true);
         }
 
         private void btn_Editar_Click(object sender, EventArgs e)
@@ -232,7 +273,8 @@ namespace FrbaOfertas.Forms
 
         private void btnAsignarUsuario_Click(object sender, EventArgs e)
         {
-
+            AsginarUsuarioAProveedor form = new AsginarUsuarioAProveedor();
+            form.Show();
         }
     }
 }

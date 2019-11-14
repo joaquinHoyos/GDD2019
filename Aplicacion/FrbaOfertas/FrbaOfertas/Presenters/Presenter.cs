@@ -22,6 +22,7 @@ namespace FrbaOfertas.Presenters
         private Facturacion_Form fact_form;
         private ListadoEstadisitico listado_form;
         private AbmUsuario_Form usuario_form;
+        private ABMProveedores abmProv_Form;
 
         public static Presenter instance()
         {
@@ -265,5 +266,16 @@ namespace FrbaOfertas.Presenters
 
 
 
+
+        public void cargarAbmProveedor(Admin_Form admin_Form)
+        {
+            admin_Form.splitContainer1.Panel2.Controls.Add(this.getAbmProveedor());
+            admin_Form.mostrarForm(this.getAbmProveedor());
+        }
+
+        private ABMProveedores getAbmProveedor()
+        {
+         return this.abmProv_Form == null ? this.abmProv_Form = new ABMProveedores() : this.abmProv_Form;
+        }
     }
 }
