@@ -453,7 +453,18 @@ namespace FrbaOfertas.Repositorios
 
         public void deshabilitarUsuario(string idUsuario)
         {
-           
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().deshabilitarUsuario(idUsuario, conexion);
+
+            command.ExecuteNonQuery();
+        }
+
+        public void habilitarUsuario(string idUsuario)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().habilitarUsuario(idUsuario, conexion);
+
+            command.ExecuteNonQuery();
         }
     }
 

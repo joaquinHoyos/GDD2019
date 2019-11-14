@@ -685,7 +685,18 @@ namespace FrbaOfertas.Repositorios
             SqlCommand command = new SqlCommand("UPDATE PASO_A_PASO.Usuario SET user_status='D',user_fechaBaja=@_fechaBaja WHERE user_id=@_userId", conexion);
 
             command.Parameters.Add(this.nuevoParametroInt("@_userId", Convert.ToInt32(idUsuario)));
-            command.Parameters.Add(this.nuevoParametroDateTime("@_userId", DateTime.Now));
+            command.Parameters.Add(this.nuevoParametroDateTime("@_fechaBaja", DateTime.Now));
+
+            return command;
+        }
+
+        public SqlCommand habilitarUsuario(string idUsuario, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("UPDATE PASO_A_PASO.Usuario SET user_status='E',user_fechaBaja=@'1/1/1900' WHERE user_id=@_userId", conexion);
+
+            command.Parameters.Add(this.nuevoParametroInt("@_userId", Convert.ToInt32(idUsuario)));
+          
+
             return command;
         }
     }

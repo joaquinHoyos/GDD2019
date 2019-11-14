@@ -23,18 +23,29 @@ namespace FrbaOfertas.Forms
 
         private void btnCrearUsuario_Click(object sender, EventArgs e)
         {
-            if (this.agregando == 1)
+            try
             {
-                List<String> rolesSeleccionados = this.getRolesSeleccionados();
-                RepoUsuario.instance().crearUsuario(textBox1.Text, textBox2.Text, rolesSeleccionados);
+                if (this.agregando == 1)
+                {
+                    List<String> rolesSeleccionados = this.getRolesSeleccionados();
+                    RepoUsuario.instance().crearUsuario(textBox1.Text, textBox2.Text, rolesSeleccionados);
+                    MessageBox.Show("Usuario dado de alta con exito");
+                }
+                else
+                {
+                    List<String> rolesSeleccionados = this.getRolesSeleccionados();
+                    RepoUsuario.instance().modificarUsuario(textBox1.Text, textBox2.Text, rolesSeleccionados, txtIntentosLogin.Text, this.userIdSeleccionado);
+                    MessageBox.Show("Usuario modificado con exito");
+                }
+
+                
             }
-            else
+            catch (Exception err)
             {
-                List<String> rolesSeleccionados = this.getRolesSeleccionados();
-                RepoUsuario.instance().modificarUsuario(textBox1.Text, textBox2.Text, rolesSeleccionados,txtIntentosLogin.Text,this.userIdSeleccionado);
-
+                MessageBox.Show("Error al guardar el usuario: " + err.Message);
             }
 
+            this.volverAlIncio();
          }
 
         private List<String> getRolesSeleccionados()
@@ -63,6 +74,10 @@ namespace FrbaOfertas.Forms
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+
+            btnSeleccionar.Enabled = true;
+            
+
             DataTable usuariosFiltrados = RepoUsuario.instance().traerUsuariosFiltrados(textBox1.Text);
             dataGridView1.DataSource = usuariosFiltrados;
         }
@@ -70,7 +85,10 @@ namespace FrbaOfertas.Forms
         
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-           
+            btnEditar.Enabled = true;
+            btnDeshabilitar.Enabled = true;
+            btnHabilitar.Enabled = true;
+
             if (dataGridView1.SelectedRows != null)
             {
                 DataGridViewRow seleccionados = dataGridView1.SelectedRows[0];
@@ -96,15 +114,84 @@ namespace FrbaOfertas.Forms
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            btnCrearUsuario.Enabled = true;
+            textBox1.Enabled = true;
+            txtIntentosLogin.Enabled = true;
+            list_Roles.Enabled = true;
+
             this.agregando = 0;
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
+            btnBuscar.Enabled = false;
+            textBox1.Enabled = true;
+            textBox2.Enabled = true;
+            list_Roles.Enabled = true;
+            txtEstado.Text = "E";
+            txtFechaBaja.Text = "1/1/1900";
+            txtIntentosLogin.Enabled = true;
+            btnCrearUsuario.Enabled = true;
+
             this.agregando = 1;
         }
 
+        private void btnDeshabilitar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                RepoUsuario.instance().deshabilitarUsuario(this.userIdSeleccionado);
+                MessageBox.Show("Usuario deshabilitado correctamente");
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Error al deshabilitar usuario: " + err.Message);
+            }
+            this.volverAlIncio();
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnHabilitar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                RepoUsuario.instance().habilitarUsuario(this.userIdSeleccionado);
+                MessageBox.Show("Usuario habilitado correctamente");
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Error al habilitar usuario: " + err.Message);
+            }
+            this.volverAlIncio();
+        }
+
+        private void btnBusqueda_Click(object sender, EventArgs e)
+        {
+            textBox1.Enabled = true;
+            list_Roles.Enabled = true;
+            btnBusqueda.Enabled = true;
+            btnBuscar.Enabled = true;
+            btnCrearUsuario.Enabled = false;
+        }
+
+
+        private void volverAlIncio()
+        {
+
+            textBox1.Enabled = false;
+            textBox2.Enabled = false;
+            list_Roles.Enabled = false;
+            btnSeleccionar.Enabled = false;
+            btnDeshabilitar.Enabled = false;
+            btnHabilitar.Enabled = false;
+            btnEditar.Enabled = false;
+            txtIntentosLogin = false;
+            
+        }
 
 
        
