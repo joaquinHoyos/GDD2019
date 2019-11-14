@@ -363,15 +363,16 @@ namespace FrbaOfertas.Repositorios
         
         }
 
-        public SqlCommand generarCompra(int idUsuario, String oferCodigo, int cantidad,SqlConnection conexion)
+        public SqlCommand generarCompra(int idUsuario, String oferCodigo, int cantidad,DateTime fecha,SqlConnection conexion)
         {
-            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.generarCompra @userID=@_userID,@oferCodigo=@_oferCodigo,@cantidad=@_cantidad ", conexion);
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.generarCompra @userID=@_userID,@oferCodigo=@_oferCodigo,@cantidad=@_cantidad,@fecha=@_fecha", conexion);
             SqlParameter paramUsuario = this.nuevoParametroInt("@_userID", idUsuario);
             SqlParameter paramOferta = this.nuevoParametroString("@_oferCodigo", oferCodigo);
             SqlParameter paramCantidad = this.nuevoParametroInt("@_cantidad", cantidad);
+            SqlParameter paramFecha = this.nuevoParametroDateTime("@_fecha", fecha);
             command.Parameters.Add(paramUsuario);
             command.Parameters.Add(paramOferta);
-            command.Parameters.Add(paramCantidad);
+            command.Parameters.Add(paramFecha);
             return command;
 
         }
@@ -691,9 +692,9 @@ namespace FrbaOfertas.Repositorios
         public SqlCommand deshabilitarUsuario(string idUsuario, SqlConnection conexion)
         {
             SqlCommand command = new SqlCommand("UPDATE PASO_A_PASO.Usuario SET user_status='D',user_fechaBaja=@_fechaBaja WHERE user_id=@_userId", conexion);
-
+            ArchivoConfig a = new ArchivoConfig();
             command.Parameters.Add(this.nuevoParametroInt("@_userId", Convert.ToInt32(idUsuario)));
-            command.Parameters.Add(this.nuevoParametroDateTime("@_fechaBaja", DateTime.Now));
+            command.Parameters.Add(this.nuevoParametroDateTime("@_fechaBaja", a.Fecha));
 
             return command;
         }
