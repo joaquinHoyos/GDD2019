@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
 
 
 namespace FrbaOfertas.Server
@@ -22,8 +23,7 @@ namespace FrbaOfertas.Server
         }
         public SqlConnection levantarConexion()
         {
-            Properties.Settings set = new Properties.Settings();
-            SqlConnection myConnection = new SqlConnection(set.Server);
+            SqlConnection myConnection = new SqlConnection(ConfigurationManager.AppSettings["server"]);
             try
             {
                 myConnection.Open();

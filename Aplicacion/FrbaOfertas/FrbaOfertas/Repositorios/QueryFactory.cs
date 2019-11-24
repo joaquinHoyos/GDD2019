@@ -8,6 +8,8 @@ using System.Windows.Forms;
 using System.Data;
 using FrbaOfertas.Modelo;
 using FrbaOfertas.Server;
+using System.Configuration;
+
 namespace FrbaOfertas.Repositorios
 {
     class QueryFactory
@@ -710,9 +712,8 @@ namespace FrbaOfertas.Repositorios
         public SqlCommand deshabilitarUsuario(string idUsuario, SqlConnection conexion)
         {
             SqlCommand command = new SqlCommand("UPDATE PASO_A_PASO.Usuario SET user_status='D',user_fechaBaja=@_fechaBaja WHERE user_id=@_userId", conexion);
-            Properties.Settings set = new Properties.Settings();
             command.Parameters.Add(this.nuevoParametroInt("@_userId", Convert.ToInt32(idUsuario)));
-            command.Parameters.Add(this.nuevoParametroDateTime("@_fechaBaja", set.Fecha));
+            command.Parameters.Add(this.nuevoParametroDateTime("@_fechaBaja", Convert.ToDateTime(ConfigurationManager.AppSettings["fecha"])));
 
             return command;
         }

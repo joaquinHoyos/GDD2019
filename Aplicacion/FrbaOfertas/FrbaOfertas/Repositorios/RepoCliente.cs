@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using FrbaOfertas.Server;
 using FrbaOfertas.Modelo;
+using System.Configuration;
 
 namespace FrbaOfertas.Repositorios
 {
@@ -44,8 +45,7 @@ namespace FrbaOfertas.Repositorios
         public void generarCompra(int idUsuario, String oferCodigo, int cantidad)
         {
             SqlConnection conexion = ServerSQL.instance().levantarConexion();
-            Properties.Settings set = new Properties.Settings();
-           DateTime fecha = set.Fecha;
+            DateTime fecha = Convert.ToDateTime(ConfigurationManager.AppSettings["fecha"]);
             SqlCommand command = QueryFactory.instance().generarCompra(idUsuario,oferCodigo,cantidad,fecha,conexion);
 
 
