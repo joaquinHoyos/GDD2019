@@ -91,6 +91,7 @@ namespace FrbaOfertas.Presenters
                 }
                 else
                 {
+                    this.getProvForm().Show();
                     //ir a form proveedor
                 }
             }
@@ -123,7 +124,7 @@ namespace FrbaOfertas.Presenters
             }
             else
             {
-                prov_form.Show();
+                this.getProvForm().Show();// prov_form.Show();
             }
         }
 
@@ -137,7 +138,7 @@ namespace FrbaOfertas.Presenters
             }
             else
             {
-                prov_form.Show();
+                this.getProvForm().Show();
             }
         }
 
