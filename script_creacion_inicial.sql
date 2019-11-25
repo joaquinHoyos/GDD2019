@@ -9,6 +9,10 @@ CREATE TYPE PASO_A_PASO.tablaFuncion AS TABLE (funciones varchar(20))
 GO
 
 
+
+
+
+
 CREATE TABLE PASO_A_PASO.Usuario (user_id int IDENTITY(1,1) NOT NULL,user_username varchar(32) UNIQUE, user_password varchar(32), user_intentosLogin int, user_status char, user_fechaBaja smalldatetime);
 CREATE TABLE PASO_A_PASO.Cliente (clie_id int IDENTITY(1,1) NOT NULL, clie_dni Numeric(18,0), clie_nombre nvarchar(255),clie_apellido nvarchar(255), clie_userId int, clie_mail nvarchar(255), clie_telefono Numeric(18,0),clie_direccion nvarchar(255), clie_saldo int, clie_codigoPostal int, clie_ciudad nvarchar(255),clie_fechaNacimiento smalldatetime);
 CREATE TABLE PASO_A_PASO.Proveedor (prov_id int IDENTITY(1,1) NOT NULL, prov_cuit nvarchar(20), prov_razon nvarchar(100),prov_userId int, prov_mail nvarchar(255), prov_telefono Numeric(18,0),prov_direccion nvarchar(255), prov_codigoPostal int, prov_ciudad nvarchar(255),prov_rubro int, prov_nombre nvarchar(255), prov_habilitado char);
@@ -23,6 +27,8 @@ CREATE TABLE PASO_A_PASO.Compra(comp_id int IDENTITY(1,1) NOT NULL,comp_oferta n
 CREATE TABLE PASO_A_PASO.Factura(fact_id Numeric(18,0) NOT NULL, fact_desde smalldatetime, fact_hasta smalldatetime, fact_importe int, fact_proveedor int NOT NULL);
 CREATE TABLE PASO_A_PASO.Oferta(ofer_id nvarchar(50) NOT NULL, ofer_descripcion varchar(255), ofer_fechaDesde smalldatetime, ofer_fechaHasta smalldatetime, ofer_precioOferta Numeric(18,2), ofer_precioLista  Numeric(18,2), ofer_proveedor int, ofer_disponible Numeric(18,0), ofer_maxDisponible int)
 CREATE TABLE PASO_A_PASO.TipoPago(tipoPago_id char(1) NOT NULL);
+
+
 
 
 ALTER TABLE PASO_A_PASO.Usuario ADD CONSTRAINT PK_Usuario PRIMARY KEY (user_id);
@@ -65,6 +71,8 @@ CREATE UNIQUE INDEX indexProveedor ON PASO_A_PASO.Proveedor(prov_razon, prov_cui
 CREATE UNIQUE INDEX indexUsuario ON PASO_A_PASO.Usuario (user_username)
 
 
+
+
 	--CREA FUNCIONES
 	INSERT INTO PASO_A_PASO.Funcion VALUES ('CARGA_CREDITO','C')
 	INSERT INTO PASO_A_PASO.Funcion VALUES ('COMPRAR','C')
@@ -79,6 +87,39 @@ CREATE UNIQUE INDEX indexUsuario ON PASO_A_PASO.Usuario (user_username)
 	INSERT INTO PASO_A_PASO.Funcion VALUES ('ABM_PROVEEDOR','A')
 	INSERT INTO PASO_A_PASO.Funcion VALUES ('VER_ESTADISTICAS','A')
 	
+
+
+	USE [GD2C2019]
+GO
+
+/****** Object:  Trigger [PASO_A_PASO].[altaCupon]    Script Date: 25/11/2019 19:16:31 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TRIGGER [PASO_A_PASO].[altaCupon] ON [PASO_A_PASO].[Compra] AFTER INSERT
+AS
+BEGIN
+DECLARE @oferta nvarchar(50), @cliente int, @cantidad int
+DECLARE c1 CURSOR FOR  SELECT comp_oferta,comp_cliente,comp_cantidad FROM INSERTED WHERE NOT EXISTS (SELECT * FROM gd_esquema.Maestra WHERE comp_oferta=Oferta_Codigo AND Cli_Dni=(SELECT clie_dni FROM Cliente WHERE clie_id=comp_cliente) AND Oferta_Entregado_Fecha IS NOT NULL)
+OPEN c1
+FETCH NEXT FROM c1 INTO @oferta,@cliente,@cantidad 
+WHILE(@@FETCH_STATUS=0)
+BEGIN
+WHILE(@cantidad > 0)
+BEGIN
+INSERT INTO PASO_A_PASO.Cupon (cupo_cliente,cupo_oferta) VALUES (@cliente,@oferta) 
+SET @cantidad =- 1
+END 
+FETCH NEXT FROM c1 INTO @oferta,@cliente,@cantidad
+END 
+CLOSE c1
+DEALLOCATE c1
+END
+GO
+
 
 
 	-- CREAR ROLES
@@ -166,25 +207,4 @@ sum(t.Oferta_Precio) as precioCompra, Oferta_Fecha_Compra from gd_esquema.Maestr
 join PASO_A_PASO.Cliente c on t.Cli_Dni=c.clie_dni
 where t.Factura_Fecha is null and t.Factura_Nro is null and t.Oferta_Entregado_Fecha is null and t.Oferta_Codigo is not null
 group by t.Oferta_Codigo,c.clie_id,t.Factura_Nro,t.Cli_Dni,t.Provee_CUIT,Oferta_Fecha_Compra
-
--- Migracion Cupon
-
-DECLARE @dni1 NUMERIC(18,0),@oferta1 nvarchar(50), @cantidad NUMERIC(18,0)
-DECLARE c1 CURSOR FOR (SELECT Oferta_Codigo, Cli_Dni, Oferta_Cantidad  FROM gd_esquema.Maestra WHERE Provee_CUIT IS NOT NULL AND Cli_Dest_Dni IS NULL AND Cli_Dni IS NOT NULL AND Factura_Nro IS NULL AND  Oferta_Codigo IS NOT NULL GROUP BY Oferta_Codigo,Cli_Dni,Oferta_Cantidad HAVING COUNT(Oferta_Entregado_Fecha)=0)
-OPEN c1
-FETCH NEXT FROM c1 INTO @oferta1,@dni1,@cantidad
-WHILE(@@FETCH_STATUS = 0) 
-BEGIN
-
-DECLARE @index int = 0
-WHILE(@index<@cantidad)
-BEGIN
-INSERT INTO PASO_A_PASO.Cupon (cupo_oferta, cupo_cliente,cupo_fecha) VALUES (@oferta1,(SELECT clie_id FROM PASO_A_PASO.Cliente WHERE clie_dni =@dni1),'1/1/1900')
-SET @index += 1
-END
-
-FETCH NEXT FROM c1 INTO @oferta1,@dni1,@cantidad
-END  
-CLOSE c1
-DEALLOCATE c1
 
