@@ -332,7 +332,7 @@ namespace FrbaOfertas.Repositorios
 
         public SqlCommand cargarCredito(string tipoDePago, long tarjeta, long monto, int idUsuario, SqlConnection conexion)
         {
-            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.cargarCredito @tipoPago=@_tipoPago ,@monto=@_monto, @tarjeta=@_tarjeta, @userID=@_userID", conexion);
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.cargarCredito @tipoPago=@_tipoPago ,@monto=@_monto, @tarjeta=@_tarjeta, @userID=@_userID, @fecha=@_fecha", conexion);
             SqlParameter paramTipo = this.nuevoParametroString("@_tipoPago", tipoDePago);
             SqlParameter paramTarjeta= new SqlParameter();
             if (tipoDePago == "E")
@@ -353,6 +353,7 @@ namespace FrbaOfertas.Repositorios
             command.Parameters.Add(paramTarjeta);
             command.Parameters.Add(paramMonto);
             command.Parameters.Add(paramUsuario);
+            command.Parameters.Add(this.nuevoParametroDateTime("@_fecha", DateTime.Now));//Convert.ToDateTime(ConfigurationManager.AppSettings["fecha"])));
             return command;
 
 
@@ -371,9 +372,10 @@ namespace FrbaOfertas.Repositorios
             SqlParameter paramUsuario = this.nuevoParametroInt("@_userID", idUsuario);
             SqlParameter paramOferta = this.nuevoParametroString("@_oferCodigo", oferCodigo);
             SqlParameter paramCantidad = this.nuevoParametroInt("@_cantidad", cantidad);
-            SqlParameter paramFecha = this.nuevoParametroDateTime("@_fecha", fecha);
+            SqlParameter paramFecha = this.nuevoParametroDateTime("@_fecha", DateTime.Now);//Convert.ToDateTime(ConfigurationManager.AppSettings["fecha"]));
             command.Parameters.Add(paramUsuario);
             command.Parameters.Add(paramOferta);
+            command.Parameters.Add(paramCantidad);
             command.Parameters.Add(paramFecha);
             return command;
 
