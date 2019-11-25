@@ -103,6 +103,7 @@
             this.Controls.Add(this.txtUsername);
             this.Name = "LoginUsuario";
             this.Text = "LoginUsuario";
+            this.Load += new System.EventHandler(this.LoginUsuario_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

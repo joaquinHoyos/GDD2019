@@ -47,5 +47,9 @@ namespace FrbaOfertas.Forms
             SignUpUsuario signup =new SignUpUsuario();
             signup.Show();
         }
+
+        private void LoginUsuario_Load(object sender, System.EventArgs e)
+        {
+        }
     }
 }
