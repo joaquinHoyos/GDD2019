@@ -26,11 +26,16 @@ using FrbaOfertas.Server;
 using FrbaOfertas.Repositorios;
 using FrbaOfertas.Modelo;
 using FrbaOfertas.Presenters;
+using System.Configuration;
 
 namespace FrbaOfertas.Forms
 {
+
     public partial class LoginUsuario : Form
     {
+
+
+
         public LoginUsuario()
         {
             InitializeComponent();
@@ -50,6 +55,8 @@ namespace FrbaOfertas.Forms
 
         private void LoginUsuario_Load(object sender, System.EventArgs e)
         {
+
+            
         }
     }
 }

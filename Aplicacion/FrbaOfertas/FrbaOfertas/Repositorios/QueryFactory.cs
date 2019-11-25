@@ -353,7 +353,7 @@ namespace FrbaOfertas.Repositorios
             command.Parameters.Add(paramTarjeta);
             command.Parameters.Add(paramMonto);
             command.Parameters.Add(paramUsuario);
-            command.Parameters.Add(this.nuevoParametroDateTime("@_fecha", DateTime.Now));//Convert.ToDateTime(ConfigurationManager.AppSettings["fecha"])));
+            command.Parameters.Add(this.nuevoParametroDateTime("@_fecha", Convert.ToDateTime(ConfigurationManager.AppSettings["fecha"])));
             return command;
 
 
@@ -361,7 +361,8 @@ namespace FrbaOfertas.Repositorios
 
 
         public SqlCommand traerOfertasDisponibles(SqlConnection conexion){
-            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.traerOfertasDisponibles()", conexion);
+            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.traerOfertasDisponibles(@_fecha)", conexion);
+            command.Parameters.Add(this.nuevoParametroDateTime("@_fecha", Convert.ToDateTime(ConfigurationManager.AppSettings["fecha"])));
             return command;   
         
         }
@@ -372,7 +373,7 @@ namespace FrbaOfertas.Repositorios
             SqlParameter paramUsuario = this.nuevoParametroInt("@_userID", idUsuario);
             SqlParameter paramOferta = this.nuevoParametroString("@_oferCodigo", oferCodigo);
             SqlParameter paramCantidad = this.nuevoParametroInt("@_cantidad", cantidad);
-            SqlParameter paramFecha = this.nuevoParametroDateTime("@_fecha", DateTime.Now);//Convert.ToDateTime(ConfigurationManager.AppSettings["fecha"]));
+            SqlParameter paramFecha = this.nuevoParametroDateTime("@_fecha", Convert.ToDateTime(ConfigurationManager.AppSettings["fecha"]));
             command.Parameters.Add(paramUsuario);
             command.Parameters.Add(paramOferta);
             command.Parameters.Add(paramCantidad);
