@@ -40,21 +40,32 @@ namespace FrbaOfertas.Forms
             string clave = txtPassword.Text;
             string confirmClave = txtConfirmPassword.Text;
             string usuario = txtUsername.Text;
-            if (clave == confirmClave)
+            if (clave == confirmClave && clave != "" )
             {
-                try
+                if (comboTipoUsuario.Text != "Elija un tipo de usuario")
                 {
-                    RepoUsuario.instance().crearUsuario(usuario, clave,comboTipoUsuario.SelectedIndex+2);
-                    MessageBox.Show("sign up bien");
-                    this.Close();
+
+                    try
+                    {
+                        RepoUsuario.instance().crearUsuario(usuario, clave, comboTipoUsuario.SelectedIndex + 2);
+                        MessageBox.Show("sign up bien");
+                        this.Close();
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("loguea mal");
+                    }
                 }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show("loguea mal");
+                else {
+
+                    MessageBox.Show("Tipo de usuario invalido");
+                
                 }
+
+
             }
             else {
-                MessageBox.Show("Las claves ingresadas no coinciden");
+                MessageBox.Show("Las claves ingresadas no son validas");
             }
         }
     }

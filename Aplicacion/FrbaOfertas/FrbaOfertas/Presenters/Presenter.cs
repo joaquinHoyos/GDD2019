@@ -229,7 +229,7 @@ namespace FrbaOfertas.Presenters
         private Prov_Form getProvForm(User user)
         {
             List<Grupo> grupos = RepoUsuario.instance().traerFunciones(user.user_id);
-            if (grupos.Any(x => x.grupo == 'P'))
+            if (grupos.Any(x => x.grupo == 'P') && RepoUsuario.instance().tieneClienteOProveedor() == 0)
             {
                 new AltaProveedor().Show();
                 this.login_form.Hide();
@@ -240,7 +240,7 @@ namespace FrbaOfertas.Presenters
         private FormCliente getClienteForm(User user)
         {
                 List<Grupo> grupos = RepoUsuario.instance().traerFunciones(user.user_id);
-                if (grupos.Any(x => x.grupo == 'C'))
+                if (grupos.Any(x => x.grupo == 'C') && RepoUsuario.instance().tieneClienteOProveedor()==0)
                 {
                     new AltaCliente().Show();
                     this.login_form.Hide();

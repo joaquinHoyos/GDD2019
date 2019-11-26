@@ -44,8 +44,9 @@ namespace FrbaOfertas
 
 
                         RepoUsuario.instance().altaCliente(txt_Nombre.Text, txt_Apellido.Text, Convert.ToInt64(txt_DNI.Value), Convert.ToInt32(txt_CP.Value), txt_Direccion.Text, txt_Ciudad.Text, txt_Mail.Text, Convert.ToInt64(txt_Telefono.Value), dateTimePicker1.Value);
-                        this.Hide();
                         Presenter.instance().postAltaCliente();
+                        this.Hide();
+                        
                     }
                     else {
 

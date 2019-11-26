@@ -384,7 +384,7 @@ namespace FrbaOfertas.Repositorios
 
         public SqlCommand traerCuponesPropios(int userID,SqlConnection conexion)
         {
-            SqlCommand command = new SqlCommand("SELECT cupo_id, cupo_fecha, cupo_oferta, cupo_cliente,ofer_descripcion FROM PASO_A_PASO.Cupon JOIN PASO_A_PASO.Oferta ON (ofer_id = cupo_oferta) WHERE cupo_cliente = (SELECT clie_id FROM PASO_A_PASO.Cliente WHERE @userID = clie_userId) AND cupo_fecha ='1/1/1900'", conexion);
+            SqlCommand command = new SqlCommand("SELECT cupo_id, cupo_fecha, cupo_oferta, cupo_cliente,cupo_compra,ofer_descripcion FROM PASO_A_PASO.Cupon JOIN PASO_A_PASO.Oferta ON (ofer_id = cupo_oferta) WHERE cupo_cliente = (SELECT clie_id FROM PASO_A_PASO.Cliente WHERE @userID = clie_userId) AND cupo_fecha ='1/1/1900'", conexion);
             SqlParameter paramUserID = this.nuevoParametroInt("@userID", userID);
             command.Parameters.Add(paramUserID);
             return command;
