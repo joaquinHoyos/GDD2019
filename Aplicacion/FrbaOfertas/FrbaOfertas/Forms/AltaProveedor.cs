@@ -30,7 +30,7 @@ namespace FrbaOfertas.Forms
 
                         RepoUsuario.instance().altaProveedor(txt_CUIT.Text,txt_Razon.Text,txt_Mail.Text,Convert.ToInt64(txt_Telefono.Value),txt_Direccion.Text,Convert.ToInt32(txt_CP.Value),txt_Ciudad.Text,Convert.ToInt32(comboBox1.SelectedValue),txt_Nombre.Text);
                         this.Hide();
-
+                        Presenters.Presenter.instance().postAltaProveedor();
                     }
                     else
                     {

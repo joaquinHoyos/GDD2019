@@ -130,7 +130,7 @@ namespace FrbaOfertas.Repositorios
             SqlCommand command = QueryFactory.instance().altaCliente(nombre, apellido, dni, cp, idActual, direccion, ciudad, mail,telefono, fechaNacimiento, conexion);
             command.ExecuteNonQuery();
             MessageBox.Show("Cliente registrado");
-            new LoginUsuario().Show();
+            //new LoginUsuario().Show();
             
         }         public void crearUsuario(String usuario, String contrasena, List<String> listaRoles)
         {
@@ -180,7 +180,7 @@ namespace FrbaOfertas.Repositorios
             SqlCommand command = QueryFactory.instance().altaProveedor(cuit, razon,idActual, mail,telefono,direccion,codigoPostal,ciudad,rubroID, nombre, conexion);
             command.ExecuteNonQuery();
             MessageBox.Show("Proveedor registrado");
-            new LoginUsuario().Show();
+            //new LoginUsuario().Show();
             
         }
 

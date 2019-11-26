@@ -23,7 +23,7 @@ namespace FrbaOfertas.Presenters
         private ListadoEstadisitico listado_form;
         private AbmUsuario_Form usuario_form;
         private ABMProveedores abmProv_Form;
-
+        private User usuarioActual;
         public static Presenter instance()
         {
             return presenter == null ? presenter = new Presenter() : presenter;
@@ -34,41 +34,15 @@ namespace FrbaOfertas.Presenters
         {
             this.login_form = form;
             User user = RepoUsuario.instance().buscarUsuarioPorClave(usuario, clave);
+            this.usuarioActual = user;
             if (user != null)
             {
                 RepoUsuario.instance().registrarInicioValido(usuario);
                 RepoUsuario.instance().setUsuarioActual(user.user_id);
                 //VER SI DIRECCIONAR A altaCliente o a altaProveedor
-
-                if (RepoUsuario.instance().tieneClienteOProveedor() == 0)
-                {
-                    List<Grupo> grupos = RepoUsuario.instance().traerFunciones(user.user_id);
-                    //List<int> funciones = grupos.Any(x => x.grupo == 'C');
-                    if (grupos.Any(x => x.grupo == 'C'))
-                    {
-                        
-                        new AltaCliente().Show();
-                        this.login_form.Hide();
-                    }
-                    else if (grupos.Any(x => x.grupo == 'P'))
-                    {
-                        new AltaProveedor().Show();
-                        this.login_form.Hide();
-
-                    }
-                    else {
-                        this.redireccionarUsuario(user);
-                        this.login_form.Hide();
-                        return;
-                    
-                    }
-                }
-                else
-                {
                     this.redireccionarUsuario(user);
                     this.login_form.Hide();
                     return;
-                }
             }
             else
             {
@@ -78,7 +52,7 @@ namespace FrbaOfertas.Presenters
             }
         }
 
-        private void redireccionarDios()
+        private void redireccionarDios(User user)
         {
             DialogResult resultado = MessageBox.Show("Desea Ingresar como Administrador?", "", MessageBoxButtons.YesNo);
             if (resultado == DialogResult.No)
@@ -87,11 +61,11 @@ namespace FrbaOfertas.Presenters
                 if (resultado == DialogResult.Yes)
                 {
                     //ir a form cliente
-                    this.getClienteForm().Show();
-                }
+                    if(this.getClienteForm(user) !=null){this.getClienteForm(user).Show();}
+                }                
                 else
                 {
-                    this.getProvForm().Show();
+                    if (this.getProvForm(user) != null) { this.getProvForm(user).Show(); }  
                     //ir a form proveedor
                 }
             }
@@ -101,7 +75,7 @@ namespace FrbaOfertas.Presenters
             }
         }
 
-        private void redireccionarAdminCliente()
+        private void redireccionarAdminCliente(User user)
         {
             DialogResult resultado = MessageBox.Show("Desea ingresar como administrador? De lo contrario ingresara como Cliente", "", MessageBoxButtons.YesNo);
             if (resultado == DialogResult.Yes)
@@ -111,11 +85,11 @@ namespace FrbaOfertas.Presenters
             else
             {
                 //mostrar cliente 
-                this.getClienteForm().Show();
+                if (this.getClienteForm(user) != null) { this.getClienteForm(user).Show(); }
             }
         }
 
-        private void redireccionarAdminProveedor()
+        private void redireccionarAdminProveedor(User user)
         {
             DialogResult resultado = MessageBox.Show("Desea ingresar como administrador? De lo contrario ingresara como Proveedor", "", MessageBoxButtons.YesNo);
             if (resultado == DialogResult.Yes)
@@ -124,21 +98,21 @@ namespace FrbaOfertas.Presenters
             }
             else
             {
-                this.getProvForm().Show();// prov_form.Show();
+                if (this.getProvForm(user) != null) { this.getProvForm(user).Show(); }  
             }
         }
 
-        private void redireccionarClienteProveedor()
+        private void redireccionarClienteProveedor(User user)
         {
             DialogResult resultado = MessageBox.Show("Desea ingresar como Cliente? De lo contrario ingresara como Proveedor", "", MessageBoxButtons.YesNo);
             if (resultado == DialogResult.Yes)
             {
                 //mostrar cliente
-                this.getClienteForm().Show();
+                if (this.getClienteForm(user) != null) { this.getClienteForm(user).Show(); }
             }
             else
             {
-                this.getProvForm().Show();
+                if (this.getProvForm(user) != null) { this.getProvForm(user).Show(); }  
             }
         }
 
@@ -146,19 +120,19 @@ namespace FrbaOfertas.Presenters
         {
             if (usuario.esAdmin() && usuario.esCliente() && usuario.esProveedor())
             {
-                this.redireccionarDios();
+                this.redireccionarDios(usuario);
             }
             else if (usuario.esAdmin() && usuario.esCliente())
             {
-                this.redireccionarAdminCliente();
+                this.redireccionarAdminCliente(usuario);
             }
             else if (usuario.esAdmin() && usuario.esProveedor())
             {
-                this.redireccionarAdminProveedor();
+                this.redireccionarAdminProveedor(usuario);
             }
             else if (usuario.esCliente() && usuario.esProveedor())
             {
-                this.redireccionarClienteProveedor();
+                this.redireccionarClienteProveedor(usuario);
             }
             else if (usuario.esAdmin())
             {
@@ -167,12 +141,12 @@ namespace FrbaOfertas.Presenters
             else if (usuario.esCliente())
             {
                 //mostrar cliente
-                this.getClienteForm().currentUserID = usuario.user_id;
-                this.getClienteForm().Show();
+                if (this.getClienteForm(usuario) != null) { this.getClienteForm(usuario).currentUserID = usuario.user_id; }
+                if (this.getClienteForm(usuario) != null) { this.getClienteForm(usuario).Show(); }
             }
             else // esProveedor
             {
-                this.getProvForm().Show();
+                if (this.getProvForm(usuario) != null) { this.getProvForm(usuario).Show(); }  
             }
         }
 
@@ -234,12 +208,6 @@ namespace FrbaOfertas.Presenters
             return this.fact_form == null ? this.fact_form = new Facturacion_Form() : this.fact_form;
         }
 
-        private Prov_Form getProvForm()
-        {
-            return this.prov_form == null ? this.prov_form = new Prov_Form() : this.prov_form;
-        }
-
-
         private LoginUsuario nuevoLoginForm()
         {
             return this.login_form == null ? this.login_form = new LoginUsuario() : this.login_form;
@@ -258,11 +226,42 @@ namespace FrbaOfertas.Presenters
         {
             return this.abmOferta == null ? this.abmOferta = new AbmOfertas() : this.abmOferta;
         }
-
-        private FormCliente getClienteForm()
+        private Prov_Form getProvForm(User user)
         {
-            return this.cliente_form == null ? this.cliente_form = new FormCliente() : this.cliente_form;
+            List<Grupo> grupos = RepoUsuario.instance().traerFunciones(user.user_id);
+            if (grupos.Any(x => x.grupo == 'P'))
+            {
+                new AltaProveedor().Show();
+                this.login_form.Hide();
+                return null;
+            }
+            return this.prov_form == null ? this.prov_form = new Prov_Form() : this.prov_form;
         }
+        private FormCliente getClienteForm(User user)
+        {
+                List<Grupo> grupos = RepoUsuario.instance().traerFunciones(user.user_id);
+                if (grupos.Any(x => x.grupo == 'C'))
+                {
+                    new AltaCliente().Show();
+                    this.login_form.Hide();
+                    return null;
+                }
+                return this.cliente_form == null ? this.cliente_form = new FormCliente() : this.cliente_form;
+            
+        }
+
+        public void postAltaCliente()
+        {
+            if (this.getClienteForm(this.usuarioActual) != null) { this.getClienteForm(this.usuarioActual).Show(); }
+
+        }
+
+        public void postAltaProveedor()
+        {
+            if (this.getProvForm(this.usuarioActual) != null) { this.getProvForm(this.usuarioActual).Show(); }
+
+        }
+
 
 
 

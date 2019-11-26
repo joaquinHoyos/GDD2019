@@ -58,7 +58,7 @@ namespace FrbaOfertas.Forms
          }
         private bool validarTxt()
         {
-            if (txtEstado.Text != "" && txtFechaBaja.Text != "" && txtIntentosLogin.Text != "" && textBox1.Text != "" && textBox2.Text != "")
+            if (txtEstado.Text != "" && txtFechaBaja.Text != "" && txtIntentosLogin.Text != "" && textBox1.Text != "")
             {
                 if (this.IsNumeric(txtIntentosLogin.Text))
                 {
@@ -151,6 +151,8 @@ namespace FrbaOfertas.Forms
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
+            this.vaciarTodo();
+            
             btnBuscar.Enabled = false;
             textBox1.Enabled = true;
             textBox2.Enabled = true;
@@ -159,7 +161,7 @@ namespace FrbaOfertas.Forms
             txtFechaBaja.Text = "1/1/1900";
             txtIntentosLogin.Enabled = true;
             btnCrearUsuario.Enabled = true;
-
+         
             this.agregando = 1;
         }
 
@@ -198,6 +200,8 @@ namespace FrbaOfertas.Forms
 
         private void btnBusqueda_Click(object sender, EventArgs e)
         {
+            this.vaciarTodo();
+
             textBox1.Enabled = true;
             list_Roles.Enabled = true;
             btnBusqueda.Enabled = true;
@@ -226,7 +230,15 @@ namespace FrbaOfertas.Forms
             
         }
 
-
+        private void vaciarTodo()
+        {
+            this.txtEstado.Text = "";
+            this.txtFechaBaja.Text = "";
+            this.txtIntentosLogin.Text = "";
+            this.textBox1.Text = "";
+            this.dataGridView1.DataSource = null;
+            for (int i=0;i<list_Roles.CheckedItems.Count;i++) {this.list_Roles.SetItemChecked(i, false); }
+        }
        
     }
 }
