@@ -97,6 +97,7 @@
             this.textBox2.Enabled = false;
             this.textBox2.Location = new System.Drawing.Point(53, 119);
             this.textBox2.Name = "textBox2";
+            this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(198, 20);
             this.textBox2.TabIndex = 47;
             // 
@@ -113,6 +114,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(345, 88);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(417, 313);
             this.dataGridView1.TabIndex = 52;
             // 

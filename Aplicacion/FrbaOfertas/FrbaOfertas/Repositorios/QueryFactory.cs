@@ -549,7 +549,7 @@ namespace FrbaOfertas.Repositorios
 
         public SqlCommand crearUsuario(string username, string pass,SqlConnection conexion)
         {
-            SqlCommand command = new SqlCommand("INSERT INTO PASO_A_PASO.Usuario VALUES (@_username,HASHBYTES('SHA2_256',@_pass),0,'E','1/1/1900')", conexion);
+            SqlCommand command = new SqlCommand("INSERT INTO PASO_A_PASO.Usuario VALUES (@_username,HASHBYTES('SHA2_256',convert(varchar(32),@_pass)),0,'E','1/1/1900')", conexion);
             SqlParameter param1 = this.nuevoParametroString("@_username", username);
             SqlParameter param2 = this.nuevoParametroString("@_pass", pass);
 
@@ -677,7 +677,7 @@ namespace FrbaOfertas.Repositorios
 
         public SqlCommand modificarDatosUsuario(string user, string pass, string intentosLogin,string userId, SqlConnection conexion)
         {
-            SqlCommand command = new SqlCommand("UPDATE PASO_A_PASO.Usuario SET user_username=@_user,user_password=@_pass,user_intentosLogin=@_login WHERE user_id=@_userId", conexion);
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.modificarDatosUsuario @user=@_user,@pass=@_pass,@intentos=@_login,@id=@_userId", conexion);
             command.Parameters.Add(this.nuevoParametroString("@_user", user));
             command.Parameters.Add(this.nuevoParametroString("@_pass", pass));
             command.Parameters.Add(this.nuevoParametroInt("@_login", Convert.ToInt32(intentosLogin)));

@@ -10,7 +10,7 @@
         VER_OFERTA,
         ABM_USUARIO,
         ABM_ROL,
-        ABM_CLIENTE,
+        ABM_CLIENTES,
         ABM_PROVEEDOR,
         VER_ESTADISTICAS
     }

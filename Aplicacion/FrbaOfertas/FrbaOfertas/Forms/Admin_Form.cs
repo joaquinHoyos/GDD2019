@@ -50,7 +50,7 @@ namespace FrbaOfertas.Forms
             if(!funciones.Contains((int)Enum.Parse(typeof(EnumFunciones),"ABM_ROL"))){this.btn_Roles.Enabled=false;}
             if(!funciones.Contains((int)Enum.Parse(typeof(EnumFunciones),"VER_ESTADISTICAS"))){this.btnEstadistica.Enabled=false;}
             if (!funciones.Contains((int)Enum.Parse(typeof(EnumFunciones), "ABM_USUARIO"))) { this.btn_Usuarios.Enabled = false; }
-            if(!funciones.Contains((int)Enum.Parse(typeof(EnumFunciones),"ABM_CLIENTE"))){this.btnClientes.Enabled=true;}
+            if(!funciones.Contains((int)Enum.Parse(typeof(EnumFunciones),"ABM_CLIENTES"))){this.btnClientes.Enabled=true;}
             if(!funciones.Contains((int)Enum.Parse(typeof(EnumFunciones),"ABM_PROVEEDOR"))){this.btnProveedores.Enabled=false;}
             
         }
