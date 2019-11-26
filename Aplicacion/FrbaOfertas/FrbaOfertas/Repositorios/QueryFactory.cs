@@ -119,7 +119,7 @@ namespace FrbaOfertas.Repositorios
 
        public SqlCommand eliminarOferta(string id, SqlConnection conexion)
        {
-           SqlCommand command = new SqlCommand("DELETE FROM PASO_A_PASO.Oferta WHERE ofer_id=@_id", conexion);
+           SqlCommand command = new SqlCommand("UPDATE PASO_A_PASO.Oferta SET ofer_estado='D' WHERE ofer_id=@_id", conexion);//"DELETE FROM PASO_A_PASO.Oferta WHERE ofer_id=@_id", conexion);
            SqlParameter param = this.nuevoParametroString("@_id", id);
            command.Parameters.Add(param);
            return command;
