@@ -27,7 +27,7 @@ namespace FrbaOfertas.Forms
         {
             btn_Editar.Enabled = false;
             btn_Eliminar.Enabled = false;
-            btnSeleccionar.Enabled = true;
+            //btnSeleccionar.Enabled = true;
             DataTable ofertasFiltradas = PresenterProveedor.instance().filtrarOfertas(txtFiltrarDescripcion.Text, Convert.ToDateTime(txtFiltroFecha.Text), PresenterProveedor.instance().getProveedorActual());
             dataGridView1.DataSource = ofertasFiltradas;
 
@@ -209,6 +209,11 @@ namespace FrbaOfertas.Forms
         private void AbmOfertas_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnSeleccionar.Enabled = true;
         }
     }
 }

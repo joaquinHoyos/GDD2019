@@ -110,7 +110,7 @@ WHILE(@@FETCH_STATUS=0)
 BEGIN
 WHILE(@cantidad > 0)
 BEGIN
-INSERT INTO PASO_A_PASO.Cupon (cupo_cliente,cupo_oferta) VALUES (@cliente,@oferta) 
+INSERT INTO PASO_A_PASO.Cupon (cupo_cliente,cupo_oferta,cupo_fecha) VALUES (@cliente,@oferta,'01/01/1900') 
 SET @cantidad =- 1
 END 
 FETCH NEXT FROM c1 INTO @oferta,@cliente,@cantidad
@@ -208,3 +208,5 @@ join PASO_A_PASO.Cliente c on t.Cli_Dni=c.clie_dni
 where t.Factura_Fecha is null and t.Factura_Nro is null and t.Oferta_Entregado_Fecha is null and t.Oferta_Codigo is not null
 group by t.Oferta_Codigo,c.clie_id,t.Factura_Nro,t.Cli_Dni,t.Provee_CUIT,Oferta_Fecha_Compra
 
+DROP TRIGGER [PASO_A_PASO].[altaCupon]
+GO
