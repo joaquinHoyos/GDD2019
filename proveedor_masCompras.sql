@@ -1,4 +1,4 @@
-	CREATE FUNCTION PASO_A_PASO.proveedor_masFacturas(@año int,@mesInicio int,@mesFin int)
+CREATE FUNCTION PASO_A_PASO.proveedor_masFacturas(@año int,@mesInicio int,@mesFin int)
 RETURNS TABLE
 AS
 	RETURN
@@ -18,4 +18,4 @@ AS
 	GROUP BY prov_id,prov_razon,prov_cuit,rubr_nombre
 	ORDER BY 'Cantidad de Compras' DESC
 		
-select prov_razon from PASO_A_PASO.Proveedor
+--select prov_razon from PASO_A_PASO.Proveedor
