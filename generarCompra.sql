@@ -10,6 +10,6 @@ UPDATE PASO_A_PASO.Oferta SET ofer_disponible-=@cantidad WHERE ofer_id=@oferCodi
 DECLARE @index int = 0
 WHILE @index < @cantidad
 BEGIN
-INSERT INTO PASO_A_PASO.Cupon (cupo_oferta, cupo_cliente,cupo_fecha) VALUES (  @oferCodigo, @clieID, '1/1/1900')
+INSERT INTO PASO_A_PASO.Cupon (cupo_oferta, cupo_cliente,cupo_compra,cupo_fecha) VALUES (  @oferCodigo, @clieID,IDENT_CURRENT('PASO_A_PASO.Compra'), '1/1/1900')
 SET @index = @index + 1
 END  
