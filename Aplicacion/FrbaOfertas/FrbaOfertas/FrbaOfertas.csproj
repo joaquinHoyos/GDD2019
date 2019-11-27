@@ -93,6 +93,12 @@
     <Compile Include="Forms\AltaProveedor.Designer.cs">
       <DependentUpon>AltaProveedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AmbOfertasDeAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AmbOfertasDeAdmin.Designer.cs">
+      <DependentUpon>AmbOfertasDeAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AsginarUsuarioAProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
