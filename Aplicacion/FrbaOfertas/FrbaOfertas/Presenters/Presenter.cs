@@ -61,13 +61,38 @@ namespace FrbaOfertas.Presenters
                 resultado = MessageBox.Show("Desea Ingresar como Cliente? De lo contrario ingresara como proveedor", "", MessageBoxButtons.YesNo);
                 if (resultado == DialogResult.Yes)
                 {
-                    //ir a form cliente
-                    if(this.getClienteForm(user) !=null){this.getClienteForm(user).Show();}
+                    //mostrar cliente
+                    if (RepoUsuario.instance().tieneCliente() == 0)
+                    {
+
+                        new AltaCliente().Show();
+                        this.login_form.Hide();
+
+                    }
+
+                    else
+                    {
+                        if (this.getClienteForm(user) != null) { this.getClienteForm(user).Show(); }
+                    }
                 }                
                 else
                 {
-                    if (this.getProvForm(user) != null) { this.getProvForm(user).Show(); }  
-                    //ir a form proveedor
+                    //mostrar proveedor
+                    if (RepoUsuario.instance().tieneProveedor() == 0)
+                    {
+                        new AltaProveedor().Show();
+                        this.login_form.Hide();
+
+                    }
+                    else
+                    {
+                        if (this.getProvForm(user) != null)
+                        {
+                            if (this.getProvForm(user) != null) { this.getProvForm(user).Show(); }
+                        }
+
+
+                    }
                 }
             }
             else
@@ -85,8 +110,19 @@ namespace FrbaOfertas.Presenters
             }
             else
             {
-                //mostrar cliente 
-                if (this.getClienteForm(user) != null) { this.getClienteForm(user).Show(); }
+                //mostrar cliente
+                if (RepoUsuario.instance().tieneCliente() == 0)
+                {
+
+                    new AltaCliente().Show();
+                    this.login_form.Hide();
+
+                }
+
+                else
+                {
+                    if (this.getClienteForm(user) != null) { this.getClienteForm(user).Show(); }
+                }
             }
         }
 
@@ -99,7 +135,22 @@ namespace FrbaOfertas.Presenters
             }
             else
             {
-                if (this.getProvForm(user) != null) { this.getProvForm(user).Show(); }  
+                //mostrar proveedor
+                if (RepoUsuario.instance().tieneProveedor() == 0)
+                {
+                    new AltaProveedor().Show();
+                    this.login_form.Hide();
+
+                }
+                else
+                {
+                    if (this.getProvForm(user) != null)
+                    {
+                        if (this.getProvForm(user) != null) { this.getProvForm(user).Show(); }
+                    }
+
+
+                }
             }
         }
 
@@ -109,11 +160,35 @@ namespace FrbaOfertas.Presenters
             if (resultado == DialogResult.Yes)
             {
                 //mostrar cliente
+                if(RepoUsuario.instance().tieneCliente() == 0){
+                    
+                    new AltaCliente().Show();
+                    this.login_form.Hide();
+              
+                }
+
+                else{
                 if (this.getClienteForm(user) != null) { this.getClienteForm(user).Show(); }
+                }
             }
             else
             {
-                if (this.getProvForm(user) != null) { this.getProvForm(user).Show(); }  
+                //mostrar proveedor
+                if (RepoUsuario.instance().tieneProveedor() == 0)
+                {
+                    new AltaProveedor().Show();
+                    this.login_form.Hide();
+
+                }
+                else
+                {
+                    if (this.getProvForm(user) != null)
+                    {
+                        if (this.getProvForm(user) != null) { this.getProvForm(user).Show(); }
+                    }
+
+                   
+                }
             }
         }
 
@@ -142,12 +217,40 @@ namespace FrbaOfertas.Presenters
             else if (usuario.esCliente())
             {
                 //mostrar cliente
-                if (this.getClienteForm(usuario) != null) { this.getClienteForm(usuario).currentUserID = usuario.user_id; }
-                if (this.getClienteForm(usuario) != null) { this.getClienteForm(usuario).Show(); }
+                if (RepoUsuario.instance().tieneCliente() == 0)
+                {
+
+                    new AltaCliente().Show();
+                    this.login_form.Hide();
+
+                }
+
+                else
+                {
+                    if (this.getClienteForm(usuario) != null) { this.getClienteForm(usuario).currentUserID = usuario.user_id; }
+                    if (this.getClienteForm(usuario) != null) { this.getClienteForm(usuario).Show(); }
+                }
+               
+               
             }
             else // esProveedor
             {
-                if (this.getProvForm(usuario) != null) { this.getProvForm(usuario).Show(); }  
+                //mostrar proveedor
+                if (RepoUsuario.instance().tieneProveedor() == 0)
+                {
+                    new AltaProveedor().Show();
+                    this.login_form.Hide();
+
+                }
+                else
+                {
+                    if (this.getProvForm(usuario) != null)
+                    {
+                        if (this.getProvForm(usuario) != null) { this.getProvForm(usuario).Show(); }
+                    }
+
+
+                }
             }
         }
 

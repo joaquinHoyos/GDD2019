@@ -33,6 +33,7 @@ namespace FrbaOfertas.Modelo
             
         }
 
+
         public Oferta()
         {
 

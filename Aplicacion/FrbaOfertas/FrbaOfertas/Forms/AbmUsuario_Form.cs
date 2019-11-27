@@ -157,11 +157,12 @@ namespace FrbaOfertas.Forms
             textBox1.Enabled = true;
             textBox2.Enabled = true;
             list_Roles.Enabled = true;
+            txtIntentosLogin.Text = "0";
             txtEstado.Text = "E";
             txtFechaBaja.Text = "1/1/1900";
-            txtIntentosLogin.Enabled = true;
+            txtIntentosLogin.Enabled = false;
             btnCrearUsuario.Enabled = true;
-         
+               
             this.agregando = 1;
         }
 

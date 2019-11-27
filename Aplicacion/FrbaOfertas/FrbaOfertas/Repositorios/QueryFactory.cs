@@ -505,37 +505,37 @@ namespace FrbaOfertas.Repositorios
             {
                 if (apellido == "DEFAULT")
                 {
-                    filtro = "(clie_mail LIKE '%" + mail + "%') AND clie_dni = " + dni;
+                    filtro = "(clie_mail LIKE '%" + mail + "%') AND clie_dni = '" + dni+"'";
 
                 }
                 else if (mail == "DEFAULT")
                 {
-                    filtro = "(clie_apellido LIKE '%" + apellido + "%') AND clie_dni = " + dni;
+                    filtro = "(clie_apellido LIKE '%" + apellido + "%') AND clie_dni ='" + dni+"'";
                 }
                 else if (mail != "DEFAULT" && apellido != "DEFAULT")
                 {
-                    filtro = "(clie_apellido LIKE '%" + apellido + "%' AND clie_mail LIKE '%" + mail + "%') AND clie_dni = " + dni;
+                    filtro = "(clie_apellido LIKE '%" + apellido + "%' AND clie_mail LIKE '%" + mail + "%') AND clie_dni ='" + dni+"'";
                 }
             }
             else if (apellido == "DEFAULT")
             {
                 if (mail == "DEFAULT")
                 {
-                    filtro = "(clie_nombre LIKE '%" + nombre + "%') AND clie_dni = " + dni;
+                    filtro = "(clie_nombre LIKE '%" + nombre + "%') AND clie_dni ='" + dni+"'";
                 }
                 else if (mail != "DEFAULT" && nombre != "DEFAULT")
                 {
-                    filtro = "(clie_nombre LIKE '%" + nombre + "%' AND clie_mail LIKE '%" + mail + "%') AND clie_dni = " + dni;
+                    filtro = "(clie_nombre LIKE '%" + nombre + "%' AND clie_mail LIKE '%" + mail + "%') AND clie_dni ='" + dni+"'";
                 }
             }
             else if (mail == "DEFAULT")
             {
-                filtro = "(clie_nombre LIKE '%" + nombre + "%' AND clie_apellido LIKE '%" + apellido + "%') AND clie_dni = " + dni;
+                filtro = "(clie_nombre LIKE '%" + nombre + "%' AND clie_apellido LIKE '%" + apellido + "%') AND clie_dni ='" + dni+"'";
             }
 
             else if (mail != "DEFAULT" && apellido != "DEFAULT" && nombre != "DEFAULT")
             {
-                filtro = "(clie_nombre LIKE '%" + nombre + "%' AND clie_apellido LIKE '%" + apellido + "%' AND clie_mail LIKE '%" + mail + "%') AND clie_dni = " + dni;
+                filtro = "(clie_nombre LIKE '%" + nombre + "%' AND clie_apellido LIKE '%" + apellido + "%' AND clie_mail LIKE '%" + mail + "%') AND clie_dni ='" + dni+"'";
             }
             return filtro;
         }
@@ -1086,6 +1086,44 @@ namespace FrbaOfertas.Repositorios
             command.Parameters.Add(this.nuevoParametroString("@rol", rol.ToString()));
             command.Parameters.Add(this.nuevoParametroString("@usuario", idUsuario));
 
+            return command;
+        }
+
+        public SqlCommand traerRazonSocialProveedores(SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("SELECT prov_razon FROM PASO_A_PASO.Proveedor WHERE prov_habilitado='E'", conexion);
+            return command;
+        }
+
+        internal SqlCommand busquedaOfertaPorProveedor(string prov, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.Oferta JOIN PASO_A_PASO.Proveedor ON ofer_proveedor = prov_id WHERE prov_razon LIKE '%" + prov + "%'", conexion);
+            command.Parameters.Add(this.nuevoParametroString("@proveedor", prov));
+            return command;
+        }
+
+        public SqlCommand getProvPorRazonSocial(string prov, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("SELECT prov_id FROM PASO_A_PASO.Proveedor WHERE prov_razon=@_provRazon", conexion);
+
+            command.Parameters.Add(this.nuevoParametroString("@_provRazon", prov));
+
+            return command;
+        }
+
+        public SqlCommand tieneCliente(int idActual, SqlConnection conexion)
+        {
+
+            SqlCommand command = new SqlCommand("SELECT CASE WHEN EXISTS(SELECT * FROM PASO_A_PASO.Cliente WHERE @userID= clie_userId) THEN 1 ELSE 0 END ;", conexion);
+            command.Parameters.Add(this.nuevoParametroInt("@userID", idActual));
+            return command;
+        }
+
+        public SqlCommand tieneProveedor(int idActual, SqlConnection conexion)
+        {
+
+            SqlCommand command = new SqlCommand("SELECT CASE WHEN EXISTS(SELECT * FROM PASO_A_PASO.Proveedor WHERE @userID= prov_userId) THEN 1 ELSE 0 END ;", conexion);
+            command.Parameters.Add(this.nuevoParametroInt("@userID", idActual));
             return command;
         }
     }

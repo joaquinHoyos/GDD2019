@@ -83,7 +83,7 @@ namespace FrbaOfertas.Presenters
           {
               try
               {
-                  Cliente nuevoCliente = new Cliente(-1, nombre, apellido, Convert.ToInt64(dni),-1,mail,telefono,direccion,Convert.ToDouble(saldo),Convert.ToInt32(codPostal),ciudad,Convert.ToDateTime(fechaNac));
+                  Cliente nuevoCliente = new Cliente(-1, nombre, apellido, Convert.ToInt64(dni),-1,mail,telefono,direccion,0,Convert.ToInt32(codPostal),ciudad,Convert.ToDateTime(fechaNac));
                   RepoCliente.instance().crearCliente(nuevoCliente);
                   MessageBox.Show("Cliente Creado Correctamente");
               }

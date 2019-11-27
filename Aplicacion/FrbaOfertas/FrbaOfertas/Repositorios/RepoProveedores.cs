@@ -405,5 +405,35 @@ namespace FrbaOfertas.Repositorios
                 MessageBox.Show("Error al modificar proveedor: " + err.Message);
             }
         }
+
+        public List<string> getRazonSocialProveedores()
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().traerRazonSocialProveedores(conexion);
+            SqlDataReader reader = command.ExecuteReader();
+            List<string> proveedores = new List<string>();
+            while (reader.Read())
+            {
+                proveedores.Add(reader[0].ToString());
+
+            }
+
+            return proveedores;
+        }
+
+        public DataTable filtrarOfertasPorProveedor(string prov)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int getIdProveedor(string prov)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().getProvPorRazonSocial(prov, conexion);
+            SqlDataReader reader = command.ExecuteReader();
+            reader.Read();
+
+            return Convert.ToInt32(reader[0]);
+        }
     }
 }

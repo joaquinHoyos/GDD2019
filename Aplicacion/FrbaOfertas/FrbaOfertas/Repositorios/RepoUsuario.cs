@@ -507,9 +507,35 @@ namespace FrbaOfertas.Repositorios
             command1.ExecuteNonQuery();
         }
 
-        
 
-      
+
+
+
+        public int tieneCliente()
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+
+            SqlCommand command = QueryFactory.instance().tieneCliente(idActual, conexion);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            reader.Read();
+
+            return Convert.ToInt32(reader[0]);
+        }
+
+        public int tieneProveedor()
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+
+            SqlCommand command = QueryFactory.instance().tieneProveedor(idActual, conexion);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            reader.Read();
+
+            return Convert.ToInt32(reader[0]);
+        }
     }
 
 

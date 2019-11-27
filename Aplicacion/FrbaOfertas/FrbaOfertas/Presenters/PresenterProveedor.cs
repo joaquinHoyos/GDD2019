@@ -25,18 +25,19 @@ namespace FrbaOfertas.Presenters
             return presenter == null ? new PresenterProveedor() : presenter;
         }
 
-        public DataTable filtrarOfertas(string descripcion,DateTime fecha,int proveedor)
+        public DataTable filtrarOfertas(string descripcion, DateTime fecha, int proveedor)
         {
-            try{
-            return RepoOferta.instance().traerOfertasFiltradas(descripcion,fecha,proveedor);
-            
+            try
+            {
+                return RepoOferta.instance().traerOfertasFiltradas(descripcion, fecha, proveedor);
+
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
                 return null;
             }
-        
+
         }
         public int getProveedorActual()
         {
@@ -46,24 +47,25 @@ namespace FrbaOfertas.Presenters
 
         public void nuevaOferta(Oferta oferta)
         {
-            
-                RepoOferta.instance().agregarOferta(oferta);
-                MessageBox.Show("Oferta Agregada");
+
+            RepoOferta.instance().agregarOferta(oferta);
+            MessageBox.Show("Oferta Agregada");
         }
 
         public void editarOferta(Oferta oferta)
         {
-            
+
             RepoOferta.instance().editarOferta(oferta);
-               MessageBox.Show("Oferta Editada");
-            
+            MessageBox.Show("Oferta Editada");
+
         }
 
         public void eliminarOferta(string idOferta)
         {
-            try{
-            RepoOferta.instance().eliminarOferta(idOferta);
-           MessageBox.Show("Oferta Eliminada");
+            try
+            {
+                RepoOferta.instance().eliminarOferta(idOferta);
+                MessageBox.Show("Oferta Eliminada");
             }
             catch (Exception e)
             {
@@ -91,10 +93,10 @@ namespace FrbaOfertas.Presenters
 
         public DataTable buscarProveedores(ABMProveedores form, string razonSocial, string cuit, string mail)
         {
-           
-              this.abmProveedores = form;
-              return RepoProveedores.instance().buscarProveedor(razonSocial, cuit, mail);
-          
+
+            this.abmProveedores = form;
+            return RepoProveedores.instance().buscarProveedor(razonSocial, cuit, mail);
+
         }
 
         public DataTable buscarProveedoresSinUsuario()
@@ -112,6 +114,20 @@ namespace FrbaOfertas.Presenters
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
+            }
+        }
+
+        public DataTable filtrarOfertasPorProveedor(string prov)
+        {
+            try
+            {
+                return RepoOferta.instance().filtrarOfertasPorProveedor(prov);
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return null;
             }
         }
     }

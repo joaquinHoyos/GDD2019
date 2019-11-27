@@ -33,7 +33,7 @@ namespace FrbaOfertas.Forms
             nombre = txtNombre.Text;
             apellido = txtApellido.Text;
             mail = txtMail.Text;
-            this.limpiarTodosLosTXT();
+           
           
            
             btnGuardar.Enabled = false;
@@ -70,7 +70,7 @@ namespace FrbaOfertas.Forms
 
             DataTable clientesFiltrados = PresenterCliente.instance().buscarClientes(this, nombre, apellido, mail, txtDni.Text);
             dataGridView1.DataSource = clientesFiltrados;
-
+            this.limpiarTodosLosTXT();
         }
 
         private void btn_Nuevo_Click(object sender, EventArgs e)

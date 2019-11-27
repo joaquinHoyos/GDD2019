@@ -183,7 +183,7 @@ namespace FrbaOfertas.Forms
                
                 btn_Eliminar.Enabled = true;
                 btn_Editar.Enabled = true;
-                btnSeleccionar.Enabled = false;
+              
                 btnHabilitar.Enabled = true;
                 txtFiltroFecha.Enabled = false;
                 txtFiltrarDescripcion.Enabled = false;

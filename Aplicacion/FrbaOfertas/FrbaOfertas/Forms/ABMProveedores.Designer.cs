@@ -63,7 +63,7 @@
             // 
             // btnAsignarUsuario
             // 
-            this.btnAsignarUsuario.Location = new System.Drawing.Point(382, 317);
+            this.btnAsignarUsuario.Location = new System.Drawing.Point(412, 196);
             this.btnAsignarUsuario.Name = "btnAsignarUsuario";
             this.btnAsignarUsuario.Size = new System.Drawing.Size(159, 33);
             this.btnAsignarUsuario.TabIndex = 84;
@@ -206,7 +206,7 @@
             // btnBuscar
             // 
             this.btnBuscar.Enabled = false;
-            this.btnBuscar.Location = new System.Drawing.Point(166, 298);
+            this.btnBuscar.Location = new System.Drawing.Point(52, 297);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(177, 23);
             this.btnBuscar.TabIndex = 66;
@@ -220,6 +220,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(587, 38);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(589, 328);
@@ -252,13 +253,12 @@
             // btnGuardar
             // 
             this.btnGuardar.Enabled = false;
-            this.btnGuardar.Location = new System.Drawing.Point(166, 327);
+            this.btnGuardar.Location = new System.Drawing.Point(412, 297);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(177, 23);
+            this.btnGuardar.Size = new System.Drawing.Size(159, 69);
             this.btnGuardar.TabIndex = 62;
             this.btnGuardar.TabStop = false;
             this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 

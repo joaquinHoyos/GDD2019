@@ -79,6 +79,7 @@ namespace FrbaOfertas.Repositorios
             tabla.Columns.Add(new DataColumn("PrecioLista"));
             tabla.Columns.Add(new DataColumn("Disponible"));
             tabla.Columns.Add(new DataColumn("MaxDisponible"));
+
             while (reader.Read())
             {
                 DataRow row = tabla.NewRow();
@@ -126,6 +127,46 @@ namespace FrbaOfertas.Repositorios
             SqlConnection conexion = ServerSQL.instance().levantarConexion();
             SqlCommand command = QueryFactory.instance().habilitarOferta(idOferta, conexion);
             command.ExecuteNonQuery();
+        }
+
+        public DataTable filtrarOfertasPorProveedor(string prov)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().busquedaOfertaPorProveedor(prov, conexion);
+            SqlDataReader reader = command.ExecuteReader();
+
+            DataTable tabla = new DataTable();
+
+            tabla.Columns.Add(new DataColumn("ID"));
+            tabla.Columns.Add(new DataColumn("Descripcion"));
+            tabla.Columns.Add(new DataColumn("FechaDesde"));
+            tabla.Columns.Add(new DataColumn("FechaHasta"));
+            tabla.Columns.Add(new DataColumn("PrecioOferta"));
+            tabla.Columns.Add(new DataColumn("PrecioLista"));
+            tabla.Columns.Add(new DataColumn("Disponible"));
+            tabla.Columns.Add(new DataColumn("MaxDisponible"));
+            tabla.Columns.Add(new DataColumn("Proveedor"));
+
+            while (reader.Read())
+            {
+                DataRow row = tabla.NewRow();
+
+                row["ID"] = reader["ofer_id"];
+                row["Descripcion"] = reader["ofer_descripcion"];
+                row["FechaDesde"] = reader["ofer_fechaDesde"];
+                row["FechaHasta"] = reader["ofer_fechaHasta"];
+                row["PrecioOferta"] = reader["ofer_precioOferta"];
+                row["PrecioLista"] = reader["ofer_precioLista"];
+                row["Disponible"] = reader["ofer_disponible"];
+                row["MaxDisponible"] = reader["ofer_maxDisponible"];
+                row["Proveedor"] = reader["prov_razon"];
+
+                tabla.Rows.Add(row);
+
+
+            }
+           
+            return tabla;
         }
     }
 }
