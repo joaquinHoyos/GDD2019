@@ -410,7 +410,7 @@ GO
 USE [GD2C2019]
 GO
 
-/****** Object:  UserDefinedFunction [PASO_A_PASO].[busquedaOferta]    Script Date: 26/11/2019 18:38:04 ******/
+/****** Object:  UserDefinedFunction [PASO_A_PASO].[busquedaOferta]    Script Date: 27/11/2019 13:51:37 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -420,9 +420,13 @@ GO
 CREATE FUNCTION [PASO_A_PASO].[busquedaOferta](@descripcion nvarchar(100), @fecha smalldatetime, @proveedor int)
 RETURNS TABLE
 as
- RETURN SELECT * FROM PASO_A_PASO.Oferta WHERE ofer_proveedor=@proveedor and (@fecha between ofer_fechaDesde and ofer_fechaHasta OR  (ofer_descripcion LIKE '%'+@descripcion+'%' AND @descripcion<>'')) AND ofer_estado = 'E'
+ RETURN SELECT * FROM PASO_A_PASO.Oferta WHERE ofer_proveedor=@proveedor and (@fecha between ofer_fechaDesde and ofer_fechaHasta OR  (ofer_descripcion = @descripcion AND @descripcion<>''))
+
 
 GO
+
+
+
 
 
 USE [GD2C2019]
@@ -1102,7 +1106,7 @@ GO
 USE [GD2C2019]
 GO
 
-/****** Object:  StoredProcedure [PASO_A_PASO].[deshabilitarProveedor]    Script Date: 26/11/2019 19:08:30 ******/
+/****** Object:  StoredProcedure [PASO_A_PASO].[deshabilitarProveedor]    Script Date: 27/11/2019 13:50:44 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -1122,6 +1126,8 @@ END
 GO
 
 
+
+
 USE [GD2C2019]
 GO
 
@@ -1136,6 +1142,112 @@ CREATE PROCEDURE [PASO_A_PASO].[deshabilitarRol](@rol int)
 AS
 	UPDATE PASO_A_PASO.Rol  SET rol_estado='D' WHERE rol_id=@rol
 
+GO
+
+
+USE [GD2C2019]
+GO
+
+/****** Object:  StoredProcedure [PASO_A_PASO].[modificarDatosUsuario]    Script Date: 27/11/2019 13:40:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [PASO_A_PASO].[modificarDatosUsuario](@user varchar(32),@pass varchar(32),@intentos int,@id int)
+AS
+	IF @pass IS NULL
+	BEGIN
+		UPDATE PASO_A_PASO.Usuario 
+		SET user_username=@user,
+		user_intentosLogin=@intentos
+		WHERE user_id=@id
+	END
+	ELSE
+	BEGIN
+		UPDATE PASO_A_PASO.Usuario 
+		SET user_username=@user,
+		user_intentosLogin=@intentos,
+		user_password=HASHBYTES('SHA2_256',@pass)
+		WHERE user_id=@id
+	END
+GO
+
+
+USE [GD2C2019]
+GO
+
+/****** Object:  UserDefinedFunction [PASO_A_PASO].[buscarClieConTodo]    Script Date: 27/11/2019 13:45:38 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE FUNCTION [PASO_A_PASO].[buscarClieConTodo](@nombre nvarchar(100), @apellido nvarchar(100),@mail nvarchar(100),@clie_dni numeric(18,8))
+RETURNS TABLE
+AS
+
+ RETURN SELECT * FROM PASO_A_PASO.Cliente WHERE (clie_nombre LIKE '%'+ @nombre + '%' OR clie_apellido LIKE '%'+ @apellido + '%' OR clie_mail LIKE '%'+ @mail + '%')
+ AND clie_dni = @clie_dni
+GO
+
+
+USE [GD2C2019]
+GO
+
+/****** Object:  UserDefinedFunction [PASO_A_PASO].[buscarProvConTodo]    Script Date: 27/11/2019 13:46:19 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE FUNCTION [PASO_A_PASO].[buscarProvConTodo](@razonSocial nvarchar(100),@mail nvarchar(255),@cuit nvarchar(20))
+RETURNS TABLE
+AS
+RETURN (SELECT * FROM PASO_A_PASO.Proveedor WHERE (prov_razon LIKE '%'+ @razonSocial + '%' AND prov_mail LIKE '%'+ @mail+ '%') AND prov_cuit = @cuit);
+
+GO
+
+
+USE [GD2C2019]
+GO
+
+/****** Object:  StoredProcedure [PASO_A_PASO].[canjearCupon]    Script Date: 27/11/2019 13:48:50 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [PASO_A_PASO].[canjearCupon](@cupon int, @fecha smalldatetime)
+AS
+UPDATE PASO_A_PASO.Cupon SET cupo_fecha = @fecha WHERE cupo_id=@cupon
+GO
+
+
+USE [GD2C2019]
+GO
+
+/****** Object:  StoredProcedure [PASO_A_PASO].[habilitarProveedor]    Script Date: 27/11/2019 13:49:11 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [PASO_A_PASO].[habilitarProveedor](@prov_id int) AS
+BEGIN
+
+DECLARE @user_id_prov int
+
+SET @user_id_prov = (SELECT user_id FROM PASO_A_PASO.Proveedor JOIN PASO_A_PASO.Usuario ON user_id = prov_userId WHERE prov_id=@prov_id)
+
+UPDATE PASO_A_PASO.Usuario SET user_status = 'E' WHERE user_id=@user_id_prov
+UPDATE PASO_A_PASO.Proveedor SET prov_habilitado = 'E' WHERE prov_id=@prov_id
+END
 GO
 
 
