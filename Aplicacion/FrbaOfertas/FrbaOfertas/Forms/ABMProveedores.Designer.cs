@@ -57,6 +57,7 @@
             this.txtRazonSocial = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.cboRubro = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -204,6 +205,7 @@
             // 
             // btnBuscar
             // 
+            this.btnBuscar.Enabled = false;
             this.btnBuscar.Location = new System.Drawing.Point(166, 298);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(177, 23);
@@ -249,6 +251,7 @@
             // 
             // btnGuardar
             // 
+            this.btnGuardar.Enabled = false;
             this.btnGuardar.Location = new System.Drawing.Point(166, 327);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(177, 23);
@@ -322,17 +325,31 @@
             // cboRubro
             // 
             this.cboRubro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRubro.Enabled = false;
             this.cboRubro.FormattingEnabled = true;
             this.cboRubro.Location = new System.Drawing.Point(52, 261);
             this.cboRubro.Name = "cboRubro";
             this.cboRubro.Size = new System.Drawing.Size(169, 21);
             this.cboRubro.TabIndex = 86;
             // 
+            // button1
+            // 
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(362, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(95, 23);
+            this.button1.TabIndex = 87;
+            this.button1.TabStop = false;
+            this.button1.Text = "Habilitar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // ABMProveedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1222, 405);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.cboRubro);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.btnAsignarUsuario);
@@ -402,6 +419,7 @@
         private System.Windows.Forms.TextBox txtRazonSocial;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.ComboBox cboRubro;
+        private System.Windows.Forms.Button button1;
 
     }
 }

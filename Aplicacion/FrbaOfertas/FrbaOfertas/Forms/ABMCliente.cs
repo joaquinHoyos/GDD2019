@@ -29,10 +29,46 @@ namespace FrbaOfertas.Forms
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            string nombre, apellido, mail;
+            nombre = txtNombre.Text;
+            apellido = txtApellido.Text;
+            mail = txtMail.Text;
+            this.limpiarTodosLosTXT();
+          
+           
+            btnGuardar.Enabled = false;
+            txtNombre.Enabled = false;
+            txtApellido.Enabled = false;
+            txtDni.Enabled = false;
+            txtMail.Enabled = false;
+            btnBuscar.Enabled = false;
+            btn_Editar.Enabled = false;
+            btnSeleccionar.Enabled = false;
+            btnDeshabilitar.Enabled = false;
+            dateTimePicker1.Enabled = false;
+
+            txtDireccion.Enabled = false;
+            txtTelefono.Enabled = false;
+            txtCiudad.Enabled = false;
+            txtCodigoPostal.Enabled = false;
+
             btnSeleccionar.Enabled = true;
 
 
-            DataTable clientesFiltrados = PresenterCliente.instance().buscarClientes(this,txtNombre.Text,txtApellido.Text,txtMail.Text,txtDni.Text);
+            if (nombre == "")
+            {
+                nombre = "DEFAULT";
+            }
+            if (apellido == "")
+            {
+                apellido = "DEFAULT";
+            }
+            if (mail == "")
+            {
+                mail = "DEFAULT";
+            }
+
+            DataTable clientesFiltrados = PresenterCliente.instance().buscarClientes(this, nombre, apellido, mail, txtDni.Text);
             dataGridView1.DataSource = clientesFiltrados;
 
         }
@@ -176,7 +212,7 @@ namespace FrbaOfertas.Forms
 
         private void reiniciarTodo()
         {
-
+            this.setearTXT(false);
             this.limpiarTodosLosTXT();
             this.deshabilitarTodosLosBotones();
             btn_Busqueda.Enabled = true;
@@ -216,7 +252,7 @@ namespace FrbaOfertas.Forms
 
             if (result == DialogResult.Yes)
             {
-   
+                this.reiniciarTodo();
               PresenterCliente.instance().deshabilitarCliente(this.clie_id_seleccionado);
                 
             }

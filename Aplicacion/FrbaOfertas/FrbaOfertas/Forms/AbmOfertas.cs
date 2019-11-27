@@ -25,6 +25,7 @@ namespace FrbaOfertas.Forms
 
         private void btn_Buscar_Click(object sender, EventArgs e)
         {
+            btnSeleccionar.Enabled = true;
             btn_Editar.Enabled = false;
             btn_Eliminar.Enabled = false;
             //btnSeleccionar.Enabled = true;
@@ -78,21 +79,16 @@ namespace FrbaOfertas.Forms
                 {
                     Oferta oferta = new Oferta(txtId.Text, txtDescripcion.Text, Convert.ToDateTime(txtFechaInicio.Text), Convert.ToDateTime(txtFechaVenc.Text), Convert.ToDouble(txtPrecioOferta.Text), Convert.ToDouble(txtPrecioLista.Text), PresenterProveedor.instance().getProveedorActual(), Convert.ToInt32(txtCantDisponible.Text), Convert.ToInt32(txtMaxCantUsuario.Text));
                     PresenterProveedor.instance().nuevaOferta(oferta);
+                    this.reiniciarTodo();
                 }
                 else
                 {
                     Oferta oferta = new Oferta(txtId.Text, txtDescripcion.Text, Convert.ToDateTime(txtFechaInicio.Text), Convert.ToDateTime(txtFechaVenc.Text), Convert.ToDouble(txtPrecioOferta.Text), Convert.ToDouble(txtPrecioLista.Text), PresenterProveedor.instance().getProveedorActual(), Convert.ToInt32(txtCantDisponible.Text), Convert.ToInt32(txtMaxCantUsuario.Text));
                     PresenterProveedor.instance().editarOferta(oferta);
+                    this.reiniciarTodo();
                 }
 
 
-                btn_Guardar.Enabled = false;
-                btn_Editar.Enabled = false;
-                btn_Eliminar.Enabled = false;
-                btn_Buscar.Enabled = false;
-
-                txtFiltroFecha.Enabled = false;
-                txtFiltrarDescripcion.Enabled = false;
                 }
             catch (Exception ex)
             {
@@ -165,6 +161,8 @@ namespace FrbaOfertas.Forms
                 txtFechaInicio.Enabled = false;
                 txtFechaVenc.Enabled = false;
 
+                this.reiniciarTodo();
+
             }
         }
 
@@ -186,7 +184,7 @@ namespace FrbaOfertas.Forms
                 btn_Eliminar.Enabled = true;
                 btn_Editar.Enabled = true;
                 btnSeleccionar.Enabled = false;
-
+                btnHabilitar.Enabled = true;
                 txtFiltroFecha.Enabled = false;
                 txtFiltrarDescripcion.Enabled = false;
             }
@@ -214,6 +212,49 @@ namespace FrbaOfertas.Forms
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             btnSeleccionar.Enabled = true;
+        }
+
+        private void btnHabilitar_Click(object sender, EventArgs e)
+        {
+            if (!txtId.Text.Equals(""))
+            {
+                PresenterProveedor.instance().habilitarOferta(txtId.Text);
+                this.reiniciarTodo();
+
+            }
+        }
+
+        private void reiniciarTodo()
+        {
+
+            btn_Nuevo.Enabled = true;
+            btn_Busqueda.Enabled = true;
+            btnHabilitar.Enabled = false;
+            btn_Buscar.Enabled = false;
+            btn_Editar.Enabled = false;
+            btn_Guardar.Enabled = false;
+            btn_Eliminar.Enabled = false;
+            txtFiltroFecha.Enabled = false;
+            txtFiltrarDescripcion.Enabled = false;
+
+            txtId.Text = "";
+            txtDescripcion.Text = "";
+            txtFechaInicio.Text = "";
+            txtFechaVenc.Text = "";
+            txtPrecioOferta.Text = "";
+            txtPrecioLista.Text = "";
+            txtCantDisponible.Text = "";
+            txtMaxCantUsuario.Text = "";
+
+            txtCantDisponible.Enabled = false;
+            txtDescripcion.Enabled = false;
+            txtId.Enabled = false;
+            txtPrecioLista.Enabled = false;
+            txtPrecioOferta.Enabled = false;
+            txtMaxCantUsuario.Enabled = false;
+            txtFechaInicio.Enabled = false;
+            txtFechaVenc.Enabled = false;
+
         }
     }
 }

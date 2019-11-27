@@ -56,6 +56,7 @@
             this.txtFechaVenc = new System.Windows.Forms.DateTimePicker();
             this.txtFiltroFecha = new System.Windows.Forms.DateTimePicker();
             this.btnSeleccionar = new System.Windows.Forms.Button();
+            this.btnHabilitar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,7 +67,7 @@
             this.btn_Eliminar.Name = "btn_Eliminar";
             this.btn_Eliminar.Size = new System.Drawing.Size(95, 27);
             this.btn_Eliminar.TabIndex = 35;
-            this.btn_Eliminar.Text = "Eliminar";
+            this.btn_Eliminar.Text = "Deshabilitar";
             this.btn_Eliminar.UseVisualStyleBackColor = true;
             this.btn_Eliminar.Click += new System.EventHandler(this.btn_Eliminar_Click);
             // 
@@ -149,7 +150,7 @@
             // 
             this.txtFiltrarDescripcion.Enabled = false;
             this.txtFiltrarDescripcion.Location = new System.Drawing.Point(161, 115);
-            this.txtFiltrarDescripcion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFiltrarDescripcion.Margin = new System.Windows.Forms.Padding(2);
             this.txtFiltrarDescripcion.Name = "txtFiltrarDescripcion";
             this.txtFiltrarDescripcion.Size = new System.Drawing.Size(123, 20);
             this.txtFiltrarDescripcion.TabIndex = 40;
@@ -169,7 +170,7 @@
             // 
             this.txtDescripcion.Enabled = false;
             this.txtDescripcion.Location = new System.Drawing.Point(651, 56);
-            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(2);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(89, 20);
             this.txtDescripcion.TabIndex = 43;
@@ -178,7 +179,7 @@
             // 
             this.txtId.Enabled = false;
             this.txtId.Location = new System.Drawing.Point(535, 56);
-            this.txtId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtId.Margin = new System.Windows.Forms.Padding(2);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(76, 20);
             this.txtId.TabIndex = 42;
@@ -187,7 +188,7 @@
             // 
             this.txtMaxCantUsuario.Enabled = false;
             this.txtMaxCantUsuario.Location = new System.Drawing.Point(651, 194);
-            this.txtMaxCantUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtMaxCantUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.txtMaxCantUsuario.Name = "txtMaxCantUsuario";
             this.txtMaxCantUsuario.Size = new System.Drawing.Size(89, 20);
             this.txtMaxCantUsuario.TabIndex = 49;
@@ -196,7 +197,7 @@
             // 
             this.txtCantDisponible.Enabled = false;
             this.txtCantDisponible.Location = new System.Drawing.Point(535, 194);
-            this.txtCantDisponible.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCantDisponible.Margin = new System.Windows.Forms.Padding(2);
             this.txtCantDisponible.Name = "txtCantDisponible";
             this.txtCantDisponible.Size = new System.Drawing.Size(76, 20);
             this.txtCantDisponible.TabIndex = 48;
@@ -289,7 +290,7 @@
             // 
             this.txtPrecioLista.Enabled = false;
             this.txtPrecioLista.Location = new System.Drawing.Point(651, 145);
-            this.txtPrecioLista.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPrecioLista.Margin = new System.Windows.Forms.Padding(2);
             this.txtPrecioLista.Name = "txtPrecioLista";
             this.txtPrecioLista.Size = new System.Drawing.Size(89, 20);
             this.txtPrecioLista.TabIndex = 47;
@@ -298,7 +299,7 @@
             // 
             this.txtPrecioOferta.Enabled = false;
             this.txtPrecioOferta.Location = new System.Drawing.Point(535, 145);
-            this.txtPrecioOferta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPrecioOferta.Margin = new System.Windows.Forms.Padding(2);
             this.txtPrecioOferta.Name = "txtPrecioOferta";
             this.txtPrecioOferta.Size = new System.Drawing.Size(76, 20);
             this.txtPrecioOferta.TabIndex = 46;
@@ -307,7 +308,7 @@
             // 
             this.txtFechaInicio.Enabled = false;
             this.txtFechaInicio.Location = new System.Drawing.Point(535, 102);
-            this.txtFechaInicio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFechaInicio.Margin = new System.Windows.Forms.Padding(2);
             this.txtFechaInicio.Name = "txtFechaInicio";
             this.txtFechaInicio.Size = new System.Drawing.Size(77, 20);
             this.txtFechaInicio.TabIndex = 58;
@@ -316,7 +317,7 @@
             // 
             this.txtFechaVenc.Enabled = false;
             this.txtFechaVenc.Location = new System.Drawing.Point(651, 102);
-            this.txtFechaVenc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFechaVenc.Margin = new System.Windows.Forms.Padding(2);
             this.txtFechaVenc.Name = "txtFechaVenc";
             this.txtFechaVenc.Size = new System.Drawing.Size(77, 20);
             this.txtFechaVenc.TabIndex = 59;
@@ -326,7 +327,7 @@
             this.txtFiltroFecha.CustomFormat = "";
             this.txtFiltroFecha.Enabled = false;
             this.txtFiltroFecha.Location = new System.Drawing.Point(24, 114);
-            this.txtFiltroFecha.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFiltroFecha.Margin = new System.Windows.Forms.Padding(2);
             this.txtFiltroFecha.MinDate = new System.DateTime(1753, 1, 23, 0, 0, 0, 0);
             this.txtFiltroFecha.Name = "txtFiltroFecha";
             this.txtFiltroFecha.Size = new System.Drawing.Size(119, 20);
@@ -336,7 +337,7 @@
             // 
             this.btnSeleccionar.Enabled = false;
             this.btnSeleccionar.Location = new System.Drawing.Point(463, 317);
-            this.btnSeleccionar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSeleccionar.Margin = new System.Windows.Forms.Padding(2);
             this.btnSeleccionar.Name = "btnSeleccionar";
             this.btnSeleccionar.Size = new System.Drawing.Size(85, 27);
             this.btnSeleccionar.TabIndex = 61;
@@ -344,11 +345,23 @@
             this.btnSeleccionar.UseVisualStyleBackColor = true;
             this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
             // 
+            // btnHabilitar
+            // 
+            this.btnHabilitar.Enabled = false;
+            this.btnHabilitar.Location = new System.Drawing.Point(336, 71);
+            this.btnHabilitar.Name = "btnHabilitar";
+            this.btnHabilitar.Size = new System.Drawing.Size(95, 27);
+            this.btnHabilitar.TabIndex = 62;
+            this.btnHabilitar.Text = "Habilitar";
+            this.btnHabilitar.UseVisualStyleBackColor = true;
+            this.btnHabilitar.Click += new System.EventHandler(this.btnHabilitar_Click);
+            // 
             // AbmOfertas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1148, 417);
+            this.Controls.Add(this.btnHabilitar);
             this.Controls.Add(this.btnSeleccionar);
             this.Controls.Add(this.txtFiltroFecha);
             this.Controls.Add(this.txtFechaVenc);
@@ -377,7 +390,7 @@
             this.Controls.Add(this.btn_Guardar);
             this.Controls.Add(this.btn_Busqueda);
             this.Controls.Add(this.btn_Nuevo);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AbmOfertas";
             this.Text = "AbmOfertas";
             this.Load += new System.EventHandler(this.AbmOfertas_Load);
@@ -417,5 +430,6 @@
         private System.Windows.Forms.DateTimePicker txtFechaVenc;
         private System.Windows.Forms.DateTimePicker txtFiltroFecha;
         private System.Windows.Forms.Button btnSeleccionar;
+        private System.Windows.Forms.Button btnHabilitar;
     }
 }

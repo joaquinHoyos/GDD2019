@@ -58,7 +58,7 @@ namespace FrbaOfertas.Presenters
             DialogResult resultado = MessageBox.Show("Desea Ingresar como Administrador?", "", MessageBoxButtons.YesNo);
             if (resultado == DialogResult.No)
             {
-                resultado = MessageBox.Show("Desea Ingresar como Cliente? De lo contrario ingresara como administrador", "", MessageBoxButtons.YesNo);
+                resultado = MessageBox.Show("Desea Ingresar como Cliente? De lo contrario ingresara como proveedor", "", MessageBoxButtons.YesNo);
                 if (resultado == DialogResult.Yes)
                 {
                     //ir a form cliente

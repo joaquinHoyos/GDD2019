@@ -487,6 +487,10 @@ namespace FrbaOfertas.Repositorios
             SqlCommand command = QueryFactory.instance().asignarUsuarioACliente(idUsuario, idcliente,conexion);
 
             command.ExecuteNonQuery();
+            SqlCommand command1 = QueryFactory.instance().asigarRolNuevoAUsuario(idUsuario, 2, conexion);
+
+
+            command1.ExecuteNonQuery();
         }
 
         public void asignarProv(string idUsuario, string idProv)
@@ -494,8 +498,18 @@ namespace FrbaOfertas.Repositorios
             SqlConnection conexion = ServerSQL.instance().levantarConexion();
             SqlCommand command = QueryFactory.instance().asignarUsuarioAProveedor(idUsuario, idProv, conexion);
 
+
             command.ExecuteNonQuery();
+
+            SqlCommand command1 = QueryFactory.instance().asigarRolNuevoAUsuario(idUsuario,3,conexion);
+
+
+            command1.ExecuteNonQuery();
         }
+
+        
+
+      
     }
 
 

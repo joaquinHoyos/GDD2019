@@ -63,9 +63,9 @@ namespace FrbaOfertas.Repositorios
             return parametro;
         }
 
-       public SqlCommand agregarOferta(string id,string descripcion,DateTime fechaDesde,DateTime fechaHasta,double precioOferta,double precioLista,int proveedor,int disponible,int maxDisponible,SqlConnection conexion)
-    {
-        SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.crearOferta @id=@_id,@descripcion=@_descripcion,@fechaDesde=@_fechaDesde,@fechaHasta=@_fechaHasta,@precioOferta=@_precioOferta,@precioLista=@_precioLista,@proveedor=@_proveedor,@disponible=@_disponible,@maxDisponible=@_maxDisponible", conexion);
+        public SqlCommand agregarOferta(string id, string descripcion, DateTime fechaDesde, DateTime fechaHasta, double precioOferta, double precioLista, int proveedor, int disponible, int maxDisponible, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.crearOferta @id=@_id,@descripcion=@_descripcion,@fechaDesde=@_fechaDesde,@fechaHasta=@_fechaHasta,@precioOferta=@_precioOferta,@precioLista=@_precioLista,@proveedor=@_proveedor,@disponible=@_disponible,@maxDisponible=@_maxDisponible", conexion);
             SqlParameter param = this.nuevoParametroString("@_id", id);
             SqlParameter param1 = this.nuevoParametroString("@_descripcion", descripcion);
             SqlParameter param2 = this.nuevoParametroDateTime("@_fechaDesde", fechaDesde);
@@ -88,43 +88,52 @@ namespace FrbaOfertas.Repositorios
 
             return command;
 
-    }
+        }
 
-       public SqlCommand editarOferta(string id, string descripcion, DateTime fechaDesde, DateTime fechaHasta, double precioOferta, double precioLista, int proveedor, int disponible, int maxDisponible, SqlConnection conexion)
-       {
-           SqlCommand command = new SqlCommand("UPDATE PASO_A_PASO.Oferta SET ofer_descripcion=@_descripcion,ofer_fechaDesde=@_fechaDesde,ofer_fechaHasta=@_fechaHasta,ofer_precioOferta=@_precioOferta,ofer_precioLista=@_precioLista,ofer_proveedor=@_proveedor,ofer_disponible=@_disponible,ofer_maxDisponible=@_maxDisponible WHERE ofer_id=@_id", conexion);
-           SqlParameter param = this.nuevoParametroString("@_id", id);
-           SqlParameter param1 = this.nuevoParametroString("@_descripcion", descripcion);
-           SqlParameter param2 = this.nuevoParametroDateTime("@_fechaDesde", fechaDesde);
-           SqlParameter param3 = this.nuevoParametroDateTime("@_fechaHasta", fechaHasta);
-           SqlParameter param4 = this.nuevoParametroDouble("@_precioOferta", precioOferta);
-           SqlParameter param5 = this.nuevoParametroDouble("@_precioLista", precioLista);
-           SqlParameter param6 = this.nuevoParametroInt("@_proveedor", proveedor);
-           SqlParameter param7 = this.nuevoParametroInt("@_disponible", disponible);
-           SqlParameter param8 = this.nuevoParametroInt("@_maxDisponible", maxDisponible);
+        public SqlCommand editarOferta(string id, string descripcion, DateTime fechaDesde, DateTime fechaHasta, double precioOferta, double precioLista, int proveedor, int disponible, int maxDisponible, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("UPDATE PASO_A_PASO.Oferta SET ofer_descripcion=@_descripcion,ofer_fechaDesde=@_fechaDesde,ofer_fechaHasta=@_fechaHasta,ofer_precioOferta=@_precioOferta,ofer_precioLista=@_precioLista,ofer_proveedor=@_proveedor,ofer_disponible=@_disponible,ofer_maxDisponible=@_maxDisponible WHERE ofer_id=@_id", conexion);
+            SqlParameter param = this.nuevoParametroString("@_id", id);
+            SqlParameter param1 = this.nuevoParametroString("@_descripcion", descripcion);
+            SqlParameter param2 = this.nuevoParametroDateTime("@_fechaDesde", fechaDesde);
+            SqlParameter param3 = this.nuevoParametroDateTime("@_fechaHasta", fechaHasta);
+            SqlParameter param4 = this.nuevoParametroDouble("@_precioOferta", precioOferta);
+            SqlParameter param5 = this.nuevoParametroDouble("@_precioLista", precioLista);
+            SqlParameter param6 = this.nuevoParametroInt("@_proveedor", proveedor);
+            SqlParameter param7 = this.nuevoParametroInt("@_disponible", disponible);
+            SqlParameter param8 = this.nuevoParametroInt("@_maxDisponible", maxDisponible);
 
-           command.Parameters.Add(param);
-           command.Parameters.Add(param1);
-           command.Parameters.Add(param2);
-           command.Parameters.Add(param3);
-           command.Parameters.Add(param4);
-           command.Parameters.Add(param5);
-           command.Parameters.Add(param6);
-           command.Parameters.Add(param7);
-           command.Parameters.Add(param8);
+            command.Parameters.Add(param);
+            command.Parameters.Add(param1);
+            command.Parameters.Add(param2);
+            command.Parameters.Add(param3);
+            command.Parameters.Add(param4);
+            command.Parameters.Add(param5);
+            command.Parameters.Add(param6);
+            command.Parameters.Add(param7);
+            command.Parameters.Add(param8);
 
-           return command;
+            return command;
 
-       }
+        }
 
-       public SqlCommand eliminarOferta(string id, SqlConnection conexion)
-       {
-           SqlCommand command = new SqlCommand("UPDATE PASO_A_PASO.Oferta SET ofer_estado='D' WHERE ofer_id=@_id", conexion);//"DELETE FROM PASO_A_PASO.Oferta WHERE ofer_id=@_id", conexion);
-           SqlParameter param = this.nuevoParametroString("@_id", id);
-           command.Parameters.Add(param);
-           return command;
+        public SqlCommand eliminarOferta(string id, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("UPDATE PASO_A_PASO.Oferta SET ofer_estado='D' WHERE ofer_id=@_id", conexion);//"DELETE FROM PASO_A_PASO.Oferta WHERE ofer_id=@_id", conexion);
+            SqlParameter param = this.nuevoParametroString("@_id", id);
+            command.Parameters.Add(param);
+            return command;
 
-       }
+        }
+
+        public SqlCommand habilitarOferta(string id, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("UPDATE PASO_A_PASO.Oferta SET ofer_estado='E' WHERE ofer_id=@_id", conexion);//"DELETE FROM PASO_A_PASO.Oferta WHERE ofer_id=@_id", conexion);
+            SqlParameter param = this.nuevoParametroString("@_id", id);
+            command.Parameters.Add(param);
+            return command;
+
+        }
 
         private SqlParameter nuevoParametroTabla(string nombre, DataTable tabla, string tipo)
         {
@@ -180,16 +189,14 @@ namespace FrbaOfertas.Repositorios
             return command;
 
 
-        }
-
-
-        public SqlCommand crearCliente(Cliente clie, SqlConnection conexion)
+        }
+        public SqlCommand crearCliente(Cliente clie, SqlConnection conexion)
         {
 
 
-            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.insertarCliente @nombre=@_nombre ,@apellido=@_ape,@user_id=@_user_id,@dni=@_dni,@mail=@_mail, @telefono=@_telefono,@direccion=@_direccion,@saldo=@_saldo,@codPostal=@_codPostal,@ciudad=@_ciudad,@fechaNac=@_fechaNac", conexion);
-            SqlParameter paramNombre = this.nuevoParametroString("@_nombre", clie.nombre);
-            SqlParameter paramApellido = this.nuevoParametroString("@_ape", clie.apellido);
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.insertarCliente @nombre=@_nombre ,@apellido=@_ape,@user_id=@_user_id,@dni=@_dni,@mail=@_mail, @telefono=@_telefono,@direccion=@_direccion,@saldo=@_saldo,@codPostal=@_codPostal,@ciudad=@_ciudad,@fechaNac=@_fechaNac", conexion);
+            SqlParameter paramNombre = this.nuevoParametroString("@_nombre", clie.nombre);
+            SqlParameter paramApellido = this.nuevoParametroString("@_ape", clie.apellido);
             SqlParameter paramDni = this.nuevoParametroInt("@_dni", Convert.ToInt32(clie.clie_dni));
 
             SqlParameter paramTel = this.nuevoParametroInt("@_telefono", Convert.ToInt32(clie.telefono));
@@ -202,23 +209,23 @@ namespace FrbaOfertas.Repositorios
             SqlParameter paramFechaNac = this.nuevoParametroDateTime("@_fechaNac", clie.fechaNac);
 
 
-           
-            command.Parameters.Add(paramNombre);             command.Parameters.Add(paramApellido);
-             command.Parameters.Add(paramDni);
-             command.Parameters.Add(paramTel);
-             command.Parameters.Add(paramMail);
-             command.Parameters.Add(paramUserId);
-             command.Parameters.Add(paramDirec);
-             command.Parameters.Add(paramSaldo);
-             command.Parameters.Add(paramCP);
-             command.Parameters.Add(paramCiudad);
-           
-            command.Parameters.Add(paramFechaNac);
-            return command;
+
+            command.Parameters.Add(paramNombre); command.Parameters.Add(paramApellido);
+            command.Parameters.Add(paramDni);
+            command.Parameters.Add(paramTel);
+            command.Parameters.Add(paramMail);
+            command.Parameters.Add(paramUserId);
+            command.Parameters.Add(paramDirec);
+            command.Parameters.Add(paramSaldo);
+            command.Parameters.Add(paramCP);
+            command.Parameters.Add(paramCiudad);
+
+            command.Parameters.Add(paramFechaNac);
+            return command;
         }
 
 
-        public SqlCommand modificarCliente(String clie_id,Cliente clie, SqlConnection conexion)
+        public SqlCommand modificarCliente(String clie_id, Cliente clie, SqlConnection conexion)
         {
 
 
@@ -274,12 +281,12 @@ namespace FrbaOfertas.Repositorios
         public SqlCommand busquedaRol_Id(decimal id, SqlConnection conexion)
         {
             SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.busquedaRol_Id(@id)", conexion);
-            SqlParameter parametro = this.nuevoParametroInt("@id",Int32.Parse(id.ToString()));
+            SqlParameter parametro = this.nuevoParametroInt("@id", Int32.Parse(id.ToString()));
             command.Parameters.Add(parametro);
             return command;
         }
 
-        public SqlCommand busquedaOferta(string descripcion,DateTime fecha,int proveedor,SqlConnection conexion)
+        public SqlCommand busquedaOferta(string descripcion, DateTime fecha, int proveedor, SqlConnection conexion)
         {
             SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.busquedaOferta(@descripcion,@fecha,@proveedor)", conexion);
             SqlParameter parametro1 = this.nuevoParametroString("@descripcion", descripcion);
@@ -293,23 +300,23 @@ namespace FrbaOfertas.Repositorios
 
         public SqlCommand busquedaRol_Nombre(string nombre, SqlConnection conexion)
         {
-            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.busquedaRol_Nombre(@nombre)",conexion);
-            command.Parameters.Add(this.nuevoParametroString("@nombre",nombre));
+            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.busquedaRol_Nombre(@nombre)", conexion);
+            command.Parameters.Add(this.nuevoParametroString("@nombre", nombre));
             return command;
         }
 
         public SqlCommand busquedaRol_Funcion(DataTable funciones, SqlConnection conexion)
         {
-            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.busquedaRol_Funcion(@funcion)",conexion);
-            command.Parameters.Add(this.nuevoParametroTabla("@funcion",funciones,"PASO_A_PASO.tablaFuncion"));
+            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.busquedaRol_Funcion(@funcion)", conexion);
+            command.Parameters.Add(this.nuevoParametroTabla("@funcion", funciones, "PASO_A_PASO.tablaFuncion"));
             return command;
         }
 
-        public SqlCommand busquedaRol_IdYNombre(decimal id,string nombre, SqlConnection conexion)
+        public SqlCommand busquedaRol_IdYNombre(decimal id, string nombre, SqlConnection conexion)
         {
             SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.busquedaRol_IdYNombre(@id,@nombre)", conexion);
             command.Parameters.Add(this.nuevoParametroInt("@id", Convert.ToInt32(id)));
-            command.Parameters.Add(this.nuevoParametroString("@nombre",nombre));
+            command.Parameters.Add(this.nuevoParametroString("@nombre", nombre));
             return command;
         }
         public SqlCommand busquedaRol_IdYFuncion(decimal id, DataTable funciones, SqlConnection conexion)
@@ -320,7 +327,7 @@ namespace FrbaOfertas.Repositorios
             return command;
         }
 
-        public SqlCommand busquedaRol_NombreYFuncion(string nombre,DataTable funciones, SqlConnection conexion)
+        public SqlCommand busquedaRol_NombreYFuncion(string nombre, DataTable funciones, SqlConnection conexion)
         {
             SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.busquedarRol_NombreYFuncion(@nombre,@funcion)", conexion);
             command.Parameters.Add(this.nuevoParametroTabla("@funcion", funciones, "PASO_A_PASO.tablaFuncion"));
@@ -333,7 +340,7 @@ namespace FrbaOfertas.Repositorios
             return new SqlCommand("SELECT * FROM PASO_A_PASO.busquedaRol_Todo()", conexion);
         }
 
-        public SqlCommand traerProveedorDeUsuario(int user,SqlConnection conexion)
+        public SqlCommand traerProveedorDeUsuario(int user, SqlConnection conexion)
         {
             SqlCommand command = new SqlCommand("SELECT prov_id FROM PASO_A_PASO.Proveedor WHERE prov_userId=@_user", conexion);
             SqlParameter paramUsuario = this.nuevoParametroInt("@_user", user);
@@ -345,7 +352,7 @@ namespace FrbaOfertas.Repositorios
         {
             SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.cargarCredito @tipoPago=@_tipoPago ,@monto=@_monto, @tarjeta=@_tarjeta, @userID=@_userID, @fecha=@_fecha", conexion);
             SqlParameter paramTipo = this.nuevoParametroString("@_tipoPago", tipoDePago);
-            SqlParameter paramTarjeta= new SqlParameter();
+            SqlParameter paramTarjeta = new SqlParameter();
             if (tipoDePago == "E")
             {
 
@@ -371,14 +378,15 @@ namespace FrbaOfertas.Repositorios
         }
 
 
-        public SqlCommand traerOfertasDisponibles(SqlConnection conexion){
+        public SqlCommand traerOfertasDisponibles(SqlConnection conexion)
+        {
             SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.traerOfertasDisponibles(@_fecha)", conexion);
             command.Parameters.Add(this.nuevoParametroDateTime("@_fecha", Convert.ToDateTime(ConfigurationManager.AppSettings["fecha"])));
-            return command;   
-        
+            return command;
+
         }
 
-        public SqlCommand generarCompra(int idUsuario, String oferCodigo, int cantidad,DateTime fecha,SqlConnection conexion)
+        public SqlCommand generarCompra(int idUsuario, String oferCodigo, int cantidad, DateTime fecha, SqlConnection conexion)
         {
             SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.generarCompra @userID=@_userID,@oferCodigo=@_oferCodigo,@cantidad=@_cantidad,@fecha=@_fecha", conexion);
             SqlParameter paramUsuario = this.nuevoParametroInt("@_userID", idUsuario);
@@ -393,7 +401,7 @@ namespace FrbaOfertas.Repositorios
 
         }
 
-        public SqlCommand traerCuponesPropios(int userID,SqlConnection conexion)
+        public SqlCommand traerCuponesPropios(int userID, SqlConnection conexion)
         {
             SqlCommand command = new SqlCommand("SELECT cupo_id, cupo_fecha, cupo_oferta, cupo_cliente,cupo_compra,ofer_descripcion FROM PASO_A_PASO.Cupon JOIN PASO_A_PASO.Oferta ON (ofer_id = cupo_oferta) WHERE cupo_cliente = (SELECT clie_id FROM PASO_A_PASO.Cliente WHERE @userID = clie_userId) AND cupo_fecha ='1/1/1900'", conexion);
             SqlParameter paramUserID = this.nuevoParametroInt("@userID", userID);
@@ -433,9 +441,9 @@ namespace FrbaOfertas.Repositorios
 
         }
 
-        public SqlCommand habilitarRol(int rol,SqlConnection conexion)
+        public SqlCommand habilitarRol(int rol, SqlConnection conexion)
         {
-            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.habilitarRol @rol=@rolID",conexion);
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.habilitarRol @rol=@rolID", conexion);
             command.Parameters.Add(this.nuevoParametroInt("@rolID", rol));
             return command;
         }
@@ -449,22 +457,129 @@ namespace FrbaOfertas.Repositorios
 
         public SqlCommand modificarRol(int id, string nombre, DataTable funciones, SqlConnection conexion)
         {
-            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.modificarRol @id=@rolid, @nombre=@rolnombre, @funciones=@rolfunciones",conexion);
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.modificarRol @id=@rolid, @nombre=@rolnombre, @funciones=@rolfunciones", conexion);
             command.Parameters.Add(this.nuevoParametroInt("@rolid", id));
-            command.Parameters.Add(this.nuevoParametroString("@rolnombre",nombre));
-            command.Parameters.Add(this.nuevoParametroTabla("@rolfunciones",funciones,"PASO_A_PASO.tablaFuncion"));
+            command.Parameters.Add(this.nuevoParametroString("@rolnombre", nombre));
+            command.Parameters.Add(this.nuevoParametroTabla("@rolfunciones", funciones, "PASO_A_PASO.tablaFuncion"));
             return command;
-        }
-
-        public SqlCommand buscarClientes(string nombre, string apellido,string mail,string dni,SqlConnection conexion)
-        {
-            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.buscarClie(@nombre, @apellido,@mail,@dni)", conexion);
-            command.Parameters.Add(this.nuevoParametroString("@nombre", nombre));
-            command.Parameters.Add(this.nuevoParametroString("@apellido", apellido));
-            command.Parameters.Add(this.nuevoParametroString("@mail", mail));
-            command.Parameters.Add(this.nuevoParametroString("@dni", dni));
-            
-            return command;
+        }
+        public SqlCommand buscarClientes(string nombre, string apellido, string mail, string dni, SqlConnection conexion)
+        {
+
+            SqlCommand command;
+
+            if (dni != "")
+            {
+
+                if (nombre == "DEFAULT" && apellido == "DEFAULT" && mail == "DEFAULT")
+                {
+                    command = new SqlCommand("SELECT * FROM PASO_A_PASO.buscarClieDni(@dni)", conexion);
+                    command.Parameters.Add(this.nuevoParametroString("@dni", dni));
+                }
+                else
+                {
+                    string selectAEjecutar = "SELECT * FROM PASO_A_PASO.Cliente WHERE ";
+                    selectAEjecutar = selectAEjecutar + this.obtenerFiltroCliente(nombre, apellido, mail, dni);
+                    command = new SqlCommand(selectAEjecutar, conexion);
+                    return command;
+                }
+            }
+            else
+            {
+                string selectAEjecutar = "SELECT * FROM PASO_A_PASO.Cliente WHERE ";
+                selectAEjecutar = selectAEjecutar + this.obtenerFiltroClienteSinDni(nombre, apellido, mail, dni);
+                command = new SqlCommand(selectAEjecutar, conexion);
+                return command;
+            }
+            return command;
+        }
+
+
+        private string obtenerFiltroCliente(string nombre, string apellido, string mail, string dni)
+        {
+            string filtro = "";
+
+            if (nombre == "DEFAULT")
+            {
+                if (apellido == "DEFAULT")
+                {
+                    filtro = "(clie_mail LIKE '%" + mail + "%') AND clie_dni = " + dni;
+
+                }
+                else if (mail == "DEFAULT")
+                {
+                    filtro = "(clie_apellido LIKE '%" + apellido + "%') AND clie_dni = " + dni;
+                }
+                else if (mail != "DEFAULT" && apellido != "DEFAULT")
+                {
+                    filtro = "(clie_apellido LIKE '%" + apellido + "%' AND clie_mail LIKE '%" + mail + "%') AND clie_dni = " + dni;
+                }
+            }
+            else if (apellido == "DEFAULT")
+            {
+                if (mail == "DEFAULT")
+                {
+                    filtro = "(clie_nombre LIKE '%" + nombre + "%') AND clie_dni = " + dni;
+                }
+                else if (mail != "DEFAULT" && nombre != "DEFAULT")
+                {
+                    filtro = "(clie_nombre LIKE '%" + nombre + "%' AND clie_mail LIKE '%" + mail + "%') AND clie_dni = " + dni;
+                }
+            }
+            else if (mail == "DEFAULT")
+            {
+                filtro = "(clie_nombre LIKE '%" + nombre + "%' AND clie_apellido LIKE '%" + apellido + "%') AND clie_dni = " + dni;
+            }
+
+            else if (mail != "DEFAULT" && apellido != "DEFAULT" && nombre != "DEFAULT")
+            {
+                filtro = "(clie_nombre LIKE '%" + nombre + "%' AND clie_apellido LIKE '%" + apellido + "%' AND clie_mail LIKE '%" + mail + "%') AND clie_dni = " + dni;
+            }
+            return filtro;
+        }
+
+
+        private string obtenerFiltroClienteSinDni(string nombre, string apellido, string mail, string dni)
+        {
+            string filtro = "";
+
+            if (nombre == "DEFAULT")
+            {
+                if (apellido == "DEFAULT")
+                {
+                    filtro = "(clie_mail LIKE '%" + mail + "%')";
+
+                }
+                else if (mail == "DEFAULT")
+                {
+                    filtro = "(clie_apellido LIKE '%" + apellido + "%')";
+                }
+                else if (mail != "DEFAULT" && apellido != "DEFAULT")
+                {
+                    filtro = "(clie_apellido LIKE '%" + apellido + "%' AND clie_mail LIKE '%" + mail + "%')";
+                }
+            }
+            else if (apellido == "DEFAULT")
+            {
+                if (mail == "DEFAULT")
+                {
+                    filtro = "(clie_nombre LIKE '%" + nombre + "%')";
+                }
+                else if (mail != "DEFAULT" && nombre != "DEFAULT")
+                {
+                    filtro = "(clie_nombre LIKE '%" + nombre + "%' AND clie_mail LIKE '%" + mail + "%')";
+                }
+            }
+            else if (mail == "DEFAULT")
+            {
+                filtro = "(clie_nombre LIKE '%" + nombre + "%' AND clie_apellido LIKE '%" + apellido + "%')";
+            }
+
+            else if (mail != "DEFAULT" && apellido != "DEFAULT" && nombre != "DEFAULT")
+            {
+                filtro = "(clie_nombre LIKE '%" + nombre + "%' AND clie_apellido LIKE '%" + apellido + "%' AND clie_mail LIKE '%" + mail + "%')";
+            }
+            return filtro;
         }
 
         public SqlCommand buscarClientesSinUsuario(string nombre, string apellido, string mail, string dni, SqlConnection conexion)
@@ -476,9 +591,9 @@ namespace FrbaOfertas.Repositorios
 
         }
 
-        public SqlCommand altaCliente(String nombre, String apellido, long dni, int cp,int userID, String direccion, String ciudad, String mail,long telefono, DateTime fechaNacimiento, SqlConnection conexion)
+        public SqlCommand altaCliente(String nombre, String apellido, long dni, int cp, int userID, String direccion, String ciudad, String mail, long telefono, DateTime fechaNacimiento, SqlConnection conexion)
         {
-            SqlCommand command = new SqlCommand("INSERT INTO PASO_A_PASO.Cliente (clie_dni,clie_nombre,clie_apellido,clie_userID,clie_mail,clie_telefono,clie_direccion,clie_saldo,clie_codigoPostal,clie_ciudad,clie_fechaNacimiento) VALUES (@dni,@nombre,@apellido,@userID,@mail,@telefono,@direccion,0,@codpos,@ciudad,@fecha)",conexion);
+            SqlCommand command = new SqlCommand("INSERT INTO PASO_A_PASO.Cliente (clie_dni,clie_nombre,clie_apellido,clie_userID,clie_mail,clie_telefono,clie_direccion,clie_saldo,clie_codigoPostal,clie_ciudad,clie_fechaNacimiento) VALUES (@dni,@nombre,@apellido,@userID,@mail,@telefono,@direccion,0,@codpos,@ciudad,@fecha)", conexion);
             command.Parameters.Add(this.nuevoParametroLong("@dni", dni));
             command.Parameters.Add(this.nuevoParametroString("@nombre", nombre));
             command.Parameters.Add(this.nuevoParametroString("@apellido", apellido));
@@ -493,9 +608,9 @@ namespace FrbaOfertas.Repositorios
         }
 
         public SqlCommand altaProveedor(String cuit, String razon, int userID, String mail, long telefono, String direccion, int cp, String ciudad, int rubroID, String nombre, SqlConnection conexion)
-    {
-                    SqlCommand command = new SqlCommand("INSERT INTO PASO_A_PASO.Proveedor (prov_cuit,prov_razon,prov_userId,prov_mail,prov_telefono,prov_direccion,prov_codigoPostal,prov_ciudad,prov_rubro,prov_nombre,prov_habilitado) VALUES (@cuit,@razon,@userID,@mail,@telefono,@direccion,@codpos,@ciudad,@rubrID,@nombre,'1')",conexion);
-            
+        {
+            SqlCommand command = new SqlCommand("INSERT INTO PASO_A_PASO.Proveedor (prov_cuit,prov_razon,prov_userId,prov_mail,prov_telefono,prov_direccion,prov_codigoPostal,prov_ciudad,prov_rubro,prov_nombre,prov_habilitado) VALUES (@cuit,@razon,@userID,@mail,@telefono,@direccion,@codpos,@ciudad,@rubrID,@nombre,'1')", conexion);
+
             command.Parameters.Add(this.nuevoParametroString("@razon", razon));
             command.Parameters.Add(this.nuevoParametroString("@cuit", cuit));
             command.Parameters.Add(this.nuevoParametroString("@nombre", nombre));
@@ -507,24 +622,26 @@ namespace FrbaOfertas.Repositorios
             command.Parameters.Add(this.nuevoParametroInt("@codpos", cp));
             command.Parameters.Add(this.nuevoParametroString("@ciudad", ciudad));
             return command;
-    
-    
-    
-    }
 
-        public SqlCommand tieneClienteOProveedor(int userID, SqlConnection conexion){
-
-            SqlCommand command = new SqlCommand("SELECT CASE WHEN EXISTS(SELECT * FROM PASO_A_PASO.Cliente WHERE @userID= clie_userId) OR EXISTS(SELECT * FROM PASO_A_PASO.Proveedor WHERE @userID = prov_userId) THEN 1 ELSE 0 END ;", conexion);
-            command.Parameters.Add(this.nuevoParametroInt("@userID", userID));
-            return command;        
 
 
         }
 
-        public SqlCommand traerRubros(SqlConnection conexion) {
+        public SqlCommand tieneClienteOProveedor(int userID, SqlConnection conexion)
+        {
+
+            SqlCommand command = new SqlCommand("SELECT CASE WHEN EXISTS(SELECT * FROM PASO_A_PASO.Cliente WHERE @userID= clie_userId) OR EXISTS(SELECT * FROM PASO_A_PASO.Proveedor WHERE @userID = prov_userId) THEN 1 ELSE 0 END ;", conexion);
+            command.Parameters.Add(this.nuevoParametroInt("@userID", userID));
+            return command;
+
+
+        }
+
+        public SqlCommand traerRubros(SqlConnection conexion)
+        {
 
             return new SqlCommand("SELECT rubr_id,rubr_nombre FROM PASO_A_PASO.Rubro", conexion);
-        
+
         }
 
 
@@ -569,7 +686,7 @@ namespace FrbaOfertas.Repositorios
             return command;
         }
 
-        public SqlCommand crearUsuario(string username, string pass,SqlConnection conexion)
+        public SqlCommand crearUsuario(string username, string pass, SqlConnection conexion)
         {
             SqlCommand command = new SqlCommand("INSERT INTO PASO_A_PASO.Usuario VALUES (@_username,HASHBYTES('SHA2_256',convert(varchar(32),@_pass)),0,'E','1/1/1900')", conexion);
             SqlParameter param1 = this.nuevoParametroString("@_username", username);
@@ -645,13 +762,13 @@ namespace FrbaOfertas.Repositorios
             return command;
         }
 
-        public SqlCommand listadoEstadisticoDescuentos(int mesInicio,int mesFin, int anio, SqlConnection conexion)
+        public SqlCommand listadoEstadisticoDescuentos(int mesInicio, int mesFin, int anio, SqlConnection conexion)
         {
 
             SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.proveedor_mayorDescuento(@año,@mesInicio,@mesFin)", conexion);
-            command.Parameters.Add(this.nuevoParametroInt("@año",anio));
-            command.Parameters.Add(this.nuevoParametroInt("@mesInicio",mesInicio));
-            command.Parameters.Add(this.nuevoParametroInt("@mesFin",mesFin));
+            command.Parameters.Add(this.nuevoParametroInt("@año", anio));
+            command.Parameters.Add(this.nuevoParametroInt("@mesInicio", mesInicio));
+            command.Parameters.Add(this.nuevoParametroInt("@mesFin", mesFin));
             return command;
         }
 
@@ -695,11 +812,13 @@ namespace FrbaOfertas.Repositorios
             return command;
         }
 
-        
 
-        public SqlCommand modificarDatosUsuario(string user, string pass, string intentosLogin,string userId, SqlConnection conexion)
+
+        public SqlCommand modificarDatosUsuario(string user, string pass, string intentosLogin, string userId, SqlConnection conexion)
         {
+
             SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.modificarDatosUsuario @user=@_user,@pass=@_pass,@intentos=@_login,@id=@_userId", conexion);
+
             command.Parameters.Add(this.nuevoParametroString("@_user", user));
             command.Parameters.Add(this.nuevoParametroString("@_pass", pass));
             command.Parameters.Add(this.nuevoParametroInt("@_login", Convert.ToInt32(intentosLogin)));
@@ -708,7 +827,7 @@ namespace FrbaOfertas.Repositorios
             return command;
         }
 
-        public SqlCommand modificarRolesUsuario(string userId,int nuevoRol,SqlConnection conexion)
+        public SqlCommand modificarRolesUsuario(string userId, int nuevoRol, SqlConnection conexion)
         {
             SqlCommand command = new SqlCommand("INSERT INTO PASO_A_PASO.RolXUsuario VALUES (@_rol,@_userId)", conexion);
             command.Parameters.Add(this.nuevoParametroInt("@_rol", Convert.ToInt32(nuevoRol)));
@@ -719,7 +838,7 @@ namespace FrbaOfertas.Repositorios
         public SqlCommand borrarRolesUsuario(string userId, SqlConnection conexion)
         {
             SqlCommand command = new SqlCommand("DELETE PASO_A_PASO.RolXUsuario WHERE id_usuario=@_userId", conexion);
-          
+
             command.Parameters.Add(this.nuevoParametroInt("@_userId", Convert.ToInt32(userId)));
 
             return command;
@@ -748,7 +867,7 @@ namespace FrbaOfertas.Repositorios
             SqlCommand command = new SqlCommand("UPDATE PASO_A_PASO.Usuario SET user_status='E',user_fechaBaja='1/1/1900' WHERE user_id=@_userId", conexion);
 
             command.Parameters.Add(this.nuevoParametroInt("@_userId", Convert.ToInt32(idUsuario)));
-          
+
 
             return command;
         }
@@ -763,23 +882,76 @@ namespace FrbaOfertas.Repositorios
             return command;
         }
 
-        internal SqlCommand buscarProveedor(string razonSocial, string cuit, string mail, SqlConnection conexion)
+        public SqlCommand buscarProveedor(string razonSocial, string cuit, string mail, SqlConnection conexion)
         {
             SqlCommand command;
-            if (cuit == "")
+
+            if (cuit != "DEFAULT" && razonSocial != "DEFAULT" && mail != "DEFAULT")
             {
-                command = new SqlCommand("SELECT * FROM PASO_A_PASO.buscarProvSinCuit(@razon,@mail)", conexion);
-                command.Parameters.Add(this.nuevoParametroString("@razon", cuit));
-                command.Parameters.Add(this.nuevoParametroString("@mail", mail));
+                command = new SqlCommand("SELECT * FROM PASO_A_PASO.buscarProvConTodo(@_razon,@_mail,@_cuit)", conexion);
+                command.Parameters.Add(this.nuevoParametroString("@_razon", razonSocial));
+                command.Parameters.Add(this.nuevoParametroString("@_mail", mail));
+                command.Parameters.Add(this.nuevoParametroString("@_cuit", cuit));
+
+                return command;
             }
             else
             {
-                command = new SqlCommand("SELECT * FROM PASO_A_PASO.buscarProvConCuit(@cuit)", conexion);
-                command.Parameters.Add(this.nuevoParametroString("@cuit", cuit));
+                string selectAEjecutar = "SELECT * FROM PASO_A_PASO.Proveedor WHERE ";
+                selectAEjecutar = selectAEjecutar + this.obtenerFiltroProveedor(razonSocial, cuit, mail);
+                command = new SqlCommand(selectAEjecutar, conexion);
+                return command;
             }
 
-            return command;
+
         }
+
+        private string obtenerFiltroProveedor(string razonSocial, string cuit, string mail)
+        {
+            string filtro = "";
+
+            if (razonSocial == "DEFAULT")
+            {
+                if (mail == "DEFAULT" && cuit == "DEFAULT")
+                {
+                    filtro = "prov_razon LIKE '%%'";
+                }
+                else if (mail != "DEFAULT" && cuit == "DEFAULT")
+                {
+                    filtro = "prov_mail LIKE '%" + mail + "%'";
+                }
+                else if (mail == "DEFAULT" && cuit != "DEFAULT")
+                {
+                    filtro = "prov_cuit ='" + cuit + "'";
+                }
+                else if (mail != "DEFAULT" && cuit != "DEFAULT")
+                {
+                    filtro = "prov_mail LIKE '%" + mail + "%' AND " + "prov_cuit ='" + cuit + "'";
+                }
+            }
+
+            else if (mail == "DEFAULT")
+            {
+
+                if (cuit == "DEFAULT")
+                {
+                    filtro = "prov_razon LIKE '%" + razonSocial + "%'";
+                }
+                else if (cuit != "DEFAULT")
+                {
+                    filtro = "prov_razon LIKE '%" + razonSocial + "%' AND " + "prov_cuit ='" + cuit + "'";
+                }
+
+            }
+            else if (cuit == "DEFAULT")
+            {
+                filtro = "prov_razon LIKE '%" + razonSocial + "%' AND " + "prov_mail LIKE '%" + mail + "%'";
+            }
+
+
+            return filtro;
+        }
+
 
         public SqlCommand getNombreRubro(string rubrId, SqlConnection conexion)
         {
@@ -799,11 +971,11 @@ namespace FrbaOfertas.Repositorios
             return command;
         }
 
-       
+
         public SqlCommand altaProveedor(Proveedor prov, SqlConnection conexion)
-        {   
-            
-            SqlCommand command = new SqlCommand("INSERT INTO PASO_A_PASO.Proveedor (prov_cuit,prov_razon,prov_userId,prov_mail,prov_telefono,prov_direccion,prov_codigoPostal,prov_ciudad,prov_rubro,prov_nombre,prov_habilitado) VALUES (@cuit,@razon,null,@mail,@telefono,@direccion,@codpos,@ciudad,@rubrID,@nombre,'1')", conexion);
+        {
+
+            SqlCommand command = new SqlCommand("INSERT INTO PASO_A_PASO.Proveedor (prov_cuit,prov_razon,prov_userId,prov_mail,prov_telefono,prov_direccion,prov_codigoPostal,prov_ciudad,prov_rubro,prov_nombre,prov_habilitado) VALUES (@cuit,@razon,null,@mail,@telefono,@direccion,@codpos,@ciudad,@rubrID,@nombre,@estado)", conexion);
 
             command.Parameters.Add(this.nuevoParametroString("@razon", prov.razonSocial));
             command.Parameters.Add(this.nuevoParametroString("@cuit", prov.cuit));
@@ -815,29 +987,31 @@ namespace FrbaOfertas.Repositorios
             command.Parameters.Add(this.nuevoParametroString("@direccion", prov.direccion));
             command.Parameters.Add(this.nuevoParametroInt("@codpos", prov.codigoPostal));
             command.Parameters.Add(this.nuevoParametroString("@ciudad", prov.ciudad));
+            command.Parameters.Add(this.nuevoParametroString("@estado", prov.habilitado.ToString()));
             return command;
         }
 
         public SqlCommand modificarProveedor(string provId, Proveedor prov, SqlConnection conexion)
         {
             SqlCommand command;
-            if(prov.user==-1){
+            if (prov.user == -1)
+            {
 
-            command = new SqlCommand("UPDATE PASO_A_PASO.Proveedor SET prov_cuit=@cuit,prov_razon=@razon,prov_userId=null,prov_mail=@mail,prov_telefono=@telefono,prov_direccion=@direccion,prov_codigoPostal=@codpos,prov_ciudad=@ciudad,prov_rubro=@rubrID,prov_nombre=@nombre,prov_habilitado=@estado WHERE prov_id=@_provId", conexion);
+                command = new SqlCommand("UPDATE PASO_A_PASO.Proveedor SET prov_cuit=@cuit,prov_razon=@razon,prov_userId=null,prov_mail=@mail,prov_telefono=@telefono,prov_direccion=@direccion,prov_codigoPostal=@codpos,prov_ciudad=@ciudad,prov_rubro=@rubrID,prov_nombre=@nombre,prov_habilitado=@estado WHERE prov_id=@_provId", conexion);
 
-            command.Parameters.Add(this.nuevoParametroString("@razon", prov.razonSocial));
-            command.Parameters.Add(this.nuevoParametroString("@cuit", prov.cuit));
-            command.Parameters.Add(this.nuevoParametroString("@nombre", prov.nombre));
-            command.Parameters.Add(this.nuevoParametroString("@estado", prov.habilitado.ToString()));
-           
-            command.Parameters.Add(this.nuevoParametroInt("@rubrID", prov.rubro));
-            command.Parameters.Add(this.nuevoParametroString("@mail", prov.mail));
-            command.Parameters.Add(this.nuevoParametroLong("@telefono", prov.telefono));
-            command.Parameters.Add(this.nuevoParametroString("@direccion", prov.direccion));
-            command.Parameters.Add(this.nuevoParametroInt("@codpos", prov.codigoPostal));
-            command.Parameters.Add(this.nuevoParametroString("@ciudad", prov.ciudad));
-            command.Parameters.Add(this.nuevoParametroInt("@_provId", Convert.ToInt32(provId)));
-          }
+                command.Parameters.Add(this.nuevoParametroString("@razon", prov.razonSocial));
+                command.Parameters.Add(this.nuevoParametroString("@cuit", prov.cuit));
+                command.Parameters.Add(this.nuevoParametroString("@nombre", prov.nombre));
+                command.Parameters.Add(this.nuevoParametroString("@estado", prov.habilitado.ToString()));
+
+                command.Parameters.Add(this.nuevoParametroInt("@rubrID", prov.rubro));
+                command.Parameters.Add(this.nuevoParametroString("@mail", prov.mail));
+                command.Parameters.Add(this.nuevoParametroLong("@telefono", prov.telefono));
+                command.Parameters.Add(this.nuevoParametroString("@direccion", prov.direccion));
+                command.Parameters.Add(this.nuevoParametroInt("@codpos", prov.codigoPostal));
+                command.Parameters.Add(this.nuevoParametroString("@ciudad", prov.ciudad));
+                command.Parameters.Add(this.nuevoParametroInt("@_provId", Convert.ToInt32(provId)));
+            }
             else
             {
                 command = new SqlCommand("UPDATE PASO_A_PASO.Proveedor SET prov_cuit=@cuit,prov_razon=@razon,prov_userId=@userId,prov_mail=@mail,prov_telefono=@telefono,prov_direccion=@direccion,prov_codigoPostal=@codpos,prov_ciudad=@ciudad,prov_rubro=@rubrID,prov_nombre=@nombre,prov_habilitado=@estado WHERE prov_id=@_provId", conexion);
@@ -881,6 +1055,34 @@ namespace FrbaOfertas.Repositorios
 
             command.Parameters.Add(this.nuevoParametroInt("@_userId", Convert.ToInt32(idUsuario)));
             command.Parameters.Add(this.nuevoParametroInt("@_provId", Convert.ToInt32(idProv)));
+
+            return command;
+        }
+
+        public SqlCommand habilitarProveedor(string p, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.habilitarProveedor @prov_id=@_id", conexion);
+            SqlParameter param = this.nuevoParametroString("@_id", p);
+            command.Parameters.Add(param);
+            return command;
+        }
+
+        public SqlCommand obtenerRolesProveedor(string idProv, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("SELECT id_rol FROM PASO_A_PASO.RolxUsuario JOIN PASO_A_PASO.Proveedor ON prov_userId=id_usuario WHERE prov_id=@provId", conexion);
+
+            command.Parameters.Add(this.nuevoParametroString("@provId", idProv));
+           
+
+            return command;
+        }
+
+        public SqlCommand asigarRolNuevoAUsuario(string idUsuario, int rol, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("INSERT INTO PASO_A_PASO.RolxUsuario VALUES (@rol,@usuario)", conexion);
+
+            command.Parameters.Add(this.nuevoParametroString("@rol", rol.ToString()));
+            command.Parameters.Add(this.nuevoParametroString("@usuario", idUsuario));
 
             return command;
         }

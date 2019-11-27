@@ -230,6 +230,14 @@ namespace FrbaOfertas.Repositorios
             SqlCommand command = QueryFactory.instance().deshabilitarProveedor(p, conexion);
             command.ExecuteNonQuery();
         }
+
+        public void habilitarProveedor(string p)
+        {
+
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().habilitarProveedor(p, conexion);
+            command.ExecuteNonQuery();
+        }
     }
 }
 

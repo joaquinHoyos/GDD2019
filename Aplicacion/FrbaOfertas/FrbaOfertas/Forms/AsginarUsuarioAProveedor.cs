@@ -44,6 +44,10 @@ namespace FrbaOfertas.Forms
                     string idProv = cliente.Cells[0].Value.ToString();
 
                     RepoUsuario.instance().asignarProv(idUsuario, idProv);
+
+                  //  string idUsuarioDelProv =  RepoUsuario.instance().getUsuario(
+                  //  List<int> idRolesUsuario = RepoUsuario.instance().traerRoles(idUsuarioDelProv);
+
                 }
 
                 MessageBox.Show("Usuario asignado correctamente al proveedor");

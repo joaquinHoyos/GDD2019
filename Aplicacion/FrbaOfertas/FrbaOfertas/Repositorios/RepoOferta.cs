@@ -120,5 +120,12 @@ namespace FrbaOfertas.Repositorios
             command.ExecuteNonQuery();
         }
 
+
+        public void habilitarOferta(string idOferta)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().habilitarOferta(idOferta, conexion);
+            command.ExecuteNonQuery();
+        }
     }
 }

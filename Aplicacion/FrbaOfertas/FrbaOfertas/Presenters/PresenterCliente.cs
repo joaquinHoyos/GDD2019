@@ -137,6 +137,20 @@ namespace FrbaOfertas.Presenters
                   MessageBox.Show("Error al deshabilitar Proveedor \n" + ex.Message);
               }
           }
+
+          public void habilitarProveedor(string p)
+          {
+              try
+              {
+
+                  RepoCliente.instance().habilitarProveedor(p);
+                  MessageBox.Show("Proveedor Habilitado Correctamente");
+              }
+              catch (Exception ex)
+              {
+                  MessageBox.Show("Error al habilitar Proveedor \n" + ex.Message);
+              }
+          }
     }
 
 

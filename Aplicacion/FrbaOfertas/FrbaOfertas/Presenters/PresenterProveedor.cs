@@ -97,9 +97,22 @@ namespace FrbaOfertas.Presenters
           
         }
 
-        internal DataTable buscarProveedoresSinUsuario()
+        public DataTable buscarProveedoresSinUsuario()
         {
             return RepoProveedores.instance().buscarProveedoresSinUsuario();
+        }
+
+        public void habilitarOferta(string idOferta)
+        {
+            try
+            {
+                RepoOferta.instance().habilitarOferta(idOferta);
+                MessageBox.Show("Oferta Habilitada");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
     }
 }

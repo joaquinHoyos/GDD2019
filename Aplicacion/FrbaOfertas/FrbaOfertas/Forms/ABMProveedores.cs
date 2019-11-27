@@ -31,7 +31,7 @@ namespace FrbaOfertas.Forms
             btnGuardar.Enabled = false;
             txtNombre.Enabled = true;
             txtRazonSocial.Enabled = true;
-            txtEstado.Enabled = true;
+            txtEstado.Enabled = false;
             txtMail.Enabled = true;
             btnBuscar.Enabled = true;
             btn_Editar.Enabled = false;
@@ -48,7 +48,7 @@ namespace FrbaOfertas.Forms
 
         private void limpiarTodosLosTXT()
         {
-
+            txtCuit.Text = "";
             txtRazonSocial.Text = "";
             txtNombre.Text = "";
             txtEstado.Text = "";
@@ -64,16 +64,38 @@ namespace FrbaOfertas.Forms
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             btnSeleccionar.Enabled = true;
+            string razonSocial;
+            string cuit;
+            string mail;
+            razonSocial = txtRazonSocial.Text;
+            cuit = txtCuit.Text;
+            mail = txtMail.Text;
 
-            DataTable proveedoresFiltrados = PresenterProveedor.instance().buscarProveedores(this, txtRazonSocial.Text, txtCuit.Text, txtMail.Text);
+            if (razonSocial == "")
+            {
+                razonSocial = "DEFAULT";
+            }
+            if (cuit == "")
+            {
+                cuit = "DEFAULT";
+            }
+            if (mail == "")
+            {
+                mail = "DEFAULT";
+            }
+
+
+            DataTable proveedoresFiltrados = PresenterProveedor.instance().buscarProveedores(this, razonSocial, cuit, mail);
             dataGridView1.DataSource = proveedoresFiltrados;
         }
+
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
             
             if (dataGridView1.SelectedRows != null)
             {
+                button1.Enabled = true;
                 btnBuscar.Enabled = false;
                 btnGuardar.Enabled = false;
                 btn_Editar.Enabled = true;
@@ -147,6 +169,7 @@ namespace FrbaOfertas.Forms
 
         private void deshabilitarTodosLosBotones()
         {
+            button1.Enabled = false;
             btnGuardar.Enabled = false;
             btn_Editar.Enabled = false;
             btnSeleccionar.Enabled = false;
@@ -176,6 +199,7 @@ namespace FrbaOfertas.Forms
                         Convert.ToChar(txtEstado.Text));
 
                     RepoProveedores.instance().altaProveedor(prov);
+                    this.reiniciarTodo();
                 }
                 else
                 {
@@ -194,6 +218,7 @@ namespace FrbaOfertas.Forms
                             txtCiudad.Text,
                             idRubro, txtNombre.Text,
                             Convert.ToChar(txtEstado.Text));
+                         this.reiniciarTodo();
                     }
                     else
                     {
@@ -208,6 +233,7 @@ namespace FrbaOfertas.Forms
                             txtCiudad.Text,
                             idRubro, txtNombre.Text,
                             Convert.ToChar(txtEstado.Text));
+                         this.reiniciarTodo();
                     }
 
                    
@@ -220,7 +246,7 @@ namespace FrbaOfertas.Forms
                 MessageBox.Show("Porfavor, complete todos los campos");
             }
 
-            this.reiniciarTodo();
+            
 
 
         }
@@ -247,8 +273,12 @@ namespace FrbaOfertas.Forms
         
         private void btn_Nuevo_Click(object sender, EventArgs e)
         {
+
+            btnGuardar.Enabled = true;
             this.agregando = true;
             this.setearTXT(true);
+            txtEstado.Enabled = false;
+            txtEstado.Text = "E";
         }
 
         private void btn_Editar_Click(object sender, EventArgs e)
@@ -266,7 +296,7 @@ namespace FrbaOfertas.Forms
             {
 
                 PresenterCliente.instance().deshabilitarProveedor(this.prov_id_seleccionado);
-
+                this.reiniciarTodo();
             }
            
         }
@@ -275,6 +305,18 @@ namespace FrbaOfertas.Forms
         {
             AsginarUsuarioAProveedor form = new AsginarUsuarioAProveedor();
             form.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Seguro que desea habilitar el proveedor?", "Salir", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+
+                PresenterCliente.instance().habilitarProveedor(this.prov_id_seleccionado);
+                this.reiniciarTodo();
+            }
         }
     }
 }
