@@ -23,6 +23,11 @@ namespace FrbaOfertas.Forms
             Presenter.instance().cargarAbmOfertas(this);
         }
 
+        private void btnCanjear_Click(object sender, EventArgs e)
+        {
+            Presenter.instance().cargarCanjearCupones(this);
+        }
+
     
 
      

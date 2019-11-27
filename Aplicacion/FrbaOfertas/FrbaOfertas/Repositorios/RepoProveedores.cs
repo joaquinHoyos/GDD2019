@@ -33,6 +33,58 @@ namespace FrbaOfertas.Repositorios
 
         }
 
+        public void canjearCupon(int cupon, DateTime fecha)
+        {
+            try
+            {
+                SqlConnection conexion = ServerSQL.instance().levantarConexion();
+                SqlCommand command = QueryFactory.instance().canjearCupon(cupon,fecha,conexion);
+                command.ExecuteNonQuery();
+                MessageBox.Show("Cupon canjeado correctamente");
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Error al canjear el cupon: " + err.Message);
+            }
+        }
+
+        public DataTable getCuponesNoCanjeados(int proveedor,int cliente)
+        {
+            SqlConnection conexion = ServerSQL.instance().levantarConexion();
+            SqlCommand command = QueryFactory.instance().traerCuponesDeProveedor(proveedor,cliente,conexion);
+            SqlDataReader reader = command.ExecuteReader();
+
+            return (reader.HasRows) ? this.cargarCuponesNoCanjeados(reader) : null;
+        }
+
+        private DataTable cargarCuponesNoCanjeados(SqlDataReader reader)
+        {
+            List<Cupon> listaCupones = new List<Cupon>();
+            Cupon cupon = new Cupon();
+            DataTable tabla = new DataTable();
+            tabla.Columns.Add(new DataColumn("ID"));
+            tabla.Columns.Add(new DataColumn("Fecha"));
+            tabla.Columns.Add(new DataColumn("Oferta"));
+            tabla.Columns.Add(new DataColumn("Cliente"));
+            tabla.Columns.Add(new DataColumn("Compra"));
+            while (reader.Read())
+            {
+                DataRow row = tabla.NewRow();
+
+                row["ID"] = reader["cupo_id"];
+                row["Fecha"] = reader["cupo_fecha"];
+                row["Oferta"] = reader["cupo_oferta"];
+                row["Cliente"] = reader["cupo_cliente"];
+                row["Compra"] = reader["cupo_compra"];
+
+
+                tabla.Rows.Add(row);
+
+
+            }
+            return tabla;
+        }
+
         public DataTable listadoEstadisticoDescuentos(int semestre, int anio)
         {
             SqlConnection conexion = ServerSQL.instance().levantarConexion();

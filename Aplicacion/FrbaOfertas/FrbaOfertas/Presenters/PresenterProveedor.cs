@@ -10,6 +10,7 @@ using System.Data;
 using FrbaOfertas.Modelo;
 using FrbaOfertas.Forms;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace FrbaOfertas.Presenters
 {
@@ -70,7 +71,23 @@ namespace FrbaOfertas.Presenters
             }
         }
 
+        public DataTable traerCuponesNoCanjeadosDeProveedorActual(int cliente)
+        {
+            try
+            {
+                return RepoProveedores.instance().getCuponesNoCanjeados(this.getProveedorActual(), cliente);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return null;
+            }
+        }
+        public void canjearCupon(int cupon)
+        {
 
+            RepoProveedores.instance().canjearCupon(cupon, Convert.ToDateTime(ConfigurationManager.AppSettings["fecha"]));
+        }
 
         public DataTable buscarProveedores(ABMProveedores form, string razonSocial, string cuit, string mail)
         {

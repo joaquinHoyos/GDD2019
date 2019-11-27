@@ -159,6 +159,17 @@ namespace FrbaOfertas.Repositorios
             command.Parameters.Add(param);
             return command;
         }
+
+        public SqlCommand traerCuponesDeProveedor(int proveedor,int cliente,SqlConnection conexion)
+        {
+                SqlCommand command = new SqlCommand("SELECT c.* FROM PASO_A_PASO.Cupon c JOIN PASO_A_PASO.Oferta o ON o.ofer_id=c.cupo_oferta JOIN PASO_A_PASO.Cliente cli ON cli.clie_id=c.cupo_cliente WHERE o.ofer_proveedor=@prov and c.cupo_fecha='1/1/1900' and clie_dni=@cliente", conexion);
+                SqlParameter param = this.nuevoParametroInt("@prov", proveedor);
+                command.Parameters.Add(param);
+                SqlParameter param1 = this.nuevoParametroInt("@cliente", cliente);
+                command.Parameters.Add(param1);
+
+                return command;
+        }
         public SqlCommand crearRol(string nombre, DataTable funciones, SqlConnection conexion)
         {
             SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.crearRol @nombre=@_nombre ,@funciones=@tabla", conexion);
@@ -398,6 +409,17 @@ namespace FrbaOfertas.Repositorios
             SqlParameter paramCliente = this.nuevoParametroInt("@_clienteID", idCliente);
             command.Parameters.Add(paramCupon);
             command.Parameters.Add(paramCliente);
+            return command;
+
+        }
+
+        public SqlCommand canjearCupon(int cupon, DateTime fecha, SqlConnection conexion)
+        {
+            SqlCommand command = new SqlCommand("EXEC PASO_A_PASO.canjearCupon @cupon = @_cupon, @fecha = @_fecha", conexion);
+            SqlParameter paramCupon = this.nuevoParametroInt("@_cupon", cupon);
+            SqlParameter paramFecha = this.nuevoParametroDateTime("@_fecha", fecha);
+            command.Parameters.Add(paramCupon);
+            command.Parameters.Add(paramFecha);
             return command;
 
         }

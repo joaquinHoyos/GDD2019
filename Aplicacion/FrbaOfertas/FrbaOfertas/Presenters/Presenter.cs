@@ -23,6 +23,7 @@ namespace FrbaOfertas.Presenters
         private ListadoEstadisitico listado_form;
         private AbmUsuario_Form usuario_form;
         private ABMProveedores abmProv_Form;
+        private CanjearCupones canjearCupones;
         private User usuarioActual;
         public static Presenter instance()
         {
@@ -173,6 +174,10 @@ namespace FrbaOfertas.Presenters
         public void cargarAbmOfertas(Prov_Form form)
         {
             form.splitContainer1.Panel2.Controls.Add(this.getAbmOfertaForm());
+            if (this.canjearCupones != null)
+            {
+                this.canjearCupones.Hide();
+            }
             this.getAbmOfertaForm().Show();
         }
 
@@ -261,9 +266,20 @@ namespace FrbaOfertas.Presenters
             if (this.getProvForm(this.usuarioActual) != null) { this.getProvForm(this.usuarioActual).Show(); }
 
         }
+        public void cargarCanjearCupones(Prov_Form form)
+        {
+            form.splitContainer1.Panel2.Controls.Add(this.getCanjearCuponesForm());
+            if (this.abmOferta != null)
+            {
+                this.abmOferta.Hide();
+            }
+            this.getCanjearCuponesForm().Show();
+        }
 
-
-
+        private CanjearCupones getCanjearCuponesForm()
+        {
+            return this.canjearCupones == null ? this.canjearCupones = new CanjearCupones() : this.canjearCupones;
+        }
 
 
 

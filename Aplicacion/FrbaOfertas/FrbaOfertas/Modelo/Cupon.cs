@@ -43,6 +43,10 @@ namespace FrbaOfertas.Modelo
 
 
         }
+        public Cupon()
+        {
+
+        }
 
     }
 }
