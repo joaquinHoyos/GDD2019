@@ -75,7 +75,7 @@ namespace FrbaOfertas.Presenters
         {
             try
             {
-                return RepoProveedores.instance().getCuponesNoCanjeados(this.getProveedorActual(), cliente);
+                return RepoProveedores.instance().getCuponesNoCanjeados(this.getProveedorActual(), cliente, Convert.ToDateTime(ConfigurationManager.AppSettings["fecha"]));
             }
             catch (Exception e)
             {

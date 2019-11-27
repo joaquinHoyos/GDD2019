@@ -169,13 +169,15 @@ namespace FrbaOfertas.Repositorios
             return command;
         }
 
-        public SqlCommand traerCuponesDeProveedor(int proveedor,int cliente,SqlConnection conexion)
+        public SqlCommand traerCuponesDeProveedor(int proveedor,int cliente,DateTime fecha,SqlConnection conexion)
         {
-                SqlCommand command = new SqlCommand("SELECT c.* FROM PASO_A_PASO.Cupon c JOIN PASO_A_PASO.Oferta o ON o.ofer_id=c.cupo_oferta JOIN PASO_A_PASO.Cliente cli ON cli.clie_id=c.cupo_cliente WHERE o.ofer_proveedor=@prov and c.cupo_fecha='1/1/1900' and clie_dni=@cliente", conexion);
+                SqlCommand command = new SqlCommand("SELECT c.* FROM PASO_A_PASO.Cupon c JOIN PASO_A_PASO.Oferta o ON o.ofer_id=c.cupo_oferta JOIN PASO_A_PASO.Cliente cli ON cli.clie_id=c.cupo_cliente WHERE o.ofer_proveedor=@prov and c.cupo_fecha='1/1/1900' and clie_dni=@cliente and (@fecha between o.ofer_fechaDesde and o.ofer_fechaHasta)", conexion);
                 SqlParameter param = this.nuevoParametroInt("@prov", proveedor);
                 command.Parameters.Add(param);
                 SqlParameter param1 = this.nuevoParametroInt("@cliente", cliente);
                 command.Parameters.Add(param1);
+                SqlParameter param2 = this.nuevoParametroDateTime("@fecha", fecha);
+                command.Parameters.Add(param2);
 
                 return command;
         }

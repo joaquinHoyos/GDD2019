@@ -48,10 +48,10 @@ namespace FrbaOfertas.Repositorios
             }
         }
 
-        public DataTable getCuponesNoCanjeados(int proveedor,int cliente)
+        public DataTable getCuponesNoCanjeados(int proveedor,int cliente,DateTime fecha)
         {
             SqlConnection conexion = ServerSQL.instance().levantarConexion();
-            SqlCommand command = QueryFactory.instance().traerCuponesDeProveedor(proveedor,cliente,conexion);
+            SqlCommand command = QueryFactory.instance().traerCuponesDeProveedor(proveedor,cliente,fecha,conexion);
             SqlDataReader reader = command.ExecuteReader();
 
             return (reader.HasRows) ? this.cargarCuponesNoCanjeados(reader) : null;
