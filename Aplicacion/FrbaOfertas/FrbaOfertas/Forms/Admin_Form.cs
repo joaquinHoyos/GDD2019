@@ -52,6 +52,7 @@ namespace FrbaOfertas.Forms
             if (!funciones.Contains((int)Enum.Parse(typeof(EnumFunciones), "ABM_USUARIO"))) { this.btn_Usuarios.Enabled = false; }
             if(!funciones.Contains((int)Enum.Parse(typeof(EnumFunciones),"ABM_CLIENTES"))){this.btnClientes.Enabled=true;}
             if(!funciones.Contains((int)Enum.Parse(typeof(EnumFunciones),"ABM_PROVEEDOR"))){this.btnProveedores.Enabled=false;}
+            if (!funciones.Contains((int)Enum.Parse(typeof(EnumFunciones), "ABM_OFERTAS_ADMIN"))) { this.btn_ofertas.Enabled = false; }
             
         }
 
@@ -74,6 +75,16 @@ namespace FrbaOfertas.Forms
             this.formActual = form;
             this.formActual.Show();
 
+        }
+
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btn_ofertas_Click(object sender, EventArgs e)
+        {
+            Presenter.instance().cargarAbmOfertasDeAdmin(this);
         }
     }
 }

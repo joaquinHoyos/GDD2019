@@ -21,6 +21,7 @@ namespace FrbaOfertas.Presenters
         private Prov_Form prov_form;
         private Facturacion_Form fact_form;
         private ListadoEstadisitico listado_form;
+        private AbmOfertasDeAdmin abmOfertasDeAdmin_form;
         private AbmUsuario_Form usuario_form;
         private ABMProveedores abmProv_Form;
         private CanjearCupones canjearCupones;
@@ -273,6 +274,12 @@ namespace FrbaOfertas.Presenters
             form.mostrarForm(this.getAbmCliente());
         }
 
+        public void cargarAbmOfertasDeAdmin(Admin_Form form)
+        {
+            form.splitContainer1.Panel2.Controls.Add(this.getAbmOfertasDeAdmin());
+            form.mostrarForm(this.getAbmOfertasDeAdmin());
+        }
+
 
         public void cargarAbmOfertas(Prov_Form form)
         {
@@ -334,6 +341,12 @@ namespace FrbaOfertas.Presenters
         {
             return this.abmOferta == null ? this.abmOferta = new AbmOfertas() : this.abmOferta;
         }
+
+        private AbmOfertasDeAdmin getAbmOfertasDeAdmin()
+        {
+            return this.abmOfertasDeAdmin_form ==null ? this.abmOfertasDeAdmin_form = new AbmOfertasDeAdmin() : this.abmOfertasDeAdmin_form;
+        }
+
         private Prov_Form getProvForm(User user)
         {
             List<Grupo> grupos = RepoUsuario.instance().traerFunciones(user.user_id);

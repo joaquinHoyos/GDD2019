@@ -12,6 +12,7 @@
         ABM_ROL,
         ABM_CLIENTES,
         ABM_PROVEEDOR,
-        VER_ESTADISTICAS
+        VER_ESTADISTICAS,
+        ABM_OFERTAS_ADMIN
     }
 }
