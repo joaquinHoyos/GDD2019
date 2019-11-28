@@ -38,37 +38,42 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(18, 18);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(594, 147);
+            this.dataGridView1.Size = new System.Drawing.Size(891, 226);
             this.dataGridView1.TabIndex = 6;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // cmb_Clientes
             // 
+            this.cmb_Clientes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_Clientes.Enabled = false;
             this.cmb_Clientes.FormattingEnabled = true;
-            this.cmb_Clientes.Location = new System.Drawing.Point(144, 204);
+            this.cmb_Clientes.Location = new System.Drawing.Point(216, 314);
+            this.cmb_Clientes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmb_Clientes.Name = "cmb_Clientes";
-            this.cmb_Clientes.Size = new System.Drawing.Size(121, 21);
+            this.cmb_Clientes.Size = new System.Drawing.Size(180, 28);
             this.cmb_Clientes.TabIndex = 7;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(141, 188);
+            this.label1.Location = new System.Drawing.Point(212, 289);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 13);
+            this.label1.Size = new System.Drawing.Size(128, 20);
             this.label1.TabIndex = 8;
             this.label1.Text = "Cliente a regalar:";
             // 
             // btn_Regalar
             // 
             this.btn_Regalar.Enabled = false;
-            this.btn_Regalar.Location = new System.Drawing.Point(324, 242);
+            this.btn_Regalar.Location = new System.Drawing.Point(486, 372);
+            this.btn_Regalar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_Regalar.Name = "btn_Regalar";
-            this.btn_Regalar.Size = new System.Drawing.Size(100, 35);
+            this.btn_Regalar.Size = new System.Drawing.Size(150, 54);
             this.btn_Regalar.TabIndex = 9;
             this.btn_Regalar.Text = "Regalar";
             this.btn_Regalar.UseVisualStyleBackColor = true;
@@ -76,13 +81,14 @@
             // 
             // Cupones
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(618, 307);
+            this.ClientSize = new System.Drawing.Size(927, 472);
             this.Controls.Add(this.btn_Regalar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmb_Clientes);
             this.Controls.Add(this.dataGridView1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Cupones";
             this.Text = "Cupones";
             this.Load += new System.EventHandler(this.Cupones_Load);

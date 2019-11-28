@@ -50,16 +50,22 @@ namespace FrbaOfertas.Forms
 
         private void btn_Regalar_Click(object sender, EventArgs e)
         {
-            int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
-            DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
-            int idCupon = Convert.ToInt32(selectedRow.Cells["cupo_id"].Value);
+            if (cmb_Clientes.Text != "")
+            {
+                int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
+                int idCupon = Convert.ToInt32(selectedRow.Cells["cupo_id"].Value);
 
 
-            RepoCliente.instance().regalarCupon(idCupon, Convert.ToInt32(cmb_Clientes.SelectedValue));
-            var bindingList = new BindingList<Cupon>(RepoCliente.instance().traerCuponesPropios(currentUserID));
-            var source = new BindingSource(bindingList, null);
-            dataGridView1.DataSource = source;
-
+                RepoCliente.instance().regalarCupon(idCupon, Convert.ToInt32(cmb_Clientes.SelectedValue));
+                var bindingList = new BindingList<Cupon>(RepoCliente.instance().traerCuponesPropios(currentUserID));
+                var source = new BindingSource(bindingList, null);
+                dataGridView1.DataSource = source;
+            }
+            else
+            {
+                MessageBox.Show("Debe ingresar un cliente");
+            }
 
         }
 

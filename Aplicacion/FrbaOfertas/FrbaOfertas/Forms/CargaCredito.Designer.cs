@@ -40,50 +40,56 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(239, 62);
+            this.label1.Location = new System.Drawing.Point(358, 95);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 13);
+            this.label1.Size = new System.Drawing.Size(155, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Ingrese tipo de pago";
             // 
             // txt_tarjeta
             // 
-            this.txt_tarjeta.Location = new System.Drawing.Point(242, 134);
+            this.txt_tarjeta.Location = new System.Drawing.Point(363, 206);
+            this.txt_tarjeta.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_tarjeta.Name = "txt_tarjeta";
-            this.txt_tarjeta.Size = new System.Drawing.Size(100, 20);
+            this.txt_tarjeta.Size = new System.Drawing.Size(148, 26);
             this.txt_tarjeta.TabIndex = 3;
             this.txt_tarjeta.TextChanged += new System.EventHandler(this.txt_tarjeta_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(239, 118);
+            this.label2.Location = new System.Drawing.Point(358, 182);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(127, 13);
+            this.label2.Size = new System.Drawing.Size(192, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Ingrese numero de tarjeta";
             // 
             // txt_monto
             // 
-            this.txt_monto.Location = new System.Drawing.Point(242, 186);
+            this.txt_monto.Location = new System.Drawing.Point(363, 286);
+            this.txt_monto.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_monto.Name = "txt_monto";
-            this.txt_monto.Size = new System.Drawing.Size(100, 20);
+            this.txt_monto.Size = new System.Drawing.Size(148, 26);
             this.txt_monto.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(239, 170);
+            this.label3.Location = new System.Drawing.Point(358, 262);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 13);
+            this.label3.Size = new System.Drawing.Size(112, 20);
             this.label3.TabIndex = 4;
             this.label3.Text = "Ingrese Monto";
             // 
             // btn_altaCredito
             // 
-            this.btn_altaCredito.Location = new System.Drawing.Point(242, 233);
+            this.btn_altaCredito.Location = new System.Drawing.Point(363, 358);
+            this.btn_altaCredito.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_altaCredito.Name = "btn_altaCredito";
-            this.btn_altaCredito.Size = new System.Drawing.Size(101, 40);
+            this.btn_altaCredito.Size = new System.Drawing.Size(152, 62);
             this.btn_altaCredito.TabIndex = 6;
             this.btn_altaCredito.Text = "Cargar Credito";
             this.btn_altaCredito.UseVisualStyleBackColor = true;
@@ -91,22 +97,24 @@
             // 
             // cmb_TipoPago
             // 
+            this.cmb_TipoPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_TipoPago.FormattingEnabled = true;
             this.cmb_TipoPago.Items.AddRange(new object[] {
             "Efectivo",
             "Credito",
             "Debito"});
-            this.cmb_TipoPago.Location = new System.Drawing.Point(242, 78);
+            this.cmb_TipoPago.Location = new System.Drawing.Point(363, 120);
+            this.cmb_TipoPago.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmb_TipoPago.Name = "cmb_TipoPago";
-            this.cmb_TipoPago.Size = new System.Drawing.Size(100, 21);
+            this.cmb_TipoPago.Size = new System.Drawing.Size(148, 28);
             this.cmb_TipoPago.TabIndex = 7;
             this.cmb_TipoPago.SelectedIndexChanged += new System.EventHandler(this.cmb_TipoPago_SelectedIndexChanged);
             // 
             // CargaCredito
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(618, 307);
+            this.ClientSize = new System.Drawing.Size(927, 472);
             this.Controls.Add(this.cmb_TipoPago);
             this.Controls.Add(this.btn_altaCredito);
             this.Controls.Add(this.txt_monto);
@@ -114,6 +122,7 @@
             this.Controls.Add(this.txt_tarjeta);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CargaCredito";
             this.Text = "CargaCredito";
             this.Load += new System.EventHandler(this.CargaCredito_Load);

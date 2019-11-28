@@ -116,3 +116,7 @@ E:\GDD2019\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Prop
 E:\GDD2019\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.csproj.GenerateResource.Cache
 E:\GDD2019\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.AmbOfertasDeAdmin.resources
 E:\GDD2019\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.AbmOfertasDeAdmin.resources
+C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.ABMProveedores.resources
+C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.AbmUsuario_Form.resources
+C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.AbmOfertasDeAdmin.resources
+C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.AsginarUsuarioAProveedor.resources
