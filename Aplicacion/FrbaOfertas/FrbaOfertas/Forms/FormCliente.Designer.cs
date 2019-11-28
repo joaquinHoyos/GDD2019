@@ -33,8 +33,10 @@
             this.btn_verCupones = new System.Windows.Forms.Button();
             this.btn_comprar = new System.Windows.Forms.Button();
             this.btn_cargaCredito = new System.Windows.Forms.Button();
+            this.btnCerrarSesion = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -49,6 +51,10 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.tableLayoutPanel1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.btnCerrarSesion);
             this.splitContainer1.Size = new System.Drawing.Size(634, 391);
             this.splitContainer1.SplitterDistance = 42;
             this.splitContainer1.TabIndex = 1;
@@ -75,7 +81,7 @@
             this.btn_verCupones.Enabled = false;
             this.btn_verCupones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_verCupones.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_verCupones.Location = new System.Drawing.Point(421, 3);
+            this.btn_verCupones.Location = new System.Drawing.Point(3, 3);
             this.btn_verCupones.Name = "btn_verCupones";
             this.btn_verCupones.Size = new System.Drawing.Size(203, 33);
             this.btn_verCupones.TabIndex = 4;
@@ -103,13 +109,23 @@
             this.btn_cargaCredito.Enabled = false;
             this.btn_cargaCredito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cargaCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cargaCredito.Location = new System.Drawing.Point(3, 3);
+            this.btn_cargaCredito.Location = new System.Drawing.Point(421, 3);
             this.btn_cargaCredito.Name = "btn_cargaCredito";
             this.btn_cargaCredito.Size = new System.Drawing.Size(203, 33);
             this.btn_cargaCredito.TabIndex = 2;
             this.btn_cargaCredito.Text = "Cargar Credito";
             this.btn_cargaCredito.UseVisualStyleBackColor = false;
             this.btn_cargaCredito.Click += new System.EventHandler(this.btn_cargaCredito_Click_1);
+            // 
+            // btnCerrarSesion
+            // 
+            this.btnCerrarSesion.Location = new System.Drawing.Point(514, 275);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Size = new System.Drawing.Size(108, 58);
+            this.btnCerrarSesion.TabIndex = 0;
+            this.btnCerrarSesion.Text = "Cerrar sesion";
+            this.btnCerrarSesion.UseVisualStyleBackColor = true;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
             // 
             // FormCliente
             // 
@@ -121,6 +137,7 @@
             this.Text = "FormCliente";
             this.Load += new System.EventHandler(this.FormCliente_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -135,6 +152,7 @@
         private System.Windows.Forms.Button btn_verCupones;
         private System.Windows.Forms.Button btn_comprar;
         private System.Windows.Forms.Button btn_cargaCredito;
+        private System.Windows.Forms.Button btnCerrarSesion;
 
     }
 }

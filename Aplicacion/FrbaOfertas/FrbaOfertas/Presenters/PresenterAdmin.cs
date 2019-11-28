@@ -197,9 +197,9 @@ namespace FrbaOfertas.Presenters
                 this.cargarNuevoRol(form);
                 MessageBox.Show("rol modificado correctamente");
             }
-            catch
+            catch(Exception ex)
             {
-                MessageBox.Show("Error al modificar el rol");
+                MessageBox.Show("Error al modificar el rol: " + ex.Message);
             }
         }
 

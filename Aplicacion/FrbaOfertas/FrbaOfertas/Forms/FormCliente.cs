@@ -89,5 +89,19 @@ namespace FrbaOfertas.Forms
             this.formActual.Show();
 
         }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+           
+            DialogResult result = MessageBox.Show("¿Seguro que desea cerrar sesion?", "Salir", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Hide();
+                Presenter.instance().logOut();
+
+            
+          }
+        }
     }
 }

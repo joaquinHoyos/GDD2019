@@ -7,7 +7,7 @@
         COMPARTIR_CUPON,
         FACTURAR,
         ABM_OFERTA,
-        VER_OFERTA,
+        CANJEAR_CUPON,
         ABM_USUARIO,
         ABM_ROL,
         ABM_CLIENTES,

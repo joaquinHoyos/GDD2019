@@ -55,7 +55,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Enabled = false;
-            this.label5.Location = new System.Drawing.Point(434, 110);
+            this.label5.Location = new System.Drawing.Point(600, 131);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(123, 13);
             this.label5.TabIndex = 27;
@@ -65,7 +65,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Enabled = false;
-            this.label4.Location = new System.Drawing.Point(203, 110);
+            this.label4.Location = new System.Drawing.Point(369, 131);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(106, 13);
             this.label4.TabIndex = 26;
@@ -75,7 +75,7 @@
             // 
             this.label.AutoSize = true;
             this.label.Enabled = false;
-            this.label.Location = new System.Drawing.Point(7, 110);
+            this.label.Location = new System.Drawing.Point(173, 131);
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(137, 13);
             this.label.TabIndex = 25;
@@ -84,7 +84,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(85, 46);
+            this.label2.Location = new System.Drawing.Point(251, 67);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 24;
@@ -93,7 +93,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 47);
+            this.label1.Location = new System.Drawing.Point(177, 68);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(18, 13);
             this.label1.TabIndex = 23;
@@ -103,7 +103,7 @@
             // 
             this.list_Proveedor.Enabled = false;
             this.list_Proveedor.FormattingEnabled = true;
-            this.list_Proveedor.Location = new System.Drawing.Point(426, 126);
+            this.list_Proveedor.Location = new System.Drawing.Point(592, 147);
             this.list_Proveedor.Name = "list_Proveedor";
             this.list_Proveedor.Size = new System.Drawing.Size(180, 64);
             this.list_Proveedor.TabIndex = 22;
@@ -112,7 +112,7 @@
             // 
             this.list_Cliente.Enabled = false;
             this.list_Cliente.FormattingEnabled = true;
-            this.list_Cliente.Location = new System.Drawing.Point(206, 126);
+            this.list_Cliente.Location = new System.Drawing.Point(372, 147);
             this.list_Cliente.Name = "list_Cliente";
             this.list_Cliente.Size = new System.Drawing.Size(198, 64);
             this.list_Cliente.TabIndex = 21;
@@ -121,7 +121,7 @@
             // 
             this.list_Admin.Enabled = false;
             this.list_Admin.FormattingEnabled = true;
-            this.list_Admin.Location = new System.Drawing.Point(7, 126);
+            this.list_Admin.Location = new System.Drawing.Point(173, 147);
             this.list_Admin.Name = "list_Admin";
             this.list_Admin.Size = new System.Drawing.Size(180, 64);
             this.list_Admin.TabIndex = 20;
@@ -130,7 +130,7 @@
             // 
             this.txt_Nombre.Enabled = false;
             this.txt_Nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Nombre.Location = new System.Drawing.Point(87, 62);
+            this.txt_Nombre.Location = new System.Drawing.Point(253, 83);
             this.txt_Nombre.Name = "txt_Nombre";
             this.txt_Nombre.Size = new System.Drawing.Size(183, 23);
             this.txt_Nombre.TabIndex = 19;
@@ -138,7 +138,7 @@
             // btn_Editar
             // 
             this.btn_Editar.Enabled = false;
-            this.btn_Editar.Location = new System.Drawing.Point(206, 12);
+            this.btn_Editar.Location = new System.Drawing.Point(372, 33);
             this.btn_Editar.Name = "btn_Editar";
             this.btn_Editar.Size = new System.Drawing.Size(95, 23);
             this.btn_Editar.TabIndex = 17;
@@ -149,7 +149,7 @@
             // btn_Guardar
             // 
             this.btn_Guardar.Enabled = false;
-            this.btn_Guardar.Location = new System.Drawing.Point(309, 11);
+            this.btn_Guardar.Location = new System.Drawing.Point(475, 32);
             this.btn_Guardar.Name = "btn_Guardar";
             this.btn_Guardar.Size = new System.Drawing.Size(95, 23);
             this.btn_Guardar.TabIndex = 16;
@@ -160,7 +160,7 @@
             // 
             // btn_Busqueda
             // 
-            this.btn_Busqueda.Location = new System.Drawing.Point(105, 12);
+            this.btn_Busqueda.Location = new System.Drawing.Point(271, 33);
             this.btn_Busqueda.Name = "btn_Busqueda";
             this.btn_Busqueda.Size = new System.Drawing.Size(95, 23);
             this.btn_Busqueda.TabIndex = 15;
@@ -170,7 +170,7 @@
             // 
             // btn_Nuevo
             // 
-            this.btn_Nuevo.Location = new System.Drawing.Point(7, 12);
+            this.btn_Nuevo.Location = new System.Drawing.Point(173, 33);
             this.btn_Nuevo.Name = "btn_Nuevo";
             this.btn_Nuevo.Size = new System.Drawing.Size(95, 23);
             this.btn_Nuevo.TabIndex = 14;
@@ -180,7 +180,7 @@
             // 
             // btn_Buscar
             // 
-            this.btn_Buscar.Location = new System.Drawing.Point(309, 63);
+            this.btn_Buscar.Location = new System.Drawing.Point(475, 84);
             this.btn_Buscar.Name = "btn_Buscar";
             this.btn_Buscar.Size = new System.Drawing.Size(95, 23);
             this.btn_Buscar.TabIndex = 28;
@@ -192,7 +192,7 @@
             // btn_Seleccionar
             // 
             this.btn_Seleccionar.Enabled = false;
-            this.btn_Seleccionar.Location = new System.Drawing.Point(410, 12);
+            this.btn_Seleccionar.Location = new System.Drawing.Point(576, 33);
             this.btn_Seleccionar.Name = "btn_Seleccionar";
             this.btn_Seleccionar.Size = new System.Drawing.Size(95, 23);
             this.btn_Seleccionar.TabIndex = 29;
@@ -203,7 +203,7 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(7, 196);
+            this.dataGridView1.Location = new System.Drawing.Point(173, 217);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -213,14 +213,14 @@
             // nud_id
             // 
             this.nud_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nud_id.Location = new System.Drawing.Point(12, 63);
+            this.nud_id.Location = new System.Drawing.Point(178, 84);
             this.nud_id.Name = "nud_id";
             this.nud_id.Size = new System.Drawing.Size(52, 23);
             this.nud_id.TabIndex = 31;
             // 
             // btn_Habilitar
             // 
-            this.btn_Habilitar.Location = new System.Drawing.Point(309, 63);
+            this.btn_Habilitar.Location = new System.Drawing.Point(475, 84);
             this.btn_Habilitar.Name = "btn_Habilitar";
             this.btn_Habilitar.Size = new System.Drawing.Size(95, 23);
             this.btn_Habilitar.TabIndex = 32;
@@ -231,7 +231,7 @@
             // 
             // btn_Deshabilitar
             // 
-            this.btn_Deshabilitar.Location = new System.Drawing.Point(309, 63);
+            this.btn_Deshabilitar.Location = new System.Drawing.Point(475, 84);
             this.btn_Deshabilitar.Name = "btn_Deshabilitar";
             this.btn_Deshabilitar.Size = new System.Drawing.Size(95, 23);
             this.btn_Deshabilitar.TabIndex = 33;
@@ -244,7 +244,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(618, 307);
+            this.ClientSize = new System.Drawing.Size(992, 388);
             this.Controls.Add(this.btn_Deshabilitar);
             this.Controls.Add(this.btn_Habilitar);
             this.Controls.Add(this.nud_id);

@@ -33,7 +33,7 @@ namespace FrbaOfertas.Forms
                     {
                         List<String> rolesSeleccionados = this.getRolesSeleccionados();
                         RepoUsuario.instance().crearUsuario(textBox1.Text, textBox2.Text, rolesSeleccionados);
-                        MessageBox.Show("Usuario dado de alta con exito");
+                       // MessageBox.Show("Usuario dado de alta con exito");
                     }
                     else
                     {

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_ofertas = new System.Windows.Forms.Button();
             this.btn_Usuarios = new System.Windows.Forms.Button();
             this.btnEstadistica = new System.Windows.Forms.Button();
             this.btnFactura = new System.Windows.Forms.Button();
@@ -38,9 +39,10 @@
             this.btnClientes = new System.Windows.Forms.Button();
             this.btn_Roles = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btn_ofertas = new System.Windows.Forms.Button();
+            this.btnCerrarSesion = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -58,6 +60,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.btnCerrarSesion);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
             this.splitContainer1.Size = new System.Drawing.Size(1164, 570);
             this.splitContainer1.SplitterDistance = 60;
@@ -86,6 +89,20 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1158, 49);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // btn_ofertas
+            // 
+            this.btn_ofertas.BackColor = System.Drawing.Color.Silver;
+            this.btn_ofertas.Cursor = System.Windows.Forms.Cursors.No;
+            this.btn_ofertas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ofertas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ofertas.Location = new System.Drawing.Point(993, 3);
+            this.btn_ofertas.Name = "btn_ofertas";
+            this.btn_ofertas.Size = new System.Drawing.Size(159, 43);
+            this.btn_ofertas.TabIndex = 3;
+            this.btn_ofertas.Text = "Ofertas";
+            this.btn_ofertas.UseVisualStyleBackColor = false;
+            this.btn_ofertas.Click += new System.EventHandler(this.btn_ofertas_Click);
             // 
             // btn_Usuarios
             // 
@@ -171,18 +188,15 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // btn_ofertas
+            // btnCerrarSesion
             // 
-            this.btn_ofertas.BackColor = System.Drawing.Color.Silver;
-            this.btn_ofertas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_ofertas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ofertas.Location = new System.Drawing.Point(993, 3);
-            this.btn_ofertas.Name = "btn_ofertas";
-            this.btn_ofertas.Size = new System.Drawing.Size(159, 43);
-            this.btn_ofertas.TabIndex = 3;
-            this.btn_ofertas.Text = "Ofertas";
-            this.btn_ofertas.UseVisualStyleBackColor = false;
-            this.btn_ofertas.Click += new System.EventHandler(this.btn_ofertas_Click);
+            this.btnCerrarSesion.Location = new System.Drawing.Point(1031, 395);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Size = new System.Drawing.Size(121, 53);
+            this.btnCerrarSesion.TabIndex = 0;
+            this.btnCerrarSesion.Text = "Cerrar sesion";
+            this.btnCerrarSesion.UseVisualStyleBackColor = true;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
             // 
             // Admin_Form
             // 
@@ -193,6 +207,7 @@
             this.Name = "Admin_Form";
             this.Text = "Admin_Form";
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -212,5 +227,6 @@
         private System.Windows.Forms.Button btnFactura;
         private System.Windows.Forms.Button btn_Usuarios;
         private System.Windows.Forms.Button btn_ofertas;
+        private System.Windows.Forms.Button btnCerrarSesion;
     }
 }

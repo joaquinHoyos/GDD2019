@@ -17,6 +17,9 @@ namespace FrbaOfertas.Forms
         public AbmOfertasDeAdmin()
         {
             InitializeComponent();
+            TopLevel = false;
+            FormBorderStyle = FormBorderStyle.None;
+            
         }
         private int agregando = 0;
         private void AmbOfertasDeAdmin_Load(object sender, EventArgs e)

@@ -280,6 +280,27 @@ namespace FrbaOfertas.Presenters
             form.mostrarForm(this.getAbmOfertasDeAdmin());
         }
 
+        public void logOut()
+        {
+
+                admin_form=null;
+             login_form=null;
+             abmRol_form=null;
+             abmCliente=null;
+             abmOferta=null;
+             cliente_form=null;
+            prov_form=null;
+             fact_form=null;
+            listado_form=null;
+          abmOfertasDeAdmin_form=null;
+            usuario_form=null;
+            abmProv_Form=null;
+            canjearCupones=null;
+             usuarioActual=null;
+
+            LoginUsuario formLogin = new LoginUsuario();
+            formLogin.Show();
+        }
 
         public void cargarAbmOfertas(Prov_Form form)
         {
