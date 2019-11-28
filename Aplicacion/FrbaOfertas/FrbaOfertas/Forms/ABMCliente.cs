@@ -175,7 +175,7 @@ namespace FrbaOfertas.Forms
         {
 
 
-            if (dataGridView1.SelectedRows != null)
+            if (dataGridView1.SelectedRows != null && dataGridView1.Rows.Count > 0)
             {
                 btnBuscar.Enabled = false;
                 btnGuardar.Enabled = false;

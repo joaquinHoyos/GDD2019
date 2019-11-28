@@ -92,7 +92,7 @@ namespace FrbaOfertas.Forms
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows != null)
+            if (dataGridView1.SelectedRows != null && dataGridView1.Rows.Count > 0)
             {
                 DataGridViewRow seleccionados = dataGridView1.SelectedRows[0];
                 txtId.Text = seleccionados.Cells[0].Value.ToString();

@@ -172,10 +172,17 @@ namespace FrbaOfertas.Forms
 
         private void btn_Seleccionar_Click(object sender, EventArgs e)
         {
-            var row = this.dataGridView1.SelectedRows[0];
-            string seleccionado = row.Cells[1].Value.ToString();
-            PresenterAdmin.instance().formRol_seleccionar(this);
-            PresenterAdmin.instance().seleccionarRol(seleccionado,this);
+            if (dataGridView1.Rows.Count > 0)
+            {
+                var row = this.dataGridView1.SelectedRows[0];
+                string seleccionado = row.Cells[1].Value.ToString();
+                PresenterAdmin.instance().formRol_seleccionar(this);
+                PresenterAdmin.instance().seleccionarRol(seleccionado, this);
+            }
+            else {
+                MessageBox.Show("No hay roles disponibles");
+            
+            }
         }
 
         public void cargarFunciones(List<structFuncion> funciones)

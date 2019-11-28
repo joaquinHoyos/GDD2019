@@ -77,6 +77,8 @@ namespace FrbaOfertas.Forms
                     dataGridView1.DataSource = source;
 
                     saldo = RepoCliente.instance().traerSaldo(currentUserID);
+                    btn_comprar.Enabled = false;
+                    txt_cantidad.Enabled = false;
                     }else {
                     
                         MessageBox.Show("No hay saldo suficiente, su saldo actual es de "+ saldo.ToString() + " pesos.");

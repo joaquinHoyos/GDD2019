@@ -61,6 +61,9 @@ namespace FrbaOfertas.Forms
                 var bindingList = new BindingList<Cupon>(RepoCliente.instance().traerCuponesPropios(currentUserID));
                 var source = new BindingSource(bindingList, null);
                 dataGridView1.DataSource = source;
+
+                btn_Regalar.Enabled = false;
+                cmb_Clientes.Enabled = false;
             }
             else
             {

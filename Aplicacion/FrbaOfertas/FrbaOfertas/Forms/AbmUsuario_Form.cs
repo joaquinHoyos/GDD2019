@@ -116,7 +116,7 @@ namespace FrbaOfertas.Forms
             btnDeshabilitar.Enabled = true;
             btnHabilitar.Enabled = true;
 
-            if (dataGridView1.SelectedRows != null)
+            if (dataGridView1.SelectedRows != null && dataGridView1.Rows.Count > 0)
             {
                 DataGridViewRow seleccionados = dataGridView1.SelectedRows[0];
                 textBox1.Text = seleccionados.Cells[1].Value.ToString();

@@ -93,7 +93,7 @@ namespace FrbaOfertas.Forms
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
 
-            if (dataGridView1.SelectedRows != null)
+            if (dataGridView1.SelectedRows != null && dataGridView1.Rows.Count > 0)
             {
                 button1.Enabled = true;
                 btnBuscar.Enabled = false;
