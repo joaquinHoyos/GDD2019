@@ -120,3 +120,6 @@ C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\
 C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.AbmUsuario_Form.resources
 C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.AbmOfertasDeAdmin.resources
 C:\Users\Guido Klajnberg\Desktop\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.AsginarUsuarioAProveedor.resources
+Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\
+Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.AbmOfertasDeAdmin.resources
+Z:\GDD2019\Aplicacion\FrbaOfertas\FrbaOfertas\obj\Debug\FrbaOfertas.Forms.CanjearCupones.resources

@@ -98,5 +98,10 @@ namespace FrbaOfertas.Forms
 
             }
         }
+
+        private void Admin_Form_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

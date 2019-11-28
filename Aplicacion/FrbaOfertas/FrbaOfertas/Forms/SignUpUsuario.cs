@@ -42,7 +42,7 @@ namespace FrbaOfertas.Forms
             string usuario = txtUsername.Text;
             if (clave == confirmClave && clave != "" )
             {
-                if (comboTipoUsuario.Text != "Elija un tipo de usuario")
+                if (comboTipoUsuario.Text != "")
                 {
 
                     try
@@ -53,7 +53,7 @@ namespace FrbaOfertas.Forms
                     }
                     catch (SqlException ex)
                     {
-                        MessageBox.Show("loguea mal");
+                        MessageBox.Show("Sign up erroneo");
                     }
                 }
                 else {

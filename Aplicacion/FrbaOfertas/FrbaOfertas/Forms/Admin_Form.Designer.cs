@@ -38,8 +38,8 @@
             this.btnProveedores = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
             this.btn_Roles = new System.Windows.Forms.Button();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnCerrarSesion = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -62,7 +62,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.btnCerrarSesion);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-            this.splitContainer1.Size = new System.Drawing.Size(1164, 570);
+            this.splitContainer1.Size = new System.Drawing.Size(1185, 570);
             this.splitContainer1.SplitterDistance = 60;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -183,14 +183,9 @@
             this.btn_Roles.UseVisualStyleBackColor = false;
             this.btn_Roles.Click += new System.EventHandler(this.btn_Roles_Click);
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
             // btnCerrarSesion
             // 
-            this.btnCerrarSesion.Location = new System.Drawing.Point(1031, 395);
+            this.btnCerrarSesion.Location = new System.Drawing.Point(1052, 441);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(121, 53);
             this.btnCerrarSesion.TabIndex = 0;
@@ -198,14 +193,20 @@
             this.btnCerrarSesion.UseVisualStyleBackColor = true;
             this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // Admin_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1164, 570);
+            this.ClientSize = new System.Drawing.Size(1185, 570);
             this.Controls.Add(this.splitContainer1);
             this.Name = "Admin_Form";
             this.Text = "Admin_Form";
+            this.Load += new System.EventHandler(this.Admin_Form_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();

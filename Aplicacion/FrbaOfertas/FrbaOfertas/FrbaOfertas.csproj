@@ -230,6 +230,9 @@
     <EmbeddedResource Include="Forms\AsignarUsuarioACliente_Form.resx">
       <DependentUpon>AsignarUsuarioACliente_Form.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CanjearCupones.resx">
+      <DependentUpon>CanjearCupones.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CargaCredito.resx">
       <DependentUpon>CargaCredito.cs</DependentUpon>
     </EmbeddedResource>

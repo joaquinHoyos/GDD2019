@@ -28,7 +28,15 @@ namespace FrbaOfertas.Presenters
           {
                
               this.getAltaCarga().currentUserID = userID;
-              form.splitContainer1.Panel2.Controls.Clear();
+              if (this.comprar_form!= null)
+              {
+                  this.comprar_form.Hide();
+              }
+              if (this.cupones_form != null)
+              {
+                  this.cupones_form.Hide();
+              }
+              //form.splitContainer1.Panel2.Controls.Clear();
               form.splitContainer1.Panel2.Controls.Add(this.getAltaCarga());
               form.mostrarForm(this.getAltaCarga());
           }
@@ -36,7 +44,15 @@ namespace FrbaOfertas.Presenters
           public void cargarComprar(FormCliente form, int userID)
           {
               this.getComprar().currentUserID = userID;
-              form.splitContainer1.Panel2.Controls.Clear();
+              if (this.cargaCredito_form != null)
+              {
+                  this.cargaCredito_form.Hide();
+              }
+              if (this.cupones_form != null)
+              {
+                  this.cupones_form.Hide();
+              }
+              //form.splitContainer1.Panel2.Controls.Clear();
               form.splitContainer1.Panel2.Controls.Add(this.getComprar());
               form.mostrarForm(this.getComprar());
           }
@@ -44,7 +60,16 @@ namespace FrbaOfertas.Presenters
         public void cargarFormCupones(FormCliente form, int userID){
         
               this.getCupones().currentUserID = userID;
-              form.splitContainer1.Panel2.Controls.Clear();
+              if (this.cargaCredito_form != null)
+              {
+                  this.cargaCredito_form.Hide();
+              }
+              if (this.comprar_form != null)
+              {
+                  this.comprar_form.Hide();
+              }  
+            
+            //form.splitContainer1.Panel2.Controls.Clear();
               form.splitContainer1.Panel2.Controls.Add(this.getCupones());
               form.mostrarForm(this.getCupones());
         

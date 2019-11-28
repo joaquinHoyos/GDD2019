@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.btn_descuentos = new System.Windows.Forms.Button();
             this.nud_anioDescuentos = new System.Windows.Forms.NumericUpDown();
             this.combo_descuentos = new System.Windows.Forms.ComboBox();
             this.grid_descuentos = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.btn_ventas = new System.Windows.Forms.Button();
             this.nud_anioVentas = new System.Windows.Forms.NumericUpDown();
             this.grid_ventas = new System.Windows.Forms.DataGridView();
             this.combo_ventas = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -83,6 +83,24 @@
             this.splitContainer1.SplitterDistance = 577;
             this.splitContainer1.TabIndex = 0;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(231, 71);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(26, 13);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Año";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 71);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(51, 13);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Semestre";
+            // 
             // btn_descuentos
             // 
             this.btn_descuentos.Location = new System.Drawing.Point(439, 86);
@@ -108,6 +126,7 @@
             // 
             // combo_descuentos
             // 
+            this.combo_descuentos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combo_descuentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combo_descuentos.FormattingEnabled = true;
             this.combo_descuentos.Items.AddRange(new object[] {
@@ -123,6 +142,7 @@
             this.grid_descuentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid_descuentos.Location = new System.Drawing.Point(10, 161);
             this.grid_descuentos.Name = "grid_descuentos";
+            this.grid_descuentos.ReadOnly = true;
             this.grid_descuentos.Size = new System.Drawing.Size(549, 249);
             this.grid_descuentos.TabIndex = 1;
             // 
@@ -135,6 +155,24 @@
             this.label1.Size = new System.Drawing.Size(225, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Estadistica Descuentos";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 70);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(51, 13);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Semestre";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(234, 71);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(26, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Año";
             // 
             // btn_ventas
             // 
@@ -164,11 +202,13 @@
             this.grid_ventas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid_ventas.Location = new System.Drawing.Point(15, 161);
             this.grid_ventas.Name = "grid_ventas";
+            this.grid_ventas.ReadOnly = true;
             this.grid_ventas.Size = new System.Drawing.Size(549, 249);
             this.grid_ventas.TabIndex = 2;
             // 
             // combo_ventas
             // 
+            this.combo_ventas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combo_ventas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combo_ventas.FormattingEnabled = true;
             this.combo_ventas.Items.AddRange(new object[] {
@@ -188,42 +228,6 @@
             this.label2.Size = new System.Drawing.Size(179, 24);
             this.label2.TabIndex = 1;
             this.label2.Text = "Estadistica Ventas";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 71);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 13);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Semestre";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(430, 71);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(26, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Año";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(231, 71);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(26, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Año";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 70);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(51, 13);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Semestre";
             // 
             // ListadoEstadisitico
             // 

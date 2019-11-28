@@ -62,7 +62,7 @@
             // txtFechaInicio
             // 
             this.txtFechaInicio.Location = new System.Drawing.Point(197, 56);
-            this.txtFechaInicio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFechaInicio.Margin = new System.Windows.Forms.Padding(2);
             this.txtFechaInicio.Name = "txtFechaInicio";
             this.txtFechaInicio.Size = new System.Drawing.Size(135, 20);
             this.txtFechaInicio.TabIndex = 3;
@@ -70,7 +70,7 @@
             // txtFechaFinal
             // 
             this.txtFechaFinal.Location = new System.Drawing.Point(534, 56);
-            this.txtFechaFinal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFechaFinal.Margin = new System.Windows.Forms.Padding(2);
             this.txtFechaFinal.Name = "txtFechaFinal";
             this.txtFechaFinal.Size = new System.Drawing.Size(135, 20);
             this.txtFechaFinal.TabIndex = 4;
@@ -78,7 +78,7 @@
             // btnFacturar
             // 
             this.btnFacturar.Location = new System.Drawing.Point(697, 56);
-            this.btnFacturar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnFacturar.Margin = new System.Windows.Forms.Padding(2);
             this.btnFacturar.Name = "btnFacturar";
             this.btnFacturar.Size = new System.Drawing.Size(96, 23);
             this.btnFacturar.TabIndex = 5;
@@ -90,8 +90,9 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(25, 114);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 28;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1099, 287);
@@ -119,7 +120,7 @@
             this.Controls.Add(this.txtFechaInicio);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Facturacion_Form";
             this.Text = "Facturacion_Form";
             this.Load += new System.EventHandler(this.Facturacion_Form_Load);

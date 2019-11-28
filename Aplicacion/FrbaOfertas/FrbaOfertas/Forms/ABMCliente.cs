@@ -173,7 +173,7 @@ namespace FrbaOfertas.Forms
         }
         private void btn_Seleccionar_Click(object sender, EventArgs e)
         {
-            
+
 
             if (dataGridView1.SelectedRows != null)
             {

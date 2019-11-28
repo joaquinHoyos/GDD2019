@@ -33,8 +33,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnCanjear = new System.Windows.Forms.Button();
             this.btn_Ofertas = new System.Windows.Forms.Button();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnCerrarSesion = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -51,13 +51,14 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnCanjear);
             this.splitContainer1.Panel1.Controls.Add(this.tableLayoutPanel1);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.btnCerrarSesion);
-            this.splitContainer1.Size = new System.Drawing.Size(634, 391);
-            this.splitContainer1.SplitterDistance = 40;
+            this.splitContainer1.Size = new System.Drawing.Size(964, 439);
+            this.splitContainer1.SplitterDistance = 44;
             this.splitContainer1.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -65,7 +66,6 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 306F));
-            this.tableLayoutPanel1.Controls.Add(this.btnCanjear, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_Ofertas, 0, 0);
             this.tableLayoutPanel1.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.AddColumns;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
@@ -81,9 +81,9 @@
             this.btnCanjear.BackColor = System.Drawing.Color.Silver;
             this.btnCanjear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCanjear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCanjear.Location = new System.Drawing.Point(326, 3);
+            this.btnCanjear.Location = new System.Drawing.Point(516, 6);
             this.btnCanjear.Name = "btnCanjear";
-            this.btnCanjear.Size = new System.Drawing.Size(300, 32);
+            this.btnCanjear.Size = new System.Drawing.Size(445, 32);
             this.btnCanjear.TabIndex = 2;
             this.btnCanjear.Text = "Canjear Cupones";
             this.btnCanjear.UseVisualStyleBackColor = false;
@@ -96,20 +96,15 @@
             this.btn_Ofertas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Ofertas.Location = new System.Drawing.Point(3, 3);
             this.btn_Ofertas.Name = "btn_Ofertas";
-            this.btn_Ofertas.Size = new System.Drawing.Size(317, 32);
+            this.btn_Ofertas.Size = new System.Drawing.Size(504, 32);
             this.btn_Ofertas.TabIndex = 1;
             this.btn_Ofertas.Text = "Ofertas";
             this.btn_Ofertas.UseVisualStyleBackColor = false;
             this.btn_Ofertas.Click += new System.EventHandler(this.btn_Ofertas_Click);
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
             // btnCerrarSesion
             // 
-            this.btnCerrarSesion.Location = new System.Drawing.Point(516, 290);
+            this.btnCerrarSesion.Location = new System.Drawing.Point(835, 334);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(106, 45);
             this.btnCerrarSesion.TabIndex = 0;
@@ -117,11 +112,16 @@
             this.btnCerrarSesion.UseVisualStyleBackColor = true;
             this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // Prov_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 391);
+            this.ClientSize = new System.Drawing.Size(964, 439);
             this.Controls.Add(this.splitContainer1);
             this.Name = "Prov_Form";
             this.Text = "Proveedor";

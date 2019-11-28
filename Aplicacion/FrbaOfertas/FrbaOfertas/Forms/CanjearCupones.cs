@@ -49,11 +49,22 @@ namespace FrbaOfertas.Forms
                 DataGridViewRow seleccionados = dataGridView1.SelectedRows[0];
                 int cupon = Convert.ToInt32(seleccionados.Cells[0].Value);
                 PresenterProveedor.instance().canjearCupon(cupon);
+
+                int cliente = Convert.ToInt32(txtDni.Text);
+                DataTable cupones = PresenterProveedor.instance().traerCuponesNoCanjeadosDeProveedorActual(cliente);
+                dataGridView1.DataSource = cupones;
+
+                btnCanjear.Enabled=false;
             }
             else
             {
                 MessageBox.Show("Seleccione un cupon");
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnCanjear.Enabled = true;
         }
     }
 }
