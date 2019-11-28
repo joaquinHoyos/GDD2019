@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrbaOfertas.Repositorios;
+using System.Data.Sql;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace FrbaOfertas.Forms
 {
@@ -25,6 +28,55 @@ namespace FrbaOfertas.Forms
         private void CargaCredito_Load(object sender, EventArgs e)
         {
 
+            SqlConnection myConnection = new SqlConnection(ConfigurationManager.AppSettings["server"]);
+            myConnection.Open();
+            SqlCommand command = new SqlCommand("SELECT * FROM PASO_A_PASO.TipoPago", myConnection);
+            try
+            {
+
+                List<char> tiposDisponibles = new List<char>();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+
+                        tiposDisponibles.Add(Char.Parse(reader["tipoPago_id"].ToString()));
+
+                    }
+                }
+                cmb_TipoPago.Items.Clear();
+                Dictionary<char, string> test = new Dictionary<char, string>();
+                for (int i = 0; i < tiposDisponibles.Count; i++) {
+                    if (tiposDisponibles[i] == 'E') {
+
+                        test.Add('E',"Efectivo");
+                        
+
+                    }
+                    if (tiposDisponibles[i] == 'C')
+                    {
+                        test.Add('C', "Credito");
+
+                    }
+                    if (tiposDisponibles[i] == 'D')
+                    {
+                        test.Add('D', "Debito");
+
+                    }
+                
+                }
+
+                cmb_TipoPago.DataSource = new BindingSource(test, null);
+                cmb_TipoPago.DisplayMember = "Value";
+                cmb_TipoPago.ValueMember = "Key";
+                
+
+            }
+            catch (SqlException error) {
+
+                MessageBox.Show(error.Message);
+            }
+
         }
 
         private void btn_altaCredito_Click(object sender, EventArgs e)
@@ -33,11 +85,14 @@ namespace FrbaOfertas.Forms
             {
 
                 long monto;
+                long tarjetaNum;
                 String tarjeta = txt_tarjeta.Text;
                 bool montoEsNumerico;
                 montoEsNumerico = long.TryParse(txt_monto.Text, out monto);
+                bool tarjetaEsNumerica;
+                tarjetaEsNumerica = long.TryParse(txt_tarjeta.Text, out tarjetaNum);
                 string tipoPago = "";
-                if (montoEsNumerico)
+                if (montoEsNumerico )
                 {
 
 
@@ -48,10 +103,26 @@ namespace FrbaOfertas.Forms
                             tarjeta= "0";
                             break;
                         case "Credito":
-                            tipoPago = "C";
+                            if (tarjetaEsNumerica)
+                            {
+                                tipoPago = "C";
+                            }
+                            else {
+                                MessageBox.Show("Tarjeta no numerica");
+                                return;
+                            }
                             break;
                         case "Debito":
-                            tipoPago = "D";
+                            if (tarjetaEsNumerica)
+                            {
+                                tipoPago = "D";
+                            }
+
+                            else
+                            {
+                                MessageBox.Show("Tarjeta no numerica");
+                                return;
+                            }
                             break;
                     }
 
