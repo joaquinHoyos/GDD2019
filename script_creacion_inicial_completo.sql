@@ -1277,5 +1277,85 @@ AS
 GO
 
 
+USE [GD2C2019]
+GO
+
+/****** Object:  UserDefinedFunction [PASO_A_PASO].[buscarProvSinRazon]    Script Date: 28/11/2019 19:01:23 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE FUNCTION [PASO_A_PASO].[buscarProvSinRazon](@mail nvarchar(255))
+RETURNS TABLE
+AS
+
+RETURN (SELECT * FROM PASO_A_PASO.Proveedor WHERE prov_mail LIKE '%'+ @mail+ '%');
+
+GO
+
+
+USE [GD2C2019]
+GO
+
+/****** Object:  UserDefinedFunction [PASO_A_PASO].[buscarProvSinMail]    Script Date: 28/11/2019 19:02:15 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE FUNCTION [PASO_A_PASO].[buscarProvSinMail](@razonSocial nvarchar(100))
+RETURNS TABLE
+AS
+
+RETURN (SELECT * FROM PASO_A_PASO.Proveedor WHERE prov_razon LIKE '%'+ @razonSocial+'%');
+
+
+
+
+GO
+
+
+USE [GD2C2019]
+GO
+
+/****** Object:  UserDefinedFunction [PASO_A_PASO].[buscarProvConRazonYMail]    Script Date: 28/11/2019 19:02:43 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE FUNCTION [PASO_A_PASO].[buscarProvConRazonYMail](@razonSocial nvarchar(100),@mail nvarchar(255))
+RETURNS TABLE
+AS
+
+RETURN (SELECT * FROM PASO_A_PASO.Proveedor WHERE prov_razon LIKE '%'+ @razonSocial+ '%' AND prov_mail LIKE '%'+ @mail+ '%');
+
+GO
+
+
+
+USE [GD2C2019]
+GO
+
+/****** Object:  UserDefinedFunction [PASO_A_PASO].[buscarClieDni]    Script Date: 28/11/2019 19:03:13 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE FUNCTION [PASO_A_PASO].[buscarClieDni](@clie_dni numeric(18,8))
+RETURNS TABLE
+AS
+
+RETURN (SELECT * FROM PASO_A_PASO.Cliente WHERE clie_dni = @clie_dni)
+
+GO
+
+
 
 
