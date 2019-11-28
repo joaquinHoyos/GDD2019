@@ -548,9 +548,16 @@ namespace FrbaOfertas.Repositorios
             if (nombre == "DEFAULT")
             {
                 if (apellido == "DEFAULT")
+         
                 {
-                    filtro = "(clie_mail LIKE '%" + mail + "%')";
-
+                    if (mail == "DEFAULT")
+                    {
+                        filtro = "0=0";
+                    }
+                    else
+                    {
+                        filtro = "(clie_mail LIKE '%" + mail + "%')";
+                    }
                 }
                 else if (mail == "DEFAULT")
                 {
