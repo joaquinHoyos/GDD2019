@@ -93,11 +93,11 @@
     <Compile Include="Forms\AltaProveedor.Designer.cs">
       <DependentUpon>AltaProveedor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AmbOfertasDeAdmin.cs">
+    <Compile Include="Forms\AbmOfertasDeAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AmbOfertasDeAdmin.Designer.cs">
-      <DependentUpon>AmbOfertasDeAdmin.cs</DependentUpon>
+    <Compile Include="Forms\AbmOfertasDeAdmin.Designer.cs">
+      <DependentUpon>AbmOfertasDeAdmin.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\AsginarUsuarioAProveedor.cs">
       <SubType>Form</SubType>
@@ -110,6 +110,12 @@
     </Compile>
     <Compile Include="Forms\AsignarUsuarioACliente_Form.Designer.cs">
       <DependentUpon>AsignarUsuarioACliente_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CanjearCupones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CanjearCupones.Designer.cs">
+      <DependentUpon>CanjearCupones.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CargaCredito.cs">
       <SubType>Form</SubType>
@@ -214,6 +220,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AltaProveedor.resx">
       <DependentUpon>AltaProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AbmOfertasDeAdmin.resx">
+      <DependentUpon>AbmOfertasDeAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AsginarUsuarioAProveedor.resx">
       <DependentUpon>AsginarUsuarioAProveedor.cs</DependentUpon>
